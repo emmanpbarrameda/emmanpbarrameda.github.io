@@ -8,7 +8,8 @@
 .banner {
     width: 100%;
     height: 100vh;
-    background: linear-gradient(rgba(25, 53, 73,0.05), rgba(10, 25, 47,0.05)), url(assets/background8.png); 
+    background: linear-gradient(to right, rgba(25, 53, 73,0.30), rgba(10, 25, 47,0.10)), url(assets/background11.png); 
+    /*background-color: #0A192F; */
     background-size: cover;
     background-position: center;
 }
@@ -16,8 +17,9 @@
 
 /* logo */
 .logo {
-    width: 120px;
+    width: 64px;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 /* navBar position */
@@ -36,20 +38,31 @@
     display: inline-block;
     margin: 0 20px;
     position: relative;
+    margin-top: 20px;
 }
 
 /* navBar design */
 .navBar ul li a{
     text-decoration: none;
     color: white;
+    text-shadow: 0 0 1px #FFF; /* Set the text shadow with multiple layers to create the neon effect */
     text-transform: capitalize;
     font-family: 'Roboto Mono', monospace;
     font-weight: normal;
 }
 
+/* navBar ACTIVE MARK design */
+.navBar ul li a.active {
+    font-weight: bold;
+    color: #8CF0FF;
+    text-shadow: 0 0 20px #7DF9FF;
+  }  
+
 /* navBar design, ACTION where hovered */
 .navBar ul li:hover a {
     font-weight: bold;
+    color: #8CF0FF;
+    text-shadow: 0 0 20px #7DF9FF; /* Set the text shadow with multiple layers to create the neon effect */
   }
   
 /* navBar design, ACTION AFTER HOVERING */
@@ -57,7 +70,7 @@
     content: ' ';
     height: 3px;
     width: 0;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.50));
+    background: linear-gradient(to right, rgba(140, 240, 255, 10), rgba(251, 44, 181, 10));
     position: absolute;
     left: 0;
     bottom: -10px;
@@ -84,26 +97,48 @@
 .bodyContent h4 {
     font-family: 'Aldrich', sans-serif;
     font-weight: normal;
-    font-size: 18px;
+    font-size: 20px;
+    color: #FEFEFE;
 }
 
 #typing-myname {
     font-family: 'Aldrich', sans-serif;
     font-weight: bold;
-    font-size: 60px;
+    font-size: 70px;
     white-space: nowrap;
     overflow: hidden;
     display: inline-block;
+    color: #7DF9FF;
+    text-shadow: 0 0 10px #7DF9FF; /* Set the text shadow with multiple layers to create the neon effect */
     animation: typing 3s steps(30, end) infinite;
   }
 
-/* body content design OF HEADER 4 */
-.bodyContent p {
+/* body content design OF PROFESSION */
+#profession {
     font-family: 'Aldrich', sans-serif;
     font-weight: normal;
     font-size: 40px;
-    font-weight: normal;
+    color: #FEFEFE;
+    text-shadow: 0 0 10px #FEFEFE; /* Set the text shadow with multiple layers to create the neon effect */
+    margin-bottom: 50px;
 }
+
+
+/* body content design OF short-intro */
+#short-intro {
+    font-family: 'Jura', sans-serif;
+    font-weight: 600;
+    letter-spacing: normal;
+    line-height: 25px;
+    font-size: 18px;
+    color: #FEFEFE;
+    white-space: nowrap;
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+
+
+
 
 /* button DESIGN BEFORE ANIMATION */
 button {
@@ -115,7 +150,7 @@ button {
     font-size: 18px;
     font-weight: bold;
     border: none;
-    background-color: rgba(255, 255, 255, 0.40);
+    background-color: rgba(251, 44, 181, 0.80);
     color: #fff;
     cursor: pointer;
     position: relative;
@@ -124,7 +159,7 @@ button {
 
 /* button SPAN BG: DURING ANIMATION  */
 button span {
-    background-color: rgba(255, 255, 255, 0.90);
+    background-color: rgba(251, 44, 181, 0.90);
     height: 100%;
     width: 0%;
     border-radius: 25px;
@@ -132,7 +167,7 @@ button span {
     left: 0;
     bottom: 0;
     z-index: -1;
-    transition: 0.5s;
+    transition: 0.2s;
 }
 
 /* button HOVER with SPAN BG */
@@ -142,6 +177,7 @@ button:hover span {
 
 /* button HOVER: DURING ANIMATION  */
 button:hover {
-    color: #9C00AC;
+    color: #fff;
     border: none;
+    box-shadow: 0 0 20px #FB2CB5; /* Set the box shadow with multiple layers to create the neon effect */
 }
