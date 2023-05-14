@@ -1,5 +1,5 @@
 const name1 = "emmanpbarrameda";
-const name2 = "Emmanuel P. Barrameda";
+const name2 = "emman";
 let i = 0;
 let currentName = name1;
 

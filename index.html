@@ -2,47 +2,87 @@
 
 <html>
     <head>
-        <title>emmanpbarrameda</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>emmanpbarrameda | Portfolio</title>
         <link rel="stylesheet" href="style.css">
         <script src="script.js"></script>
         <link href="fonts.css" rel="stylesheet">
-
+        <link rel = "icon" href = "https://drive.google.com/uc?export=view&id=1EANbSsUNFCescWmzBTLwE5oa-6Km67mT" type = "image/x-icon">
     </head>
 
 <body>
 
-        <!-- home background -->
-        <div class="banner">
-
+        <header>
             <!-- LOGO & NAVIGATIONAL VIEW -->
             <div class="navBar">
                 <img src="assets/logo64.png" class="logo">
-                <ul>
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Experience</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
 
-            <!-- TEXT ON CENTER -->
-            <div class="bodyContent">
-                <h4>Hello World! My name is</h1>
-                <h1 id="typing-myname"></h1>
-                <p id="profession"> Self-Taught Programmer</p>
-                <p id="short-intro">I am a second-year Bachelor of Science student<br>in Information Technology from the Philippines,<br>with a goal-oriented creative mindset<br>and a passion for learning and innovating.<br><br>Through freelancing and self-study,<br>I have gained valuable experience<br>as a self-taught programmer.</p>
+                <div class="navBar-Buttons">
+                    <ul>
+                        <li><a href="#home" class="nav-links">Home</a></li>
+                        <li><a href="#about" class="nav-links">About</a></li>
+                        <li><a href="#projects" class="nav-links">Projects</a></li>
+                        <li><a href="#contact" class="nav-links">Contact</a></li>
+                    </ul>
+
+                </div>
                 
 
-                <!-- BUTTON ON CENTER, AFTER TEXT -->
-                <div>
-                    <button type="button"><span></span>MAIL ME</button>
+            </div>
+        </header>
+
+
+
+        <main>
+
+            <section class="home-section" id="home">
+
+                <!-- home background -->
+                <div class="home-container">
+
+                    <!-- TEXT ON CENTER -->
+                        <h4>Hello World! My name is</h1>
+                        <h1 id="typing-myname"></h1>
+                        <p id="profession"> Self-Taught Programmer</p>
+                        <p id="short-intro">I am a second-year Bachelor of Science student<br>in Information Technology from the Philippines,<br>with a goal-oriented creative mindset<br>and a passion for learning and innovating.<br><br>Through freelancing and self-study,<br>I have gained valuable experience<br>as a self-taught programmer.</p>
+                        
+
+                        <!-- BUTTON ON CENTER, AFTER TEXT -->
+                        <div class="mailButton">
+                            <button type="button"><span></span>MAIL ME</button>
+                        </div>
                 </div>
 
-            </div>
+            </section>
 
-        </div>
 
+            <a href="pages/about.html">
+                <section class="about-section" id="about">
+
+
+                <!-- home background -->
+                <div class="home-container">
+
+                    <!-- TEXT ON CENTER -->
+                        <h4>Hello World! My name is</h1>
+                        <h1 id="typing-myname"></h1>
+                        <p id="profession"> Student</p>
+                        <p id="short-intro">I am a second-year Bachelor of Science student<br>in Information Technology from the Philippines,<br>with a goal-oriented creative mindset<br>and a passion for learning and innovating.<br><br>Through freelancing and self-study,<br>I have gained valuable experience<br>as a self-taught programmer.</p>
+                        
+
+                        <!-- BUTTON ON CENTER, AFTER TEXT -->
+                        <div class="mailButton">
+                            <button type="button"><span></span>MAIL ME</button>
+                        </div>
+                </div>
+
+
+                </section>
+              </a>              
+
+        </main>
 
 </body>
 
