@@ -1,5 +1,5 @@
-const name1 = "emmanpbarrameda";
-const name2 = "emman";
+const name1 = "Emmanuel P. Barrameda";
+const name2 = "emmanpbarrameda";
 let i = 0;
 let currentName = name1;
 
@@ -18,6 +18,11 @@ function type() {
   }
 }
 
+
+
+
 window.onload = function() {
   type();
 };
+
+

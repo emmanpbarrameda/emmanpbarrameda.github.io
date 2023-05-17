@@ -1,434 +1,367 @@
 *{
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
 }
 
 
 body {
-    background-color: midnightblue;
+  background: linear-gradient(to right, #040D21, #040D21);
 }
 
 /* logo */
 .logo {
-    width: 32px;
-    cursor: pointer;
+  width: 32px;
+  cursor: pointer;
 }
 
 /* navBar position */
 .navBar {
-    /* POS: TOP, LEFT & RIGHT, BOTTOM */
-    padding: 5px 40px 5px;
-    width: auto;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  /* POS: TOP, LEFT & RIGHT, BOTTOM */
+  padding: 20px 30px 20px;
+  width: auto;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    /* DESIGN */
-    background: linear-gradient(to right, rgba(25, 53, 73,0.30), rgba(10, 25, 47,0.10)), url(assets/background11.png); 
-    background-repeat: no-repeat;
-    background-size: cover;
+  /* DESIGN */
+  /* background: linear-gradient(to right, rgba(25, 53, 73,0.30), rgba(10, 25, 47,0.10)), url(assets/background11.png); */
+  background: linear-gradient(to right, #040D21, #040D21);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* navBar spacing */
 .navBar-Buttons ul li {
-    list-style: none;
-    /* display: inline-block; */
-    display: none;
-    margin: 0 20px;
-    position: relative;
+  list-style: none;
+  display: inline-block;
+  /* display: none; */
+  margin: 0 20px;
+  position: relative;
 }
 
 /* navBar design */
 .navBar-Buttons ul li a{
-    text-decoration: none;
-    color: white;
-    text-shadow: 0 0 1px #FFF; /* Set the text shadow with multiple layers to create the neon effect */
-    text-transform: capitalize;
-    font-family: 'Roboto Mono', monospace;
-    font-weight: normal;
+  text-decoration: none;
+  color: white;
+  text-shadow: 0 0 1px #FFF; /* Set the text shadow with multiple layers to create the neon effect */
+  text-transform: capitalize;
+  font-family: 'Poppins', sans-serif;
+  font-weight: normal;
 }
 
 /* navBar ACTIVE MARK design */
 .navBar-Buttons ul li a.active {
-    font-weight: bold;
-    color: #8CF0FF;
-    text-shadow: 0 0 20px #7DF9FF;
-  }  
+  font-weight: bold;
+  color: #8CF0FF;
+  text-shadow: 0 0 20px #7DF9FF;
+}  
 
 /* navBar design, ACTION where hovered */
 .navBar-Buttons ul li:hover a {
-    font-weight: bold;
-    color: #8CF0FF;
-    text-shadow: 0 0 20px #7DF9FF; /* Set the text shadow with multiple layers to create the neon effect */
-  }
-  
+  font-weight: bold;
+  color: #8CF0FF;
+  text-shadow: 0 0 20px #7DF9FF; /* Set the text shadow with multiple layers to create the neon effect */
+}
+
 /* navBar design, ACTION AFTER HOVERING */
 .navBar-Buttons ul li::after {
-    content: ' ';
-    height: 3px;
-    width: 0;
-    background: linear-gradient(to right, rgba(140, 240, 255, 10), rgba(251, 44, 181, 10));
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    transition: 0.5s;
+  content: ' ';
+  height: 3px;
+  width: 0;
+  background: linear-gradient(to right, #0287E6, #1BD2FE);
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  transition: 0.5s;
 }
 
 /* navBar design, ACTION AFTER HOVERING */
 .navBar-Buttons ul li:hover::after {
-    width: 100%;
+  width: 100%;
 }
 
 
 
 /* class BANNER */
 .home-container {
-    width: 100%;
-    height: fit-content;
-    background: linear-gradient(to right, rgba(25, 53, 73,0.30), rgba(10, 25, 47,0.10)), url(assets/background11.png); 
-    /*background-color: #0A192F; */
-    background-size: cover;
-    background-position: center;
-}
+  width: 100%;
+  height: fit-content;
+  /*background: linear-gradient(to right, rgba(25, 53, 73,0.30), rgba(10, 25, 47,0.10)), url(assets/background11.png); */
+  background: linear-gradient(to right, #040D21, #040D21);
 
-/* body content layout */
-.bodyContent {
-    width: 100%;
-    text-align: left;
-    color: #fff;
+  /*background-color: #0A192F; */
+  background-size: cover;
+  background-position: center;
 }
 
 
 /* body content design OF HEADER 4 */
-.home-container h4 {
+#hello-world {
 
-    /* POS: TOP, LEFT & RIGHT, BOTTOM */
-    padding: 80px 40px 0px;
+  /* POS: TOP, LEFT & RIGHT, BOTTOM */
+  padding: 50px 30px 0px;
 
-    /* DESIGN */
-    font-family: 'Aldrich', sans-serif;
-    font-weight: normal;
-    font-size: 15px;
-    color: #FEFEFE;
+  /* DESIGN */
+  font-family: 'Roboto Mono', monospace;
+  font-weight: normal;
+  font-size: 14px;
+  color: #64ffda;
 }
 
 #typing-myname {
 
-    /* POS: TOP, LEFT & RIGHT, BOTTOM */
-    padding: 0px 40px 0px;
+  /* POS: TOP, LEFT & RIGHT, BOTTOM */
+  padding: 0px 30px 0px;
 
-    /* DESIGN */
-    overflow-wrap: break-word; /* allow words to break to the next line */
-    font-family: 'Aldrich', sans-serif;
-    font-weight: bold;
-    font-size: 1.8em;
-    overflow: hidden;
-    display: inline-block;
-    color: #7DF9FF;
-    text-shadow: 0 0 10px #7DF9FF; /* Set the text shadow with multiple layers to create the neon effect */
-    animation: typing 3s steps(30, end) infinite;
-  }
+  /* DESIGN */
+  overflow-wrap: break-word; /* allow words to break to the next line */
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 1.9em;
+  overflow: hidden;
+  display: inline-block;
+  color: #fff;
+  text-shadow: 0 0 8px #326D7F; /* Set the text shadow with multiple layers to create the neon effect */
+  animation: typing 3s steps(30, end) infinite;
+}
 
 /* body content design OF PROFESSION */
 #profession {
 
-    /* POS: TOP, LEFT & RIGHT, BOTTOM */
-    padding: 0px 40px 0px;
+  /* POS: TOP, LEFT & RIGHT, BOTTOM */
+  padding: 0px 30px 0px;
 
-    /* DESIGN */
-    overflow-wrap: break-word; /* allow words to break to the next line */
-    font-family: 'Aldrich', sans-serif;
-    font-weight: normal;
-    font-size: 18px;
-    color: #FEFEFE;
-    text-shadow: 0 0 10px #FEFEFE; /* Set the text shadow with multiple layers to create the neon effect */
+  /* DESIGN */
+  overflow-wrap: break-word; /* allow words to break to the next line */
+  font-family: 'Raleway', sans-serif;
+
+  font-weight: bold;
+  font-size: 18px;
+  color: #8892b0;
+  /* text-shadow: 0 0 10px #fff; */ /* Set the text shadow with multiple layers to create the neon effect */
 }
 
 
 /* body content design OF short-intro */
 #short-intro {
 
-    /* POS: TOP, LEFT & RIGHT, BOTTOM */
-    padding: 50px 40px 0px;
+  /* POS: TOP, LEFT & RIGHT, BOTTOM */
+  padding: 30px 30px 0px;
 
-    /* DESIGN */
-    font-family: 'Jura', sans-serif;
-    font-weight: 600;
-    font-size: 0.8em;
-    letter-spacing: normal;
-    line-height: 18px;
-    color: #FEFEFE;
-    overflow-wrap: break-word; /* allow words to break to the next line */
+  /* DESIGN */
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  font-size: 0.9em;
+  letter-spacing: normal;
+  line-height: 18px;
+  color: #ccd6f6;
+  overflow-wrap: break-word; /* allow words to break to the next line */
 }
 
 
 .mailButton {
-    /* POS: TOP, LEFT & RIGHT, BOTTOM */
-    padding: 20px 25px 50px;
-  }
-  
-  /* button DESIGN BEFORE ANIMATION */
-  button {
-    position: relative;
-    z-index: 1;
-    width: 100px;
-    padding: 10px 0;
-    text-align: center;
-    margin: 10px 10px;
-    border-radius: 25px;
-    font-size: 10px;
-    font-weight: bold;
-    border: none;
-    background-color: rgba(251, 44, 181, 0.80);
-    color: #fff;
-    cursor: pointer;
-    overflow: hidden;
-  }
-  
-  /* button SPAN BG: DURING ANIMATION  */
-  button span {
-    background-color: rgba(251, 44, 181, 0.90);
-    height: 100%;
-    width: 0%;
-    border-radius: 25px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: 0.2s;
-  }
-  
-  /* button HOVER with SPAN BG */
-  button:hover span {
-    width: 100%;
-    z-index: -2; /* add this line */
-  }
-  
-  /* button HOVER: DURING ANIMATION  */
-  button:hover {
-    color: #fff;
-    border: none;
-    box-shadow: 0 0 20px #FB2CB5;
-  }
-  
-  button:hover span:hover {
-    box-shadow: none; /* add this line */
-  }
-  
+  /* POS: TOP, LEFT & RIGHT, BOTTOM */
+  padding: 20px 18px 50px;
+}
+
+/* button DESIGN BEFORE ANIMATION */
+button {
+  position: relative;
+  z-index: 1;
+  width: 100px;
+  padding: 10px 0;
+  text-align: center;
+  margin: 10px 10px;
+  border-radius: 25px;
+  font-size: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  border: #64ffda;
+  border-width: 2px;
+  background-color: rgba(100, 255, 218, 0.70);
+  color: #fff;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* button SPAN BG: DURING ANIMATION  */
+button span {
+  background-color: rgba(100, 255, 218, 0.20);
+  height: 100%;
+  width: 0%;
+  border-radius: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: 0.2s;
+}
+
+/* button HOVER with SPAN BG */
+button:hover span {
+  width: 100%;
+  z-index: -2; /* add this line */
+}
+
+/* button HOVER: DURING ANIMATION  */
+button:hover {
+  color: #fff;
+  border: #64ffda;
+  border-width: 2px;
+  box-shadow: 0 0 10px #7DF9FF;
+}
+
+button:hover span:hover {
+  box-shadow: none; /* add this line */
+}
 
 
 
-@media only screen and (min-width: 768px) {
-
-    /* logo */
-    .logo {
-        width: 48px;
-        cursor: pointer;
-    }
-
-    /* navBar position */
-    .navBar {
-        /* POS: TOP, LEFT & RIGHT, BOTTOM */
-        padding: 8px 40px 8px;
-        width: auto;
-        margin: auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        /* DESIGN */
-        background: linear-gradient(to right, rgba(25, 53, 73,0.30), rgba(10, 25, 47,0.10)), url(assets/background11.png); 
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    /* navBar spacing */
-    .navBar-Buttons ul li {
-        list-style: none;
-        display: inline-block;
-        margin: 0 20px;
-        position: relative;
-    }
-
-    /* navBar design */
-    .navBar-Buttons ul li a{
-        text-decoration: none;
-        color: white;
-        text-shadow: 0 0 1px #FFF; /* Set the text shadow with multiple layers to create the neon effect */
-        text-transform: capitalize;
-        font-family: 'Roboto Mono', monospace;
-        font-weight: normal;
-    }
-
-    /* navBar ACTIVE MARK design */
-    .navBar-Buttons ul li a.active {
-        font-weight: bold;
-        color: #8CF0FF;
-        text-shadow: 0 0 20px #7DF9FF;
-    }  
-
-    /* navBar design, ACTION where hovered */
-    .navBar-Buttons ul li:hover a {
-        font-weight: bold;
-        color: #8CF0FF;
-        text-shadow: 0 0 20px #7DF9FF; /* Set the text shadow with multiple layers to create the neon effect */
-    }
-    
-    /* navBar design, ACTION AFTER HOVERING */
-    .navBar-Buttons ul li::after {
-        content: ' ';
-        height: 3px;
-        width: 0;
-        background: linear-gradient(to right, rgba(140, 240, 255, 10), rgba(251, 44, 181, 10));
-        position: absolute;
-        left: 0;
-        bottom: -10px;
-        transition: 0.5s;
-    }
-
-    /* navBar design, ACTION AFTER HOVERING */
-    .navBar-Buttons ul li:hover::after {
-        width: 100%;
-    }
 
 
 
-    /* class BANNER */
-    .home-container {
-        width: 100%;
-        height: fit-content;
-        background: linear-gradient(to right, rgba(25, 53, 73,0.30), rgba(10, 25, 47,0.10)), url(assets/background11.png); 
-        /*background-color: #0A192F; */
-        background-size: cover;
-        background-position: center;
-    }
+.proverb-background {
+  width: 100%;
+  height: fit-content;
+  background: linear-gradient(to right, #040D21, #040D21);
 
-    /* body content layout */
-    .bodyContent {
-        width: 100%;
-        text-align: left;
-        color: #fff;
-    }
-
-
-    /* body content design OF HEADER 4 */
-    .home-container h4 {
-
-        /* POS: TOP, LEFT & RIGHT, BOTTOM */
-        padding: 80px 40px 0px;
-
-        /* DESIGN */
-        font-family: 'Aldrich', sans-serif;
-        font-weight: normal;
-        font-size: 20px;
-        color: #FEFEFE;
-    }
-
-    #typing-myname {
-
-        /* POS: TOP, LEFT & RIGHT, BOTTOM */
-        padding: 0px 40px 0px;
-
-        /* DESIGN */
-        overflow-wrap: break-word; /* allow words to break to the next line */
-        font-family: 'Aldrich', sans-serif;
-        font-weight: bold;
-        font-size: 2.5em;
-        overflow: hidden;
-        display: inline-block;
-        color: #7DF9FF;
-        text-shadow: 0 0 10px #7DF9FF; /* Set the text shadow with multiple layers to create the neon effect */
-        animation: typing 3s steps(30, end) infinite;
-    }
-
-    /* body content design OF PROFESSION */
-    #profession {
-
-        /* POS: TOP, LEFT & RIGHT, BOTTOM */
-        padding: 0px 40px 0px;
-
-        /* DESIGN */
-        overflow-wrap: break-word; /* allow words to break to the next line */
-        font-family: 'Aldrich', sans-serif;
-        font-weight: normal;
-        font-size: 24px;
-        color: #FEFEFE;
-        text-shadow: 0 0 10px #FEFEFE; /* Set the text shadow with multiple layers to create the neon effect */
-    }
-
-
-    /* body content design OF short-intro */
-    #short-intro {
-
-        /* POS: TOP, LEFT & RIGHT, BOTTOM */
-        padding: 50px 40px 0px;
-
-        /* DESIGN */
-        font-family: 'Jura', sans-serif;
-        font-weight: 600;
-        font-size: 1.1em;
-        letter-spacing: normal;
-        line-height: 20px;
-        color: #FEFEFE;
-        overflow-wrap: break-word; /* allow words to break to the next line */
-    }
-
-
-    .mailButton {
-        /* POS: TOP, LEFT & RIGHT, BOTTOM */
-        padding: 20px 25px 50px;
-    }
-    
-    /* button DESIGN BEFORE ANIMATION */
-    button {
-        position: relative;
-        z-index: 1;
-        width: 100px;
-        padding: 10px 0;
-        text-align: center;
-        margin: 20px 10px;
-        border-radius: 25px;
-        font-size: 14px;
-        font-weight: bold;
-        border: none;
-        background-color: rgba(251, 44, 181, 0.80);
-        color: #fff;
-        cursor: pointer;
-        overflow: hidden;
-    }
-    
-    /* button SPAN BG: DURING ANIMATION  */
-    button span {
-        background-color: rgba(251, 44, 181, 0.90);
-        height: 100%;
-        width: 0%;
-        border-radius: 25px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        transition: 0.2s;
-    }
-    
-    /* button HOVER with SPAN BG */
-    button:hover span {
-        width: 100%;
-        z-index: -2; /* add this line */
-    }
-    
-    /* button HOVER: DURING ANIMATION  */
-    button:hover {
-        color: #fff;
-        border: none;
-        box-shadow: 0 0 20px #FB2CB5;
-    }
-    
-    button:hover span:hover {
-        box-shadow: none; /* add this line */
-    }
+  /*background-color: #0A192F; */
+  background-size: cover;
+  background-position: center;
+  padding: 50px 0px 50px;
+}
 
 
 
+.proverb-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  margin: 0 auto; /* Center the card horizontally */
+  max-width: 70%; /* Set a maximum width for the container if needed */
+  background: rgba(9, 18, 43, 0.7); /* Adjust the opacity value as needed */
+  backdrop-filter: blur(5px); /* Apply the blur effect */
+  box-shadow: 0 4px 8px 0 rgba(80, 45, 216, 0.10);
+  transition: 0.3s;
+  border-radius: 10px; /* 10px rounded corners */
+  padding: 10px; /* Add padding to create some space between the content and the container edges */
+}
+
+
+#proverb-statement {
+  /* POSITIONING */
+  padding: 50px 30px 50px;
+  display: flex;
+  text-align: center; /* center align the text */
+  align-items: center;
+  justify-content: center;
+
+  /* DESIGN */
+  overflow-wrap: break-word; /* allow words to break to the next line */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  overflow: hidden;
+  color: #64ffda;
+  text-shadow: 0 0 20px #64ffda; /* Set the text shadow with multiple layers to create the neon effect */
+}
+
+
+
+
+
+
+
+.about-container {
+  width: 100%;
+  height: fit-content;
+  background: linear-gradient(to right, #040D21, #040D21);
+
+  /*background-color: #0A192F; */
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+#top-white {
+  /* POS: TOP, LEFT & RIGHT, BOTTOM */
+  padding: 50px 30px 0px;
+
+  /* DESIGN */
+  overflow-wrap: break-word; /* allow words to break to the next line */
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 1.6em;
+  color: #CCD6F6;
+}
+
+#top-white::after {
+  display: block;
+  float: right;
+  margin-top: .8em; /* half the line-height */
+  border-top: 1px solid #303C55;
+  width: 50%;
+  content: "";
+}
+
+
+
+.id-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  margin: 0 auto; /* Center the card horizontally */
+  max-width: 70%; /* Set a maximum width for the container if needed */
+  transition: 0.3s;
+  border-radius: 10px; /* 10px rounded corners */
+  padding: 10px; /* Add padding to create some space between the content and the container edges */
+  position:relative;
+}
+
+.id-image {
+  width: 200px;
+  height: auto;
+  padding: 10px; /* Add padding to create space between the image and the border */
+  border: 0px solid #64ffda; /* Set the border width and color */
+  border-radius: 5px; /* Optional: Add border radius for rounded corners */
+  outline-offset: -100px;
+}
+
+
+.id-frame:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(100, 255, 218, 0.5);
+}
+
+.id-image:hover::before {
+  background: rgba(100, 255, 218, 0.9);
+  opacity: 0; /* Set the opacity to 0 when hovering to remove the background color */
+}
+
+.id-image img {
+  mix-blend-mode: screen; /* Set the blend mode of the image to screen to blend with the overlay */
+}
+
+
+#about-intro {
+
+  /* POS: TOP, LEFT & RIGHT, BOTTOM */
+  padding: 30px 30px 50px;
+
+  /* DESIGN */
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  font-size: 0.9em;
+  letter-spacing: normal;
+  line-height: 18px;
+  color: #ccd6f6;
+  overflow-wrap: break-word; /* allow words to break to the next line */
 }
