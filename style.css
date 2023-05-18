@@ -362,3 +362,7 @@ button:hover span:hover {
   color: #ccd6f6;
   overflow-wrap: break-word; /* allow words to break to the next line */
 }
+
+#about-intro color {
+  color: #64ffda;
+}
