@@ -1,13 +1,167 @@
-*{
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+
+:root {
+  --header-height: 3rem;
+  /*========== Colors ==========*/
+  /* Change favorite color */
+  --hue-color: 250;
+  /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
+
+  --background-color: #191627;
+  --background-color-sub: #333645;
+  --background-color-card: #211D35;
+  --footer-background-color: #100E1B;
+  --title-color: #FFFFFF;
+  --text-color: #FFFFFF;
+  --text-highlight-gradient-1: linear-gradient(to left, #B374F8, #6fb4fd);
+  --text-highlight-gradient-2: linear-gradient(to right, #6fb4fd, #B374F8);
+  --text-highlight-2: #9E8FEA;
+  --text-color-alt: #D0DFFF;
+  --text-color-sub: #96a3ae;
+  --text-color-sub-white: #fff;
+  --button-color: #6E57E0;
+  --card-background-color: #161B22;
+
+
+  /*========== Font and typography ==========*/
+  --body-font: "Poppins", sans-serif;
+  /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
+  --big-font-size: 2rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1.125rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+
+  /*========== Font weight ==========*/
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 800;
+
+  /*========== Margines ==========*/
+  /* .25rem = 4px, .5rem = 8px, .75rem = 12px ... */
+  --mb-0-25: 0.25rem;
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+  --mb-3: 3rem;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 100;
 }
 
+
+/*==================== BASE ====================*/
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  background: linear-gradient(to right, #0A0E29, #0A0E29);
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
 }
+
+h1 {
+  color: var(--title-color);
+  font-weight: var(--font-bold);
+}
+
+h2,
+h3,
+h4 {
+  color: var(--text-color);
+  font-weight: var(--font-semi-bold);
+}
+
+p {
+  color: var(--text-color-sub);
+  font-weight: var(--font-normal);
+  font-size: var(--normal-font-size);
+  line-height: 20px;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+/* button DESIGN BEFORE ANIMATION */
+button {
+  position: relative;
+  z-index: 1;
+  
+  padding: 10px 0;
+  text-align: center;
+  border-radius: 25px;
+  font-size: var(--small-font-size);
+  font-weight: var(--font-semi-bold);
+  border: var(--button-color);
+  border-width: 2px;
+  background-color: var(--button-color);
+  color: var(--text-color);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* button SPAN BG: DURING ANIMATION  */
+button span {
+  background-color: var(--button-color);
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: 0.2s;
+}
+
+/* button HOVER with SPAN BG */
+button:hover span {
+  width: 100%;
+  z-index: 2; /* Set a positive value to ensure it covers the button */
+}
+
+/* button HOVER: DURING ANIMATION  */
+button:hover {
+  color: var(--text-color);
+  border: var(--button-color);
+  border-width: 2px;
+  box-shadow: 0 0 10px var(--button-color);
+}
+
+button:hover span:hover {
+  box-shadow: none; /* add this line */
+}
+
+
+
 
 /* logo */
 .logo {
@@ -24,12 +178,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  /* DESIGN */
-  /* background: linear-gradient(to right, rgba(25, 53, 73,0.30), rgba(10, 25, 47,0.10)), url(assets/background11.png); */
-  background: linear-gradient(to bottom, #101923, #101923);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 /* navBar spacing */
@@ -44,25 +192,22 @@ body {
 /* navBar design */
 .navBar-Buttons ul li a{
   text-decoration: none;
-  color: white;
-  text-shadow: 0 0 1px #FFF; /* Set the text shadow with multiple layers to create the neon effect */
+  color: var(--text-color);
   text-transform: capitalize;
-  font-family: 'Poppins', sans-serif;
   font-weight: normal;
 }
 
 /* navBar ACTIVE MARK design */
 .navBar-Buttons ul li a.active {
   font-weight: bold;
-  color: #8CF0FF;
-  text-shadow: 0 0 20px #7DF9FF;
+  background: var(--text-highlight-gradient-2);
 }  
 
 /* navBar design, ACTION where hovered */
 .navBar-Buttons ul li:hover a {
   font-weight: bold;
-  color: #8CF0FF;
-  text-shadow: 0 0 20px #7DF9FF; /* Set the text shadow with multiple layers to create the neon effect */
+  color: var(--text-highlight-2);
+  text-shadow: 0 0 20px var(--button-color); /* Set the text shadow with multiple layers to create the neon effect */
 }
 
 /* navBar design, ACTION AFTER HOVERING */
@@ -70,7 +215,7 @@ body {
   content: ' ';
   height: 3px;
   width: 0;
-  background: linear-gradient(to right, #0287E6, #1BD2FE);
+  background: var(--text-highlight-gradient-2);
   position: absolute;
   left: 0;
   bottom: -10px;
@@ -88,59 +233,33 @@ body {
 .home-container {
   width: 100%;
   height: fit-content;
-  /*background: linear-gradient(to right, rgba(25, 53, 73,0.30), rgba(10, 25, 47,0.10)), url(assets/background11.png); */
-  background: linear-gradient(to bottom, #0B1118, #0B1118);
-
-  /*background-color: #0A192F; */
-  background-size: cover;
-  background-position: center;
 }
 
 
-/* body content design OF HEADER 4 */
-#hello-world {
-
+#typing-myname {
   /* POS: TOP, LEFT & RIGHT, BOTTOM */
   padding: 50px 30px 0px;
 
-  /* DESIGN */
-  font-family: 'Roboto Mono', monospace;
-  font-weight: normal;
-  font-size: 14px;
-  color: #64FFDA;
+  overflow-wrap: break-word;
+  font-size: var(--big-font-size);
 }
 
-#typing-myname {
-
-  /* POS: TOP, LEFT & RIGHT, BOTTOM */
-  padding: 0px 30px 0px;
-
-  /* DESIGN */
-  overflow-wrap: break-word; /* allow words to break to the next line */
-  font-family: 'Poppins', sans-serif;
-  font-weight: bold;
-  font-size: 1.7em;
-  overflow: hidden;
-  display: inline-block;
-  color: #f8f8f8;
-  text-shadow: 0 0 8px #326D7F; /* Set the text shadow with multiple layers to create the neon effect */
-  animation: typing 3s steps(30, end) infinite;
+#typing-myname color {
+  background: var(--text-highlight-gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
 
 /* body content design OF PROFESSION */
 #profession {
-
   /* POS: TOP, LEFT & RIGHT, BOTTOM */
   padding: 0px 30px 0px;
 
   /* DESIGN */
   overflow-wrap: break-word; /* allow words to break to the next line */
-  font-family: 'Raleway', sans-serif;
-
-  font-weight: 600;
-  font-size: 20px;
-  color: #fff;
-  /* text-shadow: 0 0 10px #fff; */ /* Set the text shadow with multiple layers to create the neon effect */
+  font-size: var(--h2-font-size);
+  animation: typing 3s steps(30, end) infinite;
 }
 
 
@@ -151,126 +270,16 @@ body {
   padding: 30px 30px 0px;
 
   /* DESIGN */
-  font-family: 'Roboto', sans-serif;
-  font-weight: normal;
-  font-size: 1em;
-  letter-spacing: normal;
-  line-height: 18px;
-  color: #94A9C4;
   overflow-wrap: break-word; /* allow words to break to the next line */
 }
 
 
-.mailButton {
+.mailButton button {
   /* POS: TOP, LEFT & RIGHT, BOTTOM */
-  padding: 20px 18px 50px;
-}
-
-/* button DESIGN BEFORE ANIMATION */
-button {
-  position: relative;
-  z-index: 1;
+  margin: 20px 25px 50px;
   width: 100px;
-  padding: 10px 0;
-  text-align: center;
-  margin: 10px 10px;
-  border-radius: 25px;
-  font-size: 10px;
-  font-family: 'Raleway', sans-serif;
-  font-weight: bold;
-  border: #64FFDA;
-  border-width: 2px;
-  background-color: rgba(100, 255, 218, 0.50);
-  color: #fff;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-/* button SPAN BG: DURING ANIMATION  */
-button span {
-  background-color: rgba(100, 255, 218, 0.60);
-  height: 100%;
-  width: 0%;
-  border-radius: 25px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: 0.2s;
-}
-
-/* button HOVER with SPAN BG */
-button:hover span {
-  width: 100%;
-  z-index: -2; /* add this line */
-}
-
-/* button HOVER: DURING ANIMATION  */
-button:hover {
-  color: #fff;
-  border: #64FFDA;
-  border-width: 2px;
-  box-shadow: 0 0 10px #64FFDA;
-}
-
-button:hover span:hover {
-  box-shadow: none; /* add this line */
-}
-
-
-
-
-
-
-.proverb-background {
-  width: 100%;
   height: fit-content;
-  background: linear-gradient(to bottom, #171634, #11162A);
-
-  /*background-color: #0A192F; */
-  background-size: cover;
-  background-position: center;
-  padding: 50px 0px 50px;
 }
-
-
-
-.proverb-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  margin: 0 auto; /* Center the card horizontally */
-  max-width: 70%; /* Set a maximum width for the container if needed */
-  background: rgba(23, 22, 52, 0.7); /* Adjust the opacity value as needed */
-  backdrop-filter: blur(5px); /* Apply the blur effect */
-  box-shadow: 0 4px 8px 0 rgba(23, 22, 52, 0.10);
-  transition: 0.3s;
-  border-radius: 10px; /* 10px rounded corners */
-  padding: 10px; /* Add padding to create some space between the content and the container edges */
-}
-
-
-#proverb-statement {
-  /* POSITIONING */
-  padding: 50px 30px 50px;
-  display: flex;
-  text-align: center; /* center align the text */
-  align-items: center;
-  justify-content: center;
-
-  /* DESIGN */
-  overflow-wrap: break-word; /* allow words to break to the next line */
-  font-family: 'Poppins', sans-serif;
-  font-weight: normal;
-  font-size: 20px;
-  overflow: hidden;
-  color: #64ffda;
-  text-shadow: 0 0 10px #64ffda; /* Set the text shadow with multiple layers to create the neon effect */
-}
-
-
-
 
 
 
@@ -278,13 +287,7 @@ button:hover span:hover {
 .about-container {
   width: 100%;
   height: fit-content;
-  background: linear-gradient(to bottom, #0B1118, #0B1118);
-
-  /*background-color: #0A192F; */
-  background-size: cover;
-  background-position: center;
 }
-
 
 
 #top-white {
@@ -293,10 +296,7 @@ button:hover span:hover {
 
   /* DESIGN */
   overflow-wrap: break-word; /* allow words to break to the next line */
-  font-family: 'Poppins', sans-serif;
-  font-weight: bold;
-  font-size: 1.6em;
-  color: #fff;
+  font-size: var(--h1-font-size);
 }
 
 #top-white::after {
@@ -307,7 +307,6 @@ button:hover span:hover {
   width: 50%;
   content: "";
 }
-
 
 
 .id-frame {
@@ -349,22 +348,125 @@ button:hover span:hover {
 
 
 #about-intro {
-
   /* POS: TOP, LEFT & RIGHT, BOTTOM */
   padding: 30px 30px 50px;
 
   /* DESIGN */
-  font-family: 'Roboto', sans-serif;
-  font-weight: normal;
-  font-size: 0.9em;
-  letter-spacing: normal;
-  line-height: 18px;
-  color: #abc0db;
   overflow-wrap: break-word; /* allow words to break to the next line */
 }
 
 #about-intro color {
-  color: #64FFDA;
-  font-family: 'Roboto', sans-serif;
-  font-weight: normal;
+  color: var(--text-highlight-2);
+  font-weight: var(--font-medium);
+}
+
+
+
+
+/*==================== SKILLS ====================*/
+
+
+.skills-container {
+  width: 100%;
+  height: fit-content;
+}
+
+#top-white {
+  /* POS: TOP, LEFT & RIGHT, BOTTOM */
+  padding: 50px 30px 50px;
+
+  /* DESIGN */
+  overflow-wrap: break-word; /* allow words to break to the next line */
+  font-size: var(--h1-font-size);
+}
+
+.skills-card {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  margin: 0 auto; /* Center the card horizontally */
+  max-width: 80%; /* Set a maximum width for the container if needed */
+  background: var(--background-color-card);
+  backdrop-filter: blur(5px); /* Apply the blur effect */
+  transition: 0.3s;
+  border-radius: 0px; /* 10px rounded corners */
+  padding: 10px; /* Add padding to create some space between the content and the container edges */
+}
+
+.skills-card:hover {
+  box-shadow: 0 0 10px var(--button-color); /* Set the text shadow with multiple layers to create the neon effect */
+}
+
+
+#skills-intro {
+  /* POS: TOP, LEFT & RIGHT, BOTTOM */
+  padding: 30px 30px 5px;
+  
+  /* DESIGN */
+  display: block;
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi-bold);
+  margin-bottom: var(--mb-2-5);
+  text-align: center;
+  color: var(--text-color-sub-white);
+}
+
+
+.skills__container {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 10px 30px 30px;
+}
+
+.skills__container-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.skills__container-box:hover {
+  transform: scale(1.2);
+  opacity: 0.9;
+}
+
+.skills__container-img {
+  height: 40px;
+  width: 40px;
+}
+
+.skills__container-img:hover {
+  box-shadow: 0 0 30px var(--text-color-sub-white);; /* Add a light shadow */
+}
+
+.skills__container-name {
+  font-size: var(--smaller-font-size);
+  display: block;
+  text-align: center;
+}
+
+
+
+
+
+.footer {
+  background-color: var(--footer-background-color);
+}
+
+.footer-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-text {
+  padding: 30px;
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-normal);
+  text-align: center;
+  color: var(--text-color-sub-white);
 }
