@@ -31,6 +31,7 @@
   --normal-font-size: 0.938rem;
   --small-font-size: 0.813rem;
   --smaller-font-size: 0.75rem;
+  --smallest-font-size: 0.50rem;
 
   /*========== Font weight ==========*/
   --font-normal: 400;
@@ -556,7 +557,7 @@ button:hover span:hover {
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(169, 113, 201, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -604,7 +605,6 @@ button:hover span:hover {
 }
 
 /* Active Modal */
-
 .active-modal {
   opacity: 1;
   visibility: visible;
@@ -696,10 +696,46 @@ button:hover span:hover {
   align-items: center;
 }
 
+
+.footer__socials {
+
+  /* POS: TOP, LEFT & RIGHT, BOTTOM */
+  padding: 10px 0px 0px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__socials i {
+  color: var(--icon-color);
+  margin-right: var(--mb-0-75);
+  cursor: pointer;  
+}
+
+/* HOVERING */
+.footer__socials a {
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.footer__socials a:hover {
+  transform: scale(1.2);
+  opacity: 0.9;
+}
+
+.footer__socials i:hover {
+  color: var(--text-color-alt);
+  text-shadow: 0 0 30px var(--text-color-sub-white);
+}
+
 .footer-text {
-  padding: 30px;
-  font-size: var(--small-font-size);
+  /* POS: TOP, LEFT & RIGHT, BOTTOM */
+  padding: 5px 0px 20px;
+  font-size: var(--smaller-font-size);
   font-weight: var(--font-normal);
   text-align: center;
   color: var(--text-color-sub-white);
 }
+
+
+
