@@ -365,12 +365,6 @@ button:hover span:hover {
 
 /*==================== SKILLS ====================*/
 
-
-.skills-container {
-  width: 100%;
-  height: fit-content;
-}
-
 #top-white {
   /* POS: TOP, LEFT & RIGHT, BOTTOM */
   padding: 50px 30px 50px;
