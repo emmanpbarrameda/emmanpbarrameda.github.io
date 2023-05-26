@@ -135,7 +135,6 @@ button {
   background-color: var(--button-color);
   color: var(--text-color);
   cursor: pointer;
-  overflow: hidden;
 }
 
 /* button SPAN BG: DURING ANIMATION  */
@@ -326,7 +325,6 @@ button:hover span:hover {
   /* POS: TOP, LEFT & RIGHT, BOTTOM */
   margin: 30px 25px 50px;
   width: 100px;
-  height: auto;
 }
 
 
@@ -520,8 +518,7 @@ button:hover span:hover {
 }
 
 .services__content:hover {
-  box-shadow: 0 0 10px var(--button-color);
-  /* Set the text shadow with multiple layers to create the neon effect */
+  box-shadow: 0 0 10px var(--button-color); /* Set the text shadow with multiple layers to create the neon effect */
 
   /*animation while hovering */
   transform: scale(1.05);
@@ -565,7 +562,7 @@ button:hover span:hover {
   z-index: var(--z-modal);
   opacity: 0;
   visibility: hidden;
-  transform: 0.3s;
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
 }
 
 .services__modal-content {
@@ -739,3 +736,36 @@ button:hover span:hover {
 
 
 
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+.popup:target {
+  opacity: 1;
+  visibility: visible;
+}
+.popup__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  padding: 20px;
+  background-color: black;
+  background-color: rgba(169, 113, 201, 0.5);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.popup__text {
+  font-size: 1.4rem;
+  margin-bottom: 4rem;
+}

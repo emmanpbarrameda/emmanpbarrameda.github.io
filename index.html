@@ -55,10 +55,26 @@
         <p id="short-intro">Programming is my creative language,<br>where lines of code come together to create endless
           possibilities.</p>
 
-        <div class="mailButton">
-          <button type="button"><span>MAIL ME</span></button>
-        </div>
-      </div>
+          <div class="mailButton">
+
+            <a class="button" href="#popup">
+              <button type="button"><span>MAIL ME</span></button>
+            </a>
+  
+          </div>
+  
+          <div class="popup" id="popup">
+            <div class="popup__content">
+              <h2 class="heading-secondary">Start booking now</h2>
+              <h3 class="heading-tertiary">Important &ndash; Please read these terms before booking</h3>
+              <p class="popup__text">
+                Godard health goth green juice +1, helvetica taxidermy synth. Brooklyn wayfarers hoodie twee, keffiyeh
+                XOXO microdosing fashion axe iPhone bespoke vape. Affogato brooklyn offal meditation raclette aesthetic
+                heirloom post-ironic iPhone venmo leggings.
+              </p>
+              <a href="#" class="button">Close Popup</a>
+            </div>
+          </div>
 
     </section>
 
@@ -198,9 +214,10 @@
 
           <span class="button button--flex button--small button--link services__button">
             View More
-            <i class="uil uil-arrow-right button__icon"></i>
+            <i class="uil uil-arrow-right button__icon"></i>            
           </span>
 
+          
           <div class="services__modal">
             <div class="services__modal-content">
               <h4 class="services__modal-title">Desktop App<br/>Developer</h4>
@@ -228,6 +245,8 @@
               </ul>
             </div>
           </div>
+
+          
         </div>
 
         <!--==================== SERVICE 2 ====================-->
@@ -397,30 +416,29 @@
         
 
         <form action="" class="contact__form grid">
+
           <div class="contact__inputs grid">
+
             <div class="contact__content">
               <label for="" class="contact__label">Name</label>
-              <input type="text" class="contact__input" />
+              <input type="text" class="contact__input" required>
             </div>
 
             <div class="contact__content">
               <label for="" class="contact__label">Email</label>
-              <input type="email" class="contact__input"/>
+              <input type="email" class="contact__input" required>
             </div>
+            
           </div>
+
           <div class="contact__content">
             <label for="" class="contact__label">Project</label>
-            <input type="text" class="contact__input" />
+            <input type="text" class="contact__input" required>
           </div>
+
           <div class="contact__content">
             <label for="" class="contact__label">Message</label>
-            <textarea
-              name=""
-              id=""
-              cols="0"
-              rows="7"
-              class="contact__input"
-            ></textarea>
+            <textarea name="" id="" cols="0" rows="7" class="contact__input" required></textarea>
           </div>
 
           <div class="emailButton">
