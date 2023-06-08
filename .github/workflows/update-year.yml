@@ -1,11 +1,11 @@
 name: Update Current Year
 
 on:
-  workflow_dispatch   ##----run now
+  #workflow_dispatch   ##----run now
   
   ##scheduled
-  #schedule:
-    #- cron: '0 0 1 1 *'  # Run on January 1st of every year  
+  schedule:
+    - cron: '0 0 1 1 *'  # Run on January 1st of every year  
 
 jobs:
   update-year:
