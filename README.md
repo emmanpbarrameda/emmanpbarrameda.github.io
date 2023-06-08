@@ -19,11 +19,10 @@ Currently, I am a second-year college student pursuing a Bachelor of Science in 
       <a href="https://emmanpbarrameda.github.io">
         <strong>Visit My Portfolio</strong>
         <br />
-        <br />
         <img src="https://avatars.githubusercontent.com/u/67356375?v=4" alt="Profile Image" width="180" style="border-radius: 50%;" />
       </a>
       <br />
-      <p>Check out my portfolio to learn more about me!</p>
+      <p>Check out <a href="https://emmanpbarrameda.github.io" target="_blank">my portfolio</a> to learn more about me!</p>
     </td>
     <td align="center">
       <h3>Please consider visiting my portfolio at <a href="https://emmanpbarrameda.github.io">https://emmanpbarrameda.github.io</a>. It provides a comprehensive view of my abilities and achievements. Thank you!</h3>
