@@ -70,6 +70,20 @@ Currently, I am a second-year college student pursuing a Bachelor of Science in 
 
 
 
+## Friends
+
+<!-- FIRST ROW -->
+| [@justine91514](https://github.com/justine91514) | [@ericksenn](https://github.com/ericksenn) | [@RachQuio](https://github.com/RachQuio) | [@carandave](https://github.com/carandave) |
+| --- | --- | --- | --- |
+| [<img src="https://avatars.githubusercontent.com/justine91514?s=100" width="100" height="100">](https://github.com/justine91514) | [<img src="https://avatars.githubusercontent.com/ericksenn?s=100" width="100" height="100">](https://github.com/ericksenn) | [<img src="https://avatars.githubusercontent.com/RachQuio?s=100" width="100" height="100">](https://github.com/RachQuio) | [<img src="https://avatars.githubusercontent.com/carandave?s=100" width="100" height="100">](https://github.com/carandave) |
+
+<!-- SECOND ROW -->
+<!--
+| [@user1](https://github.com/user1) | [@user2](https://github.com/user2) | [@user3](https://github.com/user3) | [@user4](https://github.com/user4) |
+| --- | --- | --- | --- |
+| [<img src="https://avatars.githubusercontent.com/user1?s=100" width="100" height="100">](https://github.com/user1) | [<img src="https://avatars.githubusercontent.com/user2?s=100" width="100" height="100">](https://github.com/user2) | [<img src="https://avatars.githubusercontent.com/user3?s=100" width="100" height="100">](https://github.com/user3) | [<img src="https://avatars.githubusercontent.com/user4?s=100" width="100" height="100">](https://github.com/user4) |
+-->
+
 
 ## Get in touch
 
@@ -87,16 +101,10 @@ Currently, I am a second-year college student pursuing a Bachelor of Science in 
 
 
 
-## Friends
 
-<!-- FIRST ROW -->
-| [@justine91514](https://github.com/justine91514) | [@ericksenn](https://github.com/ericksenn) | [@RachQuio](https://github.com/RachQuio) | [@carandave](https://github.com/carandave) |
-| --- | --- | --- | --- |
-| [<img src="https://avatars.githubusercontent.com/justine91514?s=100" width="100" height="100">](https://github.com/justine91514) | [<img src="https://avatars.githubusercontent.com/ericksenn?s=100" width="100" height="100">](https://github.com/ericksenn) | [<img src="https://avatars.githubusercontent.com/RachQuio?s=100" width="100" height="100">](https://github.com/RachQuio) | [<img src="https://avatars.githubusercontent.com/carandave?s=100" width="100" height="100">](https://github.com/carandave) |
 
-<!-- SECOND ROW -->
-<!--
-| [@user1](https://github.com/user1) | [@user2](https://github.com/user2) | [@user3](https://github.com/user3) | [@user4](https://github.com/user4) |
-| --- | --- | --- | --- |
-| [<img src="https://avatars.githubusercontent.com/user1?s=100" width="100" height="100">](https://github.com/user1) | [<img src="https://avatars.githubusercontent.com/user2?s=100" width="100" height="100">](https://github.com/user2) | [<img src="https://avatars.githubusercontent.com/user3?s=100" width="100" height="100">](https://github.com/user3) | [<img src="https://avatars.githubusercontent.com/user4?s=100" width="100" height="100">](https://github.com/user4) |
--->
+<br>
+</br>
+
+------------
+<p align="center">Copyright © [Year] emmanpbarrameda. All rights reserved.</p
