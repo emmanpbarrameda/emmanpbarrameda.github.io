@@ -75,11 +75,7 @@ Currently, I am a second-year college student pursuing a Bachelor of Science in 
 
 <a href="https://emmanpbarrameda.github.io" target="_blank"><img src="https://img.shields.io/badge/My Portfolio-%20-blue?style=for-the-badge&logo=web"></a>
 &nbsp;&nbsp;
-<a href="mailto:emmanuelbarrameda1@gmail.com" target="_blank">
-  <img src="https://img.shields.io/badge/Email-%20-red?style=for-the-badge&logo=gmail">
-</a>
-<span onclick="navigator.clipboard.writeText('emmanuelbarrameda1@gmail.com')" style="cursor: pointer;">
-</span>
+<a href="mailto:emmanuelbarrameda1@gmail.com" target="_blank"><img src="https://img.shields.io/badge/Email-%20-red?style=for-the-badge&logo=gmail"></a>
 &nbsp;&nbsp;
 <a href="https://facebook.com/emmanpbarrameda/" target="_blank"><img src="https://img.shields.io/badge/Facebook-%20-blue?style=for-the-badge&logo=facebook"></a>
 &nbsp;&nbsp;
