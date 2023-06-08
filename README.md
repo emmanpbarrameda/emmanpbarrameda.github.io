@@ -1,8 +1,8 @@
 
-# Hi, I'm Emman 👋🏾
+#
 
 ![Cover](https://drive.google.com/uc?export=view&id=1OGOKYZNt6vDvfkj_C5kJmqty8u0jYN_d)
-Hello world! I'm <b>Emmanuel P. Barrameda</b>, a passionate individual who finds joy in creating and exploring the world of desktop development.
+Hello world 👋🏾! I'm <b>Emmanuel P. Barrameda</b>, a passionate individual who finds joy in creating and exploring the world of desktop development.
 
 My programming journey began when I was just 16 years old as a Minecraft server owner. This experience ignited my interest in programming, and since then, I have been dedicated to studying the Java programming language. During my time at Vicente Madrigal Integrated School as a senior-high student, pursuing the TVL-ICT track, I excelled in Java and was recognized as the Best in ICT Student upon graduation.
 
