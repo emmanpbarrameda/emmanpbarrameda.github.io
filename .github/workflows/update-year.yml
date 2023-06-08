@@ -12,7 +12,8 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Update Current Year
-        run: sed -i "s/\[Year\]/$(date +'%Y')/g" README.md
+        run: |
+          sed -i "s/\[Year\]/$(date +'%Y')/g" README.md
 
       - name: Commit and push changes
         run: |
