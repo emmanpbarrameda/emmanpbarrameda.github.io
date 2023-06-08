@@ -5,11 +5,11 @@
 
 Hello world 👋🏾! I'm <b>Emmanuel P. Barrameda</b> from the Philippines, a passionate individual who finds joy in creating and exploring the world of desktop development.
 
-My programming journey began when I was just 16 years old as a Minecraft server owner. This experience ignited my interest in programming, and since then, I have been dedicated to studying the Java programming language. During my time at Vicente Madrigal Integrated School as a senior-high student, pursuing the TVL-ICT track, I excelled in Java and was recognized as the Best in ICT Student upon graduation.
+My programming journey began when I was just 16 years old as a Minecraft server owner. This experience ignited my interest in programming, and since then, I have been dedicated to studying the Java programming language. During my time at Vicente Madrigal Integrated School as a senior-high student, pursuing the TVL-ICT track, I excelled in Java and was recognized as the <b>"Best ICT Student"</b> upon graduation.
 
 Since then, I have embarked on a freelancing journey during the covid-19 lockdown, specializing in the creation of desktop and mobile applications.
 
-Currently, I am a second-year college student pursuing a Bachelor of Science in Information Technology at the University of Rizal System Binangonan. My studies revolve around Object Oriented Programming, Designing, and Web Development.
+Currently, I am a third-year college student pursuing a Bachelor of Science in Information Technology at the University of Rizal System Binangonan. My studies revolve around <b>Object Oriented Programming, Designing, and Web Development</b>.
 <br>
 </br>
 
