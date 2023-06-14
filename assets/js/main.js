@@ -128,30 +128,47 @@ document.addEventListener('contextmenu', function (event) {
 });
 
 
+
 /*==================== SERVICES MODAL ====================*/
 
+// Select all the modal views, modal buttons, and modal close buttons
 const modalViews = document.querySelectorAll(".services__modal"),
   modalBtns = document.querySelectorAll(".services__button"),
   modalCloses = document.querySelectorAll(".services__modal-close");
 
+// Function to open a modal view
 let modal = function (modalClick) {
   modalViews[modalClick].classList.add("active-modal");
   document.body.classList.add("disable-scroll");
 };
 
+// Attach click event listeners to the modal buttons
 modalBtns.forEach((modalBtn, i) => {
   modalBtn.addEventListener("click", () => {
-    modal(i);
+    modal(i); // Open the corresponding modal view
   });
 });
 
+// Attach click event listeners to the modal close buttons
 modalCloses.forEach((modalClose) => {
   modalClose.addEventListener("click", () => {
-    modalViews.forEach((modalView) => {
-      modalView.classList.remove("active-modal");
-      document.body.classList.remove("disable-scroll");
-    });
+    closeModal(); // Close the modal view
   });
+});
+
+// Function to close the modal view
+function closeModal() {
+  modalViews.forEach((modalView) => {
+    modalView.classList.remove("active-modal");
+    document.body.classList.remove("disable-scroll");
+  });
+}
+
+// Add a keydown event listener to the document
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeModal(); // Close the modal view when the ESC key is pressed
+  }
 });
 
 
@@ -247,6 +264,69 @@ if (copyrightyear) {
 
 
 
+/*==================== ANIMATION ====================*/
+
+/*================ CONTACT DETAILS ANIMATION ================*/
+const contactinfo__buttons = document.querySelectorAll('.contactinfo__button');
+contactinfo__buttons.forEach((button) => {
+  button.addEventListener('click', contactinfo__animations);
+});
+
+function contactinfo__animations() {
+  const contactinfo__elements = document.querySelectorAll('.contactinfo__content');
+  contactinfo__elements.forEach((element) => {
+    element.classList.add('animate__animated', 'animate__fadeIn');
+  });  
+}
+
+
+/*==================== SWIPER READ MORE BUTTON ANIMATION ====================*/
+
+/*================ NEXT PROJECT ================*/
+const projects__buttons_next = document.querySelectorAll('.swiper-button-next');
+projects__buttons_next.forEach((button) => {
+  button.addEventListener('click', projects__animations_next);
+});
+
+function projects__animations_next() {
+  const projects__elements_next = document.querySelectorAll('.projects__button');
+  projects__elements_next.forEach((element) => {
+    element.classList.add('animate__animated', 'animate__fadeInRight');
+  });  
+}
+
+/*================ PREV PROJECT ================*/
+const projects__buttons_previous = document.querySelectorAll('.swiper-button-prev');
+projects__buttons_previous.forEach((button) => {
+  button.addEventListener('click', projects__animations_previous);
+});
+
+function projects__animations_previous() {
+  const projects__elements_previous = document.querySelectorAll('.projects__button');
+  projects__elements_previous.forEach((element) => {
+    element.classList.add('animate__animated', 'animate__fadeInLeft');
+  });   
+}
+
+
+/*==================== SCROLL TO TOP ANIMATION ====================*/
+
+const scrollup__button = document.querySelectorAll('.scrollup');
+scrollup__button.forEach((button) => {
+  button.addEventListener('click', scrollup__animation);
+});
+
+function scrollup__animation() {
+  const scrollup__element = document.querySelectorAll('.scrollup');
+  scrollup__element.forEach((element) => {
+    element.classList.add('animate__animated', 'animate__slideInUp');
+  });  
+}
+
+
+
+
+
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 
 const sections = document.querySelectorAll("section[id]");
@@ -274,8 +354,6 @@ window.addEventListener("scroll", scrollActive);
 
 
 
-
-
 /*==================== CHANGE BACKGROUND HEADER ====================*/
 function scrollHeader() {
   const nav = document.getElementById("header");
@@ -284,6 +362,8 @@ function scrollHeader() {
   else nav.classList.remove("scroll-header");
 }
 window.addEventListener("scroll", scrollHeader);
+
+
 
 /*==================== SHOW SCROLL UP ====================*/
 function scrollUp() {

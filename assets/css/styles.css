@@ -997,7 +997,7 @@ header {
   padding: 0 0.3rem;
   border-radius: 0.4rem;
   z-index: var(--z-tooltip);
-  transform: 0.4s;
+  transform: 1s;
 }
 .scrollup:hover {
   background-color: var(--first-color-alt);
@@ -1030,7 +1030,7 @@ header {
 
 /*==================== MEDIA QUERIES ====================*/
 
-/* For small devices */
+/* For small devices, Cellphones */
 
 @media screen and (max-width: 350px) {
   .loader {
@@ -1066,7 +1066,7 @@ header {
     padding: 0 0.5rem;
   }
   .project-invite__img {
-    width: 200px;
+    width: 150px;
   }
 
 }
@@ -1077,7 +1077,7 @@ header {
   }
 }
 
-/* For medium devices */
+/* For medium devices TABLET */
 
 @media screen and (min-width: 568px) {
   .loader {
@@ -1094,7 +1094,6 @@ header {
     justify-self: center;
   }
   .about__container,
-  .project-invite__container,
   .projects__content,
   .contact__container,
   .footer__container {
@@ -1245,7 +1244,7 @@ header {
   .project-invite__container {
     background-color: var(--first-color-second);
     border-radius: 1rem;
-    padding: 3rem 2.5rem 0;
+    padding: 2.5rem 2.5rem 0.5rem;
     grid-template-columns: 1fr max-content;
     column-gap: 3rem;
   }

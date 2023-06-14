@@ -2,8 +2,10 @@ const staticAnimeshData = "site-cache-v1";
 const assets = [
   //   "/",
   "/index.html",
+
   "/assets/css/styles.css",
   "/assets/css/swiper-bundle.min.css",
+  "/assets/css/animate.min.css",
   "/assets/js/main.js",
   "/assets/js/swiper-bundle.min.js",
   "/assets/pdf/Animesh_Rawat_resume.pdf",
