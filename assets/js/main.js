@@ -188,6 +188,8 @@ https://swiperjs.com/get-started
 
 
 
+
+
 /*==================== CONTACT AVAILABILITY ====================*/
 
 // Get the element(s) with the class
@@ -223,10 +225,8 @@ for (let i = 0; i < elements.length; i++) {
 
 
 
-
-
-
 /*==================== COPYRIGHT YEAR ====================*/
+//update copyright year automatically
 
 // Get the HTML element
 let copyrightyear = document.querySelector(".footer__copy year");

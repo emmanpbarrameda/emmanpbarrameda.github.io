@@ -126,15 +126,15 @@
         <div class="home__content grid">
           <div class="home__social">
 
-            <a href="https://www.linkedin.com/in/emmanpbarrameda/" target="_blank" class="home__social-icon" title="LinkedIn Profile">
+            <a href="" target="_blank" class="home__social-icon linkedin_Link" title="LinkedIn Profile">
               <i class="uil uil-linkedin-alt"></i>
             </a>
-            
-            <a href="https://github.com/emmanpbarrameda" target="_blank" class="home__social-icon" title="GitHub">
+
+            <a href="" target="_blank" class="home__social-icon github_Link" title="GitHub">
               <i class="uil uil-github-alt"></i>
             </a>
 
-            <a href="https://t.me/emmanpbarrameda" target="_blank" class="home__social-icon" title="Telegram Account">
+            <a target="_blank" class="home__social-icon telegram_Link" title="Telegram Account">
               <i class="uil uil-telegram-alt"></i>
             </a>
           </div>
@@ -289,6 +289,21 @@
         <img class="skills__container-img" src="assets/img/skills/javascript.svg" alt="javascript" />
         <div class="skills__container-name">Javascript</div>
       </div>
+
+      <div class="skills__container-box">
+        <img class="skills__container-img" src="assets/img/skills/git.svg" alt="git" />
+        <div class="skills__container-name">Git</div>
+      </div>    
+      
+      <div class="skills__container-box">
+        <img class="skills__container-img" src="assets/img/skills/github.svg" alt="github" />
+        <div class="skills__container-name">Github</div>
+      </div>    
+      
+      <div class="skills__container-box">
+        <img class="skills__container-img" src="assets/img/skills/photoshop.svg" alt="photoshop" />
+        <div class="skills__container-name">Photoshop</div>
+      </div>          
 
       <!-- <div class="skills__container-box">
                 <img class="skills__container-img" src="/assets/img/skills/figma.svg" alt="figma">
@@ -560,9 +575,10 @@
 
     <div class="projects__container container swiper">
       <div class="swiper-wrapper">
+        
         <!--==================== PROJECTS 1====================-->
         <div class="projects__content grid swiper-slide">
-          <img src="https://github.com/emmanpbarrameda/EmployeePayrollManagementSystem_Java-CODE/blob/main/output-media/console-image3.png" alt="" class="projects__img" />
+          <img src="https://raw.githubusercontent.com/emmanpbarrameda/EmployeePayrollManagementSystem_Java-CODE/main/output-media/console-image3.png" alt="Preview" class="projects__img" />
           <div class="projects__data">
             <h3 class="projects__title">Employee Payroll Management System</h3>
             <p class="projects__description">
@@ -578,7 +594,7 @@
 
         <!--==================== PROJECT 2====================-->
         <div class="projects__content grid swiper-slide">
-          <img src="https://github.com/emmanpbarrameda/EmployeePayrollManagementSystem_Java-CODE/blob/main/output-media/console-image3.png" alt="" class="projects__img" />
+          <img src="https://raw.githubusercontent.com/emmanpbarrameda/ZABSystem_Java-CODE/main/output-media/console_video.gif" alt="Preview" class="projects__img" />
           <div class="projects__data">
             <h3 class="projects__title">ZAB System</h3>
             <p class="projects__description">
@@ -594,9 +610,9 @@
 
         <!--==================== PROJECTS 3====================-->
         <div class="projects__content grid swiper-slide">
-          <img src="https://github.com/emmanpbarrameda/EmployeePayrollManagementSystem_Java-CODE/blob/main/output-media/console-image3.png" alt="" class="projects__img" />
+          <img src="https://raw.githubusercontent.com/emmanpbarrameda/CTSSystem_Java-CODE/main/output-media/console_video.gif" alt="Preview" class="projects__img" />
           <div class="projects__data">
-            <h3 class="projects__title">CTS Systen</h3>
+            <h3 class="projects__title">CTS System</h3>
             <p class="projects__description">
               Clock, Timer and Stopwatch System created using Java Swing with Database.
             </p>
@@ -610,7 +626,7 @@
 
         <!--==================== PROJECTS 4====================-->
         <div class="projects__content grid swiper-slide">
-          <img src="https://github.com/emmanpbarrameda/EmployeePayrollManagementSystem_Java-CODE/blob/main/output-media/console-image3.png" alt="" class="projects__img" />
+          <img src="https://raw.githubusercontent.com/emmanpbarrameda/SimNumber-prefix-finder_C-Language/main/SimNumber-prefix-finder_C-Language/output-media/console_video.gif" alt="Preview" class="projects__img" />
           <div class="projects__data">
             <h3 class="projects__title">SimCard Number Prefix Finder</h3>
             <p class="projects__description">
@@ -676,11 +692,11 @@
 
       <div class="contactinfo__container container">
         <div class="contactinfo__tabs">
-          <div class="contactinfo__button button--flex contactinfo__active" data-target="#basic">
+          <div class="contactinfo__button contact-button button--flex contactinfo__active" data-target="#basic">
             <i class="uil uil-envelope-info contactinfo__icon"> </i> Contact
           </div>
 
-          <div class="contactinfo__button button--flex" data-target="#social">
+          <div class="contactinfo__button social-button button--flex" data-target="#social">
             <i class="uil uil-globe contactinfo__icon"> </i>
             Social
           </div>
@@ -688,7 +704,7 @@
 
         <div class="contactinfo__sections">
 
-          <!--==================== CONTACTINFO TAB CONTENT 1====================-->
+          <!--==================== CONTACTINFO BASIC CONTACT CONTENT====================-->
           <div class="contactinfo__content contactinfo__active" data-content id="basic">
 
 
@@ -705,7 +721,9 @@
               <i class="uil uil-envelope contact__icon"></i>
               <div>
                 <h3 class="contact__title">Email</h3>
-                <span class="contact__subtitle">emmanuelbarrameda1@gmail.com</span>
+                <!--CLICKABLE LINK <a> -->
+                <a href="" class="email_Link" target="_blank">
+                  <span class="contact__subtitle">emmanuelbarrameda1@gmail.com</span>
               </div>
             </div>
 
@@ -722,8 +740,9 @@
 
           </div>
 
-          <!--==================== CONTACTINFO TAB CONTENT 2====================-->
 
+          
+          <!--==================== CONTACTINFO SOCIAL CONTENT====================-->
           <div class="contactinfo__content" data-content id="social">
 
             <!--====================SOCIAL MEDIA====================-->
@@ -732,7 +751,7 @@
               <div>
                 <h3 class="contact__title">Facebook</h3>
                 <!--CLICKABLE LINK <a> -->
-                <a href="https://facebook.com/emmanpbarrameda/" target="_blank">
+                <a href="" class="facebook_Link" target="_blank">
                   <span class="contact__subtitle">emmanpbarrameda</span>
                 </a>
               </div>
@@ -743,8 +762,8 @@
               <div>
                 <h3 class="contact__title">Instagram</h3>
                 <!--CLICKABLE LINK <a> -->
-                <a href="https://instagram.com/emmanpbarrameda/" target="_blank">
-                  <span class="contact__subtitle">emmanpbarrameda</span>
+                  <a href="" class="instagram_Link" target="_blank">
+                    <span class="contact__subtitle">emmanpbarrameda</span>
                 </a>
               </div>
             </div>
@@ -754,8 +773,8 @@
               <div>
                 <h3 class="contact__title">Github</h3>
                 <!--CLICKABLE LINK <a> -->
-                <a href="https://github.com/emmanpbarrameda/" target="_blank">
-                  <span class="contact__subtitle">emmanpbarrameda</span>
+                  <a href="" class="github_Link" target="_blank">
+                    <span class="contact__subtitle">emmanpbarrameda</span>
                 </a>
               </div>
             </div>
@@ -765,8 +784,8 @@
               <div>
                 <h3 class="contact__title">LinkedIn</h3>
                 <!--CLICKABLE LINK <a> -->
-                <a href="https://linkedin.com/in/emmanpbarrameda" target="_blank">
-                  <span class="contact__subtitle">emmanpbarrameda</span>
+                  <a href="" class="linkedin_Link" target="_blank">
+                    <span class="contact__subtitle">emmanpbarrameda</span>
                 </a>
               </div>
             </div>
@@ -776,8 +795,8 @@
               <div>
                 <h3 class="contact__title">Telegram</h3>
                 <!--CLICKABLE LINK <a> -->
-                <a href="https://t.me/in/emmanpbarrameda" target="_blank">
-                  <span class="contact__subtitle">emmanpbarrameda</span>
+                  <a href="" class="telegram_Link" target="_blank">
+                    <span class="contact__subtitle">emmanpbarrameda</span>
                 </a>
               </div>
             </div>
@@ -787,8 +806,8 @@
               <div>
                 <h3 class="contact__title">YouTube Channels</h3>
                 <!--CLICKABLE LINK <a> -->
-                <a href="https://youtube.com/c/emmanpbarrameda" target="_blank">
-                  <span class="contact__subtitle">emmanpbarrameda</span>
+                  <a href="" class="youtube_Link" target="_blank">
+                    <span class="contact__subtitle">emmanpbarrameda</span>
                 </a>
               </div>
             </div>
@@ -873,17 +892,15 @@
         </ul>
 
         <div class="footer__socials">
-          <a href="https://www.facebook.com/emmanpbarrameda/" target="_blank" class="footer__social" title="Facebook Profile">
-            <i class="uil uil-facebook-f"></i>
+        
+          <a href="" target="_blank" class="footer__social basiccontact" title="Contact Information">
+            <i class="uil uil-envelope-info"></i>
           </a>
         
-          <a href="https://www.instagram.com/emmanpbarrameda/" target="_blank" class="footer__social" title="Instagram Profile">
-            <i class="uil uil-instagram"></i>
+          <a href="" target="_blank" class="footer__social socialmedia" title="Social Media">
+            <i class="uil uil-globe"></i>
           </a>
-        
-          <a href="https://twitter.com/emmanpbarrameda/" target="_blank" class="footer__social" title="Twitter Profile">
-            <i class="uil uil-twitter-alt"></i>
-          </a>
+
         </div>        
       </div>
 
@@ -903,6 +920,118 @@
   <!--==================== MAIN JS ====================-->
   <script src="assets/js/main.js"></script>
 
+
+
+  <!--==================== LINKS ====================-->
+  <script>
+
+    //LINKEDIN
+    var linkedin_Var = document.getElementsByClassName('linkedin_Link');
+    Array.from(linkedin_Var).forEach(function(linkElement) {
+      linkElement.href = 'https://www.linkedin.com/in/emmanpbarrameda/';
+    });
+
+    //GITHUB
+    var github_Var = document.getElementsByClassName('github_Link');
+    Array.from(github_Var).forEach(function(linkElement) {
+      linkElement.href = 'https://github.com/emmanpbarrameda';
+    });
+
+    //TELEGRAM
+    var telegram_Var = document.getElementsByClassName('telegram_Link');
+    Array.from(telegram_Var).forEach(function(linkElement) {
+      linkElement.href = 'https://t.me/emmanpbarrameda';
+    });
+
+    //FACEBOOK
+    var facebook_Var = document.getElementsByClassName('facebook_Link');
+    Array.from(facebook_Var).forEach(function(linkElement) {
+      linkElement.href = 'https://facebook.com/emmanpbarrameda';
+    });
+
+    //INSTAGRAM
+    var instagram_Var = document.getElementsByClassName('instagram_Link');
+    Array.from(instagram_Var).forEach(function(linkElement) {
+      linkElement.href = 'https://instagram.com/emmanpbarrameda';
+    });
+
+    //TWITTER
+    var twitter_Var = document.getElementsByClassName('twitter_Link');
+    Array.from(twitter_Var).forEach(function(linkElement) {
+      linkElement.href = 'https://twitter.com/emmanpbarrameda';
+    });
+
+    //YOUTUBE
+    var youtube_Var = document.getElementsByClassName('youtube_Link');
+    Array.from(youtube_Var).forEach(function(linkElement) {
+      linkElement.href = 'https://youtube.com/@emmanpbarrameda';
+    });
+
+    //EMAIL
+    var email_Var = document.getElementsByClassName('email_Link');
+    Array.from(email_Var).forEach(function(linkElement) {
+      linkElement.href = 'mailto:emmanuelbarrameda1@gmail.com';
+    });
+
+
+
+  </script>
+
+
+
+  <!-- ===================== SOCIALMEDIA CLICK ==================== -->
+  <script>
+    // Function to handle the click event on the socialmedia button
+    function handleSocialMediaClick(event) {
+      event.preventDefault(); // Prevent the default behavior of the link
+
+      // Contact Info Button Auto click
+      var divElement = document.querySelector('.social-button');
+      
+      // Trigger a click event on the div
+      if (divElement) {
+        divElement.click();
+        console.log("contact info auto click")
+        divElement.scrollIntoView({ behavior: 'smooth' }); // Adjust the behavior as needed
+      }
+    }
+
+    // Add a click event listener to the socialmedia button
+    var socialMediaButton = document.querySelector('.socialmedia');
+    if (socialMediaButton) {
+      socialMediaButton.addEventListener('click', handleSocialMediaClick);
+    }
+  </script>
+
+
+
+  <!-- ===================== BASIC CONTACT CLICK ==================== -->
+  <script>
+    // Function to handle the click event on the basiccontact button
+    function handleBasicContactClick(event) {
+      event.preventDefault(); // Prevent the default behavior of the link
+
+      // Contact Info Button Auto click
+      var divElement = document.querySelector('.contact-button');
+      
+      // Trigger a click event on the div
+      if (divElement) {
+        divElement.click();
+        console.log("contact info auto click")
+        divElement.scrollIntoView({ behavior: 'smooth' }); // Adjust the behavior as needed
+      }
+    }
+
+    // Add a click event listener to the basiccontact button
+    var BasicContactButton = document.querySelector('.basiccontact');
+    if (BasicContactButton) {
+      BasicContactButton.addEventListener('click', handleBasicContactClick);
+    }
+  </script>
+
+
+
+
   <!-- ===================== SHOW/HIDE LOADER ==================== -->
   <script>
 
@@ -910,13 +1039,12 @@
       document.getElementById("loading").style.display = "none";
 
       // Contact Info Button Auto click
-      var divElement = document.querySelector('.contactinfo__button');
+      var divElement = document.querySelector('.contact-button');
       // Trigger a click event on the div
       if (divElement) {
         divElement.click();
         console.log("contact info auto click")
       }
-
     };
 
   </script>
