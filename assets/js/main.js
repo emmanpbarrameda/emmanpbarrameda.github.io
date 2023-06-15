@@ -171,6 +171,11 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+// Add a popstate event listener to the window
+window.addEventListener("popstate", () => {
+  closeModal(); // Close the modal view when the back button is pressed on mobile
+});
+
 
 
 /*==================== PROJECTS SWIPER ====================*/
@@ -265,6 +270,7 @@ if (copyrightyear) {
 
 
 /*==================== ANIMATION ====================*/
+//https://animate.style/
 
 /*================ CONTACT DETAILS ANIMATION ================*/
 const contactinfo__buttons = document.querySelectorAll('.contactinfo__button');
