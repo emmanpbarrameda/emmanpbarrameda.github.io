@@ -171,11 +171,18 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// Add a hashchange event listener to the window
-window.addEventListener("hashchange", () => {
-  closeModal(); // Close the modal view when the back button is pressed on mobile
-});
+// Store the initial URL hash
+const initialHash = window.location.hash;
 
+// Add a popstate event listener to the window
+window.addEventListener("popstate", () => {
+  const currentHash = window.location.hash;
+  
+  // Check if the hash has changed from the initial value
+  if (currentHash !== initialHash) {
+    closeModal(); // Close the modal view when the back button is pressed on mobile
+  }
+});
 
 
 /*==================== PROJECTS SWIPER ====================*/
