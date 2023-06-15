@@ -309,8 +309,6 @@ contactinfo__buttons.forEach((button) => {
 /*==================== SWIPER READ MORE BUTTON ANIMATION ====================*/
 
 /*================ NEXT PROJECT ================*/
-
-/*
 function animateProjectsNext() {
   const projects__elements_next = document.querySelectorAll('.projects__data');
   projects__elements_next.forEach((element) => {
@@ -326,8 +324,6 @@ projects__buttons_next.forEach((button) => {
 });
 
 /*================ PREV PROJECT ================*/
-
-/*
 function animateProjectsPrevious() {
   const projects__elements_previous = document.querySelectorAll('.projects__data');
   projects__elements_previous.forEach((element) => {
@@ -499,4 +495,3 @@ themeButton.addEventListener("click", () => {
   localStorage.setItem("selected-theme", getCurrentTheme());
   localStorage.setItem("selected-icon", getCurrentIcon());
 });
-
