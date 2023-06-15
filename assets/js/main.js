@@ -130,24 +130,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /*==================== DISABLE SAVING OF THIS IMAGES ====================*/
 
-document.addEventListener('DOMContentLoaded', function() {
-  var aboutImages = document.querySelectorAll('.about__img');
-  
-  aboutImages.forEach(function(image) {
-    image.addEventListener('mousedown', disableDragging);
-    image.addEventListener('contextmenu', disableSelecting);
-  });
+document.addEventListener('contextmenu', function (event) {
+  var targetElement = event.target;
+  if (targetElement.tagName === 'IMG' && targetElement.classList.contains('about__img')) {
+    event.preventDefault();
+    return false;
+  }
 });
-
-function disableDragging(event) {
-  event.preventDefault();
-}
-
-function disableSelecting(event) {
-  event.preventDefault();
-  var selection = window.getSelection();
-  selection.removeAllRanges();
-}
 
 
 
@@ -498,8 +487,8 @@ themeButton.addEventListener("click", () => {
 
   // Remove animation classes after the animation finishes
   setTimeout(() => {
-    document.body.classList.remove("animate__animated", "animate__fadeIn");
-    themeButton.classList.remove("animate__animated", "animate__fadeIn");
+    document.body.classList.remove("animate__animated", "animate__fadeIn", "animate__fast");
+    themeButton.classList.remove("animate__animated", "animate__fadeIn", "animate__fast");
   }, 500);
 
   // We save the theme and the current icon that the user chose
