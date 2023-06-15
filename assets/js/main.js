@@ -171,8 +171,8 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// Add a popstate event listener to the window
-window.addEventListener("popstate", () => {
+// Add a hashchange event listener to the window
+window.addEventListener("hashchange", () => {
   closeModal(); // Close the modal view when the back button is pressed on mobile
 });
 
@@ -333,6 +333,8 @@ function scrollup__animation() {
 
 
 
+
+
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 
 const sections = document.querySelectorAll("section[id]");
@@ -398,9 +400,9 @@ const getCurrentTheme = () =>
 const getCurrentIcon = () =>
   themeButton.classList.contains(iconTheme) ? "uil-moon" : "uil-sun";
 
-//validate if user previously chose a theme
+// Validate if user previously chose a theme
 if (selectedTheme) {
-  // if theme selected by user previously then we add/remove classes again based on localStorage
+  // If theme selected by user previously then we add/remove classes again based on localStorage
   document.body.classList[selectedTheme === "dark" ? "add" : "remove"](
     darkTheme
   );
@@ -408,17 +410,17 @@ if (selectedTheme) {
     iconTheme
   );
 }
-//if initially there is no local storage ie. user has not made a choice and this is first time loading
-//then we check if browser/OS is in dark mode and then add dark theme if required by default
+// If initially there is no local storage, i.e., user has not made a choice and this is the first time loading
+// Then we check if browser/OS is in dark mode and then add dark theme if required by default
 else if (
   window.matchMedia &&
   window.matchMedia("(prefers-color-scheme: dark)").matches
 ) {
   console.log("found dark mode for browser/OS");
-  // add dark theme by setting dark theme flags in localStorage
+  // Add dark theme by setting dark theme flags in localStorage
   localStorage.setItem("selected-theme", "dark");
   localStorage.setItem("selected-icon", "uil-moon");
-  // add classes for dark theme in DOM
+  // Add classes for dark theme in DOM
   document.body.classList.add(darkTheme);
   themeButton.classList.add(iconTheme);
 }
@@ -428,7 +430,19 @@ themeButton.addEventListener("click", () => {
   // Add or remove the dark / icon theme
   document.body.classList.toggle(darkTheme);
   themeButton.classList.toggle(iconTheme);
+
+  // Add animation classes using Animate.css
+  document.body.classList.add("animate__animated", "animate__fadeIn");
+  themeButton.classList.add("animate__animated", "animate__fadeIn");
+
+  // Remove animation classes after the animation finishes
+  setTimeout(() => {
+    document.body.classList.remove("animate__animated", "animate__fadeIn");
+    themeButton.classList.remove("animate__animated", "animate__fadeIn");
+  }, 500);
+
   // We save the theme and the current icon that the user chose
   localStorage.setItem("selected-theme", getCurrentTheme());
   localStorage.setItem("selected-icon", getCurrentIcon());
 });
+
