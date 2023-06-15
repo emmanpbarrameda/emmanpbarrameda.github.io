@@ -52,11 +52,11 @@ if (navToggle) {
     navMenu.classList.add("show-menu");
 
     // Add animation class
-    navMenu.classList.add("animate__animated", "animate__fadeIn");
+    navMenu.classList.add("animate__animated", "animate__fadeIn", "animate__fast");
 
     // Remove animation class after a delay
     setTimeout(() => {
-      navMenu.classList.remove("animate__animated", "animate__fadeIn");
+      navMenu.classList.remove("animate__animated", "animate__fadeIn", "animate__fast");
     }, 1000); // Adjust the delay as needed
   });
 }
@@ -130,12 +130,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /*==================== DISABLE SAVING OF THIS IMAGES ====================*/
 
-document.addEventListener('contextmenu', function (event) {
-  var targetElement = event.target;
-  if (targetElement.tagName === 'IMG' && targetElement.classList.contains('about__img')) {
-    event.preventDefault();
-  }
+document.addEventListener('DOMContentLoaded', function() {
+  var aboutImages = document.querySelectorAll('.about__img');
+  
+  aboutImages.forEach(function(image) {
+    image.addEventListener('mousedown', disableDragging);
+    image.addEventListener('contextmenu', disableSelecting);
+  });
 });
+
+function disableDragging(event) {
+  event.preventDefault();
+}
+
+function disableSelecting(event) {
+  event.preventDefault();
+  var selection = window.getSelection();
+  selection.removeAllRanges();
+}
+
 
 
 
@@ -310,7 +323,9 @@ contactinfo__buttons.forEach((button) => {
 function animateProjectsNext() {
   const projects__elements_next = document.querySelectorAll('.projects__data');
   projects__elements_next.forEach((element) => {
-    element.classList.add('animate__animated', 'animate__fadeInRight');
+    setTimeout(() => {
+      element.classList.add('animate__animated', 'animate__fadeInRight');
+    }, 50); // Adjust the delay as needed
   });
 }
 
@@ -323,7 +338,9 @@ projects__buttons_next.forEach((button) => {
 function animateProjectsPrevious() {
   const projects__elements_previous = document.querySelectorAll('.projects__data');
   projects__elements_previous.forEach((element) => {
-    element.classList.add('animate__animated', 'animate__fadeInLeft');
+    setTimeout(() => {
+      element.classList.add('animate__animated', 'animate__fadeInLeft');
+    }, 50); // Adjust the delay as needed
   });
 }
 
@@ -476,8 +493,8 @@ themeButton.addEventListener("click", () => {
   themeButton.classList.toggle(iconTheme);
 
   // Add animation classes using Animate.css
-  document.body.classList.add("animate__animated", "animate__fadeIn");
-  themeButton.classList.add("animate__animated", "animate__fadeIn");
+  document.body.classList.add("animate__animated", "animate__fadeIn", "animate__fast");
+  themeButton.classList.add("animate__animated", "animate__fadeIn", "animate__fast");
 
   // Remove animation classes after the animation finishes
   setTimeout(() => {
