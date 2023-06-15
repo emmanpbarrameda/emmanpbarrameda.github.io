@@ -48,9 +48,19 @@ const navMenu = document.getElementById("nav-menu"),
 /* Validate if constant exists */
 if (navToggle) {
   navToggle.addEventListener("click", () => {
+    // Add show-menu class
     navMenu.classList.add("show-menu");
+
+    // Add animation class
+    navMenu.classList.add("animate__animated", "animate__fadeIn");
+
+    // Remove animation class after a delay
+    setTimeout(() => {
+      navMenu.classList.remove("animate__animated", "animate__fadeIn");
+    }, 1000); // Adjust the delay as needed
   });
 }
+
 
 /*===== MENU HIDDEN =====*/
 /* Validate if constant exists */
@@ -185,6 +195,7 @@ window.addEventListener("popstate", () => {
 });
 
 
+
 /*==================== PROJECTS SWIPER ====================*/
 
 var swiper = new Swiper(".projects__container", {
@@ -280,61 +291,49 @@ if (copyrightyear) {
 //https://animate.style/
 
 /*================ CONTACT DETAILS ANIMATION ================*/
-const contactinfo__buttons = document.querySelectorAll('.contactinfo__button');
-contactinfo__buttons.forEach((button) => {
-  button.addEventListener('click', contactinfo__animations);
-});
-
-function contactinfo__animations() {
+function animateContactInfo() {
   const contactinfo__elements = document.querySelectorAll('.contactinfo__content');
   contactinfo__elements.forEach((element) => {
-    element.classList.add('animate__animated', 'animate__fadeIn');
-  });  
+    element.classList.add('animate__animated', 'animate__fadeIn', 'animate__faster');
+  });
 }
+
+const contactinfo__buttons = document.querySelectorAll('.contactinfo__button');
+contactinfo__buttons.forEach((button) => {
+  button.addEventListener('click', animateContactInfo);
+});
 
 
 /*==================== SWIPER READ MORE BUTTON ANIMATION ====================*/
 
 /*================ NEXT PROJECT ================*/
-const projects__buttons_next = document.querySelectorAll('.swiper-button-next');
-projects__buttons_next.forEach((button) => {
-  button.addEventListener('click', projects__animations_next);
-});
-
-function projects__animations_next() {
-  const projects__elements_next = document.querySelectorAll('.projects__button');
+function animateProjectsNext() {
+  const projects__elements_next = document.querySelectorAll('.projects__data');
   projects__elements_next.forEach((element) => {
     element.classList.add('animate__animated', 'animate__fadeInRight');
-  });  
+  });
 }
+
+const projects__buttons_next = document.querySelectorAll('.swiper-button-next');
+projects__buttons_next.forEach((button) => {
+  button.addEventListener('click', animateProjectsNext);
+});
 
 /*================ PREV PROJECT ================*/
-const projects__buttons_previous = document.querySelectorAll('.swiper-button-prev');
-projects__buttons_previous.forEach((button) => {
-  button.addEventListener('click', projects__animations_previous);
-});
-
-function projects__animations_previous() {
-  const projects__elements_previous = document.querySelectorAll('.projects__button');
+function animateProjectsPrevious() {
+  const projects__elements_previous = document.querySelectorAll('.projects__data');
   projects__elements_previous.forEach((element) => {
     element.classList.add('animate__animated', 'animate__fadeInLeft');
-  });   
+  });
 }
 
-
-/*==================== SCROLL TO TOP ANIMATION ====================*/
-
-const scrollup__button = document.querySelectorAll('.scrollup');
-scrollup__button.forEach((button) => {
-  button.addEventListener('click', scrollup__animation);
+const projects__buttons_previous = document.querySelectorAll('.swiper-button-prev');
+projects__buttons_previous.forEach((button) => {
+  button.addEventListener('click', animateProjectsPrevious);
 });
 
-function scrollup__animation() {
-  const scrollup__element = document.querySelectorAll('.scrollup');
-  scrollup__element.forEach((element) => {
-    element.classList.add('animate__animated', 'animate__slideInUp');
-  });  
-}
+
+
 
 
 
@@ -388,6 +387,44 @@ function scrollUp() {
   else scrollUp.classList.remove("show-scroll");
 }
 window.addEventListener("scroll", scrollUp);
+
+// Add animation to scroll-up button
+const scrollUpButton = document.getElementById("scroll-up");
+
+scrollUpButton.addEventListener("click", () => {
+  // Add animate__fadeInUp class
+  scrollUpButton.classList.add("animate__animated", "animate__slideInUp");
+
+  // Remove animate__fadeInUp class after the animation finishes
+  setTimeout(() => {
+    scrollUpButton.classList.remove("animate__animated", "animate__slideInUp");
+  }, 1000); // Adjust the delay as needed
+});
+
+
+/*==================== SHOW SCROLL DOWN ====================*/
+function scrollDown() {
+  const scrollDown = document.getElementById("scroll-down");
+  // When the scroll is higher than 560 viewport height, add the show-scrolldown class to the a tag with the scroll-top class
+  if (this.scrollY <500) scrollDown.classList.add("show-scrolldown");
+  else scrollDown.classList.remove("show-scrolldown");
+}
+window.addEventListener("scroll", scrollDown);
+
+// Add animation to scroll-down button
+const scrollDownButton = document.getElementById("scroll-down");
+
+scrollDownButton.addEventListener("click", () => {
+  // Add animate__fadeInUp class
+  scrollDownButton.classList.add("animate__animated", "animate__slideInDown");
+
+  // Remove animate__fadeInUp class after the animation finishes
+  setTimeout(() => {
+    scrollDownButton.classList.remove("animate__animated", "animate__slideInDown");
+  }, 1000); // Adjust the delay as needed
+});
+
+
 
 
 
