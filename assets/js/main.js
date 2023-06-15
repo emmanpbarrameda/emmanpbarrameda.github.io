@@ -52,11 +52,11 @@ if (navToggle) {
     navMenu.classList.add("show-menu");
 
     // Add animation class
-    navMenu.classList.add("animate__animated", "animate__fadeIn", "animate__fast");
+    navMenu.classList.add("animate__animated", "animate__fadeIn", "animate__faster");
 
     // Remove animation class after a delay
     setTimeout(() => {
-      navMenu.classList.remove("animate__animated", "animate__fadeIn", "animate__fast");
+      navMenu.classList.remove("animate__animated", "animate__fadeIn", "animate__faster");
     }, 1000); // Adjust the delay as needed
   });
 }
@@ -309,6 +309,8 @@ contactinfo__buttons.forEach((button) => {
 /*==================== SWIPER READ MORE BUTTON ANIMATION ====================*/
 
 /*================ NEXT PROJECT ================*/
+
+/*
 function animateProjectsNext() {
   const projects__elements_next = document.querySelectorAll('.projects__data');
   projects__elements_next.forEach((element) => {
@@ -324,6 +326,8 @@ projects__buttons_next.forEach((button) => {
 });
 
 /*================ PREV PROJECT ================*/
+
+/*
 function animateProjectsPrevious() {
   const projects__elements_previous = document.querySelectorAll('.projects__data');
   projects__elements_previous.forEach((element) => {
@@ -482,13 +486,13 @@ themeButton.addEventListener("click", () => {
   themeButton.classList.toggle(iconTheme);
 
   // Add animation classes using Animate.css
-  document.body.classList.add("animate__animated", "animate__fadeIn", "animate__fast");
-  themeButton.classList.add("animate__animated", "animate__fadeIn", "animate__fast");
+  document.body.classList.add("animate__animated", "animate__fadeIn", "animate__faster");
+  themeButton.classList.add("animate__animated", "animate__fadeIn", "animate__faster");
 
   // Remove animation classes after the animation finishes
   setTimeout(() => {
-    document.body.classList.remove("animate__animated", "animate__fadeIn", "animate__fast");
-    themeButton.classList.remove("animate__animated", "animate__fadeIn", "animate__fast");
+    document.body.classList.remove("animate__animated", "animate__fadeIn", "animate__faster");
+    themeButton.classList.remove("animate__animated", "animate__fadeIn", "animate__faster");
   }, 500);
 
   // We save the theme and the current icon that the user chose
