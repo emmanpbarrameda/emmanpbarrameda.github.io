@@ -148,11 +148,25 @@ const modalViews = document.querySelectorAll(".services__modal"),
   modalBtns = document.querySelectorAll(".services__button"),
   modalCloses = document.querySelectorAll(".services__modal-close");
 
-// Function to open a modal view
-let modal = function (modalClick) {
-  modalViews[modalClick].classList.add("active-modal");
+  
+// Function to open a modal view WITH ANIMATION
+let modal = function(modalClick) {
+  // Remove active-modal class from all modal views
+  for (var i = 0; i < modalViews.length; i++) {
+    modalViews[i].classList.remove("active-modal", "animate__animated", "animate__fadeIn", "animate__faster");
+  }
+
+  // Delay adding the animation classes to ensure animation triggers consistently
+  setTimeout(function() {
+    // Add active-modal class to the clicked modal view and animate it
+    modalViews[modalClick].classList.add("active-modal", "animate__animated", "animate__fadeIn", "animate__faster");
+  }, 10);
+
+  // Add a class to disable scrolling on the body
   document.body.classList.add("disable-scroll");
 };
+
+
 
 // Attach click event listeners to the modal buttons
 modalBtns.forEach((modalBtn, i) => {
@@ -168,13 +182,22 @@ modalCloses.forEach((modalClose) => {
   });
 });
 
-// Function to close the modal view
+
+// Function to close the modal view WITH ANIMATION
 function closeModal() {
-  modalViews.forEach((modalView) => {
-    modalView.classList.remove("active-modal");
-    document.body.classList.remove("disable-scroll");
-  });
+  const activeModal = document.querySelector(".active-modal");
+  if (activeModal) {
+    // Add fade-out animation class to the active modal view
+    activeModal.classList.add("animate__animated", "animate__fadeOut", "animate__faster");
+
+    // Remove the modal and animation classes after the animation finishes
+    setTimeout(function() {
+      activeModal.classList.remove("active-modal", "animate__animated", "animate__fadeOut", "animate__faster");
+      document.body.classList.remove("disable-scroll");
+    }, 500); // Adjust the delay as needed
+  }
 }
+
 
 // Add a keydown event listener to the document
 document.addEventListener("keydown", (event) => {
@@ -195,6 +218,7 @@ window.addEventListener("popstate", () => {
     closeModal(); // Close the modal view when the back button is pressed on mobile
   }
 });
+
 
 
 
@@ -267,6 +291,35 @@ for (let i = 0; i < elements.length; i++) {
 
 
 
+
+
+/*==================== PROGRAMMING LANGUAGE TABS ====================*/
+
+function showTab(tabId, button) {
+  // Remove active class from all buttons
+  var buttons = document.getElementsByClassName('plang__button_link');
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].classList.remove('active');
+  }
+
+  // Add active class to the clicked button
+  button.classList.add('active');
+
+  // Hide all tab contents
+  var tabContents = document.getElementsByClassName('plang__tab_content');
+  for (var i = 0; i < tabContents.length; i++) {
+    tabContents[i].classList.remove('active');
+  }
+
+  // Show the selected tab content
+  var tab = document.getElementById(tabId);
+  tab.classList.add('active', 'animate__animated', 'animate__fadeIn', 'animate__faster');
+}
+
+
+
+
+
 /*==================== COPYRIGHT YEAR ====================*/
 //update copyright year automatically
 
@@ -309,6 +362,7 @@ contactinfo__buttons.forEach((button) => {
 /*==================== SWIPER READ MORE BUTTON ANIMATION ====================*/
 
 /*================ NEXT PROJECT ================*/
+/*
 function animateProjectsNext() {
   const projects__elements_next = document.querySelectorAll('.projects__data');
   projects__elements_next.forEach((element) => {
@@ -324,6 +378,7 @@ projects__buttons_next.forEach((button) => {
 });
 
 /*================ PREV PROJECT ================*/
+/*
 function animateProjectsPrevious() {
   const projects__elements_previous = document.querySelectorAll('.projects__data');
   projects__elements_previous.forEach((element) => {
@@ -371,6 +426,63 @@ function scrollActive() {
   });
 }
 window.addEventListener("scroll", scrollActive);
+
+
+
+
+
+
+/*==================== ANIMATION WHILE SCROLLING ON WHOLE SITE ====================*/
+
+
+function scrollActive() {
+  const scrollY = window.pageYOffset;
+
+  sections.forEach((current) => {
+    const sectionHeight = current.offsetHeight;
+    const sectionTop = current.offsetTop - 50;
+    sectionId = current.getAttribute("id");
+
+    const link = document.querySelector(".nav__menu a[href*=" + sectionId + "]");
+    const section = document.querySelector("#" + sectionId);
+
+    if (sectionId === "home") {
+      if (scrollY <= sectionHeight) {
+        link.classList.add("active-link", "animate__animated", "animate__fadeIn");
+        section.classList.add("animate__animated", "animate__fadeIn");
+        section.style.visibility = "visible";
+      } else {
+        link.classList.remove("active-link", "animate__animated", "animate__fadeIn");
+        section.classList.remove("animate__animated", "animate__fadeIn");
+        section.style.visibility = "hidden";
+      }
+    } else {
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        if (!link.classList.contains("active-link")) {
+          link.classList.add("active-link", "animate__animated", "animate__fadeIn");
+          section.classList.add("animate__animated", "animate__fadeIn");
+          section.style.visibility = "visible";
+        }
+      } else {
+        if (link.classList.contains("active-link")) {
+          link.classList.remove("active-link", "animate__animated", "animate__fadeIn");
+          section.classList.remove("animate__animated", "animate__fadeIn");
+        } else {
+          section.style.visibility = "hidden";
+        }
+      }
+
+      if (scrollY > sectionTop - sectionHeight && scrollY <= sectionTop) {
+        section.style.visibility = "visible";
+      }
+    }
+  });
+}
+
+window.addEventListener("scroll", scrollActive);
+
+
+
 
 
 
@@ -495,3 +607,11 @@ themeButton.addEventListener("click", () => {
   localStorage.setItem("selected-theme", getCurrentTheme());
   localStorage.setItem("selected-icon", getCurrentIcon());
 });
+
+
+
+
+
+
+
+

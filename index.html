@@ -49,10 +49,14 @@
   <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
 
   <!--==================== ANIMATE CSS ====================-->
-  <link rel="stylesheet" href="assets/css/animate.min.css" />  
+  <link rel="stylesheet" href="assets/css/animate.min.css" />
 
   <!--==================== CSS ====================-->
   <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
 </head>
 
 <body>
@@ -240,6 +244,7 @@
     </div>
   </section>
 
+
   <!--==================== SKILLS ====================-->
 
   <section class="skills section" id="skills">
@@ -296,17 +301,17 @@
       <div class="skills__container-box">
         <img class="skills__container-img" src="assets/img/skills/git.svg" alt="git" />
         <div class="skills__container-name">Git</div>
-      </div>    
-      
+      </div>
+
       <div class="skills__container-box">
         <img class="skills__container-img" src="assets/img/skills/github.svg" alt="github" />
         <div class="skills__container-name">Github</div>
-      </div>    
-      
+      </div>
+
       <div class="skills__container-box">
         <img class="skills__container-img" src="assets/img/skills/photoshop.svg" alt="photoshop" />
         <div class="skills__container-name">Photoshop</div>
-      </div>          
+      </div>
 
       <!-- <div class="skills__container-box">
                 <img class="skills__container-img" src="/assets/img/skills/figma.svg" alt="figma">
@@ -489,7 +494,7 @@
         <div class="services__modal">
           <div class="services__modal-content">
             <h4 class="services__modal-title">Desktop Application Development</h4>
-            <i class="uil uil-times services__modal-close"></i>
+            <button class="services__modal-close" onclick="closeModal()">&times;</button>
             <ul class="services__modal-services grid">
 
               <li class="services__modal-service">
@@ -547,7 +552,7 @@
         <div class="services__modal">
           <div class="services__modal-content">
             <h4 class="services__modal-title">Android Application Development</h4>
-            <i class="uil uil-times services__modal-close"></i>
+            <button class="services__modal-close" onclick="closeModal()">&times;</button>
             <ul class="services__modal-services grid">
 
               <li class="services__modal-service">
@@ -571,105 +576,371 @@
         </div>
       </div>
 
-
-      
     </div>
   </section>
 
 
-
-
-  
-
   <!--==================== PROJECTS ====================-->
 
-  
   <section class="projects section" id="projects">
     <h2 class="section__title">Projects</h2>
     <span class="section__subtitle">Most recent work</span>
 
-    <div class="projects__container container swiper">
 
-      <div class="swiper-wrapper">
-        
-        <!--==================== PROJECTS 1====================-->
-        <div class="projects__content grid swiper-slide">
-          <img src="https://raw.githubusercontent.com/emmanpbarrameda/EmployeePayrollManagementSystem_Java-CODE/main/output-media/console-image3.png" alt="Preview" class="projects__img" />
-          <div class="projects__data">
-            <h3 class="projects__title">Employee Payroll Management System</h3>
-            <p class="projects__description">
-              Employee Payroll Mgmt. System created using Java Swing with Database.
-            </p>
-            <a href="https://github.com/emmanpbarrameda/EmployeePayrollManagementSystem_Java-CODE" target="_blank"
-              class="button button--flex button--small projects__button">
-              Read More
-              <i class="uil uil-arrow-right button__icon"></i>
-            </a>
+    <!-- Tab Buttons -->
+    <ul class="plang__tabs">
+      <li class="plang__tabs_item">
+        <button type="button" class="plang__button_link active" onclick="showTab('java-content', this)"><i class="material-icons">code</i>Java</button>
+      </li>
+      <li class="plang__tabs_item">
+        <button type="button" class="plang__button_link" onclick="showTab('cpp-content', this)"><i class="material-icons">code</i>C++</button>
+      </li>
+      <li class="plang__tabs_item">
+        <button type="button" class="plang__button_link" onclick="showTab('c-content', this)"><i class="material-icons">code</i>C</button>
+      </li>
+      <li class="plang__tabs_item">
+        <button type="button" class="plang__button_link" onclick="showTab('vb-content', this)"><i class="material-icons">code</i>VB</button>
+      </li>      
+    </ul>
+
+
+    <!-- WHOLE Tab Content -->
+    <div id="plang__tabContent">
+      <!-- Java Tab Content -->
+      <div class="plang__tab_content active" id="java-content">
+
+
+
+        <!-- LIST OF PROJECTS CONTAINER -->
+        <div class="projects__container container swiper">
+
+          <!-- swiper wrapper -->
+          <div class="swiper-wrapper">
+
+
+            <!--==================== PROJECT 1 ====================-->
+            <div class="projects__content grid swiper-slide">
+              <img
+                src="https://raw.githubusercontent.com/emmanpbarrameda/MUMC-ChurchMgmtSystem_Java-PREVIEW/main/output-folder/console-video2.gif"
+                alt="Preview" class="projects__img" />
+              <div class="projects__data">
+                <h3 class="projects__title">MUMC Membership and Transaction Mgmt. System</h3>
+                <p class="projects__description">
+                  MUMC Membership and Transaction Mgmt. System created using Java Swing with MySQL Database.
+                </p>
+                <a href="https://github.com/emmanpbarrameda/MUMC-ChurchMgmtSystem_Java-PREVIEW" target="_blank"
+                  class="button button--flex button--small projects__button">
+                  Read More
+                  <i class="uil uil-arrow-right button__icon"></i>
+                </a>
+              </div>
+            </div>
+
+
+            <!--==================== PROJECT 2 ====================-->
+            <div class="projects__content grid swiper-slide">
+              <img
+                src="https://raw.githubusercontent.com/emmanpbarrameda/ZABSystem_Java-CODE/main/output-media/console_video.gif"
+                alt="Preview" class="projects__img" />
+              <div class="projects__data">
+                <h3 class="projects__title">ZAB System</h3>
+                <p class="projects__description">
+                  Zodiac Sign, Age and Birthstone System created using Java Swing.
+                </p>
+                <a href="https://github.com/emmanpbarrameda/ZABSystem_Java-CODE" target="_blank"
+                  class="button button--flex button--small projects__button">
+                  Read More
+                  <i class="uil uil-arrow-right button__icon"></i>
+                </a>
+              </div>
+            </div>            
+
+
+            <!--==================== PROJECT 3 ====================-->
+            <div class="projects__content grid swiper-slide">
+              <img
+                src="https://raw.githubusercontent.com/emmanpbarrameda/HSSG-EmpMgmtSystem_Java-PREVIEW/main/output-media/console_video2.gif"
+                alt="Preview" class="projects__img" />
+              <div class="projects__data">
+                <h3 class="projects__title">HSSG Employee Management System</h3>
+                <p class="projects__description">
+                  HSSG Employee Management System created using Java Swing with Database.
+                </p>
+                <a href="https://github.com/emmanpbarrameda/HSSG-EmpMgmtSystem_Java-PREVIEW" target="_blank"
+                  class="button button--flex button--small projects__button">
+                  Read More
+                  <i class="uil uil-arrow-right button__icon"></i>
+                </a>
+              </div>
+            </div>            
+
+
+            <!--==================== PROJECT 4 ====================-->
+            <div class="projects__content grid swiper-slide">
+              <img
+                src="https://raw.githubusercontent.com/emmanpbarrameda/EmployeePayrollManagementSystem_Java-CODE/main/output-media/console-image3.png"
+                alt="Preview" class="projects__img" />
+              <div class="projects__data">
+                <h3 class="projects__title">Employee Payroll Management System</h3>
+                <p class="projects__description">
+                  Employee Payroll Mgmt. System created using Java Swing with Database.
+                </p>
+                <a href="https://github.com/emmanpbarrameda/EmployeePayrollManagementSystem_Java-CODE" target="_blank"
+                  class="button button--flex button--small projects__button">
+                  Read More
+                  <i class="uil uil-arrow-right button__icon"></i>
+                </a>
+              </div>
+            </div>
+
+
+            <!--==================== PROJECT 5 ====================-->
+            <div class="projects__content grid swiper-slide">
+              <img
+                src="https://raw.githubusercontent.com/emmanpbarrameda/CTSSystem_Java-CODE/main/output-media/console_video.gif"
+                alt="Preview" class="projects__img" />
+              <div class="projects__data">
+                <h3 class="projects__title">CTS System</h3>
+                <p class="projects__description">
+                  Clock, Timer and Stopwatch System created using Java Swing with Database.
+                </p>
+                <a href="https://github.com/emmanpbarrameda/CTSSystem_Java-CODE" target="_blank"
+                  class="button button--flex button--small projects__button">
+                  Read More
+                  <i class="uil uil-arrow-right button__icon"></i>
+                </a>
+              </div>
+            </div>
+
+          </div> <!-- swiper wrapper -->
+
+          <!-- Add arrows -->
+          <div class="swiper-button-next">
+            <i class="uil uil-angle-right-b swiper-projects-icon"></i>
           </div>
-        </div>
-
-        <!--==================== PROJECT 2====================-->
-        <div class="projects__content grid swiper-slide">
-          <img src="https://raw.githubusercontent.com/emmanpbarrameda/ZABSystem_Java-CODE/main/output-media/console_video.gif" alt="Preview" class="projects__img" />
-          <div class="projects__data">
-            <h3 class="projects__title">ZAB System</h3>
-            <p class="projects__description">
-              Zodiac Sign, Age and Birthstone System created using Java Swing.
-            </p>
-            <a href="https://github.com/emmanpbarrameda/ZABSystem_Java-CODE" target="_blank"
-              class="button button--flex button--small projects__button">
-              Read More
-              <i class="uil uil-arrow-right button__icon"></i>
-            </a>
+          <div class="swiper-button-prev">
+            <i class="uil uil-angle-left-b swiper-projects-icon"></i>
           </div>
-        </div>
 
-        <!--==================== PROJECTS 3====================-->
-        <div class="projects__content grid swiper-slide">
-          <img src="https://raw.githubusercontent.com/emmanpbarrameda/CTSSystem_Java-CODE/main/output-media/console_video.gif" alt="Preview" class="projects__img" />
-          <div class="projects__data">
-            <h3 class="projects__title">CTS System</h3>
-            <p class="projects__description">
-              Clock, Timer and Stopwatch System created using Java Swing with Database.
-            </p>
-            <a href="https://github.com/emmanpbarrameda/CTSSystem_Java-CODE" target="_blank"
-              class="button button--flex button--small projects__button">
-              Read More
-              <i class="uil uil-arrow-right button__icon"></i>
-            </a>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+
+        </div><!-- LIST OF PROJECTS CONTAINER -->
+
+
+      </div><!-- Java Tab Content -->
+
+
+
+
+
+
+      <!-- C++ Tab Content -->
+      <div class="plang__tab_content" id="cpp-content">
+
+
+        <!-- LIST OF PROJECTS CONTAINER -->
+        <div class="projects__container container swiper">
+
+          <!-- swiper wrapper -->
+          <div class="swiper-wrapper">
+
+
+            <!--==================== PROJECT 1 ====================-->
+            <div class="projects__content grid swiper-slide">
+              <img
+                src="https://raw.githubusercontent.com/emmanpbarrameda/Area-Console-Calculator_Cpp-Console/main/AreaComputationProgram_Emman/output-media/console_video.gif"
+                alt="Preview" class="projects__img" />
+              <div class="projects__data">
+                <h3 class="projects__title">Area Console Calculator</h3>
+                <p class="projects__description">
+                  Area of Rectangle, Square, Triangle and Circle Console Calculator Program created using C++ Language.
+                </p>
+                <a href="https://github.com/emmanpbarrameda/Area-Console-Calculator_Cpp-Console" target="_blank"
+                  class="button button--flex button--small projects__button">
+                  Read More
+                  <i class="uil uil-arrow-right button__icon"></i>
+                </a>
+              </div>
+            </div> 
+            
+
+            <!--==================== PROJECT 2 ====================-->
+            <div class="projects__content grid swiper-slide">
+              <img
+                src="https://raw.githubusercontent.com/emmanpbarrameda/Simple-Payroll-System_Cpp-Console/main/PayrollSystem_Emman/output-media/console_screenshot.png"
+                alt="Preview" class="projects__img" />
+              <div class="projects__data">
+                <h3 class="projects__title">Simple Employee Payroll System</h3>
+                <p class="projects__description">
+                  Simple Employee Payroll Console Program created using C++ Language.
+                </p>
+                <a href="https://github.com/emmanpbarrameda/Simple-Payroll-System_Cpp-Console" target="_blank"
+                  class="button button--flex button--small projects__button">
+                  Read More
+                  <i class="uil uil-arrow-right button__icon"></i>
+                </a>
+              </div>
+            </div>  
+
+
+            <!--==================== PROJECT 3 ====================-->
+            <div class="projects__content grid swiper-slide">
+              <img
+                src="https://raw.githubusercontent.com/emmanpbarrameda/Grading-Remarks-System_Cpp-Console/main/GradingSystemRemarks_Emman/output-media/console_screenshot.png"
+                alt="Preview" class="projects__img" />
+              <div class="projects__data">
+                <h3 class="projects__title">Grading Remarks System</h3>
+                <p class="projects__description">
+                  Grading Remarks Console Program created using C++ Language.
+                </p>
+                <a href="https://github.com/emmanpbarrameda/Grading-Remarks-System_Cpp-Console" target="_blank"
+                  class="button button--flex button--small projects__button">
+                  Read More
+                  <i class="uil uil-arrow-right button__icon"></i>
+                </a>
+              </div>
+            </div>
+            
+            
+            <!--==================== PROJECT 4 ====================-->
+            <div class="projects__content grid swiper-slide">
+              <img
+                src="https://raw.githubusercontent.com/emmanpbarrameda/Bubble-Sort_Cpp-Console/main/BubbleSortConsole_Emman/output-media/console_video.gif"
+                alt="Preview" class="projects__img" />
+              <div class="projects__data">
+                <h3 class="projects__title">Bubble Sort</h3>
+                <p class="projects__description">
+                  Bubble Sorting Console Program created using C++ Language.
+                </p>
+                <a href="https://github.com/emmanpbarrameda/Bubble-Sort_Cpp-Console" target="_blank"
+                  class="button button--flex button--small projects__button">
+                  Read More
+                  <i class="uil uil-arrow-right button__icon"></i>
+                </a>
+              </div>
+            </div>     
+            
+            
+            <!--==================== PROJECT 5 ====================-->
+            <div class="projects__content grid swiper-slide">
+              <img
+                src="https://raw.githubusercontent.com/emmanpbarrameda/Simple-Calculator_Cpp-Console/main/SimpleConsoleCalculator_Emman/output-media/console_video.gif"
+                alt="Preview" class="projects__img" />
+              <div class="projects__data">
+                <h3 class="projects__title">Simple Console Based Calculator</h3>
+                <p class="projects__description">
+                  Simple Calculator Console Program created using C++ Language.
+                </p>
+                <a href="https://github.com/emmanpbarrameda/Simple-Calculator_Cpp-Console" target="_blank"
+                  class="button button--flex button--small projects__button">
+                  Read More
+                  <i class="uil uil-arrow-right button__icon"></i>
+                </a>
+              </div>
+            </div>               
+
+
+          </div><!-- swiper wrapper -->
+
+          <!-- Add arrows -->
+          <div class="swiper-button-next">
+            <i class="uil uil-angle-right-b swiper-projects-icon"></i>
           </div>
-        </div>
-
-        <!--==================== PROJECTS 4====================-->
-        <div class="projects__content grid swiper-slide">
-          <img src="https://raw.githubusercontent.com/emmanpbarrameda/SimNumber-prefix-finder_C-Language/main/SimNumber-prefix-finder_C-Language/output-media/console_video.gif" alt="Preview" class="projects__img" />
-          <div class="projects__data">
-            <h3 class="projects__title">SimCard Number Prefix Finder</h3>
-            <p class="projects__description">
-              SimCard Phone Number Prefix/Network Finder Console System created using C Language.
-            </p>
-            <a href="https://github.com/emmanpbarrameda/SimNumber-prefix-finder_C-Language" target="_blank"
-              class="button button--flex button--small projects__button">
-              Read More
-              <i class="uil uil-arrow-right button__icon"></i>
-            </a>
+          <div class="swiper-button-prev">
+            <i class="uil uil-angle-left-b swiper-projects-icon"></i>
           </div>
-        </div>
-        
-      </div>
 
-      <!-- Add arrows -->
-      <div class="swiper-button-next">
-        <i class="uil uil-angle-right-b swiper-projects-icon"></i>
-      </div>
-      <div class="swiper-button-prev">
-        <i class="uil uil-angle-left-b swiper-projects-icon"></i>
-      </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
 
-      <!-- Add Pagination -->
-      <div class="swiper-pagination"></div>
+        </div><!-- LIST OF PROJECTS CONTAINER -->
 
-    </div>
+
+      </div><!-- C++ Tab Content -->
+
+
+
+
+
+
+      <!-- C Tab Content -->
+      <div class="plang__tab_content" id="c-content">
+
+        <!-- LIST OF PROJECTS CONTAINER -->
+        <div class="projects__container container swiper">
+
+          <!-- swiper wrapper -->
+          <div class="swiper-wrapper">
+
+
+            <!--==================== PROJECT 1 ====================-->
+            <div class="projects__content grid swiper-slide">
+              <img
+                src="https://raw.githubusercontent.com/emmanpbarrameda/SimNumber-prefix-finder_C-Language/main/SimNumber-prefix-finder_C-Language/output-media/console_video.gif"
+                alt="Preview" class="projects__img" />
+              <div class="projects__data">
+                <h3 class="projects__title">SimCard Number Prefix Finder</h3>
+                <p class="projects__description">
+                  SimCard Phone Number Prefix/Network Finder Console System created using C Language.
+                </p>
+                <a href="https://github.com/emmanpbarrameda/SimNumber-prefix-finder_C-Language" target="_blank"
+                  class="button button--flex button--small projects__button">
+                  Read More
+                  <i class="uil uil-arrow-right button__icon"></i>
+                </a>
+              </div>
+            </div>
+
+            <!--==================== PROJECT 2 ====================-->
+            <div class="projects__content grid swiper-slide">
+              <img
+                src="https://raw.githubusercontent.com/emmanpbarrameda/MetersToKM_HoursToSeconds-Calculator_C-Language/main/MetersToKM_HoursToSeconds-Calculator_C-Language/output-media/console_video.gif"
+                alt="Preview" class="projects__img" />
+              <div class="projects__data">
+                <h3 class="projects__title">Meters to KM & Hours to Seconds Calculator</h3>
+                <p class="projects__description">
+                  Console Based Calculator for Meters to KM and Hours to Seconds created using C Language.
+                </p>
+                <a href="https://github.com/emmanpbarrameda/MetersToKM_HoursToSeconds-Calculator_C-Language" target="_blank"
+                  class="button button--flex button--small projects__button">
+                  Read More
+                  <i class="uil uil-arrow-right button__icon"></i>
+                </a>
+              </div>
+            </div>            
+
+          </div><!-- swiper wrapper -->
+
+          <!-- Add arrows -->
+          <div class="swiper-button-next">
+            <i class="uil uil-angle-right-b swiper-projects-icon"></i>
+          </div>
+          <div class="swiper-button-prev">
+            <i class="uil uil-angle-left-b swiper-projects-icon"></i>
+          </div>
+
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+
+        </div><!-- LIST OF PROJECTS CONTAINER -->
+
+
+      </div><!-- C Tab Content -->
+
+
+      <!-- VB Tab Content -->
+      <div class="plang__tab_content" id="vb-content">
+
+        <h2>VB.NET</h2>
+        <p>This is the VB.NET tab content.<br>Coming Soon...</p>
+
+      </div><!-- VB Tab Content -->
+
+
+    </div><!-- WHOLE Tab Content -->
+
+
 
 
   </section>
@@ -711,7 +982,7 @@
 
       <div class="contactinfo__container container">
         <div class="contactinfo__tabs">
-          
+
           <div class="contactinfo__button contact-button button--flex contactinfo__active" data-target="#basic">
             <i class="uil uil-envelope-info contactinfo__icon"> </i> Contact
           </div>
@@ -762,7 +1033,7 @@
           </div>
 
 
-          
+
           <!--==================== CONTACTINFO SOCIAL CONTENT====================-->
           <div class="contactinfo__content" data-content id="social">
 
@@ -783,8 +1054,8 @@
               <div>
                 <h3 class="contact__title">Instagram</h3>
                 <!--CLICKABLE LINK <a> -->
-                  <a href="" class="instagram_Link" target="_blank">
-                    <span class="contact__subtitle">emmanpbarrameda</span>
+                <a href="" class="instagram_Link" target="_blank">
+                  <span class="contact__subtitle">emmanpbarrameda</span>
                 </a>
               </div>
             </div>
@@ -794,8 +1065,8 @@
               <div>
                 <h3 class="contact__title">Github</h3>
                 <!--CLICKABLE LINK <a> -->
-                  <a href="" class="github_Link" target="_blank">
-                    <span class="contact__subtitle">emmanpbarrameda</span>
+                <a href="" class="github_Link" target="_blank">
+                  <span class="contact__subtitle">emmanpbarrameda</span>
                 </a>
               </div>
             </div>
@@ -805,8 +1076,8 @@
               <div>
                 <h3 class="contact__title">LinkedIn</h3>
                 <!--CLICKABLE LINK <a> -->
-                  <a href="" class="linkedin_Link" target="_blank">
-                    <span class="contact__subtitle">emmanpbarrameda</span>
+                <a href="" class="linkedin_Link" target="_blank">
+                  <span class="contact__subtitle">emmanpbarrameda</span>
                 </a>
               </div>
             </div>
@@ -816,8 +1087,8 @@
               <div>
                 <h3 class="contact__title">Telegram</h3>
                 <!--CLICKABLE LINK <a> -->
-                  <a href="" class="telegram_Link" target="_blank">
-                    <span class="contact__subtitle">emmanpbarrameda</span>
+                <a href="" class="telegram_Link" target="_blank">
+                  <span class="contact__subtitle">emmanpbarrameda</span>
                 </a>
               </div>
             </div>
@@ -827,8 +1098,8 @@
               <div>
                 <h3 class="contact__title">YouTube Channels</h3>
                 <!--CLICKABLE LINK <a> -->
-                  <a href="" class="youtube_Link" target="_blank">
-                    <span class="contact__subtitle">emmanpbarrameda</span>
+                <a href="" class="youtube_Link" target="_blank">
+                  <span class="contact__subtitle">emmanpbarrameda</span>
                 </a>
               </div>
             </div>
@@ -846,23 +1117,23 @@
             <label for="name" class="contact__label">Name</label>
             <input type="text" id="name" class="contact__input" placeholder=" " />
           </div>
-      
+
           <div class="contact__content">
             <label for="email" class="contact__label">Email</label>
             <input type="email" id="email" class="contact__input" placeholder=" " />
           </div>
         </div>
-        
+
         <div class="contact__content">
           <label for="project" class="contact__label">Project</label>
           <input type="text" id="project" class="contact__input" placeholder=" " />
         </div>
-      
+
         <div class="contact__content">
           <label for="message" class="contact__label">Message</label>
           <textarea id="message" name="message" cols="0" rows="5" class="contact__input" placeholder=" "></textarea>
         </div>
-      
+
         <!-- AVAILABILITY -->
         <!-- AVAILABILITY -->
         <div class="contact-availability__information">
@@ -882,7 +1153,7 @@
           </a>
         </div>
       </form>
-      
+
     </div>
 
 
@@ -913,16 +1184,16 @@
         </ul>
 
         <div class="footer__socials">
-        
+
           <a href="" target="_blank" class="footer__social basiccontact" title="Contact Information">
             <i class="uil uil-envelope-info"></i>
           </a>
-        
+
           <a href="" target="_blank" class="footer__social socialmedia" title="Social Media">
             <i class="uil uil-globe"></i>
           </a>
 
-        </div>        
+        </div>
       </div>
 
       <p class="footer__copy">Copyright © <year></year> emmanpbarrameda<br>All rights reserved.</p>
@@ -932,12 +1203,12 @@
   <!--==================== SCROLL TOP ====================-->
   <a href="#" class="scrollup" id="scroll-up" title="Scroll to Top">
     <i class="uil uil-arrow-up scrollup__icon"></i>
-  </a>  
+  </a>
 
   <!--==================== SCROLL DOWN ====================-->
   <a href="#about" class="scrolldown" id="scroll-down" title="Scroll to down">
     <i class="uil uil-arrow-down scrolldown__icon"></i>
-  </a>    
+  </a>
 
   <!--==================== SWIPER JS ====================-->
   <script src="assets/js/swiper-bundle.min.js"></script>
@@ -952,49 +1223,49 @@
 
     //LINKEDIN
     var linkedin_Var = document.getElementsByClassName('linkedin_Link');
-    Array.from(linkedin_Var).forEach(function(linkElement) {
+    Array.from(linkedin_Var).forEach(function (linkElement) {
       linkElement.href = 'https://www.linkedin.com/in/emmanpbarrameda/';
     });
 
     //GITHUB
     var github_Var = document.getElementsByClassName('github_Link');
-    Array.from(github_Var).forEach(function(linkElement) {
+    Array.from(github_Var).forEach(function (linkElement) {
       linkElement.href = 'https://github.com/emmanpbarrameda';
     });
 
     //TELEGRAM
     var telegram_Var = document.getElementsByClassName('telegram_Link');
-    Array.from(telegram_Var).forEach(function(linkElement) {
+    Array.from(telegram_Var).forEach(function (linkElement) {
       linkElement.href = 'https://t.me/emmanpbarrameda';
     });
 
     //FACEBOOK
     var facebook_Var = document.getElementsByClassName('facebook_Link');
-    Array.from(facebook_Var).forEach(function(linkElement) {
+    Array.from(facebook_Var).forEach(function (linkElement) {
       linkElement.href = 'https://facebook.com/emmanpbarrameda';
     });
 
     //INSTAGRAM
     var instagram_Var = document.getElementsByClassName('instagram_Link');
-    Array.from(instagram_Var).forEach(function(linkElement) {
+    Array.from(instagram_Var).forEach(function (linkElement) {
       linkElement.href = 'https://instagram.com/emmanpbarrameda';
     });
 
     //TWITTER
     var twitter_Var = document.getElementsByClassName('twitter_Link');
-    Array.from(twitter_Var).forEach(function(linkElement) {
+    Array.from(twitter_Var).forEach(function (linkElement) {
       linkElement.href = 'https://twitter.com/emmanpbarrameda';
     });
 
     //YOUTUBE
     var youtube_Var = document.getElementsByClassName('youtube_Link');
-    Array.from(youtube_Var).forEach(function(linkElement) {
+    Array.from(youtube_Var).forEach(function (linkElement) {
       linkElement.href = 'https://youtube.com/@emmanpbarrameda';
     });
 
     //EMAIL
     var email_Var = document.getElementsByClassName('email_Link');
-    Array.from(email_Var).forEach(function(linkElement) {
+    Array.from(email_Var).forEach(function (linkElement) {
       linkElement.href = 'mailto:emmanuelbarrameda1@gmail.com';
     });
 
@@ -1011,7 +1282,7 @@
 
       // Contact Info Button Auto click
       var divElement = document.querySelector('.social-button');
-      
+
       // Trigger a click event on the div
       if (divElement) {
         divElement.click();
@@ -1037,7 +1308,7 @@
 
       // Contact Info Button Auto click
       var divElement = document.querySelector('.contact-button');
-      
+
       // Trigger a click event on the div
       if (divElement) {
         divElement.click();

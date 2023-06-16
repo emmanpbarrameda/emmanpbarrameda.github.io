@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+    /* Add custom styles if needed */
+
+    .nav-tabs {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+    }
+
+    .nav-item {
+      margin: 0 10px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #000;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .nav-link i {
+      margin-right: 5px;
+    }
+
+    .nav-link.active {
+      color: #2196F3;
+      font-weight: bold;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Tab Buttons -->
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <button class="nav-link active" onclick="showTab('java-content', this)"><i class="material-icons">code</i>Java</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" onclick="showTab('cpp-content', this)"><i class="material-icons">code</i>C++</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" onclick="showTab('csharp-content', this)"><i class="material-icons">code</i>C#</button>
+    </li>
+  </ul>
+
+  <!-- Tab Content -->
+  <div id="tabContent">
+    <!-- Java Tab Content -->
+    <div class="tab-content active" id="java-content">
+      <h2>Java</h2>
+      <p>This is the Java tab content.</p>
+    </div>
+
+    <!-- C++ Tab Content -->
+    <div class="tab-content" id="cpp-content">
+      <h2>C++</h2>
+      <p>This is the C++ tab content.</p>
+    </div>
+
+    <!-- C# Tab Content -->
+    <div class="tab-content" id="csharp-content">
+      <h2>C#</h2>
+      <p>This is the C# tab content.</p>
+    </div>
+  </div>
+
+  <script>
+    function showTab(tabId, button) {
+      // Remove active class from all buttons
+      var buttons = document.getElementsByClassName('nav-link');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove('active');
+      }
+
+      // Add active class to the clicked button
+      button.classList.add('active');
+
+      // Hide all tab contents
+      var tabContents = document.getElementsByClassName('tab-content');
+      for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove('active');
+      }
+
+      // Show the selected tab content
+      var tab = document.getElementById(tabId);
+      tab.classList.add('active');
+    }
+  </script>
+</body>
+</html>

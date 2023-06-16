@@ -175,6 +175,9 @@ img {
   text-align: center;
 }
 
+
+
+
 /*==================== LAYOUT ====================*/
 
 .container {
@@ -437,6 +440,7 @@ header {
   padding: 1rem;
   border-radius: 0.5rem;
   font-weight: var(--font-medium);
+  font-family: var(--body-font);
 }
 
 .button:hover {
@@ -548,6 +552,57 @@ header {
   display: block;
   text-align: center;
 }
+
+
+
+/*==================== PROGRAMMING LANGUAGES TABS ====================*/
+
+
+.plang__tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--mb-2-5);
+}
+
+.plang__tabs_item {
+  margin: 0 10px;
+}
+
+.plang__button_link {
+  border: none;
+  background: transparent;
+
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+}
+
+.plang__button_link:hover {
+  color: var(--first-color);
+}
+
+.plang__button_link i {
+  font-size: 1.4rem;
+  margin-right: var(--mb-0-25);
+}
+
+.plang__button_link.active {
+  color: var(--first-color);
+  font-weight: bold;
+}
+
+.plang__tab_content {
+  display: none;
+}
+
+.plang__tab_content.active {
+  display: block;
+}
+
 
 
 
@@ -760,6 +815,8 @@ header {
   right: 1rem;
   font-size: 1.5rem;
   color: var(--first-color);
+  background: none;
+  border: none;
   cursor: pointer;
 }
 
@@ -1246,19 +1303,25 @@ header {
     grid-template-columns: 0.5fr;
   }
 
-  .services__icon {
-    font-size: 2rem;
+
+
+  .plang__tabs {
+    justify-content: center;
+    margin-bottom: var(--mb-3);
   }
-  .services__content {
-    padding: 6rem 0 2rem 2.5rem;
-  }
-  .services__modal-content {
-    width: 450px;
+  
+  .plang__tabs_item {
+    margin: 0 var(--mb-3);
   }
 
-  .services__title {
+  .plang__button_link {
     font-size: var(--h3-font-size);
   }
+  
+  .plang__button_link i {
+    font-size: 1.8rem;
+  }
+
 
   .project-invite__img {
     width: 320px;
@@ -1285,6 +1348,23 @@ header {
   .swiper > .swiper-pagination-bullets {
     bottom: -2rem;
   }
+
+
+  .services__icon {
+    font-size: 2rem;
+  }
+  .services__content {
+    padding: 6rem 0 2rem 2.5rem;
+  }
+  .services__modal-content {
+    width: 450px;
+  }
+
+  .services__title {
+    font-size: var(--h3-font-size);
+  }
+
+
   .footer__container {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1323,12 +1403,16 @@ header {
   .home__social {
     transform: translateX(-6rem);
   }
+
   .projects__content {
     column-gap: 5rem;
   }
   .projects__img {
     width: 350px;
   }
+  
+
+
   .swiper-projects-icon {
     font-size: 3.5rem;
   }
@@ -1341,6 +1425,7 @@ header {
   .swiper > .swiper-pagination-bullets {
     bottom: -4.5rem;
   }
+
   .contact__form {
     width: 460px;
   }
@@ -1348,3 +1433,7 @@ header {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+
+
+
