@@ -109,9 +109,11 @@ body.dark-theme {
   color: var(--title-color);
   margin-right: var(--mb-1);
   cursor: pointer;
+  transition: transform 0.3s, opacity 0.3s;
 }
 .change-theme:hover {
   color: var(--first-color);
+  transform: rotate(360deg);
 }
 
 /*==================== BASE ====================*/
@@ -150,6 +152,7 @@ a {
   text-decoration: none;
 }
 
+
 img {
   max-width: 100%;
   height: auto;
@@ -185,7 +188,6 @@ img {
 .section__subtitle {
   text-align: center;
 }
-
 
 
 
@@ -266,10 +268,14 @@ header {
   font-size: var(--small-font-size);
   color: var(--title-color);
   font-weight: var(--font-medium);
+  transition: transform 0.3s, opacity 0.3s;
 }
 
 .nav__link:hover {
   color: var(--first-color);
+  /*animation while hovering */
+  transform: scale(1.08);
+  opacity: 0.9;
 }
 
 .nav__icon {
@@ -316,9 +322,9 @@ header {
   align-items: center;
   width: 100%;
   height: 100%;
-  opacity: 1;
+  opacity: 0.9;
   background-color: var(--first-color);
-  backdrop-filter: blur(85px); /* Adjust the blur radius as needed */
+  backdrop-filter: blur(75px); /* Adjust the blur radius as needed */
   z-index: 101;
 }
 
@@ -515,10 +521,14 @@ header {
   border-radius: 0.5rem;
   font-weight: var(--font-medium);
   font-family: var(--body-font);
+  transition: transform 0.3s, opacity 0.3s;
 }
 
 .button:hover {
   background-color: var(--first-color-alt);
+  /*animation while hovering */
+  transform: scale(1.05);
+  opacity: 0.9;
 }
 
 .button__icon {
@@ -534,6 +544,7 @@ header {
 
 .button--white:hover {
   background-color: #fff;
+  box-shadow: 0 0 10px #fff;
 }
 
 .button--flex {
@@ -610,6 +621,11 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.skills__container-box:hover {
+  transform: scale(1.2);
+  opacity: 0.9;
 }
 
 .skills__container-img {
@@ -618,112 +634,13 @@ header {
 }
 
 .skills__container-img:hover {
-  transform: rotate(25deg);
+  transform: scale(1.1); /* Increase the size by 10% */
 }
 
 .skills__container-name {
   font-size: var(--smaller-font-size);
   display: block;
   text-align: center;
-}
-
-
-
-/*==================== PROGRAMMING LANGUAGES TABS ====================*/
-
-
-.plang__tabs {
-  display: flex;
-  justify-content: center;
-  margin-bottom: var(--mb-2-5);
-}
-
-.plang__tabs_item {
-  margin: 0 10px;
-}
-
-.plang__button_link {
-  border: none;
-  background: transparent;
-
-  font-size: var(--h3-font-size);
-  font-weight: var(--font-medium);
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--text-color);
-}
-
-.plang__button_link:hover {
-  color: var(--first-color);
-}
-
-.plang__button_link i {
-  font-size: 1.4rem;
-  margin-right: var(--mb-0-25);
-}
-
-.plang__button_link.active {
-  color: var(--first-color);
-  font-weight: bold;
-}
-
-.plang__tab_content {
-  display: none;
-}
-
-.plang__tab_content.active {
-  display: block;
-}
-
-
-
-
-
-/*==================== CONTACT INFO TAB ====================*/
-
-
-.contactinfo__tabs {
-  display: flex;
-  justify-content: space-evenly;
-  margin-bottom: var(--mb-2);
-}
-
-.contactinfo__icon {
-  font-size: 1.8rem;
-  margin-right: var(--mb-0-25);
-}
-
-.contactinfo__button {
-  font-size: var(--h3-font-size);
-  font-weight: var(--font-medium);
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.contactinfo__button:hover {
-  color: var(--first-color);
-}
-
-.contactinfo [data-content] {
-  display: none;
-}
-
-.contactinfo__active[data-content] {
-  display: block;
-}
-
-.contactinfo__button.contactinfo__active {
-  color: var(--first-color);
-}
-
-.contactinfo__data {
-  display: grid;
-  grid-template-columns: 1fr max-content 1fr;
-  column-gap: 1.5rem;
 }
 
 
@@ -839,11 +756,23 @@ header {
 .services__button {
   cursor: pointer;
   font-size: var(--small-font-size);
+  transition: transform 0.3s, opacity 0.3s;
 }
 
 .services__button:hover .button__icon {
+  transform: translateX(0.30rem);
+}
+
+/*affect other elements when one element is hovered*/
+.services__content:hover .services__button .button__icon {
   transform: translateX(0.25rem);
 }
+
+.services__content:hover .services__button {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
 
 .services__modal {
   position: fixed;
@@ -970,7 +899,66 @@ header {
 .swiper-pagination-bullet {
   outline: none;
 }
-/*==================== PROJECT IN MIND ====================*/
+
+
+/*==================== PROGRAMMING LANGUAGES TABS ====================*/
+
+.plang__tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--mb-2-5);
+}
+
+.plang__tabs_item {
+  margin: 0 10px;
+}
+
+.plang__button_link {
+  border: none;
+  background: transparent;
+
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.plang__button_link:hover {
+  color: var(--first-color);
+  /*animation while hovering */
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.plang__button_link i {
+  font-size: 1.4rem;
+  margin-right: var(--mb-0-25);
+}
+
+.plang__button_link.active {
+  color: var(--first-color);
+  font-weight: bold;
+}
+
+.plang__tab_content {
+  display: none;
+}
+
+.plang__tab_content.active {
+  display: block;
+}
+
+/*affect other elements when one element is hovered*/
+.projects__container:hover .projects__button .button__icon {
+  transform: translateX(0.30rem);
+}
+
+
+/*==================== PROJECT INVITE ====================*/
 
 .project {
   text-align: center;
@@ -995,7 +983,59 @@ header {
   justify-self: center;
 }
 
+
 /*==================== TESTIMONIAL ====================*/
+
+
+/*==================== CONTACT INFO TAB ====================*/
+
+
+.contactinfo__tabs {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: var(--mb-2);
+}
+
+.contactinfo__icon {
+  font-size: 1.8rem;
+  margin-right: var(--mb-0-25);
+}
+
+.contactinfo__button {
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.contactinfo__button:hover {
+  color: var(--first-color);
+  /*animation while hovering */
+  transform: scale(1.05);
+  opacity: 0.9;  
+}
+
+.contactinfo [data-content] {
+  display: none;
+}
+
+.contactinfo__active[data-content] {
+  display: block;
+}
+
+.contactinfo__button.contactinfo__active {
+  color: var(--first-color);
+}
+
+.contactinfo__data {
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  column-gap: 1.5rem;
+}
+
 
 /*==================== CONTACT ME ====================*/
 
@@ -1097,9 +1137,17 @@ header {
   flex-direction: column;
   row-gap: 1.5rem;
 }
+
+.footer__link {
+  transition: transform 0.3s, opacity 0.3s;
+}
 .footer__link:hover {
   color: var(--first-color-lighter);
+  /*animation while hovering */
+  transform: scale(1.05);
+  opacity: 0.9;  
 }
+
 .footer__social {
   font-size: 1.25rem;
   margin-right: var(--mb-1-5);
@@ -1132,9 +1180,11 @@ header {
   border-radius: 0.4rem;
   z-index: var(--z-tooltip);
   transform: 1s;
+  transition: transform 0.3s, opacity 0.3s;
 }
 .scrollup:hover {
   background-color: var(--first-color-alt);
+  transform: translateY(-0.25rem);
 }
 .scrollup__icon {
   font-size: 1.5rem;
@@ -1160,9 +1210,11 @@ header {
   border-radius: 0.4rem;
   z-index: var(--z-tooltip);
   transform: 1s;
+  transition: transform 0.3s, opacity 0.3s;
 }
 .scrolldown:hover {
   background-color: var(--first-color-alt);
+  transform: translateY(0.25rem);
 }
 .scrolldown__icon {
   font-size: 1.5rem;

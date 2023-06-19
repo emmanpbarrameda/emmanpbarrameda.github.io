@@ -503,7 +503,7 @@
         <div class="services__modal">
           <div class="services__modal-content">
             <h4 class="services__modal-title">Desktop Application Development</h4>
-            <button class="services__modal-close" onclick="closeModal()">&times;</button>
+            <i class="uil uil-times services__modal-close"></i>
             <ul class="services__modal-services grid">
 
               <li class="services__modal-service">
@@ -1335,11 +1335,14 @@
 
 
 
+
+
   <!-- ===================== SHOW/HIDE LOADER ==================== -->
   <script>
 
     window.onload = function () {
-      document.getElementById("loading").style.display = "none";
+      var loadingElement = document.getElementById("loading");
+      loadingElement.style.display = "none";
 
       // Contact Info Button Auto click
       var divElement = document.querySelector('.contact-button');
