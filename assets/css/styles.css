@@ -316,9 +316,9 @@ header {
   align-items: center;
   width: 100%;
   height: 100%;
-  opacity: 0.9;
+  opacity: 1;
   background-color: var(--first-color);
-  backdrop-filter: blur(75px); /* Adjust the blur radius as needed */
+  backdrop-filter: blur(85px); /* Adjust the blur radius as needed */
   z-index: 101;
 }
 
