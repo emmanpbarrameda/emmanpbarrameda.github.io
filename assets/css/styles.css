@@ -443,6 +443,12 @@ header {
 .home__blob {
   width: 200px;
   fill: var(--first-color);
+  transition: transform 0.3s, opacity 0.3s;
+}
+.home__blob:hover {
+  /*animation while hovering */
+  transform: scale(1.05);
+  opacity: 0.9;
 }
 
 .home__blob-img {
@@ -574,6 +580,12 @@ header {
   border-radius: 0.5rem;
   justify-self: center;
   align-self:normal;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.about__img:hover {
+  /*animation while hovering */
+  transform: scale(1.03);
+  opacity: 0.9
 }
 
 .about__description {
@@ -853,6 +865,12 @@ header {
   width: 265px;
   border-radius: 0.5rem;
   justify-self: center;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.projects__img:hover {
+  /*animation while hovering */
+  transform: scale(1.03);
+  opacity: 0.9
 }
 
 .projects__title {
@@ -955,6 +973,13 @@ header {
 /*affect other elements when one element is hovered*/
 .projects__container:hover .projects__button .button__icon {
   transform: translateX(0.30rem);
+}
+
+/*affect other elements when one element is hovered*/
+.projects__container:hover .projects__img {
+  /*animation while hovering */
+  transform: scale(1.03);
+  opacity: 0.9;
 }
 
 
