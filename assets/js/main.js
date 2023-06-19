@@ -38,7 +38,6 @@ work();
 
 
 
-
 /*==================== MENU SHOW Y HIDDEN ====================*/
 const navMenu = document.getElementById("nav-menu"),
   navToggle = document.getElementById("nav-toggle"),
@@ -433,7 +432,6 @@ window.addEventListener("scroll", scrollActive);
 
 
 /*==================== ANIMATION WHILE SCROLLING ON WHOLE SITE ====================*/
-
 
 function scrollActive() {
   const scrollY = window.pageYOffset;
