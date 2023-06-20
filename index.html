@@ -56,10 +56,11 @@
   <!--==================== MATERIAL ICONS ====================-->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-
+  
 </head>
 
 <body>
+
   <!-- ===================== LOADER ==================== -->
   <div id="loading">
     <div class="loader">
@@ -73,7 +74,6 @@
       </div>
     </div>
   </div>  
-
 
   <!--==================== HEADER ====================-->
   <header class="header" id="header">
@@ -136,6 +136,7 @@
   <!--==================== MAIN ====================-->
 
   <main class="main">
+    
     <!--==================== HOME ====================-->
     <section class="home section" id="home">
       <div class="home__container container grid">
@@ -193,8 +194,23 @@
             <i class="uil uil-arrow-down home__scroll-arrow"></i>
           </a>
         </div>
-      </div>
+      </div>   
+
+      <div class="circle_bubble__anim">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div> 
+
     </section>
+    
   </main>
 
   <!--==================== ABOUT ====================-->
@@ -589,32 +605,44 @@
   </section>
 
 
+
+
+
+
   <!--==================== PROJECTS ====================-->
+
+
 
   <section class="projects section" id="projects">
     <h2 class="section__title">Projects</h2>
     <span class="section__subtitle">Most recent work</span>
 
-
     <!-- Tab Buttons -->
     <ul class="plang__tabs">
       <li class="plang__tabs_item">
-        <button type="button" class="plang__button_link active" onclick="showTab('java-content', this)"><i class="material-icons">code</i>Java</button>
+        <button type="button" class="plang__button_link active" onclick="showTab('java-content', this); changeBackgroundImage('assets/img/skills/java.svg')">
+          <i class="material-icons">code</i>Java
       </li>
       <li class="plang__tabs_item">
-        <button type="button" class="plang__button_link" onclick="showTab('cpp-content', this)"><i class="material-icons">code</i>C++</button>
+        <button type="button" class="plang__button_link" onclick="showTab('cpp-content', this); changeBackgroundImage('assets/img/skills/c++.svg')">
+          <i class="material-icons">code</i>C++</button>
       </li>
       <li class="plang__tabs_item">
-        <button type="button" class="plang__button_link" onclick="showTab('c-content', this)"><i class="material-icons">code</i>C</button>
+        <button type="button" class="plang__button_link" onclick="showTab('c-content', this); changeBackgroundImage('assets/img/skills/c.svg')"><i
+            class="material-icons">code</i>C</button>
       </li>
       <li class="plang__tabs_item">
-        <button type="button" class="plang__button_link" onclick="showTab('vb-content', this)"><i class="material-icons">code</i>VB</button>
-      </li>      
+        <button type="button" class="plang__button_link" onclick="showTab('vb-content', this); changeBackgroundImage('assets/img/skills/vb.net.svg')"><i
+            class="material-icons">code</i>VB</button>
+      </li>
     </ul>
-
 
     <!-- WHOLE Tab Content -->
     <div id="plang__tabContent">
+
+      <img class="projects__background" src="/assets/img/skills/java.svg" alt="Background Image">
+
+
       <!-- Java Tab Content -->
       <div class="plang__tab_content active" id="java-content">
 
@@ -662,7 +690,7 @@
                   <i class="uil uil-arrow-right button__icon"></i>
                 </a>
               </div>
-            </div>            
+            </div>
 
 
             <!--==================== PROJECT 3 ====================-->
@@ -681,7 +709,7 @@
                   <i class="uil uil-arrow-right button__icon"></i>
                 </a>
               </div>
-            </div>            
+            </div>
 
 
             <!--==================== PROJECT 4 ====================-->
@@ -771,8 +799,8 @@
                   <i class="uil uil-arrow-right button__icon"></i>
                 </a>
               </div>
-            </div> 
-            
+            </div>
+
 
             <!--==================== PROJECT 2 ====================-->
             <div class="projects__content grid swiper-slide">
@@ -790,7 +818,7 @@
                   <i class="uil uil-arrow-right button__icon"></i>
                 </a>
               </div>
-            </div>  
+            </div>
 
 
             <!--==================== PROJECT 3 ====================-->
@@ -810,8 +838,8 @@
                 </a>
               </div>
             </div>
-            
-            
+
+
             <!--==================== PROJECT 4 ====================-->
             <div class="projects__content grid swiper-slide">
               <img
@@ -828,9 +856,9 @@
                   <i class="uil uil-arrow-right button__icon"></i>
                 </a>
               </div>
-            </div>     
-            
-            
+            </div>
+
+
             <!--==================== PROJECT 5 ====================-->
             <div class="projects__content grid swiper-slide">
               <img
@@ -847,7 +875,7 @@
                   <i class="uil uil-arrow-right button__icon"></i>
                 </a>
               </div>
-            </div>               
+            </div>
 
 
           </div><!-- swiper wrapper -->
@@ -911,13 +939,13 @@
                 <p class="projects__description">
                   Console Based Calculator for Meters to KM and Hours to Seconds created using C Language.
                 </p>
-                <a href="https://github.com/emmanpbarrameda/MetersToKM_HoursToSeconds-Calculator_C-Language" target="_blank"
-                  class="button button--flex button--small projects__button">
+                <a href="https://github.com/emmanpbarrameda/MetersToKM_HoursToSeconds-Calculator_C-Language"
+                  target="_blank" class="button button--flex button--small projects__button">
                   Read More
                   <i class="uil uil-arrow-right button__icon"></i>
                 </a>
               </div>
-            </div>            
+            </div>
 
           </div><!-- swiper wrapper -->
 
@@ -1173,6 +1201,7 @@
   <!--==================== FOOTER ====================-->
 
   <footer class="footer">
+    
     <div class="footer__bg">
       <div class="footer__container container grid">
         <div>
@@ -1207,6 +1236,7 @@
 
       <p class="footer__copy">Copyright © <year></year> emmanpbarrameda<br>All rights reserved.</p>
     </div>
+
   </footer>
 
   <!--==================== SCROLL TOP ====================-->

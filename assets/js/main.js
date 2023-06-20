@@ -37,11 +37,6 @@ work();
 
 
 
-
-
-
-
-
 /*==================== MENU SHOW Y HIDDEN ====================*/
 const navMenu = document.getElementById("nav-menu"),
   navToggle = document.getElementById("nav-toggle"),
@@ -320,6 +315,15 @@ function showTab(tabId, button) {
 }
 
 
+function changeBackgroundImage(imageSrc) {
+  var projectsBackground = document.querySelector('.projects__background');
+  projectsBackground.src = imageSrc;
+  console.log(imageSrc);
+}
+
+
+
+
 
 
 
@@ -436,6 +440,7 @@ window.addEventListener("scroll", scrollActive);
 
 
 /*==================== ANIMATION WHILE SCROLLING ON WHOLE SITE ====================*/
+
 
 function scrollActive() {
   const scrollY = window.pageYOffset;
