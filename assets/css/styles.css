@@ -69,7 +69,7 @@
   /*========== z index ==========*/
   --z-tooltip: 10;
   --z-fixed: 100;
-  --z-modal: 100;
+  --z-modal: 200;
 }
 
 /* Font size for large devices */
@@ -181,7 +181,7 @@ img {
 }
 
 .section {
-  padding: 2rem 0 4rem;
+  padding: 4rem 0 6rem;
 }
 
 .section__title {
@@ -887,25 +887,12 @@ header {
 
 .projects__background {
   position: absolute;
-  top: 0%;
+  top: 10%;
   right: 8%;
-  width: 45%; /* Adjust the width as desired */
+  width: 35%; /* Adjust the width as desired */
   opacity: 0.05; /* Adjust the opacity value as desired */
   z-index: -1;
 }
-
-/* Media query for devices with a maximum width of 768px */
-@media (max-width: 768px) {
-  .projects__background {
-    width: 100%; /* Adjust the width as desired */
-    transform: translate(28%, -25%) scale(0.6); /* Adjust the translation and scale values for smaller screens */
-
-  }
-}
-
-
-
-
 
 .projects__container {
   overflow: initial;
@@ -1403,12 +1390,25 @@ header {
     width: 150px;
   }
 
+  .projects__background {
+    top: 3%;
+    right: 0%;
+    width: 90%; /* Adjust the width as desired */
+  }  
+
 }
 
 @media screen and (min-width: 351px) {
   .loader {
     font-size: 13vh;
   }
+
+  .projects__background {
+    top: 0%;
+    right: 0%;
+    width: 100%; /* Adjust the width as desired */
+  }
+
 }
 
 /* For medium devices TABLET */
@@ -1444,6 +1444,12 @@ header {
     justify-content: center;
   }
 
+  .projects__background {
+    top: 15%;
+    right: 0%;
+    width: 50%; /* Adjust the width as desired */
+  }     
+
   .contactinfo__sections {
     display: grid;
     grid-template-columns: 0.6fr;
@@ -1471,7 +1477,7 @@ header {
   }
 
   .section {
-    padding: 6rem 0 2rem;
+    padding: 10rem 0 6rem;
   }
 
   .section__subtitle {
@@ -1631,6 +1637,13 @@ header {
   }
 
 
+  .projects__background {
+    top: 15%;
+    right: 0%;
+    width: 50%; /* Adjust the width as desired */
+  }   
+
+
   .services__icon {
     font-size: 2rem;
   }
@@ -1703,6 +1716,14 @@ header {
     width: 350px;
   }
 
+  .projects__background {
+    position: absolute;
+    top: 10%;
+    right: 8%;
+    width: 35%; /* Adjust the width as desired */
+    opacity: 0.05; /* Adjust the opacity value as desired */
+    z-index: -1;
+  }  
 
 
   .swiper-projects-icon {
@@ -1729,6 +1750,10 @@ header {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+
+
+
 
 
 

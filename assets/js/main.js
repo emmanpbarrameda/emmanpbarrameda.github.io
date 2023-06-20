@@ -441,7 +441,7 @@ window.addEventListener("scroll", scrollActive);
 
 /*==================== ANIMATION WHILE SCROLLING ON WHOLE SITE ====================*/
 
-
+/*
 function scrollActive() {
   const scrollY = window.pageYOffset;
 
