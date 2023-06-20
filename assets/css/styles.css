@@ -323,6 +323,9 @@ header {
   box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
 }
 
+
+
+
 /*===================== LOADER ====================*/
 
 #loading {
@@ -334,7 +337,7 @@ header {
   height: 100%;
   opacity: 0.9;
   background-color: var(--first-color);
-  backdrop-filter: blur(75px);
+  backdrop-filter: blur(85px);
   /* Adjust the blur radius as needed */
   z-index: 101;
 }
@@ -432,6 +435,60 @@ header {
   to {
     transform: scale(0.9);
     opacity: 0.6;
+  }
+}
+
+
+
+/*===================== SCROLLING ANIMATION ====================*/
+
+
+.reveal {
+  position: relative;
+  opacity: 0;
+}
+
+.reveal.active {
+  opacity: 1;
+}
+.active.fade-bottom {
+  animation: fade-bottom 0.8s linear;
+}
+.active.fade-left {
+  animation: fade-left 0.4s ease-in;
+}
+.active.fade-right {
+  animation: fade-right 0.5s ease-in;
+}
+@keyframes fade-bottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-left {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-right {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 

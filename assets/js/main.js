@@ -315,11 +315,33 @@ function showTab(tabId, button) {
 }
 
 
+/*==================== projects__background LANGUAGE ====================*/
+
 function changeBackgroundImage(imageSrc) {
   var projectsBackground = document.querySelector('.projects__background');
+
+  // Apply a fade-out animation using animate.css
+  projectsBackground.classList.add('animate__animated', 'animate__fadeOut');
+
+  // Set the new image source
   projectsBackground.src = imageSrc;
+
+  // Remove the fade-out animation class and apply the fade-in animation class
+  setTimeout(function() {
+    projectsBackground.classList.remove('animate__fadeOut');
+    projectsBackground.classList.add('animate__fadeIn');
+  }, 500); // Adjust the delay as needed
+
+  // Set the opacity of the image
+  projectsBackground.style.opacity = '0.8';
+
+  // Image SRC Opacity
+  projectsBackground.style.filter = 'opacity(0.05)';
+
   console.log(imageSrc);
 }
+
+
 
 
 
@@ -441,53 +463,23 @@ window.addEventListener("scroll", scrollActive);
 
 /*==================== ANIMATION WHILE SCROLLING ON WHOLE SITE ====================*/
 
-/*
-function scrollActive() {
-  const scrollY = window.pageYOffset;
+function reveal() {
+  var reveals = document.querySelectorAll(".reveal");
 
-  sections.forEach((current) => {
-    const sectionHeight = current.offsetHeight;
-    const sectionTop = current.offsetTop - 50;
-    sectionId = current.getAttribute("id");
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementVisible = 150;
 
-    const link = document.querySelector(".nav__menu a[href*=" + sectionId + "]");
-    const section = document.querySelector("#" + sectionId);
-
-    if (sectionId === "home") {
-      if (scrollY <= sectionHeight) {
-        link.classList.add("active-link", "animate__animated", "animate__fadeIn");
-        section.classList.add("animate__animated", "animate__fadeIn");
-        section.style.visibility = "visible";
-      } else {
-        link.classList.remove("active-link", "animate__animated", "animate__fadeIn");
-        section.classList.remove("animate__animated", "animate__fadeIn");
-        section.style.visibility = "hidden";
-      }
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
     } else {
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        if (!link.classList.contains("active-link")) {
-          link.classList.add("active-link", "animate__animated", "animate__fadeIn");
-          section.classList.add("animate__animated", "animate__fadeIn");
-          section.style.visibility = "visible";
-        }
-      } else {
-        if (link.classList.contains("active-link")) {
-          link.classList.remove("active-link", "animate__animated", "animate__fadeIn");
-          section.classList.remove("animate__animated", "animate__fadeIn");
-        } else {
-          section.style.visibility = "hidden";
-        }
-      }
-
-      if (scrollY > sectionTop - sectionHeight && scrollY <= sectionTop) {
-        section.style.visibility = "visible";
-      }
+      reveals[i].classList.remove("active");
     }
-  });
+  }
 }
 
-window.addEventListener("scroll", scrollActive);
-
+window.addEventListener("scroll", reveal);
 
 
 

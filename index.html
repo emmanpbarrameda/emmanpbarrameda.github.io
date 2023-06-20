@@ -215,7 +215,7 @@
 
   <!--==================== ABOUT ====================-->
 
-  <section class="about section" id="about">
+  <section class="about section reveal fade-bottom" id="about">
     <h2 class="section__title">About Me</h2>
     <span class="section__subtitle">My Introduction</span>
 
@@ -272,7 +272,7 @@
 
   <!--==================== SKILLS ====================-->
 
-  <section class="skills section" id="skills">
+  <section class="skills section reveal fade-bottom" id="skills">
     <h2 class="section__title">Skills</h2>
     <span class="section__subtitle">My tech stack</span>
     <div class="skills__container container grid">
@@ -495,7 +495,7 @@
 
   <!--==================== SERVICES ====================-->
 
-  <section class="services section" id="services">
+  <section class="services section reveal fade-bottom" id="services">
     <h2 class="section__title">Services</h2>
     <span class="section__subtitle">What I offer</span>
 
@@ -613,9 +613,9 @@
 
 
 
-  <section class="projects section" id="projects">
+  <section class="projects section reveal fade-bottom" id="projects">
     <h2 class="section__title">Projects</h2>
-    <span class="section__subtitle">Most recent work</span>
+    <span class="section__subtitle">Some Things I've Built</span>
 
     <!-- Tab Buttons -->
     <ul class="plang__tabs">
@@ -966,11 +966,52 @@
       </div><!-- C Tab Content -->
 
 
+
+
+
+
       <!-- VB Tab Content -->
       <div class="plang__tab_content" id="vb-content">
 
-        <h2>VB.NET</h2>
-        <p>This is the VB.NET tab content.<br>Coming Soon...</p>
+        <!-- LIST OF PROJECTS CONTAINER -->
+        <div class="projects__container container swiper">
+
+          <!-- swiper wrapper -->
+          <div class="swiper-wrapper">
+
+
+            <!--==================== PROJECT 1 ====================-->
+            <div class="projects__content grid swiper-slide">
+              <img
+                src="https://pimages.toolbox.com/wp-content/uploads/2023/04/28084947/shutterstock_1918195625.jpg"
+                alt="Preview" class="projects__img" />
+              <div class="projects__data">
+                <h3 class="projects__title">Visual Basic</h3>
+                <p class="projects__description">
+                  Projects on Visual Basic, Coming Soon...
+                </p>
+                <a href="#projects" target="_blank"
+                  class="button button--flex button--small projects__button">
+                  Read More
+                  <i class="uil uil-arrow-right button__icon"></i>
+                </a>
+              </div>
+            </div>
+
+          </div><!-- swiper wrapper -->
+
+          <!-- Add arrows -->
+          <div class="swiper-button-next">
+            <i class="uil uil-angle-right-b swiper-projects-icon"></i>
+          </div>
+          <div class="swiper-button-prev">
+            <i class="uil uil-angle-left-b swiper-projects-icon"></i>
+          </div>
+
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+
+        </div><!-- LIST OF PROJECTS CONTAINER -->
 
       </div><!-- VB Tab Content -->
 
@@ -986,7 +1027,7 @@
 
   <section class="project-invite section">
     <div class="project-invite__bg">
-      <div class="project-invite__container container grid">
+      <div class="project-invite__container container grid reveal fade-bottom">
         <div class="project-invite__data">
           <h2 class="project-invite__title">Empower Your Projects</h2>
           <p class="project-invite__description">
@@ -1007,7 +1048,7 @@
 
   <!--==================== CONTACT ME ====================-->
 
-  <section class="contact section" id="contact">
+  <section class="contact section reveal fade-bottom" id="contact">
     <h2 class="section__title">Contact Me</h2>
     <span class="section__subtitle">Get in touch</span>
 
@@ -1147,7 +1188,7 @@
       </div>
 
 
-      <form action="" class="contact__form grid">
+      <form action="" class="contact__form grid reveal fade-bottom">
         <!-- FORMS BELOW -->
         <div class="contact__inputs grid">
           <div class="contact__content">
