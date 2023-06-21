@@ -18,7 +18,7 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="">
+  <meta name="twitter:title" content="emmanpbarrameda - Portfolio">
   <meta name="twitter:description" content="Portfolio website of Emmanuel P. Barrameda.">
   <meta name="twitter:image" content="https://i.imgur.com/ceRkZe6.png">
   <meta name="twitter:url" content="https://emmanpbarrameda.github.io/">
@@ -26,19 +26,19 @@
   <!-- Discord -->
   <meta property="twitter:site" content="@emmanpbarrameda">
   <meta property="twitter:creator" content="@emmanpbarrameda">
-  <meta property="twitter:title" content="">
+  <meta property="twitter:title" content="emmanpbarrameda - Portfolio">
   <meta property="twitter:description" content="Portfolio website of Emmanuel P. Barrameda.">
   <meta property="twitter:image" content="https://i.imgur.com/ceRkZe6.png">
 
   <!-- Google -->
-  <meta itemprop="name" content="">
+  <meta itemprop="name" content="emmanpbarrameda - Portfolio">
   <meta itemprop="description" content="Portfolio website of Emmanuel P. Barrameda.">
   <meta itemprop="image" content="https://i.imgur.com/ceRkZe6.png">
 
 
   <script>
     // Change the content of the meta tag
-    var portfolioTitle = document.getElementById('portfolioTitle');
+    var portfolioTitle = document.querySelector('meta[property="og:title"]');
     if (portfolioTitle) {
       portfolioTitle.setAttribute('content', 'Emman Title');
       console.log("Meta tag updated successfully");
@@ -46,7 +46,7 @@
       console.log("Meta tag not found");
     }
   </script>
-  
+
 
   <!-- Pinterest -->
   <!-- Add Pinterest specific meta tags if needed -->
