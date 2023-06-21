@@ -336,7 +336,7 @@ function changeBackgroundImage(imageSrc) {
   projectsBackground.style.opacity = '0.8';
 
   // Image SRC Opacity
-  projectsBackground.style.filter = 'opacity(0.05)';
+  projectsBackground.style.filter = 'opacity(0.06)';
 
   console.log(imageSrc);
 }
