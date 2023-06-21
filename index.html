@@ -10,36 +10,61 @@
 
   <!--==================== OPEN GRAPH META TAGS (FOR SOCIAL MEDIA PREVIEW) ===================== -->
   <!-- Facebook -->
-  <meta property="og:title" content="Emmanuel P. Barrameda - Portfolio">
-  <meta property="og:description" content="Portfolio website of Emmanuel P. Barrameda.">
-  <meta property="og:image" content="https://i.imgur.com/ceRkZe6.png">
-  <meta property="og:url" content="https://emmanpbarrameda.github.io/">
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="">
+  <meta property="og:url" content="">
   <meta property="og:type" content="website">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Emmanuel P. Barrameda - Portfolio">
-  <meta name="twitter:description" content="Portfolio website of Emmanuel P. Barrameda.">
-  <meta name="twitter:image" content="https://i.imgur.com/ceRkZe6.png">
+  <meta name="twitter:title" content="">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:image" content="">
   <meta name="twitter:url" content="https://emmanpbarrameda.github.io/">
 
   <!-- Discord -->
   <meta property="twitter:site" content="@emmanpbarrameda">
   <meta property="twitter:creator" content="@emmanpbarrameda">
-  <meta property="twitter:title" content="Emmanuel P. Barrameda - Portfolio">
-  <meta property="twitter:description" content="Portfolio website of Emmanuel P. Barrameda.">
-  <meta property="twitter:image" content="https://i.imgur.com/ceRkZe6.png">
+  <meta property="twitter:title" content="">
+  <meta property="twitter:description" content="">
+  <meta property="twitter:image" content="">
 
   <!-- Google -->
-  <meta itemprop="name" content="Emmanuel P. Barrameda - Portfolio">
-  <meta itemprop="description" content="Portfolio website of Emmanuel P. Barrameda.">
-  <meta itemprop="image" content="https://i.imgur.com/ceRkZe6.png">
+  <meta itemprop="name" content="">
+  <meta itemprop="description" content="">
+  <meta itemprop="image" content="">
 
   <!-- Pinterest -->
   <!-- Add Pinterest specific meta tags if needed -->
 
   <!-- Other Website -->
   <!-- Add specific meta tags for other websites if needed -->
+
+
+  <script>
+    // Update meta tag content using JavaScript
+    var pageTitle = "emmanpbarrameda - Portfolio";
+    var pageDescription = "Portfolio website of Emmanuel P. Barrameda.";
+    var imageURL = "https://i.imgur.com/ceRkZe6.png";
+    var websiteURL = "https://emmanpbarrameda.github.io/";
+
+    document.querySelector('title').textContent = pageTitle;
+    document.querySelector('meta[property="og:title"]').content = pageTitle;
+    document.querySelector('meta[name="twitter:title"]').content = pageTitle;
+    document.querySelector('meta[itemprop="name"]').content = pageTitle;
+
+    document.querySelector('meta[property="og:description"]').content = pageDescription;
+    document.querySelector('meta[name="twitter:description"]').content = pageDescription;
+    document.querySelector('meta[itemprop="description"]').content = pageDescription;
+
+    document.querySelector('meta[property="og:image"]').content = imageURL;
+    document.querySelector('meta[name="twitter:image"]').content = imageURL;
+    document.querySelector('meta[itemprop="image"]').content = imageURL;
+
+    document.querySelector('meta[property="og:url"]').content = websiteURL;
+    document.querySelector('meta[name="twitter:url"]').content = websiteURL;
+  </script>
 
 
   <!--==================== UNICONS ====================-->
