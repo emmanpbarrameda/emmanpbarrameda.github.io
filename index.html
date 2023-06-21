@@ -1398,9 +1398,13 @@
 
   <script>
     // Change the content of the meta tag
-    var portfolioTitle = document.querySelector('meta[name="portfolioTitle"]');
-    portfolioTitle.setAttribute('content', 'Emman Title');
-    console.log("meta tag");
+    var portfolioTitle = document.getElementById('portfolioTitle');
+    if (portfolioTitle) {
+      portfolioTitle.setAttribute('content', 'Emman Title');
+      console.log("Meta tag updated successfully");
+    } else {
+      console.log("Meta tag not found");
+    }
   </script>
 
 
