@@ -58,6 +58,7 @@
   --font-bold: 800;
   /*========== Margines ==========*/
   /* .25rem = 4px, .5rem = 8px, .75rem = 12px ... */
+  --mb-0: 0rem;  
   --mb-0-25: 0.25rem;
   --mb-0-5: 0.5rem;
   --mb-0-75: 0.75rem;
@@ -1004,7 +1005,7 @@ header {
 }
 
 .swiper>.swiper-pagination-bullets {
-  bottom: 0.5rem;
+  bottom: -2.5rem;
 }
 
 .swiper-pagination-bullet-active {
@@ -1217,6 +1218,7 @@ header {
   border: none;
   outline: none;
   padding: 0.25rem 0.5rem 0.5rem 0;
+  resize: none; /* enable and disable resizing */
 }
 
 /*==================== CONTACT AVAILABILITY ====================*/
@@ -1316,6 +1318,26 @@ header {
   color: #fff;
 }
 
+
+.footer__logo_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.footer__logo_container:hover {
+  /*animation while hovering */
+  transform: scale(1.09);
+  opacity: 0.9;
+}
+
+
+.footer__logo_image {
+  width: 75%; /* Adjust the width as desired */
+}
+
+
 /*========== SCROLL UP ==========*/
 
 .scrollup {
@@ -1398,7 +1420,8 @@ header {
 
 /*==================== MEDIA QUERIES ====================*/
 
-/* For small devices, Cellphones */
+
+/*=== FOR SMALL DEVICES, CELLPHONES | 350px below ===*/
 
 @media screen and (max-width: 350px) {
   .loader {
@@ -1451,9 +1474,22 @@ header {
     top: 3%;
     right: 0%;
     width: 90%; /* Adjust the width as desired */
+  }    
+
+
+  .footer__logo_image {
+    width: 60%; /* Adjust the width as desired */
   }  
 
+  .footer__logo_container {
+    margin-top: var(--mb-2);
+  }   
+
 }
+
+
+
+/*=== FOR MODERN PHONES | 351px above ===*/
 
 @media screen and (min-width: 351px) {
   .loader {
@@ -1466,9 +1502,18 @@ header {
     width: 100%; /* Adjust the width as desired */
   }
 
+  .footer__logo_image {
+    width: 70%; /* Adjust the width as desired */
+  }  
+
+  .footer__logo_container {
+    margin-top: var(--mb-2);
+  }    
+
 }
 
-/* For medium devices TABLET */
+
+/*=== FOR MEDIUM DEVICES, TABLET | 568px above ===*/
 
 @media screen and (min-width: 568px) {
   .loader {
@@ -1517,7 +1562,19 @@ header {
     bottom: -1.5rem;
   }
 
+  .footer__socials {    
+    justify-self: flex-end;
+  }
+
+  .footer__logo_image {
+    width: 70%; /* Adjust the width as desired */
+  }  
+
 }
+
+
+
+/*=== FOR TABLET | 768px above ===*/
 
 @media screen and (min-width: 768px) {
   .loader {
@@ -1598,7 +1655,7 @@ header {
   }
 
   .about__container {
-    column-gap: 5rem;
+    column-gap: 3rem;
   }
 
   .about__img {
@@ -1639,6 +1696,14 @@ header {
 
   .contactinfo__sections {
     grid-template-columns: 0.5fr;
+  }
+
+  .contact__form {
+    width: 350px;
+  }  
+
+  .contact__inputs {
+    grid-template-columns: repeat(1, 1fr);
   }
 
 
@@ -1689,8 +1754,22 @@ header {
     padding-top: 0.8rem;
   }
 
+
+  
+  .swiper-projects-icon {
+    font-size: 3.5rem;
+  }
+
+  .swiper-button-prev {
+    left: 0.9rem;
+  }
+
+  .swiper-button-next {
+    right: 0.9rem;
+  }
+
   .swiper>.swiper-pagination-bullets {
-    bottom: -2rem;
+    bottom: -4rem;
   }
 
 
@@ -1701,12 +1780,17 @@ header {
   }   
 
 
+  .services__container {
+    padding-left: var(--mb-1-5);
+    padding-right: var(--mb-1-5);
+  }
+
   .services__icon {
     font-size: 2rem;
   }
 
   .services__content {
-    padding: 6rem 0 2rem 2.5rem;
+    padding: 6rem 0 2rem 2.5rem; /* TOP, RIGHT, BOTTOM, LEFT */
   }
 
   .services__modal-content {
@@ -1723,7 +1807,7 @@ header {
   }
 
   .footer__bg {
-    padding: 3rem 0 3.5rem;
+    padding: 2rem 0 3rem;
   }
 
   .footer__links {
@@ -1739,11 +1823,20 @@ header {
     margin-top: 4.5rem;
   }
 
+  .footer__logo_image {
+    width: 80%; /* Adjust the width as desired */
+  }
 
+  .footer__logo_container {
+    margin-top: var(--mb-0);
+  }    
 
 }
 
-/* For large devices */
+
+
+
+/*=== FOR DESKTOP | 1024px above ===*/
 
 @media screen and (min-width: 1024px) {
 
@@ -1800,12 +1893,21 @@ header {
   }
 
   .contact__form {
-    width: 460px;
+    width: 400px;
   }
 
   .contact__inputs {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .footer__logo_image {
+    width: 100%; /* Adjust the width as desired */
+  }
+
+  .footer__logo_container {
+    margin-top: var(--mb-0);
+  } 
+
 }
 
 
@@ -1813,6 +1915,7 @@ header {
 
 
 
+/* HOME CIRCLE ANIMATION */
 
 .circle_bubble__anim {
   position: absolute;
