@@ -10,7 +10,7 @@
 
   <!--==================== OPEN GRAPH META TAGS (FOR SOCIAL MEDIA PREVIEW) ===================== -->
   <!-- Facebook -->
-  <meta property="og:title" content="">
+  <meta id="portfolioTitle" property="og:title" content="Emman P. Barrameda - Portfolio">
   <meta property="og:description" content="Portfolio website of Emmanuel P. Barrameda.">
   <meta property="og:image" content="https://i.imgur.com/ceRkZe6.png">
   <meta property="og:url" content="https://emmanpbarrameda.github.io/">
@@ -41,6 +41,14 @@
   <!-- Other Website -->
   <!-- Add specific meta tags for other websites if needed -->
 
+
+  <script>
+    // Change the content of the meta tag
+    window.addEventListener('DOMContentLoaded', function() {
+      var portfolioTitle = document.getElementById('portfolioTitle');
+      portfolioTitle.setAttribute('content', 'New Portfolio Title');
+    });
+  </script>  
 
   <!--==================== UNICONS ====================-->
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
@@ -1421,33 +1429,6 @@
       socialMediaButton.addEventListener('click', handleSocialMediaClick);
     }
   </script>
-
-
-<script>
-  // Update meta tag content using JavaScript
-  var pageTitle = "emmanpbarramedaa - Portfolio";
-  var pageDescription = "Portfolio website of Emmanuel P. Barrameda.";
-
-  // Update the meta tags
-  function updateMetaTags() {
-
-    // og:title
-    var ogTitle = document.querySelector('meta[property="og:title"]');
-    ogTitle.content = pageTitle;
-
-    // twitter:title
-    var twitterTitle = document.querySelector('meta[name="twitter:title"]');
-    twitterTitle.content = pageTitle;
-
-    // name (Google)
-    var name = document.querySelector('meta[itemprop="name"]');
-    name.content = pageTitle;
-  }
-
-  // Call the function to update the meta tags
-  updateMetaTags();
-
-</script>
 
 
   <!-- ===================== BASIC CONTACT CLICK ==================== -->
