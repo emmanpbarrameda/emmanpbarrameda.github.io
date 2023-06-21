@@ -1398,12 +1398,10 @@
 
   <script>
     // Change the content of the meta tag
-    window.addEventListener('DOMContentLoaded', function() {
-      var portfolioTitle = document.getElementById('portfolioTitle');
-      portfolioTitle.setAttribute('content', 'Emman Title');
-      console.log("meta tag")
-    });
-  </script> 
+    var portfolioTitle = document.querySelector('meta[name="portfolioTitle"]');
+    portfolioTitle.setAttribute('content', 'Emman Title');
+    console.log("meta tag");
+  </script>
 
 
 
