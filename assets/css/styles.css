@@ -1982,7 +1982,7 @@ header {
 
 
 
-/* HOME CIRCLE ANIMATION */
+/* ======== HOME CIRCLE ANIMATION ======== */
 
 .circle_bubble__anim {
   position: fixed;
@@ -2092,4 +2092,108 @@ header {
   height: 60px;
   animation-delay: 0s;
   animation-duration: 11s;
+}
+
+
+
+
+/* ======== TOAST ALERT ======== */
+/* java script: showAlertToast function */
+
+
+.toast {
+  z-index: 9999; /* Adjust the z-index value as needed */
+  position: fixed;
+  top: 25px;
+  right: 30px;
+  border-radius: 12px;
+  background: var(--container-color);
+  padding: 20px 30px 20px 25px;
+  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transform: translateX(calc(100% + 30px));
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+}
+
+.toast.active {
+  transform: translateX(0%);
+}
+
+.toast .toast-content {
+  display: flex;
+  align-items: center;
+}
+
+.toast-content .check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  min-width: 35px;
+  background-color: var(--first-color);
+  color: #fff;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+.toast-content .message {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+}
+
+.message .text {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-color);
+}
+
+.message .text.text-1 {
+  font-weight: 600;
+  color: var(--title-color);
+}
+
+.toast .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  padding: 5px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.toast .close:hover {
+  opacity: 1;
+}
+
+.toast .progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+}
+
+.toast .progress:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--first-color);
+}
+
+.progress.active:before {
+  animation: progress 3s linear forwards;
+}
+
+@keyframes progress {
+  100% {
+    right: 100%;
+  }
+}
+
+.toast.active ~ button {
+  pointer-events: none;
 }

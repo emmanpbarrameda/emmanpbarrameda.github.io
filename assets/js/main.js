@@ -610,44 +610,150 @@ themeButton.addEventListener("click", () => {
 
 
 
-/*==================== SEND EMAIL BUTTON ACTIOM ====================*/
+
+/*==================== SHOW TOAST ALERT ====================*/
+/*CSS:   .toast {   */
+
+function showAlertToast(text1, text2, iconClass) {
+  // Create toast element
+  const toast = document.createElement('div');
+  toast.classList.add('toast');
+
+  // Create toast content
+  const toastContent = document.createElement('div');
+  toastContent.classList.add('toast-content');
+
+  // Create check icon
+  const checkIcon = document.createElement('i');
+  checkIcon.classList.add('uil', iconClass, 'check');
+
+  // Create message container
+  const messageContainer = document.createElement('div');
+  messageContainer.classList.add('message');
+
+  // Create text elements
+  const textElement1 = document.createElement('span');
+  textElement1.classList.add('text', 'text-1');
+  textElement1.textContent = text1;
+
+  const textElement2 = document.createElement('span');
+  textElement2.classList.add('text', 'text-2');
+  textElement2.textContent = text2;
+
+  // Append elements to the toast
+  messageContainer.appendChild(textElement1);
+  messageContainer.appendChild(textElement2);
+  toastContent.appendChild(checkIcon);
+  toastContent.appendChild(messageContainer);
+  toast.appendChild(toastContent);
+
+  // Create close icon
+  const closeIcon = document.createElement('i');
+  closeIcon.classList.add('uil', 'uil-times', 'close');
+  closeIcon.addEventListener('click', () => {
+    toast.classList.remove('active');
+    setTimeout(() => {
+      toast.remove();
+    }, 300); //close animation
+    clearTimeout(timer1);
+    clearTimeout(timer2);
+  });
+  toast.appendChild(closeIcon);
+
+  // Create progress element
+  const progress = document.createElement('div');
+  progress.classList.add('progress');
+
+  // Append progress to the toast
+  toast.appendChild(progress);
+
+  // Add toast to the document
+  document.body.appendChild(toast);
+
+  // Play sound
+  const audio = new Audio('assets/mp3/notification-sound-7062.mp3');
+  audio.play();
+
+  // Show and remove toast after a delay
+  setTimeout(() => {
+    toast.classList.add('active');
+    progress.classList.add('active');
+  }, 100);
+
+  const timer1 = setTimeout(() => {
+    toast.classList.remove('active');
+  }, 3000); //1s = 1000 milliseconds
+
+  const timer2 = setTimeout(() => {
+    progress.classList.remove('active');
+  }, 3300); //1s = 1000 milliseconds
+}
+
+
+
+
+
+/*==================== SEND EMAIL BUTTON ACTION ====================*/
 //tutorial from https://www.youtube.com/watch?v=E4SL1ymKz00
 
 var btn = document.getElementById('btn__SendEmail');
 btn.addEventListener('click', function (e) {
   e.preventDefault();
 
-  // get current date and time
-  var now = new Date();
-  var options = {
-    weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true
-  };
-  var formattedDateTime = now.toLocaleString('en-US', options);
 
-  //get data from form id
-  var name = document.getElementById('name__SendEmail').value;
-  var email = document.getElementById('email__SendEmail').value;
-  var project = document.getElementById('project__SendEmail').value;
-  var message = document.getElementById('message__SendEmail').value;
+  // get the reCAPTCHA response
+  grecaptcha.execute('6LfMjL4mAAAAAPnDqA8SqlZeL7CgnGBXiDI1iAMX', { action: 'submit' }).then(function (token) {
+    // set the reCAPTCHA response to the hidden input field
+    document.getElementById('recaptchaResponse').value = token;
 
-  var body = '<h2><b>Email from emmanpbarrameda.github.io Portfolio</b></h2></b></b> <b>Name:</b> ' + name + '<br/><b>Email of Sender:</b> ' + email + '<br/><b>Project:</b> ' + project + '<br/><b>Current Date and Time:</b> ' + formattedDateTime + '<br/><br/><b>Message:</b><br/>' + message;
-  var subject = 'Email from ' + email;
 
-  // Check if required fields have data
-  if (name.trim() === '' || email.trim() === '' || project.trim() === '' || message.trim() === '') {
-    alert('Please fill in all required fields.');
-    return; // Stop further execution
-  }
+    // get the reCAPTCHA response
+    var recaptchaResponse = grecaptcha.getResponse();
 
-  Email.send({
-    SecureToken: "1f65e506-47fb-4a9e-be61-7672897dc243",
-    To: 'emmanuelbarrameda1@gmail.com',
-    From: 'emmanuelbarrameda2@gmail.com',
-    Subject: subject,
-    Body: body
-  }).then(
-    function (message) {
-      alert(message);
+    // check if the reCAPTCHA response is empty
+    if (recaptchaResponse === '') {
+      showAlertToast('Error', 'Please complete the reCAPTCHA verification.', 'uil-exclamation');
+      return; // Stop further execution
     }
-  );
+
+
+    // get current date and time
+    var now = new Date();
+    var options = {
+      weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true
+    };
+    var formattedDateTime = now.toLocaleString('en-US', options);
+
+    //get data from form id
+    var name = document.getElementById('name__SendEmail').value;
+    var email = document.getElementById('email__SendEmail').value;
+    var project = document.getElementById('project__SendEmail').value;
+    var message = document.getElementById('message__SendEmail').value;
+
+    var body = '<h2><b>Email from emmanpbarrameda.github.io Portfolio</b></h2></b></b> <b>Name:</b> ' + name + '<br/><b>Email of Sender:</b> ' + email + '<br/><b>Project:</b> ' + project + '<br/><b>Current Date and Time:</b> ' + formattedDateTime + '<br/><br/><b>Message:</b><br/>' + message;
+    var subject = 'Email from ' + email;
+
+    // Check if required fields have data
+    if (name.trim() === '' || email.trim() === '' || project.trim() === '' || message.trim() === '') {
+      showAlertToast('Error', 'Please fill in all required fields', 'uil-exclamation');
+      return; // Stop further execution
+    }
+
+    Email.send({
+      SecureToken: "1f65e506-47fb-4a9e-be61-7672897dc243",
+      To: 'emmanuelbarrameda1@gmail.com',
+      From: 'emmanuelbarrameda2@gmail.com',
+      Subject: subject,
+      Body: body
+    }).then(
+      function (message) {
+        showAlertToast(message + ' Success', 'Your message sent successfully!', 'uil-check');
+      }
+    ).catch(
+      function (error) {
+        showAlertToast('Something went wrong', error, 'uil-times');
+      }
+    );
+
+  });
 });
