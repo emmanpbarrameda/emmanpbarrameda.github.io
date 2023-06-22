@@ -678,7 +678,7 @@ function showAlertToast(text1, text2, iconClass) {
   setTimeout(() => {
     toast.classList.add('active');
     progress.classList.add('active');
-  }, 100);
+  }, 100); 
 
   const timer1 = setTimeout(() => {
     toast.classList.remove('active');
@@ -700,60 +700,42 @@ var btn = document.getElementById('btn__SendEmail');
 btn.addEventListener('click', function (e) {
   e.preventDefault();
 
+  // get current date and time
+  var now = new Date();
+  var options = {
+    weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true
+  };
+  var formattedDateTime = now.toLocaleString('en-US', options);
 
-  // get the reCAPTCHA response
-  grecaptcha.execute('6LfMjL4mAAAAAPnDqA8SqlZeL7CgnGBXiDI1iAMX', { action: 'submit' }).then(function (token) {
-    // set the reCAPTCHA response to the hidden input field
-    document.getElementById('recaptchaResponse').value = token;
+  //get data from form id
+  var name = document.getElementById('name__SendEmail').value;
+  var email = document.getElementById('email__SendEmail').value;
+  var project = document.getElementById('project__SendEmail').value;
+  var message = document.getElementById('message__SendEmail').value;
 
+  var body = '<h2><b>Email from emmanpbarrameda.github.io Portfolio</b></h2></b></b> <b>Name:</b> ' + name + '<br/><b>Email of Sender:</b> ' + email + '<br/><b>Project:</b> ' + project + '<br/><b>Current Date and Time:</b> ' + formattedDateTime + '<br/><br/><b>Message:</b><br/>' + message;
+  var subject = 'Email from ' + email;
 
-    // get the reCAPTCHA response
-    var recaptchaResponse = grecaptcha.getResponse();
+  // Check if required fields have data
+  if (name.trim() === '' || email.trim() === '' || project.trim() === '' || message.trim() === '') {
+    showAlertToast('Error', 'Please fill in all required fields', 'uil-exclamation');
+    return; // Stop further execution
+  }
 
-    // check if the reCAPTCHA response is empty
-    if (recaptchaResponse === '') {
-      showAlertToast('Error', 'Please complete the reCAPTCHA verification.', 'uil-exclamation');
-      return; // Stop further execution
+  Email.send({
+    SecureToken: "1f65e506-47fb-4a9e-be61-7672897dc243",
+    To: 'emmanuelbarrameda1@gmail.com',
+    From: 'emmanuelbarrameda2@gmail.com',
+    Subject: subject,
+    Body: body
+  }).then(
+    function (message) {
+      showAlertToast(message + ' Success', 'Your message sent successfully!', 'uil-check');
     }
-
-
-    // get current date and time
-    var now = new Date();
-    var options = {
-      weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true
-    };
-    var formattedDateTime = now.toLocaleString('en-US', options);
-
-    //get data from form id
-    var name = document.getElementById('name__SendEmail').value;
-    var email = document.getElementById('email__SendEmail').value;
-    var project = document.getElementById('project__SendEmail').value;
-    var message = document.getElementById('message__SendEmail').value;
-
-    var body = '<h2><b>Email from emmanpbarrameda.github.io Portfolio</b></h2></b></b> <b>Name:</b> ' + name + '<br/><b>Email of Sender:</b> ' + email + '<br/><b>Project:</b> ' + project + '<br/><b>Current Date and Time:</b> ' + formattedDateTime + '<br/><br/><b>Message:</b><br/>' + message;
-    var subject = 'Email from ' + email;
-
-    // Check if required fields have data
-    if (name.trim() === '' || email.trim() === '' || project.trim() === '' || message.trim() === '') {
-      showAlertToast('Error', 'Please fill in all required fields', 'uil-exclamation');
-      return; // Stop further execution
+  ).catch(
+    function (error) {
+      showAlertToast('Something went wrong', error, 'uil-times');
     }
-
-    Email.send({
-      SecureToken: "1f65e506-47fb-4a9e-be61-7672897dc243",
-      To: 'emmanuelbarrameda1@gmail.com',
-      From: 'emmanuelbarrameda2@gmail.com',
-      Subject: subject,
-      Body: body
-    }).then(
-      function (message) {
-        showAlertToast(message + ' Success', 'Your message sent successfully!', 'uil-check');
-      }
-    ).catch(
-      function (error) {
-        showAlertToast('Something went wrong', error, 'uil-times');
-      }
-    );
-
-  });
+  );
+  
 });
