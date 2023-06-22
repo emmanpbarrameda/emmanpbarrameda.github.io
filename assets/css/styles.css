@@ -1034,8 +1034,8 @@ header {
   color: var(--first-color-alt);
   opacity: 0.8;
   background: var(--first-color-lighter-transparent);
-  transition: transform 0.3s, opacity 0.3s;
   margin: 0 6px!important; /* pagination spacing */
+  transition: transform 0.3s, opacity 0.3s;
 }
 
 .swiper-pagination-bullet:hover { /* hovering action of pagination bullet */
