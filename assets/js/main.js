@@ -610,24 +610,44 @@ themeButton.addEventListener("click", () => {
 
 
 
+/*==================== SEND EMAIL BUTTON ACTIOM ====================*/
+//tutorial from https://www.youtube.com/watch?v=E4SL1ymKz00
+
 var btn = document.getElementById('btn__SendEmail');
 btn.addEventListener('click', function (e) {
-  e.preventDefault()
+  e.preventDefault();
 
+  // get current date and time
+  var now = new Date();
+  var options = {
+    weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true
+  };
+  var formattedDateTime = now.toLocaleString('en-US', options);
+
+  //get data from form id
   var name = document.getElementById('name__SendEmail').value;
   var email = document.getElementById('email__SendEmail').value;
   var project = document.getElementById('project__SendEmail').value;
   var message = document.getElementById('message__SendEmail').value;
-  var body = 'name: ' + name + '<br/> email: ' + email + '<br/> project: ' + project + '<br/> message: ' + message;
+
+  var body = '<h2><b>Email from emmanpbarrameda.github.io Portfolio</b></h2></b></b> <b>Name:</b> ' + name + '<br/><b>Email of Sender:</b> ' + email + '<br/><b>Project:</b> ' + project + '<br/><b>Current Date and Time:</b> ' + formattedDateTime + '<br/><br/><b>Message:</b><br/>' + message;
+  var subject = 'Email from ' + email;
+
+  // Check if required fields have data
+  if (name.trim() === '' || email.trim() === '' || project.trim() === '' || message.trim() === '') {
+    alert('Please fill in all required fields.');
+    return; // Stop further execution
+  }
 
   Email.send({
-    SecureToken: "d23b599c-1819-4857-93c7-b664f91a2928",
+    SecureToken: "1f65e506-47fb-4a9e-be61-7672897dc243",
     To: 'emmanuelbarrameda1@gmail.com',
-    From: email,
-    Subject: "message",
+    From: 'emmanuelbarrameda2@gmail.com',
+    Subject: subject,
     Body: body
   }).then(
-    message => alert(message)
+    function (message) {
+      alert(message);
+    }
   );
-
-})
+});

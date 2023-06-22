@@ -1216,28 +1216,28 @@
       </div>
 
 
-      <form action="" class="contact__form grid reveal fade-bottom">
+      <form action="" class="contact__form grid reveal fade-bottom" method="POST">
         <!-- FORMS BELOW -->
         <div class="contact__inputs grid">
           <div class="contact__content">
             <label for="name" class="contact__label">Name</label>
-            <input type="text" id="name__SendEmail" class="contact__input" placeholder=" " required/>
+            <input type="text" id="name__SendEmail" class="contact__input" placeholder=" " required autocomplete="name">
           </div>
 
           <div class="contact__content">
             <label for="email" class="contact__label">Email</label>
-            <input type="email" id="email__SendEmail" class="contact__input" placeholder=" " />
+            <input type="email" id="email__SendEmail" class="contact__input" placeholder=" " required>
           </div>
         </div>
 
         <div class="contact__content">
           <label for="project" class="contact__label">Project</label>
-          <input type="text" id="project__SendEmail" class="contact__input" placeholder=" " />
+          <input type="text" id="project__SendEmail" class="contact__input" placeholder=" " required autocomplete="subject">
         </div>
 
         <div class="contact__content">
           <label for="message" class="contact__label">Message</label>
-          <textarea id="message__SendEmail" name="message" cols="0" rows="5" class="contact__input" placeholder=" "></textarea>
+          <textarea id="message__SendEmail" name="message" cols="0" rows="5" class="contact__input" placeholder=" " required></textarea>
         </div>
 
         <!-- AVAILABILITY -->
@@ -1252,12 +1252,12 @@
 
 
         <!-- SEND MESSAGE BUTTON -->
-        <div>
-          <a href="#" class="button button--flex">
-            <button id="btn__SendEmail" class="btn__Email" >Send Message</button>
-            <i class="uil uil-message button__icon"></i>
-          </a>
-        </div>
+        <button type="submit" id="btn__SendEmail" class="btn__Email button button--flex">
+          Send Message
+          <i class="uil uil-message button__icon"></i>
+        </button>
+        
+        
       </form>
 
     </div>

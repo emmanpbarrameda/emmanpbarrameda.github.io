@@ -1383,6 +1383,30 @@ header {
 }
 
 
+/*========== BUTTON FOR SEND EMAIL ==========*/
+
+.btn__Email {
+  cursor: pointer;
+  display: inline-block;
+  background-color: var(--first-color);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: var(--font-medium);
+  font-family: var(--body-font);
+  font-size: 1rem;
+  width: 185px; /* Adjust the width as per your requirement */
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.btn__Email.button--flex {
+  display: inline-flex;
+  align-items: center;
+}
+
+
+
+
 /*========== SCROLL UP ==========*/
 
 .scrollup {
