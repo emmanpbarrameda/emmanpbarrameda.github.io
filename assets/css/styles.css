@@ -1025,11 +1025,11 @@ header {
 }
 
 .swiper-pagination-bullet { /* design of pagination bullet with numbering */
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   text-align: center;
-  line-height: 18px;
+  line-height: 16px;
   font-size: 8px;
   color: var(--first-color-alt);
   opacity: 0.8;
