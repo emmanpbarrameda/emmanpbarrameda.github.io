@@ -233,6 +233,9 @@ var swiper = new Swiper(".projects__container", {
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
+    renderBullet: function (index, className) {
+      return '<span class="' + className + '">' + (index + 1) + "</span>";
+    },    
   },
 
 
@@ -249,8 +252,6 @@ GET SWIPER
 https://unpkg.com/browse/swiper@9.3.2/
 https://swiperjs.com/get-started
 */
-
-
 
 
 

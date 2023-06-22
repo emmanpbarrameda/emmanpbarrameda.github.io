@@ -1007,7 +1007,7 @@ header {
   content: "";
 }
 
-.swiper-projects-icon {
+.swiper-projects-icon { /*arrow icon*/
   font-size: 2rem;
   color: var(--first-color);
 }
@@ -1020,12 +1020,34 @@ header {
   right: -0.5rem;
 }
 
-.swiper>.swiper-pagination-bullets {
+.swiper>.swiper-pagination-bullets { /* pagitan ng bullet sa project */
   bottom: -2.5rem;
 }
 
-.swiper-pagination-bullet-active {
+.swiper-pagination-bullet { /* design of pagination bullet with numbering */
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 18px;
+  font-size: 8px;
+  color: var(--first-color-alt);
+  opacity: 0.8;
+  background: var(--first-color-lighter-transparent);
+  transition: transform 0.3s, opacity 0.3s;
+  margin: 0 6px!important; /* pagination spacing */
+}
+
+.swiper-pagination-bullet:hover { /* hovering action of pagination bullet */
+  transform: scale(1.4);
+  opacity: 0.9;  
+}
+
+.swiper-pagination-bullet-active { /* design of ACTIVE pagination bullet with numbering */
   background-color: var(--first-color);
+  color: var(--text-color-white);
+  font-weight: var(--font-medium);
+  opacity: 1;
 }
 
 .swiper-button-prev,
@@ -1087,15 +1109,22 @@ header {
 }
 
 /*affect other elements when one element is hovered*/
-.projects__container:hover .projects__button .button__icon {
+.projects__content:hover .projects__button .button__icon {
   transform: translateX(0.30rem);
 }
 
 /*affect other elements when one element is hovered*/
-.projects__container:hover .projects__img {
+.projects__content:hover .projects__button {
+  transform: translateX(1rem);
+  background-color: var(--first-color-alt);
+}
+
+/*affect other elements when one element is hovered*/
+.projects__content:hover .projects__img {
   /*animation while hovering */
-  transform: scale(1.03);
-  opacity: 0.9;
+  transform: scale(1.08);
+  opacity: 1;
+  
 }
 
 
