@@ -90,7 +90,7 @@
 
 body.dark-theme {
   /* HSL color mode */
-  --first-color-lighter-transparent: hsl(var(--hue-color), 69%, 61%, 0.05);
+  --first-color-lighter-transparent: hsl(var(--hue-color), 69%, 61%, 0.06);
   --first-color-second: hsl(var(--hue-color), 30%, 8%);
   --title-color: hsl(var(--hue-color), 8%, 95%);
   --text-color: hsl(var(--hue-color), 8%, 75%);
@@ -1975,8 +1975,8 @@ header {
 
 .circle_bubble__anim div:nth-child(2) {
   left: 10%;
-  width: 20px;
-  height: 20px;
+  width: 50px;
+  height: 50px;
   animation-delay: 2s;
   animation-duration: 12s;
 }
