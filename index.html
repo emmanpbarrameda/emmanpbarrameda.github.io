@@ -1221,23 +1221,23 @@
         <div class="contact__inputs grid">
           <div class="contact__content">
             <label for="name" class="contact__label">Name</label>
-            <input type="text" id="name" class="contact__input" placeholder=" " />
+            <input type="text" id="name__SendEmail" class="contact__input" placeholder=" " required/>
           </div>
 
           <div class="contact__content">
             <label for="email" class="contact__label">Email</label>
-            <input type="email" id="email" class="contact__input" placeholder=" " />
+            <input type="email" id="email__SendEmail" class="contact__input" placeholder=" " />
           </div>
         </div>
 
         <div class="contact__content">
           <label for="project" class="contact__label">Project</label>
-          <input type="text" id="project" class="contact__input" placeholder=" " />
+          <input type="text" id="project__SendEmail" class="contact__input" placeholder=" " />
         </div>
 
         <div class="contact__content">
           <label for="message" class="contact__label">Message</label>
-          <textarea id="message" name="message" cols="0" rows="5" class="contact__input" placeholder=" "></textarea>
+          <textarea id="message__SendEmail" name="message" cols="0" rows="5" class="contact__input" placeholder=" "></textarea>
         </div>
 
         <!-- AVAILABILITY -->
@@ -1254,7 +1254,7 @@
         <!-- SEND MESSAGE BUTTON -->
         <div>
           <a href="#" class="button button--flex">
-            Send Message
+            <button id="btn__SendEmail" class="btn__Email" >Send Message</button>
             <i class="uil uil-message button__icon"></i>
           </a>
         </div>
@@ -1331,6 +1331,9 @@
 
   <!--==================== SWIPER JS ====================-->
   <script src="assets/js/swiper-bundle.min.js"></script>
+
+  <!--==================== SMTP (For Senting Emails) ====================-->
+  <script src="assets/js/smtp.js"></script>  
 
   <!--==================== SVG INJECT ====================-->
   <!--

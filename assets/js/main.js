@@ -146,16 +146,16 @@ const modalViews = document.querySelectorAll(".services__modal"),
   modalBtns = document.querySelectorAll(".services__button"),
   modalCloses = document.querySelectorAll(".services__modal-close");
 
-  
+
 // Function to open a modal view WITH ANIMATION
-let modal = function(modalClick) {
+let modal = function (modalClick) {
   // Remove active-modal class from all modal views
   for (var i = 0; i < modalViews.length; i++) {
     modalViews[i].classList.remove("active-modal", "animate__animated", "animate__fadeIn", "animate__faster");
   }
 
   // Delay adding the animation classes to ensure animation triggers consistently
-  setTimeout(function() {
+  setTimeout(function () {
     // Add active-modal class to the clicked modal view and animate it
     modalViews[modalClick].classList.add("active-modal", "animate__animated", "animate__fadeIn", "animate__faster");
   }, 10);
@@ -189,7 +189,7 @@ function closeModal() {
     activeModal.classList.add("animate__animated", "animate__fadeOut", "animate__faster");
 
     // Remove the modal and animation classes after the animation finishes
-    setTimeout(function() {
+    setTimeout(function () {
       activeModal.classList.remove("active-modal", "animate__animated", "animate__fadeOut", "animate__faster");
       document.body.classList.remove("disable-scroll");
     }, 500); // Adjust the delay as needed
@@ -210,7 +210,7 @@ const initialHash = window.location.hash;
 // Add a popstate event listener to the window
 window.addEventListener("popstate", () => {
   const currentHash = window.location.hash;
-  
+
   // Check if the hash has changed from the initial value
   if (currentHash !== initialHash) {
     closeModal(); // Close the modal view when the back button is pressed on mobile
@@ -235,7 +235,7 @@ var swiper = new Swiper(".projects__container", {
     clickable: true,
     renderBullet: function (index, className) {
       return '<span class="' + className + '">' + (index + 1) + "</span>";
-    },    
+    },
   },
 
 
@@ -328,7 +328,7 @@ function changeBackgroundImage(imageSrc) {
   projectsBackground.src = imageSrc;
 
   // Remove the fade-out animation class and apply the fade-in animation class
-  setTimeout(function() {
+  setTimeout(function () {
     projectsBackground.classList.remove('animate__fadeOut');
     projectsBackground.classList.add('animate__fadeIn');
   }, 500); // Adjust the delay as needed
@@ -524,7 +524,7 @@ scrollUpButton.addEventListener("click", () => {
 function scrollDown() {
   const scrollDown = document.getElementById("scroll-down");
   // When the scroll is higher than 560 viewport height, add the show-scrolldown class to the a tag with the scroll-top class
-  if (this.scrollY <500) scrollDown.classList.add("show-scrolldown");
+  if (this.scrollY < 500) scrollDown.classList.add("show-scrolldown");
   else scrollDown.classList.remove("show-scrolldown");
 }
 window.addEventListener("scroll", scrollDown);
@@ -610,8 +610,24 @@ themeButton.addEventListener("click", () => {
 
 
 
+var btn = document.getElementById('btn__SendEmail');
+btn.addEventListener('click', function (e) {
+  e.preventDefault()
 
+  var name = document.getElementById('name__SendEmail').value;
+  var email = document.getElementById('email__SendEmail').value;
+  var project = document.getElementById('project__SendEmail').value;
+  var message = document.getElementById('message__SendEmail').value;
+  var body = 'name: ' + name + '<br/> email: ' + email + '<br/> project: ' + project + '<br/> message: ' + message;
 
+  Email.send({
+    SecureToken: "d23b599c-1819-4857-93c7-b664f91a2928",
+    To: 'emmanuelbarrameda1@gmail.com',
+    From: email,
+    Subject: "message",
+    Body: body
+  }).then(
+    message => alert(message)
+  );
 
-
-
+})
