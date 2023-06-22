@@ -731,6 +731,13 @@ btn.addEventListener('click', function (e) {
   }).then(
     function (message) {
       showAlertToast(message + ' Success', 'Your message sent successfully!', 'uil-check');
+
+      // Clear input fields
+      document.getElementById('name__SendEmail').value = '';
+      document.getElementById('email__SendEmail').value = '';
+      document.getElementById('project__SendEmail').value = '';
+      document.getElementById('message__SendEmail').value = '';      
+
     }
   ).catch(
     function (error) {
