@@ -703,8 +703,8 @@ var ReCAPTCHAv3Utils = (function () {
   //   action - we can use our own label that describes our action
   //   Look at "Use case" on https://developers.google.com/recaptcha/docs/v3
   //   e.g. homepage, login, social, e-commerce
-  //   onSuccess and onError - callback functions
-  var request = function (action, onSuccess, onError) {
+  //   onBotDetected, onSuccess, and onError - callback functions
+  var request = function (action, onBotDetected, onSuccess, onError) {
     if (window.grecaptcha) {
       window.grecaptcha.ready(function () {
         var config = {
@@ -713,8 +713,20 @@ var ReCAPTCHAv3Utils = (function () {
         try {
           var query = window.grecaptcha.execute(PUBLIC_KEY, config);
           if (onSuccess) {
-            console.log("reCAPTCHA verification successful");
-            query.then(onSuccess);
+            console.log("reCAPTCHA verification in progress");
+            showAlertToast('Verifying reCAPTCHA', 'reCAPTCHA verification in progress...', 'uil-sync'); // Display toast message
+            query.then(function (token) {
+              if (isBotDetected(token)) {
+                if (onBotDetected) {
+                  console.log("reCAPTCHA detected a bot");
+                  showAlertToast('Error', 'Bot not allowed', 'uil-times'); // Display bot detection toast message
+                  onBotDetected();
+                }
+              } else {
+                console.log("reCAPTCHA verification successful");
+                onSuccess(token);
+              }
+            });
           }
         } catch (e) {
           var message = e && e.message || 'Captcha request error.';
@@ -728,6 +740,15 @@ var ReCAPTCHAv3Utils = (function () {
         onError('reCAPTCHA v3 is not loaded correctly.');
       }
     }
+  };
+
+  // Function to check if a bot is detected based on the token
+  var isBotDetected = function (token) {
+    // Perform your bot detection logic here
+    // Return true if a bot is detected, otherwise false
+    // Example: Check token score threshold
+    var botThreshold = 0.5;
+    return token.score < botThreshold;
   };
 
   return {
