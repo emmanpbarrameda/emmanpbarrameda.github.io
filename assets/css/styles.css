@@ -2194,10 +2194,32 @@ header {
 }
 
 @keyframes progress {
+  0% {
+      transform: translateX(0);
+  }
   100% {
-    right: 100%;
+      transform: translateX(100%);
   }
 }
+
+@-moz-keyframes progress {
+  0% {
+      -moz-transform: translateX(0);
+  }
+  100% {
+      -moz-transform: translateX(100%);
+  }
+}
+
+@-webkit-keyframes progress {
+  0% {
+      -webkit-transform: translateX(0);
+  }
+  100% {
+      -webkit-transform: translateX(100%);
+  }
+}
+
 
 .toast.active ~ button {
   pointer-events: none;
