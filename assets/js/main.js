@@ -691,9 +691,10 @@ function showAlertToast(text1, text2, iconClass) {
 
 
 
+/*==================== Function for reCAPTCHA v3 ====================*/
+//https://dirask.com/posts/reCAPTCHA-v3-simple-example-how-to-use-in-JavaScript-and-Spring-Framework-prw0zj
 
-// Function for reCAPTCHA v3
-var ReCAPTCHAv3Utils = (function() {
+var ReCAPTCHAv3Utils = (function () {
   // reCaptcha v3 key to get on https://www.google.com/recaptcha/admin#list
   var PUBLIC_KEY = '6LdUccImAAAAALa1N3ue9L4t8SVRdA3adp2aziIF';
 
@@ -703,9 +704,9 @@ var ReCAPTCHAv3Utils = (function() {
   //   Look at "Use case" on https://developers.google.com/recaptcha/docs/v3
   //   e.g. homepage, login, social, e-commerce
   //   onSuccess and onError - callback functions
-  var request = function(action, onSuccess, onError) {
+  var request = function (action, onSuccess, onError) {
     if (window.grecaptcha) {
-      window.grecaptcha.ready(function() {
+      window.grecaptcha.ready(function () {
         var config = {
           action: action
         };
@@ -742,9 +743,8 @@ var ReCAPTCHAv3Utils = (function() {
 
 // Event listener for sending email
 var btn = document.getElementById('btn__SendEmail');
-btn.addEventListener('click', function(e) {
+btn.addEventListener('click', function (e) {
   e.preventDefault();
-
 
   // Get current date and time
   var now = new Date();
@@ -767,7 +767,7 @@ btn.addEventListener('click', function(e) {
   var message = document.getElementById('message__SendEmail').value;
 
   var body =
-    '<h2><b>Email from emmanpbarrameda.github.io Portfolio</b></h2></b></b> <b>Name:</b> ' +name +
+    '<h2><b>Email from emmanpbarrameda.github.io Portfolio</b></h2></b></b> <b>Name:</b> ' + name +
     '<br/><b>Email of Sender:</b> ' + email +
     '<br/><b>Project:</b> ' + project +
     '<br/><b>Current Date and Time:</b> ' + formattedDateTime +
@@ -782,7 +782,7 @@ btn.addEventListener('click', function(e) {
   }
 
   // Check reCAPTCHA before sending email
-  ReCAPTCHAv3Utils.request('email', function(token) {
+  ReCAPTCHAv3Utils.request('btn__SendEmail', function (token) {
     // reCAPTCHA success callback
 
     // Send email
@@ -793,7 +793,7 @@ btn.addEventListener('click', function(e) {
       Subject: subject,
       Body: body
     })
-      .then(function(message) {
+      .then(function (message) {
         showAlertToast(message + ' Success', 'Your message was sent successfully!', 'uil-check');
 
         // Clear input fields
@@ -801,14 +801,14 @@ btn.addEventListener('click', function(e) {
         document.getElementById('email__SendEmail').value = '';
         document.getElementById('project__SendEmail').value = '';
         document.getElementById('message__SendEmail').value = '';
-        
+
       })
-      .catch(function(error) {
+      .catch(function (error) {
         showAlertToast('Something went wrong', error, 'uil-times');
       });
 
 
-  }, function(error) {
+  }, function (error) {
     // reCAPTCHA error callback
     showAlertToast('reCAPTCHA Error', error, 'uil-times');
   });
