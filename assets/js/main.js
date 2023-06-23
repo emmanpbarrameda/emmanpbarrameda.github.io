@@ -703,6 +703,7 @@ btn.addEventListener('click', function (e) {
   // Verify reCAPTCHA
   grecaptcha.ready(function() {
     grecaptcha.execute('6LdUccImAAAAALa1N3ue9L4t8SVRdA3adp2aziIF', {action: 'submit'}).then(function(token) {
+      console.log("reCAPTCHA verification successful, proceed with sending email");
       // reCAPTCHA verification successful, proceed with sending email
 
       // get current date and time
