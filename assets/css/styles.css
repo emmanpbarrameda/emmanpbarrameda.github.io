@@ -1492,6 +1492,15 @@ header {
   background-color: var(--text-color-light);
 }
 
+
+
+
+
+
+
+
+
+
 /*==================== MEDIA QUERIES ====================*/
 
 
@@ -2105,15 +2114,14 @@ header {
 /* ======== TOAST ALERT ======== */
 /* java script: showAlertToast function */
 
-
 .toast {
   z-index: 9999; /* Adjust the z-index value as needed */
   position: fixed;
   top: 25px;
-  right: 30px;
+  right: 10px; /* Default value for screens wider than 350px */
   border-radius: 12px;
   background: var(--container-color);
-  padding: 20px 30px 20px 25px;
+  padding: 20px 30px 20px 25px; /* Length of toast on: top, right, bottom, left */
   box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transform: translateX(calc(100% + 30px));
