@@ -701,55 +701,73 @@ btn.addEventListener('click', function (e) {
   e.preventDefault();
 
   // Verify reCAPTCHA
-  grecaptcha.ready(function() {
-    grecaptcha.execute('6LdUccImAAAAALa1N3ue9L4t8SVRdA3adp2aziIF', {action: 'submit'}).then(function(token) {
-      console.log("reCAPTCHA verification successful, proceed with sending email");
-      // reCAPTCHA verification successful, proceed with sending email
+  grecaptcha.execute('6LdUccImAAAAALa1N3ue9L4t8SVRdA3adp2aziIF', { action: 'submit' }).then(function (token) {
+    // Perform AJAX request to verify reCAPTCHA token
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify');
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+      var result = JSON.parse(xhr.responseText);
+      if (xhr.status === 200 && result.success) {
+        console.log("reCAPTCHA verification successful, proceed with sending email");
+        // reCAPTCHA verification successful, proceed with sending email
 
-      // get current date and time
-      var now = new Date();
-      var options = {
-        weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true
-      };
-      var formattedDateTime = now.toLocaleString('en-US', options);
+        
+        // get current date and time
+        var now = new Date();
+        var options = {
+          weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true
+        };
+        var formattedDateTime = now.toLocaleString('en-US', options);
 
-      // get data from form id
-      var name = document.getElementById('name__SendEmail').value;
-      var email = document.getElementById('email__SendEmail').value;
-      var project = document.getElementById('project__SendEmail').value;
-      var message = document.getElementById('message__SendEmail').value;
+        // get data from form id
+        var name = document.getElementById('name__SendEmail').value;
+        var email = document.getElementById('email__SendEmail').value;
+        var project = document.getElementById('project__SendEmail').value;
+        var message = document.getElementById('message__SendEmail').value;
 
-      var body = '<h2><b>Email from emmanpbarrameda.github.io Portfolio</b></h2></b></b> <b>Name:</b> ' + name + '<br/><b>Email of Sender:</b> ' + email + '<br/><b>Project:</b> ' + project + '<br/><b>Current Date and Time:</b> ' + formattedDateTime + '<br/><br/><b>Message:</b><br/>' + message;
-      var subject = 'Email from ' + email;
+        var body = '<h2><b>Email from emmanpbarrameda.github.io Portfolio</b></h2></b></b> <b>Name:</b> ' + name + '<br/><b>Email of Sender:</b> ' + email + '<br/><b>Project:</b> ' + project + '<br/><b>Current Date and Time:</b> ' + formattedDateTime + '<br/><br/><b>Message:</b><br/>' + message;
+        var subject = 'Email from ' + email;
 
-      // Check if required fields have data
-      if (name.trim() === '' || email.trim() === '' || project.trim() === '' || message.trim() === '') {
-        showAlertToast('Error', 'Please fill in all required fields', 'uil-exclamation');
-        return; // Stop further execution
+        // Check if required fields have data
+        if (name.trim() === '' || email.trim() === '' || project.trim() === '' || message.trim() === '') {
+          showAlertToast('Error', 'Please fill in all required fields', 'uil-exclamation');
+          return; // Stop further execution
+        }
+
+        // send email
+        Email.send({
+          SecureToken: "1f65e506-47fb-4a9e-be61-7672897dc243",
+          To: 'emmanuelbarrameda1@gmail.com',
+          From: 'emmanuelbarrameda2@gmail.com',
+          Subject: subject,
+          Body: body
+        }).then(
+          function (message) {
+            showAlertToast(message + ' Success', 'Your message sent successfully!', 'uil-check');
+
+            // Clear input fields
+            document.getElementById('name__SendEmail').value = '';
+            document.getElementById('email__SendEmail').value = '';
+            document.getElementById('project__SendEmail').value = '';
+            document.getElementById('message__SendEmail').value = '';
+          }
+        ).catch(
+          function (error) {
+            showAlertToast('Something went wrong', error, 'uil-times');
+          }
+        );
+
+
+      } else {
+        // reCAPTCHA verification failed
+        showAlertToast('Error', 'reCAPTCHA verification failed', 'uil-exclamation');
+        console.log("reCAPTCHA verification failed");
       }
+    };
 
-      // send email
-      Email.send({
-        SecureToken: "1f65e506-47fb-4a9e-be61-7672897dc243",
-        To: 'emmanuelbarrameda1@gmail.com',
-        From: 'emmanuelbarrameda2@gmail.com',
-        Subject: subject,
-        Body: body
-      }).then(
-        function (message) {
-          showAlertToast(message + ' Success', 'Your message sent successfully!', 'uil-check');
-
-          // Clear input fields
-          document.getElementById('name__SendEmail').value = '';
-          document.getElementById('email__SendEmail').value = '';
-          document.getElementById('project__SendEmail').value = '';
-          document.getElementById('message__SendEmail').value = '';      
-        }
-      ).catch(
-        function (error) {
-          showAlertToast('Something went wrong', error, 'uil-times');
-        }
-      );
-    });
+    // Prepare data to send for reCAPTCHA verification
+    var params = 'secret=6LdUccImAAAAAITEOZHmb40WdyElsYkv9WCJvyS5&response=' + encodeURIComponent(token);
+    xhr.send(params);
   });
 });
