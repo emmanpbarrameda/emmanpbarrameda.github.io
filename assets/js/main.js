@@ -707,7 +707,7 @@ var ReCAPTCHAv3Utils = (function () {
   var request = function (action, onSuccess, onError) {
 
     // Display toast message here
-    showAlertToast('Verifying reCAPTCHA', 'reCAPTCHA verification in progress...', 'uil-sync');
+    showAlertToast('Verifying reCAPTCHA', 'reCAPTCHA verification in progress...', 'uil-spinner');
 
     if (window.grecaptcha) {
       window.grecaptcha.ready(function () {
