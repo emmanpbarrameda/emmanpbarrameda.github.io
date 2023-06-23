@@ -678,7 +678,7 @@ function showAlertToast(text1, text2, iconClass) {
   setTimeout(() => {
     toast.classList.add('active');
     progress.classList.add('active');
-  }, 100); 
+  }, 100);
 
   const timer1 = setTimeout(() => {
     toast.classList.remove('active');
@@ -692,82 +692,124 @@ function showAlertToast(text1, text2, iconClass) {
 
 
 
+// Function for reCAPTCHA v3
+var ReCAPTCHAv3Utils = (function() {
+  // reCaptcha v3 key to get on https://www.google.com/recaptcha/admin#list
+  var PUBLIC_KEY = '6LdUccImAAAAALa1N3ue9L4t8SVRdA3adp2aziIF';
+
+  // Requests Google reCAPTCHAv3 API to get token.
+  // Arguments:
+  //   action - we can use our own label that describes our action
+  //   Look at "Use case" on https://developers.google.com/recaptcha/docs/v3
+  //   e.g. homepage, login, social, e-commerce
+  //   onSuccess and onError - callback functions
+  var request = function(action, onSuccess, onError) {
+    if (window.grecaptcha) {
+      window.grecaptcha.ready(function() {
+        var config = {
+          action: action
+        };
+        try {
+          var query = window.grecaptcha.execute(PUBLIC_KEY, config);
+          if (onSuccess) {
+            console.log("reCAPTCHA verification successful");
+            query.then(onSuccess);
+          }
+        } catch (e) {
+          var message = e && e.message || 'Captcha request error.';
+          if (onError) {
+            onError(message);
+          }
+        }
+      });
+    } else {
+      if (onError) {
+        onError('reCAPTCHA v3 is not loaded correctly.');
+      }
+    }
+  };
+
+  return {
+    request: request
+  };
+})();
+
+
+
 
 /*==================== SEND EMAIL BUTTON ACTION ====================*/
 //tutorial from https://www.youtube.com/watch?v=E4SL1ymKz00
 
+// Event listener for sending email
 var btn = document.getElementById('btn__SendEmail');
-btn.addEventListener('click', function (e) {
+btn.addEventListener('click', function(e) {
   e.preventDefault();
 
-  // Verify reCAPTCHA
-  grecaptcha.execute('6LdUccImAAAAALa1N3ue9L4t8SVRdA3adp2aziIF', { action: 'submit' }).then(function (token) {
-    // Perform AJAX request to verify reCAPTCHA token
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify');
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.onload = function () {
-      var result = JSON.parse(xhr.responseText);
-      if (xhr.status === 200 && result.success) {
-        console.log("reCAPTCHA verification successful, proceed with sending email");
-        // reCAPTCHA verification successful, proceed with sending email
 
+  // Get current date and time
+  var now = new Date();
+  var options = {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true
+  };
+  var formattedDateTime = now.toLocaleString('en-US', options);
+
+
+  // Get data from form
+  var name = document.getElementById('name__SendEmail').value;
+  var email = document.getElementById('email__SendEmail').value;
+  var project = document.getElementById('project__SendEmail').value;
+  var message = document.getElementById('message__SendEmail').value;
+
+  var body =
+    '<h2><b>Email from emmanpbarrameda.github.io Portfolio</b></h2></b></b> <b>Name:</b> ' +name +
+    '<br/><b>Email of Sender:</b> ' + email +
+    '<br/><b>Project:</b> ' + project +
+    '<br/><b>Current Date and Time:</b> ' + formattedDateTime +
+    '<br/><br/><b>Message:</b><br/>' + message;
+  var subject = 'Email from ' + email;
+
+
+  // Check if required fields have data
+  if (name.trim() === '' || email.trim() === '' || project.trim() === '' || message.trim() === '') {
+    showAlertToast('Error', 'Please fill in all required fields', 'uil-exclamation');
+    return; // Stop further execution
+  }
+
+  // Check reCAPTCHA before sending email
+  ReCAPTCHAv3Utils.request('email', function(token) {
+    // reCAPTCHA success callback
+
+    // Send email
+    Email.send({
+      SecureToken: '1f65e506-47fb-4a9e-be61-7672897dc243',
+      To: 'emmanuelbarrameda1@gmail.com',
+      From: 'emmanuelbarrameda2@gmail.com',
+      Subject: subject,
+      Body: body
+    })
+      .then(function(message) {
+        showAlertToast(message + ' Success', 'Your message was sent successfully!', 'uil-check');
+
+        // Clear input fields
+        document.getElementById('name__SendEmail').value = '';
+        document.getElementById('email__SendEmail').value = '';
+        document.getElementById('project__SendEmail').value = '';
+        document.getElementById('message__SendEmail').value = '';
         
-        // get current date and time
-        var now = new Date();
-        var options = {
-          weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true
-        };
-        var formattedDateTime = now.toLocaleString('en-US', options);
-
-        // get data from form id
-        var name = document.getElementById('name__SendEmail').value;
-        var email = document.getElementById('email__SendEmail').value;
-        var project = document.getElementById('project__SendEmail').value;
-        var message = document.getElementById('message__SendEmail').value;
-
-        var body = '<h2><b>Email from emmanpbarrameda.github.io Portfolio</b></h2></b></b> <b>Name:</b> ' + name + '<br/><b>Email of Sender:</b> ' + email + '<br/><b>Project:</b> ' + project + '<br/><b>Current Date and Time:</b> ' + formattedDateTime + '<br/><br/><b>Message:</b><br/>' + message;
-        var subject = 'Email from ' + email;
-
-        // Check if required fields have data
-        if (name.trim() === '' || email.trim() === '' || project.trim() === '' || message.trim() === '') {
-          showAlertToast('Error', 'Please fill in all required fields', 'uil-exclamation');
-          return; // Stop further execution
-        }
-
-        // send email
-        Email.send({
-          SecureToken: "1f65e506-47fb-4a9e-be61-7672897dc243",
-          To: 'emmanuelbarrameda1@gmail.com',
-          From: 'emmanuelbarrameda2@gmail.com',
-          Subject: subject,
-          Body: body
-        }).then(
-          function (message) {
-            showAlertToast(message + ' Success', 'Your message sent successfully!', 'uil-check');
-
-            // Clear input fields
-            document.getElementById('name__SendEmail').value = '';
-            document.getElementById('email__SendEmail').value = '';
-            document.getElementById('project__SendEmail').value = '';
-            document.getElementById('message__SendEmail').value = '';
-          }
-        ).catch(
-          function (error) {
-            showAlertToast('Something went wrong', error, 'uil-times');
-          }
-        );
+      })
+      .catch(function(error) {
+        showAlertToast('Something went wrong', error, 'uil-times');
+      });
 
 
-      } else {
-        // reCAPTCHA verification failed
-        showAlertToast('Error', 'reCAPTCHA verification failed', 'uil-exclamation');
-        console.log("reCAPTCHA verification failed");
-      }
-    };
-
-    // Prepare data to send for reCAPTCHA verification
-    var params = 'secret=6LdUccImAAAAAITEOZHmb40WdyElsYkv9WCJvyS5&response=' + encodeURIComponent(token);
-    xhr.send(params);
+  }, function(error) {
+    // reCAPTCHA error callback
+    showAlertToast('reCAPTCHA Error', error, 'uil-times');
   });
 });
