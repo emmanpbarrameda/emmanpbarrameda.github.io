@@ -700,49 +700,55 @@ var btn = document.getElementById('btn__SendEmail');
 btn.addEventListener('click', function (e) {
   e.preventDefault();
 
-  // get current date and time
-  var now = new Date();
-  var options = {
-    weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true
-  };
-  var formattedDateTime = now.toLocaleString('en-US', options);
+  // Verify reCAPTCHA
+  grecaptcha.ready(function() {
+    grecaptcha.execute('6LdUccImAAAAALa1N3ue9L4t8SVRdA3adp2aziIF', {action: 'submit'}).then(function(token) {
+      // IF reCAPTCHA verification successful, proceed with sending email
 
-  //get data from form id
-  var name = document.getElementById('name__SendEmail').value;
-  var email = document.getElementById('email__SendEmail').value;
-  var project = document.getElementById('project__SendEmail').value;
-  var message = document.getElementById('message__SendEmail').value;
+      // get current date and time
+      var now = new Date();
+      var options = {
+        weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true
+      };
+      var formattedDateTime = now.toLocaleString('en-US', options);
 
-  var body = '<h2><b>Email from emmanpbarrameda.github.io Portfolio</b></h2></b></b> <b>Name:</b> ' + name + '<br/><b>Email of Sender:</b> ' + email + '<br/><b>Project:</b> ' + project + '<br/><b>Current Date and Time:</b> ' + formattedDateTime + '<br/><br/><b>Message:</b><br/>' + message;
-  var subject = 'Email from ' + email;
+      // get data from form id
+      var name = document.getElementById('name__SendEmail').value;
+      var email = document.getElementById('email__SendEmail').value;
+      var project = document.getElementById('project__SendEmail').value;
+      var message = document.getElementById('message__SendEmail').value;
 
-  // Check if required fields have data
-  if (name.trim() === '' || email.trim() === '' || project.trim() === '' || message.trim() === '') {
-    showAlertToast('Error', 'Please fill in all required fields', 'uil-exclamation');
-    return; // Stop further execution
-  }
+      var body = '<h2><b>Email from emmanpbarrameda.github.io Portfolio</b></h2></b></b> <b>Name:</b> ' + name + '<br/><b>Email of Sender:</b> ' + email + '<br/><b>Project:</b> ' + project + '<br/><b>Current Date and Time:</b> ' + formattedDateTime + '<br/><br/><b>Message:</b><br/>' + message;
+      var subject = 'Email from ' + email;
 
-  Email.send({
-    SecureToken: "1f65e506-47fb-4a9e-be61-7672897dc243",
-    To: 'emmanuelbarrameda1@gmail.com',
-    From: 'emmanuelbarrameda2@gmail.com',
-    Subject: subject,
-    Body: body
-  }).then(
-    function (message) {
-      showAlertToast(message + ' Success', 'Your message sent successfully!', 'uil-check');
+      // Check if required fields have data
+      if (name.trim() === '' || email.trim() === '' || project.trim() === '' || message.trim() === '') {
+        showAlertToast('Error', 'Please fill in all required fields', 'uil-exclamation');
+        return; // Stop further execution
+      }
 
-      // Clear input fields
-      document.getElementById('name__SendEmail').value = '';
-      document.getElementById('email__SendEmail').value = '';
-      document.getElementById('project__SendEmail').value = '';
-      document.getElementById('message__SendEmail').value = '';      
+      // send email
+      Email.send({
+        SecureToken: "1f65e506-47fb-4a9e-be61-7672897dc243",
+        To: 'emmanuelbarrameda1@gmail.com',
+        From: 'emmanuelbarrameda2@gmail.com',
+        Subject: subject,
+        Body: body
+      }).then(
+        function (message) {
+          showAlertToast(message + ' Success', 'Your message sent successfully!', 'uil-check');
 
-    }
-  ).catch(
-    function (error) {
-      showAlertToast('Something went wrong', error, 'uil-times');
-    }
-  );
-  
+          // Clear input fields
+          document.getElementById('name__SendEmail').value = '';
+          document.getElementById('email__SendEmail').value = '';
+          document.getElementById('project__SendEmail').value = '';
+          document.getElementById('message__SendEmail').value = '';      
+        }
+      ).catch(
+        function (error) {
+          showAlertToast('Something went wrong', error, 'uil-times');
+        }
+      );
+    });
+  });
 });

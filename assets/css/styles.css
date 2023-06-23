@@ -172,6 +172,11 @@ img {
   height: auto;
 }
 
+.color__text_highlight, colorTextHighlight {
+  color: var(--first-color); /* Change the color to your desired value */
+  font-weight: var(--font-medium);
+}
+
 /*==================== REUSABLE CSS CLASSES ====================*/
 
 .noSelect {
@@ -2196,4 +2201,10 @@ header {
 
 .toast.active ~ button {
   pointer-events: none;
+}
+
+
+/* ======== HIDE reCAPTCHA ======== */
+.grecaptcha-badge { 
+  visibility: hidden;
 }
