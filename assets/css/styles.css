@@ -36,6 +36,7 @@
   --text-color-white: #fff;
   --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
   --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
+  --shadow: hsl(var(--hue-color), 92%, 85%, 50); /* filter drop shadow */
   --text-highlight-gradient-1: linear-gradient(to left, #B374F8, #4da3ff);
 
   /*========== Font and typography ==========*/
@@ -90,6 +91,7 @@
 
 body.dark-theme {
   /* HSL color mode */
+  --shadow: hsl(var(--hue-color), 69%, 61%, 0.8); /* filter drop shadow */
   --first-color-lighter-transparent: hsl(var(--hue-color), 69%, 61%, 0.06);
   --first-color-second: hsl(var(--hue-color), 30%, 8%);
   --title-color: hsl(var(--hue-color), 8%, 95%);
@@ -549,6 +551,7 @@ header {
 }
 
 .home__blob:hover {
+  filter: drop-shadow(0px 10px 10px var(--shadow));
   /*animation while hovering */
   transform: scale(1.05);
   opacity: 0.9;
@@ -687,6 +690,7 @@ header {
 }
 
 .about__img:hover {
+  filter: drop-shadow(0px 10px 10px var(--shadow));
   /*animation while hovering */
   transform: scale(1.03);
   opacity: 0.9
@@ -741,6 +745,7 @@ header {
 }
 
 .skills__container-box:hover {
+  filter: drop-shadow(0px 10px 10px var(--shadow));
   transform: scale(1.2);
   opacity: 0.9;
 }
@@ -1127,6 +1132,7 @@ header {
 
 /*affect other elements when one element is hovered*/
 .projects__content:hover .projects__img {
+  filter: drop-shadow(0px 10px 10px var(--shadow));
   /*animation while hovering */
   transform: scale(1.08);
   opacity: 1;
@@ -2229,10 +2235,10 @@ header {
   }
 }
 
-
 .toast.active ~ button {
   pointer-events: none;
 }
+
 
 
 /* ======== HIDE reCAPTCHA ======== */
