@@ -126,6 +126,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
+
+
+
+
+
+
+
 /*==================== DISABLE SAVING OF THIS IMAGES ====================*/
 
 document.addEventListener('contextmenu', function (event) {
