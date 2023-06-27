@@ -195,7 +195,7 @@ a {
 img {
   max-width: 100%;
   height: auto;
-  pointer-events: none;
+  pointer-events: none;  /* Disable Saving Image */
 }
 
 .color__text_highlight, colorTextHighlight {
