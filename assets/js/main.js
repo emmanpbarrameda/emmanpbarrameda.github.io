@@ -630,13 +630,13 @@ themeButton.addEventListener("click", () => {
   themeButton.classList.toggle(iconTheme);
 
   // Add animation classes using Animate.css
-  document.body.classList.add("animate__animated", "animate__fadeIn", "animate__faster");
-  themeButton.classList.add("animate__animated", "animate__fadeIn", "animate__faster");
+  document.body.classList.add("animate__animated", "animate__fadeIn", "animate__fast");
+  themeButton.classList.add("animate__animated", "animate__fadeIn", "animate__fast");
 
   // Remove animation classes after the animation finishes
   setTimeout(() => {
-    document.body.classList.remove("animate__animated", "animate__fadeIn", "animate__faster");
-    themeButton.classList.remove("animate__animated", "animate__fadeIn", "animate__faster");
+    document.body.classList.remove("animate__animated", "animate__fadeIn", "animate__fast");
+    themeButton.classList.remove("animate__animated", "animate__fadeIn", "animate__fast");
   }, 500);
 
   // We save the theme and the current icon that the user chose
