@@ -138,7 +138,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener('contextmenu', function (event) {
   var targetElement = event.target;
-  if (targetElement.tagName === 'IMG' && targetElement.classList.contains('about__img')) {
+  if (
+    (targetElement.tagName === 'IMG' && targetElement.classList.contains('about__img')) ||
+    (targetElement.tagName === 'IMG' && targetElement.classList.contains('footer__logo_image'))
+  ) {
     event.preventDefault();
     return false;
   }
@@ -358,24 +361,49 @@ function changeBackgroundImage(imageSrc) {
 
 
 
-/*==================== COPYRIGHT YEAR ====================*/
-//update copyright year automatically
+/*==================== GET YEAR AND CURRENT AGE ====================*/
+//update copyright year automatically and age
 
-// Get the HTML element
-let copyrightyear = document.querySelector(".footer__copy year");
+//USAGE: <span current-year></span>
+//USAGE: <span my-age></span>
 
-// Get the current year
-let currentDate = new Date();
-let currentYear = currentDate.getFullYear();
+// Function to update the year and age
+function updateYearAndAge() {
+  // Get all elements with the current-year and my-age attributes
+  let yearElements = document.querySelectorAll("[current-year]");
+  let ageElements = document.querySelectorAll("[my-age]");
 
-// Check if the element exists
-if (copyrightyear) {
-  console.log(currentYear);
-  copyrightyear.textContent = currentYear; // Replace "year" automatically
+  // Get the current date and time in Asia/Manila time zone
+  let currentDate = new Date();
+  let options = { year: 'numeric', timeZone: 'Asia/Manila' };
+  let currentYear = new Intl.DateTimeFormat('en-US', options).format(currentDate);
+  console.log("Year: " +currentYear);
 
-} else {
-  console.log("The <year></year> element was not found.");
+  // Calculate the age
+  let birthdate = new Date("July 28, 2001");  // Set the birthdate to July 28, 2001
+  let ageInMilliseconds = currentDate - birthdate;  // Calculate the difference between current date and birthdate in milliseconds
+  let ageInYears = Math.floor(ageInMilliseconds / (365.25 * 24 * 60 * 60 * 1000));  // Calculate the age in years, accounting for leap years
+  console.log("Age: " +ageInYears);
+
+  // Iterate over each element and update the year
+  yearElements.forEach((element) => {
+    element.textContent = currentYear; // Replace content with current year
+  });
+
+  // Iterate over each element and update the age
+  ageElements.forEach((element) => {
+    element.textContent = ageInYears; // Replace content with the calculated age
+  });
 }
+
+// Call the updateYearAndAge function initially
+updateYearAndAge();
+
+// Schedule the updateYearAndAge function to be called every minute
+setInterval(updateYearAndAge, 60000); // 60000 milliseconds = 1 minute
+
+
+
 
 
 

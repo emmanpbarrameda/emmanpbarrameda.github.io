@@ -35,7 +35,8 @@
   --container-color: #fff;
   --text-color-white: #fff;
   --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
-  --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
+  --scroll-thumb-color: hsl(var(--hue-color), 12%, 65%);
+  --scroll-thumb-color-hovered: hsl(var(--hue-color), 12%, 60%);
   --shadow: hsl(var(--hue-color), 92%, 85%, 50); /* filter drop shadow */
   --text-highlight-gradient-1: linear-gradient(to left, #B374F8, #4da3ff);
 
@@ -99,8 +100,9 @@ body.dark-theme {
   --input-color: hsl(var(--hue-color), 29%, 16%);
   --body-color: hsl(var(--hue-color), 28%, 12%);
   --container-color: hsl(var(--hue-color), 29%, 16%);
-  --scroll-bar-color: hsl(var(--hue-color), 12%, 48%);
-  --scroll-thumb-color: hsl(var(--hue-color), 12%, 36%);
+  --scroll-bar-color: hsl(var(--hue-color), 12%, 20%);
+  --scroll-thumb-color: hsl(var(--hue-color), 12%, 40%);
+  --scroll-thumb-color-hovered: hsl(var(--hue-color), 12%, 60%);
 }
 
 /*========== Button Dark/Light ==========*/
@@ -1495,7 +1497,9 @@ header {
 
 
 
-/*========== SCROLL BAR ==========*/
+
+
+/*========== SCROLL BAR CUSTOMIZATION ==========*/
 
 ::-webkit-scrollbar {
   width: 0.6rem;
@@ -1509,7 +1513,7 @@ header {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--text-color-light);
+  background-color: var(--scroll-thumb-color-hovered);
 }
 
 
