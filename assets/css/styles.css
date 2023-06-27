@@ -36,7 +36,7 @@
   --text-color-white: #fff;
   --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
   --scroll-thumb-color: hsl(var(--hue-color), 12%, 65%);
-  --scroll-thumb-color-hovered: hsl(var(--hue-color), 12%, 60%);
+  --scroll-thumb-color-hovered: hsl(var(--hue-color), 12%, 55%);
   --shadow: hsl(var(--hue-color), 92%, 85%, 50); /* filter drop shadow */
   --text-highlight-gradient-1: linear-gradient(to left, #B374F8, #4da3ff);
 
@@ -92,8 +92,8 @@
 
 body.dark-theme {
   /* HSL color mode */
-  --shadow: hsl(var(--hue-color), 69%, 61%, 0.8); /* filter drop shadow */
-  --first-color-lighter-transparent: hsl(var(--hue-color), 69%, 61%, 0.07);
+  --shadow: hsl(var(--hue-color), 69%, 61%, 0.7); /* filter drop shadow */
+  --first-color-lighter-transparent: hsl(var(--hue-color), 69%, 61%, 0.06);
   --first-color-second: hsl(var(--hue-color), 30%, 8%);
   --title-color: hsl(var(--hue-color), 8%, 95%);
   --text-color: hsl(var(--hue-color), 8%, 75%);
@@ -112,18 +112,38 @@ body.dark-theme {
   align-items: center;
 }
 
+.nav__btns i {
+  font-size: var(--h1-font-size); /* Adjust the size as of icons */
+}
+
 .change-theme {
   font-size: 1.25rem;
   color: var(--title-color);
   margin-right: var(--mb-1);
   cursor: pointer;
   transition: transform 0.3s, opacity 0.3s;
+  
+  animation-name: rotate;
+  animation-duration: 0.7s;
+  animation-iteration-count: 12;  
+  animation-play-state: running;
 }
 
 .change-theme:hover {
   color: var(--first-color);
   transform: rotate(360deg);
 }
+
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 
 /*==================== BASE ====================*/
 
@@ -361,6 +381,8 @@ header {
   -webkit-backdrop-filter: blur(85px); /* Safari 9+, Safari on iOS 9+ */
   backdrop-filter: blur(85px); /* Modern Browsers */
 }
+
+
 
 .loader {
   display: flex;
@@ -1704,6 +1726,10 @@ header {
 
   .section__subtitle {
     margin-bottom: 4rem;
+  }
+
+  .nav__btns i {
+    font-size: var(--h3-font-size); /* Adjust the size as of icons */
   }
 
   .header {
