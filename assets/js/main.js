@@ -146,19 +146,6 @@ document.addEventListener('contextmenu', function (event) {
     return false;
   }
 });
-document.addEventListener('touchstart', function (event) {
-  var targetElement = event.target;
-  if (
-    (targetElement.tagName === 'IMG' && targetElement.classList.contains('about__img')) ||
-    (targetElement.tagName === 'IMG' && targetElement.classList.contains('footer__logo_image'))
-  ) {
-    event.preventDefault();
-    return false;
-  }
-});
-
-
-
 
 
 
@@ -872,30 +859,74 @@ btn.addEventListener('click', function (e) {
 
 
 
-/*==================== PREVENT USERS FROM EXITING THE WEBSITE IF NOT EMPTY ====================*/
+/*==================== PREVENT USERS FROM EXITING THE WEBSITE IF NOT EMPTY (DESKTOP ONLY) ====================*/
 
-// Get the form and inputs
-const form = document.querySelector('.contact__form');
-const inputs = form.querySelectorAll('input, textarea');
+// Check if the device is a desktop
+function isDesktopDevice() {
+  const userAgent = navigator.userAgent.toLowerCase();
+  return /windows nt|macintosh/.test(userAgent);
+}
 
-// Check if any input or textarea is filled
-function isFormNotEmpty() {
-  for (let i = 0; i < inputs.length; i++) {
-    if (inputs[i].value.trim() !== '') {
-      return true;
+// Attach the event listener only on desktop devices
+if (isDesktopDevice()) {
+  // Get the form and inputs
+  const form = document.querySelector('.contact__form');
+  const inputs = form.querySelectorAll('input, textarea');
+
+  // Check if any input or textarea is filled
+  function isFormNotEmpty() {
+    for (let i = 0; i < inputs.length; i++) {
+      if (inputs[i].value.trim() !== '') {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // Prompt a confirmation dialog when leaving the page
+  function confirmExit(event) {
+    if (isFormNotEmpty()) {
+      event.preventDefault();
+      event.returnValue = ''; // For older browsers
+      return 'Are you sure you want to leave this page? Your unsaved changes will be lost.';
     }
   }
-  return false;
+
+  // Attach the event listener to the window
+  window.addEventListener('beforeunload', confirmExit);
 }
 
-// Prompt a confirmation dialog when leaving the page
-function confirmExit(event) {
-  if (isFormNotEmpty()) {
-    event.preventDefault();
-    event.returnValue = ''; // For older browsers
-    return 'Are you sure you want to leave this page? Your unsaved changes will be lost.';
+
+
+/*==================== DISABLE RIGHT CLICK EVENTS ON WEBSITE ====================*/
+
+// Capture the right-click event on the whole page
+document.addEventListener('contextmenu', function(event) {
+  // Check if the right mouse button was clicked
+  if (event.button === 2) {
+    // Check if the right-click occurred outside of an <a> tag
+    const isLinkClicked = event.target.tagName.toLowerCase() === 'a';
+    if (!isLinkClicked) {
+      // Prevent the default behavior for right-click
+      event.preventDefault();
+    }
   }
-}
+});
 
-// Attach the event listener to the window
-window.addEventListener('beforeunload', confirmExit);
+// Add hover event listeners to all 'a' tags
+const links = document.getElementsByTagName('a');
+for (let i = 0; i < links.length; i++) {
+  const link = links[i];
+  link.addEventListener('contextmenu', function(event) {
+    // Allow right-clicking on the hovered <a> tag
+    event.stopPropagation();
+  });
+  link.addEventListener('mouseenter', function() {
+    // Add a CSS class to the hovered link for styling
+    this.classList.add('hovered-link');
+  });
+  link.addEventListener('mouseleave', function() {
+    // Remove the CSS class from the link when no longer hovered
+    this.classList.remove('hovered-link');
+  });
+}
