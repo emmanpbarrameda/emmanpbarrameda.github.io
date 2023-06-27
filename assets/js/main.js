@@ -134,9 +134,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-
-
 /*==================== DISABLE SAVING OF THIS IMAGES ====================*/
 
 document.addEventListener('contextmenu', function (event) {
@@ -149,6 +146,19 @@ document.addEventListener('contextmenu', function (event) {
     return false;
   }
 });
+document.addEventListener('touchstart', function (event) {
+  var targetElement = event.target;
+  if (
+    (targetElement.tagName === 'IMG' && targetElement.classList.contains('about__img')) ||
+    (targetElement.tagName === 'IMG' && targetElement.classList.contains('footer__logo_image'))
+  ) {
+    event.preventDefault();
+    return false;
+  }
+});
+
+
+
 
 
 
