@@ -1,6 +1,7 @@
-const name1 = "Freelancer";
-const name2 = "Student";
-const name3 = "Desktop Developer";
+const name1 = "Student";
+const name2 = "Programmer";
+const name3 = "Freelancer";
+const name4 = "Desktop Developer";
 
 let i = 0;
 let currentName = name1;
@@ -20,6 +21,8 @@ function typeEffect() {
         currentName = name2;
       } else if (currentName === name2) {
         currentName = name3;
+      } else if (currentName === name3) {
+        currentName = name4;           
       } else {
         currentName = name1;
       }
@@ -154,7 +157,7 @@ document.addEventListener('contextmenu', function (event) {
 
 // Select all the modal views, modal buttons, and modal close buttons
 const modalViews = document.querySelectorAll(".services__modal"),
-  modalBtns = document.querySelectorAll(".services__button"),
+  modalBtns_ReadMore = document.querySelectorAll(".services__button"),
   modalCloses = document.querySelectorAll(".services__modal-close");
 
 
@@ -176,19 +179,17 @@ let modal = function (modalClick) {
 };
 
 
-
 // Attach click event listeners to the modal buttons
-modalBtns.forEach((modalBtn, i) => {
-  modalBtn.addEventListener("click", () => {
+modalBtns_ReadMore.forEach((modalBtn1, i) => {
+  modalBtn1.addEventListener("click", () => {
     modal(i); // Open the corresponding modal view
   });
 });
 
+
 // Attach click event listeners to the modal close buttons
 modalCloses.forEach((modalClose) => {
-  modalClose.addEventListener("click", () => {
-    closeModal(); // Close the modal view
-  });
+  modalClose.addEventListener("click", closeModal);
 });
 
 
@@ -214,6 +215,7 @@ document.addEventListener("keydown", (event) => {
     closeModal(); // Close the modal view when the ESC key is pressed
   }
 });
+
 
 // Store the initial URL hash
 const initialHash = window.location.hash;
@@ -263,6 +265,8 @@ GET SWIPER
 https://unpkg.com/browse/swiper@9.3.2/
 https://swiperjs.com/get-started
 */
+
+
 
 
 
@@ -853,3 +857,35 @@ btn.addEventListener('click', function (e) {
     showAlertToast('reCAPTCHA Error', error, 'uil-times');
   });
 });
+
+
+
+
+
+/*==================== PREVENT USERS FROM EXITING THE WEBSITE IF NOT EMPTY ====================*/
+
+// Get the form and inputs
+const form = document.querySelector('.contact__form');
+const inputs = form.querySelectorAll('input, textarea');
+
+// Check if any input or textarea is filled
+function isFormNotEmpty() {
+  for (let i = 0; i < inputs.length; i++) {
+    if (inputs[i].value.trim() !== '') {
+      return true;
+    }
+  }
+  return false;
+}
+
+// Prompt a confirmation dialog when leaving the page
+function confirmExit(event) {
+  if (isFormNotEmpty()) {
+    event.preventDefault();
+    event.returnValue = ''; // For older browsers
+    return 'Are you sure you want to leave this page? Your unsaved changes will be lost.';
+  }
+}
+
+// Attach the event listener to the window
+window.addEventListener('beforeunload', confirmExit);

@@ -123,13 +123,14 @@ body.dark-theme {
   cursor: pointer;
   transition: transform 0.3s, opacity 0.3s;
   
+  /* ANIMATION */
   animation-name: rotate;
   animation-duration: 0.7s;
   animation-iteration-count: 12;  
   animation-play-state: running;
 }
 
-.change-theme:hover {
+.change-theme:hover { 
   color: var(--first-color);
   transform: rotate(360deg);
 }
