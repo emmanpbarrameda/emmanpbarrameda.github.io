@@ -650,31 +650,87 @@
 
   <!--==================== PROJECTS ====================-->
 
-
-
   <section class="projects section reveal fade-bottom" id="projects">
     <h2 class="section__title">Projects</h2>
     <span class="section__subtitle">Some Things I've Built</span>
 
-    <!-- Tab Buttons -->
-    <ul class="plang__tabs">
-      <li class="plang__tabs_item">
-        <button type="button" class="plang__button_link active" onclick="showTab('java-content', this); changeBackgroundImage('assets/img/skills/java.svg')">
-          <i class="material-icons">code</i>Java
-      </li>
-      <li class="plang__tabs_item">
-        <button type="button" class="plang__button_link" onclick="showTab('cpp-content', this); changeBackgroundImage('assets/img/skills/c++.svg')">
-          <i class="material-icons">code</i>C++</button>
-      </li>
-      <li class="plang__tabs_item">
-        <button type="button" class="plang__button_link" onclick="showTab('c-content', this); changeBackgroundImage('assets/img/skills/c.svg')"><i
-            class="material-icons">code</i>C</button>
-      </li>
-      <li class="plang__tabs_item">
-        <button type="button" class="plang__button_link" onclick="showTab('vb-content', this); changeBackgroundImage('assets/img/skills/vb.net.svg')"><i
-            class="material-icons">code</i>VB</button>
-      </li>
-    </ul>
+
+    <div class="swiper plang__btn_swiper">
+      <div class="swiper-wrapper">
+    
+        <!-- Swipper Button 1 -->
+        <div class="swiper-slide plang__card_btn">
+          <ul class="plang__tabs">
+            <!-- Items Inside -->
+            <li class="plang__tabs_item">
+              <button type="button" class="plang__button_link active"
+                onclick="showTab('java-content', this); changeBackgroundImage('assets/img/skills/java.svg')">
+                <i class="material-icons">code</i>Java
+            </li>
+          </ul>
+        </div>
+
+        <!-- Swipper Button 2 -->
+        <div class="swiper-slide plang__card_btn">
+          <ul class="plang__tabs">
+            <!-- Items Inside -->
+            <li class="plang__tabs_item">
+              <button type="button" class="plang__button_link"
+                onclick="showTab('cpp-content', this); changeBackgroundImage('assets/img/skills/c++.svg')">
+                <i class="material-icons">code</i>C++</button>
+            </li>
+          </ul>
+        </div>      
+        
+        <!-- Swipper Button 3 -->
+        <div class="swiper-slide plang__card_btn">
+          <ul class="plang__tabs">
+            <!-- Items Inside -->
+            <li class="plang__tabs_item">
+              <button type="button" class="plang__button_link"
+                onclick="showTab('c-content', this); changeBackgroundImage('assets/img/skills/c.svg')"><i
+                  class="material-icons">code</i>C</button>
+            </li>
+          </ul>
+        </div>     
+        
+        <!-- Swipper Button 4 -->
+        <div class="swiper-slide plang__card_btn">
+          <ul class="plang__tabs">
+            <!-- Items Inside -->
+            <li class="plang__tabs_item">
+              <button type="button" class="plang__button_link"
+                onclick="showTab('vb-content', this); changeBackgroundImage('assets/img/skills/vb.net.svg')"><i
+                  class="material-icons">code</i>VB</button>
+            </li>
+          </ul>
+        </div>  
+        
+        <!-- Swipper Button 5 -->
+        <div class="swiper-slide plang__card_btn">
+          <ul class="plang__tabs">
+            <!-- Items Inside -->
+            <li class="plang__tabs_item">
+              <button type="button" class="plang__button_link"
+                onclick="showTab('vb-content', this); changeBackgroundImage('assets/img/skills/android.svg')"><i
+                  class="material-icons">code</i>Android</button>
+            </li>
+          </ul>
+        </div>         
+
+      </div>
+
+      <div class="swiper-button-next plangSWIPER__button_next">
+        <i class="uil uil-angle-right plang__arrow_icon"></i>
+      </div>
+      <div class="swiper-button-prev plangSWIPER__button_prev">
+        <i class="uil uil-angle-left plang__arrow_icon"></i>
+      </div>
+
+    </div>
+
+
+
 
     <!-- WHOLE Tab Content -->
     <div id="plang__tabContent">
@@ -1365,8 +1421,8 @@
   -->
 
   <!--==================== DISABLE WEB TOOLS ====================-->
-  <!-- https://github.com/theajack/disable-devtool/tree/master -->
-  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>  
+  <!-- https://github.com/theajack/disable-devtool/tree/master 
+  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>   -->
 
   <!--==================== MAIN JS ====================-->
   <script src="assets/js/main.js"></script>

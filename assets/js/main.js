@@ -40,6 +40,10 @@ work();
 
 
 
+
+
+
+
 /*==================== MENU SHOW Y HIDDEN ====================*/
 const navMenu = document.getElementById("nav-menu"),
   navToggle = document.getElementById("nav-toggle"),
@@ -231,6 +235,21 @@ window.addEventListener("popstate", () => {
 
 
 /*==================== PROJECTS SWIPER ====================*/
+
+var swiper = new Swiper(".plang__btn_swiper", {
+  direction: 'horizontal',
+  cssMode: true,
+  slidesPerView: 2,
+  spaceBetween: 2,
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+});
+
 
 var swiper = new Swiper(".projects__container", {
   direction: 'horizontal',

@@ -1056,17 +1056,17 @@ header {
   content: "";
 }
 
-.swiper-projects-icon { /*arrow icon*/
-  font-size: 2rem;
-  color: var(--first-color);
-}
-
 .swiper-button-prev {
   left: -0.5rem;
 }
 
 .swiper-button-next {
   right: -0.5rem;
+}
+
+.swiper-projects-icon { /*arrow icon*/
+  font-size: 2rem;
+  color: var(--first-color);
 }
 
 .swiper>.swiper-pagination-bullets { /* pagitan ng bullet sa project */
@@ -1101,12 +1101,51 @@ header {
 
 .swiper-button-prev,
 .swiper-button-next,
+.plangSWIPER__button_next,
+.plangSWIPER__button_prev,
 .swiper-pagination-bullet {
   outline: none;
 }
 
 
 /*==================== PROGRAMMING LANGUAGES TABS ====================*/
+
+
+.plang__btn_swiper {
+  text-align: center;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content; /* adjust height */
+  width: 70%; /* adjust width */
+  position: relative;
+
+}
+
+
+.plang__arrow_icon { /*arrow icon*/
+  font-size: 1.5rem;
+  color: var(--first-color-alt);
+}
+
+.plangSWIPER__button_next,
+.plangSWIPER__button_prev {
+  position: absolute;
+  top: 52%;
+  transform: translateY(-50%);
+}
+
+
+.plangSWIPER__button_prev {
+  left: -0.5rem;
+}
+
+.plangSWIPER__button_next {
+  right: -0.5rem;
+}
+
+
 
 .plang__tabs {
   display: flex;
@@ -1115,7 +1154,7 @@ header {
 }
 
 .plang__tabs_item {
-  margin: 0 10px;
+  margin: 0 100px;
 }
 
 .plang__button_link {
@@ -1849,6 +1888,31 @@ header {
     margin-bottom: var(--mb-3);
   }
 
+  .plang__arrow_icon {
+    font-size: 2.0rem;
+  } 
+  
+
+  .plang__btn_swiper {
+    width: 70%; /* adjust width */
+  }  
+  
+  /* position to center of plang__btn_swiper  */
+  .plangSWIPER__button_next,
+  .plangSWIPER__button_prev {
+    position: absolute;
+    top: 48%;
+    transform: translateY(-50%);
+  }
+
+  .plangSWIPER__button_next {
+    left: 53rem;
+  }
+
+  .plangSWIPER__button_prev {
+    right: -0.5rem;
+  }  
+
   .plang__tabs_item {
     margin: 0 var(--mb-3);
   }
@@ -2007,6 +2071,34 @@ header {
     right: 8%;
     width: 35%; /* Adjust the width as desired */
   }  
+
+
+  .plang__arrow_icon {
+    font-size: 2.0rem;
+  }
+
+  .plang__btn_swiper {
+    width: 70%; /* adjust width */
+  }  
+  
+  /* position to center of plang__btn_swiper  */
+  .plangSWIPER__button_next,
+  .plangSWIPER__button_prev {
+    position: absolute;
+    top: 48%;
+    transform: translateY(-50%);
+  }
+
+  .plangSWIPER__button_next {
+    left: 2;
+  }
+
+  .plangSWIPER__button_prev {
+    right: 2;
+  }  
+
+
+  
 
 
   .swiper-projects-icon {
