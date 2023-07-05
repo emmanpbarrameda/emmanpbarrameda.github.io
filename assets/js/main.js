@@ -242,6 +242,7 @@ var swiper = new Swiper(".plang__btn_swiper", {
   slidesPerView: 2,
   spaceBetween: 1,
   mousewheel: true,
+  grabCursor: true,
   pagination: {
     el: ".swiper-pagination",
     type: "progressbar",

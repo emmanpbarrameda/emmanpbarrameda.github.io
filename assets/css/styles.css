@@ -128,11 +128,13 @@ body.dark-theme {
   animation-duration: 0.7s;
   animation-iteration-count: 12;  
   animation-play-state: running;
+  filter: drop-shadow(0px 10px 10px var(--shadow));
 }
 
 .change-theme:hover { 
   color: var(--first-color);
   transform: rotate(360deg);
+  filter: drop-shadow(0px 5px 5px var(--shadow));
 }
 
 
@@ -1127,6 +1129,22 @@ header {
 .plang__arrow_icon { /*arrow icon*/
   font-size: 1.5rem;
   color: var(--first-color-alt);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.plang__arrow_icon:hover { /*arrow icon animation*/
+  filter: drop-shadow(0px 10px 10px var(--shadow));
+  transform: scale(1.5);
+  opacity: 0.9
+}
+
+/* Disable hover effect on touch devices (mobile) */
+@media (hover: none) {
+  .plang__arrow_icon:hover {
+    filter: none;
+    transform: none;
+    opacity: 1;
+  }
 }
 
 .plangSWIPER__button_next,
@@ -1282,6 +1300,7 @@ header {
   /*animation while hovering */
   transform: scale(1.05);
   opacity: 0.9;
+  filter: drop-shadow(0px 5px 5px var(--shadow));
 }
 
 .contactinfo [data-content] {
@@ -1294,6 +1313,7 @@ header {
 
 .contactinfo__button.contactinfo__active {
   color: var(--first-color);
+  filter: drop-shadow(0px 8px 8px var(--shadow));
 }
 
 .contactinfo__data {
