@@ -240,14 +240,36 @@ var swiper = new Swiper(".plang__btn_swiper", {
   direction: 'horizontal',
   cssMode: true,
   slidesPerView: 2,
-  spaceBetween: 2,
-
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+  spaceBetween: 1,
+  mousewheel: true,
+  pagination: {
+    el: ".swiper-pagination",
+    type: "progressbar",
+    clickable: true,
   },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
 
+    // When window width is <= 767px (mobile phone)
+    767: {
+      slidesPerView: 2,
+    },
+    // When window width is > 767px 
+    768: {
+      slidesPerView: 3,
+    },
+    // When window width is > 767px and <= 1023px (tablet)
+    1023: {
+      slidesPerView: 3,
+    },
+    // When window width is > 1023px (desktop)
+    1024: {
+      slidesPerView: 3,
+    },
+  },
 });
 
 

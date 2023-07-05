@@ -1137,11 +1137,11 @@ header {
 }
 
 
-.plangSWIPER__button_prev {
+.swiper-button-prev .plangSWIPER__button_prev {
   left: -0.5rem;
 }
 
-.plangSWIPER__button_next {
+.swiper-button-next .plangSWIPER__button_next {
   right: -0.5rem;
 }
 
@@ -1176,6 +1176,7 @@ header {
   /*animation while hovering */
   transform: scale(1.05);
   opacity: 0.9;
+  filter: drop-shadow(0px 5px 5px var(--shadow));
 }
 
 .plang__button_link i {
@@ -1186,6 +1187,7 @@ header {
 .plang__button_link.active {
   color: var(--first-color);
   font-weight: bold;
+  filter: drop-shadow(0px 10px 10px var(--shadow));
 }
 
 .plang__tab_content {
@@ -1888,11 +1890,11 @@ header {
     margin-bottom: var(--mb-3);
   }
 
+  /* arrow next/back icon  */
   .plang__arrow_icon {
     font-size: 2.0rem;
   } 
   
-
   .plang__btn_swiper {
     width: 70%; /* adjust width */
   }  
@@ -1905,13 +1907,14 @@ header {
     transform: translateY(-50%);
   }
 
-  .plangSWIPER__button_next {
-    left: 53rem;
+  .swiper-button-prev .plangSWIPER__button_prev {
+    left: -0.5rem;
   }
-
-  .plangSWIPER__button_prev {
+  
+  .swiper-button-next .plangSWIPER__button_next {
     right: -0.5rem;
-  }  
+  }
+  
 
   .plang__tabs_item {
     margin: 0 var(--mb-3);
@@ -2058,27 +2061,14 @@ header {
     transform: translateX(-6rem);
   }
 
-  .projects__content {
-    column-gap: 5rem;
-  }
 
-  .projects__img {
-    width: 350px;
-  }
-
-  .projects__background {
-    top: 10%;
-    right: 8%;
-    width: 35%; /* Adjust the width as desired */
-  }  
-
-
+  /* arrow next/back icon  */
   .plang__arrow_icon {
-    font-size: 2.0rem;
-  }
-
+    font-size: 1.8rem;
+  } 
+  
   .plang__btn_swiper {
-    width: 70%; /* adjust width */
+    width: 50%; /* adjust width */
   }  
   
   /* position to center of plang__btn_swiper  */
@@ -2089,16 +2079,27 @@ header {
     transform: translateY(-50%);
   }
 
-  .plangSWIPER__button_next {
-    left: 2;
+  .swiper-button-prev .plangSWIPER__button_prev {
+    left: -1.5rem;
   }
-
-  .plangSWIPER__button_prev {
-    right: 2;
+  
+  .swiper-button-next .plangSWIPER__button_next {
+    right: -1.5rem;
   }  
 
+  .projects__content {
+    column-gap: 2.5rem;
+  }
 
-  
+  .projects__img {
+    width: 320px;
+  }
+
+  .projects__background {
+    top: 10%;
+    right: 8%;
+    width: 35%; /* Adjust the width as desired */
+  }  
 
 
   .swiper-projects-icon {
@@ -2106,11 +2107,11 @@ header {
   }
 
   .swiper-button-prev {
-    left: -3.5rem;
+    left: -0.5rem;
   }
 
   .swiper-button-next {
-    right: -3.5rem;
+    right: -0.5rem;
   }
 
   .swiper>.swiper-pagination-bullets {
