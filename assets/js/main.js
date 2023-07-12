@@ -310,6 +310,7 @@ var swiper = new Swiper('.gallery__container', {
   },
   pagination: {
     el: '.swiper-pagination',
+    clickable: true,
   },
 
 });

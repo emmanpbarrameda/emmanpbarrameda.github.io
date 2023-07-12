@@ -689,6 +689,13 @@ header {
   transition: 0.3s;
 }
 
+.button__icon_large {
+  font-size: 1.90rem;
+  font-weight: var(--font-medium);
+  margin-left: var(--mb-0-5);
+  transition: 0.3s;
+}
+
 .button--white {
   background-color: #fff;
   color: var(--first-color);
@@ -706,6 +713,10 @@ header {
 
 .button--small {
   padding: 0.75rem 1rem;
+}
+
+.button--super--small {
+  padding: 0.10rem 1rem;
 }
 
 .button--link {
@@ -769,21 +780,88 @@ header {
 }
 
 
+
+/*==================== GALLERY ====================*/
+
+
 .gallery__container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 240px;
+  max-width: 270px;
   margin: 0 auto;
 }
 
 .gallery__slide {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   background-position: center;
   background-size: cover;
+  opacity: 0.8;
 }
+
+/* gallery__slide-content SETTING */
+.gallery__slide-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+
+.swiper-slide-active:hover .gallery__slide-content { /* gallery__slide-content will display */
+  opacity: 1;
+}
+
+.gallery__container .swiper-slide-active { /* active gallery__slide */
+  filter: drop-shadow(0px 8px 8px var(--shadow));
+  opacity: 1;
+}
+
+.gallery__container .swiper-slide-active:hover { /* HOVERED active gallery__slide */
+  filter: drop-shadow(0px 5px 5px var(--shadow));
+}
+
+.gallery__container > .gallery__pagination { /* pagitan ng bullet sa project */
+  bottom: -4.0rem;
+}
+
+.gallery__container .swiper-pagination-bullet { /* size of pagination bullet */
+  width: 10px;
+  height: 10px;
+  opacity: 0.8;
+  /* margin: 0 15px!important; */     /* spacing on each pagination bullet */
+  background: var(--first-color-lighter-transparent);
+}
+
+.gallery__container .swiper-pagination-bullet-active { /* design of ACTIVE pagination bullet */
+  width: 12px;
+  height: 12px;
+  opacity: 1;
+  background-color: var(--first-color);
+}
+
+.gallery__button {
+  opacity: 0.8;
+}
+
+.gallery__button:hover .button__icon {
+  transform: translateX(0.25rem);
+}
+
 
 
 
