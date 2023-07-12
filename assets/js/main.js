@@ -305,7 +305,6 @@ var swiper = new Swiper('.gallery__container', {
   effect: "cards",
   mousewheel: true,
   grabCursor: true,
-  centeredSlides: true,
   cardsEffect: {
     perSlideOffset: 6,
     perSlideRotate: 0,
