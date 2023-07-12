@@ -803,14 +803,13 @@ header {
   opacity: 0.8;
 }
 
-/* gallery__slide-content SETTING */
-.gallery__slide-content {
+.gallery__slide-content { /* gallery__slide-content SETTING */
   position: absolute;
   top: 0;
   right: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(185, 166, 190, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -821,18 +820,17 @@ header {
   transition: opacity 0.3s ease-in-out;
 }
 
-
 .swiper-slide-active:hover .gallery__slide-content { /* gallery__slide-content will display */
   opacity: 1;
 }
 
 .gallery__container .swiper-slide-active { /* active gallery__slide */
-  filter: drop-shadow(0px 8px 8px var(--shadow));
+  filter: drop-shadow(0px 6px 6px var(--shadow));
   opacity: 1;
 }
 
 .gallery__container .swiper-slide-active:hover { /* HOVERED active gallery__slide */
-  filter: drop-shadow(0px 5px 5px var(--shadow));
+  filter: drop-shadow(0px 10px 10px var(--shadow));
 }
 
 .gallery__container > .gallery__pagination { /* pagitan ng bullet sa project */
