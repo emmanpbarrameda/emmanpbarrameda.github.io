@@ -690,7 +690,7 @@ header {
 }
 
 .button__icon_large {
-  font-size: 1.90rem;
+  font-size: 1.60rem;
   font-weight: var(--font-medium);
   margin-left: var(--mb-0-5);
   transition: 0.3s;
