@@ -775,6 +775,7 @@ header {
   align-items: center;
   max-width: 240px;
   margin: 0 auto;
+  zoom: 1;
 }
 
 .gallery__slide {
