@@ -299,6 +299,27 @@ var swiper = new Swiper(".projects__container", {
 
 });
 
+
+
+var swiper = new Swiper('.gallery__container', {
+  effect: "cards",
+  mousewheel: true,
+  grabCursor: true,
+  centeredSlides: true,
+  cardsEffect: {
+    rotate: 50,
+    stretch: 0,
+    depth: 100,
+    modifier: 1,
+    slideShadows: false,
+  },
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+});
+
+
 /*
 GET SWIPER
 https://unpkg.com/browse/swiper@9.3.2/

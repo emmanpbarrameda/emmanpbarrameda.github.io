@@ -25,7 +25,7 @@
   --first-color-second: hsl(var(--hue-color), 69%, 61%);
   --first-color-alt: hsl(var(--hue-color), 57%, 53%);
   --first-color-lighter: hsl(var(--hue-color), 92%, 85%);
-  --first-color-lighter-transparent: hsl(var(--hue-color), 92%, 85%, 0.6); /* floating animation bg color */
+  --first-color-lighter-transparent: hsl(var(--hue-color), 92%, 85%, 0.5); /* floating animation bg color */
   --title-color: hsl(var(--hue-color), 8%, 15%);
   --text-color: hsl(var(--hue-color), 8%, 45%);
   --text-color-light: hsl(var(--hue-color), 8%, 65%);
@@ -93,7 +93,7 @@
 body.dark-theme {
   /* HSL color mode */
   --shadow: hsl(var(--hue-color), 69%, 61%, 0.7); /* filter drop shadow */
-  --first-color-lighter-transparent: hsl(var(--hue-color), 69%, 61%, 0.07); /* floating animation bg color */
+  --first-color-lighter-transparent: hsl(var(--hue-color), 69%, 61%, 0.08); /* floating animation bg color */
   --first-color-second: hsl(var(--hue-color), 30%, 8%);
   --title-color: hsl(var(--hue-color), 8%, 95%);
   --text-color: hsl(var(--hue-color), 8%, 75%);
@@ -766,6 +766,23 @@ header {
 .about__buttons {
   display: flex;
   justify-content: center;
+}
+
+
+.gallery__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 270px;
+  margin: 0 auto;
+}
+
+.gallery__slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  background-size: cover;
 }
 
 /*==================== SKILLS ====================*/
@@ -1700,7 +1717,7 @@ header {
 
   .footer__logo_container {
     margin-top: var(--mb-2);
-  }    
+  }   
 
 }
 
@@ -1870,6 +1887,12 @@ header {
   .about__buttons {
     justify-content: initial;
   }
+
+
+  .gallery__container {
+    max-width: 450px;
+  }
+   
 
   .qualification__tabs {
     justify-content: center;
