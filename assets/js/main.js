@@ -274,6 +274,8 @@ var swiper = new Swiper(".plang__btn_swiper", {
 });
 
 
+/*==================== PROJECTS CONTAINER ====================*/
+
 var swiper = new Swiper(".projects__container", {
   direction: 'horizontal',
   cssMode: true,
@@ -290,7 +292,6 @@ var swiper = new Swiper(".projects__container", {
     },
   },
 
-
   // Navigation arrows
   navigation: {
     nextEl: '.swiper-button-next',
@@ -300,6 +301,7 @@ var swiper = new Swiper(".projects__container", {
 });
 
 
+/*==================== GALLERY CONTAINER ====================*/
 
 var swiper = new Swiper('.gallery__container', {
   effect: "cards",
