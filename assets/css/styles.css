@@ -1604,6 +1604,10 @@ header {
   font-size: 1rem;
   width: 185px; /* Adjust the width as per your requirement */
   transition: transform 0.3s, opacity 0.3s;
+
+  outline: none; /* Remove outline */
+  border: none; /* Remove border */
+  box-shadow: none; /* Remove box shadow */  
 }
 
 .btn__Email.button--flex {
