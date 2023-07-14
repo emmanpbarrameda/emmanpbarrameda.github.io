@@ -1785,12 +1785,7 @@ header {
 @media screen and (min-width: 351px) {
   .loader {
     font-size: 13vh;
-  }
-
-  .section {
-    padding-top: 7.5rem;
-    padding-bottom: 7.5rem;
-  }  
+  } 
 
   .projects__background {
     top: 0%;
