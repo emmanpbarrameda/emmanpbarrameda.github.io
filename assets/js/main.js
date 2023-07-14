@@ -303,7 +303,7 @@ var swiper = new Swiper(".projects__container", {
 
 /*==================== GALLERY CONTAINER ====================*/
 
-var swiper = new Swiper('.gallery__container', {
+var gallerySwiper = new Swiper('.gallery__container', {
   effect: "cards",
   mousewheel: false,
   grabCursor: false,
@@ -314,17 +314,24 @@ var swiper = new Swiper('.gallery__container', {
     el: '.swiper-pagination',
     clickable: true,
   },
-  breakpoints: {
-
-    // When window width is >= 1025px (desktop sizes)
-    // MAKE THE mousewheel AND grabCursor ENABLE
-    1024: {
-      mousewheel: true,
-      grabCursor: true,
-    }
-
-  }
 });
+
+// Update Swiper options on window resize
+function updateSwiperOptions() {
+  if (window.innerWidth >= 1025) { // Desktop devices
+    gallerySwiper.mousewheel.enable();
+    gallerySwiper.grabCursor = true;
+  } else { // Tablet and mobile devices
+    gallerySwiper.mousewheel.disable();
+    gallerySwiper.grabCursor = false;
+  }
+}
+
+// Initialize Swiper options on page load
+updateSwiperOptions();
+
+// Update Swiper options on window resize
+window.addEventListener('resize', updateSwiperOptions);
 
 
 
