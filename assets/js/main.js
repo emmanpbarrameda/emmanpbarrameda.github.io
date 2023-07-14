@@ -318,7 +318,7 @@ var gallerySwiper = new Swiper('.gallery__container', {
 
 // Update Swiper options on window resize
 function updateSwiperOptions() {
-  if (window.innerWidth >= 1025) { // Desktop devices
+  if (window.innerWidth >= 1024) { // Desktop devices
     gallerySwiper.mousewheel.enable();
     gallerySwiper.grabCursor = true;
   } else { // Tablet and mobile devices

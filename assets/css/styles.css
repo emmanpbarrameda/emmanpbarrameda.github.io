@@ -789,7 +789,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 240px;
+  max-width: 250px;
   margin: 0 auto;
 }
 
@@ -1831,6 +1831,10 @@ header {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .gallery__container {
+    max-width: 350px;
+  }
+
   .qualification__sections {
     display: grid;
     grid-template-columns: 0.6fr;
@@ -1972,7 +1976,7 @@ header {
 
 
   .gallery__container {
-    max-width: 450px;
+    max-width: 400px;
   }
    
 
@@ -2185,6 +2189,11 @@ header {
   .home__social {
     transform: translateX(-6rem);
   }
+
+
+  .gallery__container {
+    max-width: 450px;
+  }  
 
 
   /* arrow next/back icon  */
