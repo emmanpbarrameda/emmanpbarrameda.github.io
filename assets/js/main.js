@@ -305,8 +305,8 @@ var swiper = new Swiper(".projects__container", {
 
 var swiper = new Swiper('.gallery__container', {
   effect: "cards",
-  mousewheel: true,
-  grabCursor: true,
+  mousewheel: false,
+  grabCursor: false,
   cardsEffect: {
     slideShadows: false,
   },
@@ -314,8 +314,18 @@ var swiper = new Swiper('.gallery__container', {
     el: '.swiper-pagination',
     clickable: true,
   },
+  breakpoints: {
 
+    // When window width is >= 1025px (desktop sizes)
+    // MAKE THE mousewheel AND grabCursor ENABLE
+    1024: {
+      mousewheel: true,
+      grabCursor: true,
+    }
+
+  }
 });
+
 
 
 /*
