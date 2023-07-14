@@ -439,13 +439,13 @@ function updateYearAndAge() {
   let currentDate = new Date();
   let options = { year: 'numeric', timeZone: 'Asia/Manila' };
   let currentYear = new Intl.DateTimeFormat('en-US', options).format(currentDate);
-  console.log("Year: " +currentYear);
+  /* console.log("Year: " +currentYear); */
 
   // Calculate the age
   let birthdate = new Date("July 28, 2001");  // Set the birthdate to July 28, 2001
   let ageInMilliseconds = currentDate - birthdate;  // Calculate the difference between current date and birthdate in milliseconds
   let ageInYears = Math.floor(ageInMilliseconds / (365.25 * 24 * 60 * 60 * 1000));  // Calculate the age in years, accounting for leap years
-  console.log("Age: " +ageInYears);
+  /* console.log("Age: " +ageInYears); */
 
   // Iterate over each element and update the year
   yearElements.forEach((element) => {
