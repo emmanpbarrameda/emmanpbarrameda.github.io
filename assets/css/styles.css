@@ -118,7 +118,7 @@ body.dark-theme {
 
 .change-theme {
   font-size: 1.25rem;
-  color: var(--title-color);
+  color: var(--first-color);
   margin-right: var(--mb-1);
   cursor: pointer;
   transition: transform 0.3s, opacity 0.3s;
@@ -132,7 +132,7 @@ body.dark-theme {
 }
 
 .change-theme:hover { 
-  color: var(--first-color);
+  color: var(--first-color-alt);
   transform: rotate(360deg);
   filter: drop-shadow(0px 5px 5px var(--shadow));
 }
