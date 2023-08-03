@@ -30,6 +30,10 @@ const assets = [
   "assets/img/skills/mysql.svg",
   "assets/img/skills/photoshop.svg",
   "assets/img/skills/vb.net.svg",
+  "assets/img/certs/cert-best-in-ict.jpeg",
+  "assets/img/certs/cert-best-thesis.jpeg",
+  "assets/img/certs/cert-with-honor-shs.jpeg",
+  "assets/img/certs/cert-tech-together.jpg",
 ];
 
 

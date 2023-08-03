@@ -309,6 +309,8 @@ var gallerySwiper = new Swiper('.gallery__container', {
   grabCursor: false,
   cardsEffect: {
     slideShadows: false,
+    perSlideOffset: 7,
+    perSlideRotate: 1,
   },
   pagination: {
     el: '.swiper-pagination',
