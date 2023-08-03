@@ -201,10 +201,18 @@ img {
   pointer-events: none;  /* Disable Saving Image */
 }
 
+/* USAGE:   <colorTextHighlight> EMMAN </colorTextHighlight>  */
 .color__text_highlight, colorTextHighlight {
   color: var(--first-color); /* Change the color to your desired value */
   font-weight: var(--font-medium);
 }
+
+/* SEMIBOLD */
+/* USAGE:   <sb> EMMAN </sb>  */
+.sb, sb {
+  font-weight: var(--font-medium);
+}
+
 
 /*==================== REUSABLE CSS CLASSES ====================*/
 
@@ -847,7 +855,7 @@ header {
 }
 
 .gallery__container > .gallery__pagination { /* pagitan ng bullet sa project */
-  bottom: -4.0rem;
+  bottom: -2.0rem;
 }
 
 .gallery__container .swiper-pagination-bullet { /* size of pagination bullet */

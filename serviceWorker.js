@@ -34,6 +34,10 @@ const assets = [
   "assets/img/certs/cert-best-thesis.jpeg",
   "assets/img/certs/cert-with-honor-shs.jpeg",
   "assets/img/certs/cert-tech-together.jpg",
+  "assets/img/certs_courses/c.jpg",
+  "assets/img/certs_courses/cpp.jpg",
+  "assets/img/certs_courses/html.jpg",
+  "assets/img/certs_courses/java.jpg",
 ];
 
 
