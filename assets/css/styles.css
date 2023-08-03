@@ -54,6 +54,7 @@
   --small-font-size: 0.813rem;
   --smaller-font-size: 0.75rem;
   /*========== Font weight ==========*/
+  --font-light: 300;
   --font-normal: 400;
   --font-medium: 500;
   --font-semi-bold: 600;
@@ -425,6 +426,18 @@ header {
   margin-top: 0;
   /* Remove the margin-top */
 }
+
+.loading__description {
+  left: 0;
+  right: 0;
+  margin-top: var(--mb-0-75);
+  letter-spacing: 0.05em;
+  font-size: var(--smaller-font-size);
+  font-weight: var(--font-light);
+  color: var(--text-color-white);
+  text-align: center;
+}
+
 
 .loader .bar span {
   width: 6px;
