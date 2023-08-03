@@ -826,13 +826,25 @@
             <!-- Items Inside -->
             <li class="plang__tabs_item">
               <button type="button" class="plang__button_link"
+                onclick="showTab('vb-content', this); changeBackgroundImage('assets/img/skills/vb.net.svg')"><i
+                  class="material-icons">code</i>VB</button>
+            </li>
+          </ul>
+        </div>        
+
+        <!-- Swipper Button 3 -->
+        <div class="swiper-slide plang__card_btn">
+          <ul class="plang__tabs">
+            <!-- Items Inside -->
+            <li class="plang__tabs_item">
+              <button type="button" class="plang__button_link"
                 onclick="showTab('cpp-content', this); changeBackgroundImage('assets/img/skills/c++.svg')">
                 <i class="material-icons">code</i>C++</button>
             </li>
           </ul>
         </div>
 
-        <!-- Swipper Button 3 -->
+        <!-- Swipper Button 4 -->
         <div class="swiper-slide plang__card_btn">
           <ul class="plang__tabs">
             <!-- Items Inside -->
@@ -844,26 +856,14 @@
           </ul>
         </div>
 
-        <!-- Swipper Button 4 -->
-        <div class="swiper-slide plang__card_btn">
-          <ul class="plang__tabs">
-            <!-- Items Inside -->
-            <li class="plang__tabs_item">
-              <button type="button" class="plang__button_link"
-                onclick="showTab('vb-content', this); changeBackgroundImage('assets/img/skills/vb.net.svg')"><i
-                  class="material-icons">code</i>VB</button>
-            </li>
-          </ul>
-        </div>
-
         <!-- Swipper Button 5 -->
         <div class="swiper-slide plang__card_btn">
           <ul class="plang__tabs">
             <!-- Items Inside -->
             <li class="plang__tabs_item">
               <button type="button" class="plang__button_link"
-                onclick="showTab('vb-content', this); changeBackgroundImage('assets/img/skills/android.svg')"><i
-                  class="material-icons">code</i>Android</button>
+                onclick="showTab('webdev-content', this); changeBackgroundImage('assets/img/skills/html.svg')"><i
+                  class="material-icons">code</i>Web</button>
             </li>
           </ul>
         </div>
@@ -890,7 +890,6 @@
 
       <!-- Java Tab Content -->
       <div class="plang__tab_content active" id="java-content">
-
 
 
         <!-- LIST OF PROJECTS CONTAINER -->
@@ -1013,6 +1012,50 @@
       </div><!-- Java Tab Content -->
 
 
+
+
+      <!-- VB Tab Content -->
+      <div class="plang__tab_content" id="vb-content">
+
+        <!-- LIST OF PROJECTS CONTAINER -->
+        <div class="projects__container container swiper">
+
+          <!-- swiper wrapper -->
+          <div class="swiper-wrapper">
+
+
+            <!--==================== PROJECT 1 ====================-->
+            <div class="projects__content grid swiper-slide">
+              <img src="https://pimages.toolbox.com/wp-content/uploads/2023/04/28084947/shutterstock_1918195625.jpg"
+                alt="Preview" class="projects__img" />
+              <div class="projects__data">
+                <h3 class="projects__title">Visual Basic</h3>
+                <p class="projects__description">
+                  Projects on Visual Basic, Coming Soon...
+                </p>
+                <a href="#projects" target="_blank" class="button button--flex button--small projects__button">
+                  Read More
+                  <i class="uil uil-arrow-right button__icon"></i>
+                </a>
+              </div>
+            </div>
+
+          </div><!-- swiper wrapper -->
+
+          <!-- Add arrows -->
+          <div class="swiper-button-next">
+            <i class="uil uil-angle-right-b swiper-projects-icon"></i>
+          </div>
+          <div class="swiper-button-prev">
+            <i class="uil uil-angle-left-b swiper-projects-icon"></i>
+          </div>
+
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+
+        </div><!-- LIST OF PROJECTS CONTAINER -->
+
+      </div><!-- VB Tab Content -->
 
 
 
@@ -1214,9 +1257,8 @@
 
 
 
-
-      <!-- VB Tab Content -->
-      <div class="plang__tab_content" id="vb-content">
+      <!-- WEBDEV Content -->
+      <div class="plang__tab_content" id="webdev-content">
 
         <!-- LIST OF PROJECTS CONTAINER -->
         <div class="projects__container container swiper">
@@ -1227,15 +1269,16 @@
 
             <!--==================== PROJECT 1 ====================-->
             <div class="projects__content grid swiper-slide">
-              <img src="https://pimages.toolbox.com/wp-content/uploads/2023/04/28084947/shutterstock_1918195625.jpg"
+              <img src="https://raw.githubusercontent.com/emmanpbarrameda/GIT.RAWify/main/output/screen_record_gif2.gif"
                 alt="Preview" class="projects__img" />
               <div class="projects__data">
-                <h3 class="projects__title">Visual Basic</h3>
+                <h3 class="projects__title">GIT-RAWify</h3>
                 <p class="projects__description">
-                  Projects on Visual Basic, Coming Soon...
+                  Convert GitHub Link to Raw Link
                 </p>
-                <a href="#projects" target="_blank" class="button button--flex button--small projects__button">
-                  Read More
+                <a href="https://git-rawify.vercel.app/"
+                  target="_blank" class="button button--flex button--small projects__button">
+                  Visit
                   <i class="uil uil-arrow-right button__icon"></i>
                 </a>
               </div>
@@ -1256,7 +1299,9 @@
 
         </div><!-- LIST OF PROJECTS CONTAINER -->
 
-      </div><!-- VB Tab Content -->
+      </div><!-- WEB DEV Content -->
+
+
 
 
     </div><!-- WHOLE Tab Content -->
