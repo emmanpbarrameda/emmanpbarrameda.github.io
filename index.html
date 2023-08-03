@@ -103,9 +103,8 @@
   <!--==================== MATERIAL ICONS ====================-->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-
-
 </head>
+
 
 <body>
 
@@ -126,6 +125,22 @@
     <p class="loading__copyright">Copyright © <span current-year></span> emmanpbarrameda<br>All rights reserved.</p>
   </div>
 
+  <!-- Function to update the loading__description -->
+  <script>
+    function updateLoadingText() {
+      const loadingDescription = document.querySelector(".loading__description");
+      if (loadingDescription.textContent === "Welcome! Just a moment . . .") {
+        loadingDescription.textContent = "Getting things ready for you . . .";
+      } else {
+        loadingDescription.textContent = "Welcome! Just a moment . . .";
+      }
+    }
+  
+    // Call the updateLoadingText function every 3 seconds
+    setInterval(updateLoadingText, 3000);
+  </script>  
+
+
 
   <!-- ===================== CIRCLE BG ANIMATION LOOP ==================== -->
   <div class="circle_bubble__anim">
@@ -140,6 +155,7 @@
     <div></div>
     <div></div>
   </div>
+
 
 
 

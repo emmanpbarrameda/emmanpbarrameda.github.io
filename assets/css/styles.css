@@ -428,13 +428,6 @@ header {
   text-align: center;
 }
 
-.loader .bar {
-  display: flex;
-  justify-content: center;
-  margin-top: 0;
-  /* Remove the margin-top */
-}
-
 .loading__description {
   left: 0;
   right: 0;
@@ -446,6 +439,12 @@ header {
   text-align: center;
 }
 
+.loader .bar {
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+  /* Remove the margin-top */
+}
 
 .loader .bar span {
   width: 6px;
@@ -1492,6 +1491,12 @@ header {
   outline: none;
   padding: 0.25rem 0.5rem 0.5rem 0;
   resize: none; /* enable and disable resizing */
+}
+
+/* MOUSE COPY BACKGROUND COLOR */
+.contact__input::selection {
+  background-color: var(--first-color-lighter);
+  color: var(--text-color-white);
 }
 
 /*==================== CONTACT AVAILABILITY ====================*/
