@@ -579,13 +579,30 @@ header {
 
 /*==================== HOME ====================*/
 
+.home {
+  height: 100vh; /* Set the initial height to 100% of the viewport height */
+  width: 100%;
+  min-height: 100vh; /* Set a minimum height of 100vh */
+  max-height: fit-content; /* Adjusts the height based on content */
+  display: flex; /* Use flexbox to align items */
+}
+
+@media screen and (max-width: 768px) {
+  /* Adjustments for smaller screens if necessary */
+  .home {
+    height: 90vh;
+    width: 100%;
+    min-height: 90vh; /* Example: Reduce the minimum height for smaller screens */
+  }
+}
+
 .home__container {
   gap: 1rem;
 }
 
 .home__content {
   grid-template-columns: 0.5fr 3fr;
-  padding-top: 3.5rem;
+  padding-top: 2rem;
   align-items: center;
 }
 
@@ -1916,6 +1933,11 @@ header {
     padding-bottom: 6rem;
   }
 
+  .section_home {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }  
+
   .section__subtitle {
     margin-bottom: 4rem;
   }
@@ -1964,8 +1986,8 @@ header {
   }
 
   .home__content {
-    padding-top: 5.5rem;
-    column-gap: 2rem;
+    padding-top: auto;
+    column-gap: 0rem;
   }
 
   .home__blob {
