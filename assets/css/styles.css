@@ -579,22 +579,37 @@ header {
 
 /*==================== HOME ====================*/
 
-.home {
-  height: 100vh; /* Set the initial height to 100% of the viewport height */
-  width: 100%;
-  min-height: 100vh; /* Set a minimum height of 100vh */
-  max-height: fit-content; /* Adjusts the height based on content */
-  display: flex; /* Use flexbox to align items */
-}
-
-@media screen and (max-width: 768px) {
-  /* Adjustments for smaller screens if necessary */
+/* For computer/laptop views, FIT VIEW */
+@media screen and (min-width: 1025px) {
   .home {
-    height: 90vh;
+    height: 100vh; /* Set the initial height to 100% of the viewport height */
     width: 100%;
-    min-height: 90vh; /* Example: Reduce the minimum height for smaller screens */
+    min-height: 100vh; /* Set a minimum height of 100vh */
+    max-height: fit-content; /* Adjusts the height based on content */
+    display: flex; /* Use flexbox to align items */
   }
 }
+
+/* For tablets */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .home {
+    height: auto; /* Allow the height to adjust based on content for tablets */
+    min-height: 100vh; /* Set a minimum height of 100vh */
+    max-height: none; /* Disable max-height for tablets */
+    display: block; /* Use block display for stacking content on tablets */
+  }
+}
+
+/* For mobile devices */
+@media screen and (max-width: 767px) {
+  .home {
+    height: auto; /* Allow the height to adjust based on content for mobile devices */
+    min-height: 100vh; /* Set a minimum height of 100vh */
+    max-height: none; /* Disable max-height for mobile devices */
+    display: block; /* Use block display for stacking content on mobile */
+  }
+}
+
 
 .home__container {
   gap: 1rem;
