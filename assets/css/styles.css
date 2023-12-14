@@ -272,6 +272,15 @@ header {
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.10); 
 }
 
+/*==================== SCROLL PROGRESS ====================*/
+.scroll_progress {
+  height: 3px;
+  background: linear-gradient(to left, #B374F8, #4da3ff); /* Default gradient */
+  transition: width 0.3s ease; /* Add transition for width change */
+  width: 0; /* Initial width set to 0 */
+}
+
+
 /*==================== NAV ====================*/
 
 .nav {
@@ -1972,6 +1981,7 @@ header {
     padding: 0 1rem;
   }
 
+  /* DESKTOP NAV TOP BAR */
   .nav {
     height: calc(var(--header-height) + 1.5rem);
     column-gap: 1rem;

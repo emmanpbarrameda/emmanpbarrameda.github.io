@@ -140,8 +140,6 @@
     setInterval(updateLoadingText, 3000);
   </script>  
 
-
-
   <!-- ===================== CIRCLE BG ANIMATION LOOP ==================== -->
   <div class="circle_bubble__anim">
     <div></div>
@@ -161,6 +159,10 @@
 
   <!--==================== HEADER ====================-->
   <header class="header" id="header">
+    <!-- scroll progress -->
+    <div class="scroll_progress"></div>
+
+    <!-- nav menu -->
     <nav class="nav container">
       <a href="#" class="nav__logo noSelect">emmanpbarrameda</a>
 
@@ -1682,8 +1684,8 @@
   -->
 
   <!--==================== DISABLE WEB TOOLS ====================-->
-  <!-- https://github.com/theajack/disable-devtool/tree/master   
-  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>   --> 
+  <!-- https://github.com/theajack/disable-devtool/tree/master    --> 
+  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>   
 
   <!--==================== MAIN JS ====================-->
   <script src="assets/js/main.js"></script>
@@ -1794,9 +1796,18 @@
     }
   </script>
 
+  <!-- ===================== SCROLL PROGRESS ANIMATION ==================== -->
+  <script>
+    window.addEventListener('scroll', function() {
+      const progressBar = document.querySelector('.scroll_progress');
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (scrollTop / scrollHeight) * 100;
 
-
-
+      // Set width of the progress bar based on scroll position
+      progressBar.style.width = `${scrolled}%`;
+    });
+  </script>
 
   <!-- ===================== SHOW/HIDE LOADER ==================== -->
   <script>
