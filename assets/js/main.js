@@ -1010,8 +1010,3 @@ for (let i = 0; i < links.length; i++) {
     this.classList.remove('hovered-link');
   });
 }
-
-
-function liveViews(response) {
-  document.getElementById('current-viewers').innerText = response.value;
-}
