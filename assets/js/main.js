@@ -1010,3 +1010,15 @@ for (let i = 0; i < links.length; i++) {
     this.classList.remove('hovered-link');
   });
 }
+
+
+
+const socket = io();
+
+const currentViewersElement = document.querySelector('.current-viewers');
+const totalViewersElement = document.querySelector('.total-viewers');
+
+socket.on('viewerCountUpdate', ({ currentViewers, totalViewers }) => {
+  currentViewersElement.textContent = currentViewers;
+  totalViewersElement.textContent = totalViewers;
+});
