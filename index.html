@@ -1651,7 +1651,6 @@
         </div>
       </div>
 
-      <p id="online-now"><span class="visitors">0</span> </p>
       <p class="footer__copy"><span id="current-viewers"></span><br>Copyright © <span current-year></span> emmanpbarrameda<br>All rights reserved.</p>
     </div>
 
@@ -1746,19 +1745,6 @@
     });
   </script>
 
-
-  <script>
-    var url = 'https://emmanpbarrameda.github.io';
-
-    var updateGoSquared = function() {
-      $.getJSON('https://api.gosquared.com/now/v3/pages?api_key=demo&site_token=GSN-106863-S&href=' + encodeURIComponent(url), function(data) {
-        setTimeout(updateGoSquared, 5000);
-        $('#online-now').addClass('visible').find('.visitors').text(data.visitors);
-      });
-    };
-
-    updateGoSquared();
-  </script>
 
 
   <!-- ===================== SOCIALMEDIA CLICK ==================== -->
