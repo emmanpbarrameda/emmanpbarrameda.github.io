@@ -1604,13 +1604,6 @@
 
   <footer class="footer">
 
-  <!-- Messenger Chat Plugin Code -->
-  <div id="fb-root"></div>
-
-  <!-- Your Chat Plugin code -->
-  <div id="fb-customer-chat" class="fb-customerchat">
-  </div>
-
     <div class="footer__bg">
       <div class="footer__container container grid">
 
@@ -1695,6 +1688,12 @@
   <script src="assets/js/main.js"></script>
 
 
+  <!-- Messenger Chat Plugin Code -->
+  <div id="fb-root"></div>
+
+  <!-- Your Chat Plugin code -->
+  <div id="fb-customer-chat" class="fb-customerchat">
+  </div>
 
   <script>
     var chatbox = document.getElementById('fb-customer-chat');
@@ -1707,7 +1706,7 @@
     window.fbAsyncInit = function() {
       FB.init({
         xfbml            : true,
-        version          : 'v17.0'
+        version          : 'v18.0'
       });
     };
 
