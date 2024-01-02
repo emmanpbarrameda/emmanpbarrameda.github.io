@@ -1721,10 +1721,8 @@ header {
 
 .scrolldown {
   position: fixed;
-  right: 1rem;
+  right: 6rem;
   bottom: -20%;
-  background-color: var(--first-color);
-  opacity: 0.8;
   padding: 0 0.3rem;
   border-radius: 0.4rem;
   z-index: var(--z-tooltip);
@@ -1733,17 +1731,16 @@ header {
 }
 
 .scrolldown:hover {
-  background-color: var(--first-color-alt);
   transform: translateY(0.25rem);
 }
 
 .scrolldown__icon {
   font-size: 1.5rem;
-  color: #fff;
+  color: var(--first-color);
 }
 
 .show-scrolldown {
-  bottom: 5rem;
+  bottom: 1.5rem;
 }
 
 
