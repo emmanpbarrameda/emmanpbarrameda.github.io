@@ -1770,11 +1770,11 @@ header {
 /* Styles for mobile and tablet views */
 @media screen and (max-width: 768px) {
   .scrolldown {
-    right: 1rem; /* Adjusted position for smaller screens */
+    right: 4rem; /* Adjusted position for smaller screens */
   }
   
   .show-scrolldown {
-    bottom: 1.5rem; /* Keeping the same position as specified */
+    bottom: 5rem; /* Keeping the same position as specified */
   }
 }
 /* ========== SCROLL DOWN ==========
