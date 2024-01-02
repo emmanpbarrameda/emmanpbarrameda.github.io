@@ -1774,7 +1774,7 @@ header {
   }
   
   .show-scrolldown {
-    bottom: 5rem; /* Keeping the same position as specified */
+    bottom: 4rem; /* Keeping the same position as specified */
   }
 }
 /* ========== SCROLL DOWN ==========
