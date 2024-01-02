@@ -3,20 +3,20 @@ const name2 = "Programmer";
 const name3 = "Freelancer";
 const name4 = "Desktop Developer";
 
-let i = 0;
+let val = 0;
 let currentName = name1;
 
 function typeEffect() {
   const homeWorkElement = document.getElementsByClassName("home__work")[0];
 
-  if (i <= currentName.length) {
-    const typedText = currentName.substring(0, i);
+  if (val <= currentName.length) {
+    const typedText = currentName.substring(0, val);
     homeWorkElement.innerHTML = typedText + "█";
-    i++;
+    val++;
     setTimeout(typeEffect, 100);
   } else {
     setTimeout(function () {
-      i = 0;
+      val = 0;
       if (currentName === name1) {
         currentName = name2;
       } else if (currentName === name2) {
@@ -165,8 +165,8 @@ const modalViews = document.querySelectorAll(".services__modal"),
 // Function to open a modal view WITH ANIMATION
 let modal = function (modalClick) {
   // Remove active-modal class from all modal views
-  for (var i = 0; i < modalViews.length; i++) {
-    modalViews[i].classList.remove("active-modal", "animate__animated", "animate__fadeIn", "animate__faster");
+  for (var val = 0; val < modalViews.length; val++) {
+    modalViews[val].classList.remove("active-modal", "animate__animated", "animate__fadeIn", "animate__faster");
   }
 
   // Delay adding the animation classes to ensure animation triggers consistently
@@ -181,9 +181,9 @@ let modal = function (modalClick) {
 
 
 // Attach click event listeners to the modal buttons
-modalBtns_ReadMore.forEach((modalBtn1, i) => {
+modalBtns_ReadMore.forEach((modalBtn1, val) => {
   modalBtn1.addEventListener("click", () => {
-    modal(i); // Open the corresponding modal view
+    modal(val); // Open the corresponding modal view
   });
 });
 
@@ -354,28 +354,28 @@ let elements = document.getElementsByClassName("contact-availability__subtitle")
 let icons = document.getElementsByClassName("contact-availability__icon");
 
 //get the icon
-for (let i = 0; i < elements.length; i++) {
+for (let val = 0; val < elements.length; val++) {
 
   // Check if the text content contains the exact word "Available"
-  if (elements[i].textContent.trim() === "Available") {
-    icons[i].classList.add("uil-check"); // Replace with the desired Unicons line icon class for "Available"
-    icons[i].classList.add("active"); //set color
-    icons[i].classList.remove("inactive"); // Remove the "inactive" class
-    icons[i].classList.remove("busy"); // Remove the "busy" class
+  if (elements[val].textContent.trim() === "Available") {
+    icons[val].classList.add("uil-check"); // Replace with the desired Unicons line icon class for "Available"
+    icons[val].classList.add("active"); //set color
+    icons[val].classList.remove("inactive"); // Remove the "inactive" class
+    icons[val].classList.remove("busy"); // Remove the "busy" class
 
     // Check if the text content contains the exact phrase "Not Available"
-  } else if (elements[i].textContent.trim() === "Not Available") {
-    icons[i].classList.add("uil-times"); // Replace with the desired Unicons line icon class for "Not Available"
-    icons[i].classList.add("inactive"); //set color
-    icons[i].classList.remove("active");
-    icons[i].classList.remove("busy");
+  } else if (elements[val].textContent.trim() === "Not Available") {
+    icons[val].classList.add("uil-times"); // Replace with the desired Unicons line icon class for "Not Available"
+    icons[val].classList.add("inactive"); //set color
+    icons[val].classList.remove("active");
+    icons[val].classList.remove("busy");
 
     // Check if the text content contains the exact phrase "Busy"
-  } else if (elements[i].textContent.trim() === "Busy") {
-    icons[i].classList.add("uil-pen"); // Replace with the desired Unicons line icon class for "Not Available"
-    icons[i].classList.add("busy"); //set color
-    icons[i].classList.remove("active");
-    icons[i].classList.remove("inactive");
+  } else if (elements[val].textContent.trim() === "Busy") {
+    icons[val].classList.add("uil-pen"); // Replace with the desired Unicons line icon class for "Not Available"
+    icons[val].classList.add("busy"); //set color
+    icons[val].classList.remove("active");
+    icons[val].classList.remove("inactive");
   }
 
 }
@@ -389,8 +389,8 @@ for (let i = 0; i < elements.length; i++) {
 function showTab(tabId, button) {
   // Remove active class from all buttons
   var buttons = document.getElementsByClassName('plang__button_link');
-  for (var i = 0; i < buttons.length; i++) {
-    buttons[i].classList.remove('active');
+  for (var val = 0; val < buttons.length; val++) {
+    buttons[val].classList.remove('active');
   }
 
   // Add active class to the clicked button
@@ -398,8 +398,8 @@ function showTab(tabId, button) {
 
   // Hide all tab contents
   var tabContents = document.getElementsByClassName('plang__tab_content');
-  for (var i = 0; i < tabContents.length; i++) {
-    tabContents[i].classList.remove('active');
+  for (var val = 0; val < tabContents.length; val++) {
+    tabContents[val].classList.remove('active');
   }
 
   // Show the selected tab content
@@ -584,15 +584,15 @@ window.addEventListener("scroll", scrollActive);
 function reveal() {
   var reveals = document.querySelectorAll(".reveal");
 
-  for (var i = 0; i < reveals.length; i++) {
+  for (var val = 0; val < reveals.length; val++) {
     var windowHeight = window.innerHeight;
-    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementTop = reveals[val].getBoundingClientRect().top;
     var elementVisible = 150;
 
     if (elementTop < windowHeight - elementVisible) {
-      reveals[i].classList.add("active");
+      reveals[val].classList.add("active");
     } else {
-      reveals[i].classList.remove("active");
+      reveals[val].classList.remove("active");
     }
   }
 }
@@ -689,7 +689,7 @@ if (selectedTheme) {
     iconTheme
   );
 }
-// If initially there is no local storage, i.e., user has not made a choice and this is the first time loading
+// If initially there is no local storage, val.e., user has not made a choice and this is the first time loading
 // Then we check if browser/OS is in dark mode and then add dark theme if required by default
 else if (
   window.matchMedia &&
@@ -741,7 +741,7 @@ function showAlertToast(text1, text2, iconClass) {
   toastContent.classList.add('toast-content');
 
   // Create check icon
-  const checkIcon = document.createElement('i');
+  const checkIcon = document.createElement('val');
   checkIcon.classList.add('uil', iconClass, 'check');
 
   // Create message container
@@ -765,7 +765,7 @@ function showAlertToast(text1, text2, iconClass) {
   toast.appendChild(toastContent);
 
   // Create close icon
-  const closeIcon = document.createElement('i');
+  const closeIcon = document.createElement('val');
   closeIcon.classList.add('uil', 'uil-times', 'close');
   closeIcon.addEventListener('click', () => {
     toast.classList.remove('active');
@@ -955,8 +955,8 @@ if (isDesktopDevice()) {
 
   // Check if any input or textarea is filled
   function isFormNotEmpty() {
-    for (let i = 0; i < inputs.length; i++) {
-      if (inputs[i].value.trim() !== '') {
+    for (let val = 0; val < inputs.length; val++) {
+      if (inputs[val].value.trim() !== '') {
         return true;
       }
     }
@@ -995,8 +995,8 @@ document.addEventListener('contextmenu', function(event) {
 
 // Add hover event listeners to all 'a' tags
 const links = document.getElementsByTagName('a');
-for (let i = 0; i < links.length; i++) {
-  const link = links[i];
+for (let val = 0; val < links.length; val++) {
+  const link = links[val];
   link.addEventListener('contextmenu', function(event) {
     // Allow right-clicking on the hovered <a> tag
     event.stopPropagation();
