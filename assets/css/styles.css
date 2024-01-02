@@ -1717,11 +1717,13 @@ header {
 }
 
 
+
+
 /*========== SCROLL DOWN ==========*/
 
 .scrolldown {
   position: fixed;
-  right: 6rem;
+  right: 6.5rem;
   bottom: -20%;
   padding: 0 0.3rem;
   border-radius: 0.4rem;
@@ -1742,6 +1744,35 @@ header {
 .show-scrolldown {
   bottom: 1.5rem;
 }
+
+
+/* ========== SCROLL DOWN ==========
+.scrolldown {
+  position: fixed;
+  right: 1rem;
+  bottom: -20%;
+  background-color: var(--first-color);
+  opacity: 0.8;
+  padding: 0 0.3rem;
+  border-radius: 0.4rem;
+  z-index: var(--z-tooltip);
+  transform: 1s;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.scrolldown:hover {
+  background-color: var(--first-color-alt);
+  transform: translateY(0.25rem);
+}
+
+.scrolldown__icon {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.show-scrolldown {
+  bottom: 5rem;
+} */
 
 
 
