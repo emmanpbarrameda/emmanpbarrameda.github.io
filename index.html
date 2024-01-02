@@ -108,38 +108,6 @@
 
 <body>
 
-
-  <!-- ===================== LOADER ==================== -->
-  <div id="loading" class="loading">
-    <div class="loader">
-      <img src="assets/img/emmanpbarrameda-logo-1x1-white_transparent.png" alt="Loading Image">
-      <div class="bar">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <p class="loading__description">Welcome! Just a moment . . .</p>
-    </div>
-    <p class="loading__copyright">Copyright © <span current-year></span> emmanpbarrameda<br>All rights reserved.</p>
-  </div>
-
-  <!-- Function to update the loading__description -->
-  <script>
-    function updateLoadingText() {
-      const loadingDescription = document.querySelector(".loading__description");
-      if (loadingDescription.textContent === "Welcome! Just a moment . . .") {
-        loadingDescription.textContent = "Getting things ready for you . . .";
-      } else {
-        loadingDescription.textContent = "Welcome! Just a moment . . .";
-      }
-    }
-  
-    // Call the updateLoadingText function every 3 seconds
-    setInterval(updateLoadingText, 3000);
-  </script>  
-
   <!-- ===================== CIRCLE BG ANIMATION LOOP ==================== -->
   <div class="circle_bubble__anim">
     <div></div>
@@ -153,14 +121,6 @@
     <div></div>
     <div></div>
   </div>
-
-  <!-- Messenger Chat Plugin Code -->
-  <div id="fb-root"></div>
-
-  <!-- Your Chat Plugin code -->
-  <div id="fb-customer-chat" class="fb-customerchat">
-  </div>
-
 
   <!--==================== HEADER ====================-->
   <header class="header" id="header">
@@ -1661,16 +1621,6 @@
 
   </footer>
 
-  <!--==================== SCROLL TOP ====================-->
-  <a href="#home" class="scrollup" id="scroll-up" title="Scroll to Top">
-    <i class="uil uil-arrow-up scrollup__icon"></i>
-  </a>
-
-  <!--==================== SCROLL DOWN ====================-->
-  <a href="#about" class="scrolldown" id="scroll-down" title="Scroll to down">
-    <i class="uil uil-arrow-down scrolldown__icon"></i>
-  </a>
-
   <!--==================== SWIPER JS ====================-->
   <script src="assets/js/swiper-bundle.min.js"></script>
 
@@ -1694,6 +1644,38 @@
 
   <!--==================== MAIN JS ====================-->
   <script src="assets/js/main.js"></script>
+
+
+  <!-- Messenger Chat Plugin Code -->
+  <div id="fb-root"></div>
+
+  <!-- Your Chat Plugin code -->
+  <div id="fb-customer-chat" class="fb-customerchat">
+  </div>
+
+  <script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "103922242428420");
+    chatbox.setAttribute("attribution", "biz_inbox");
+  </script>
+
+  <!-- Your SDK code -->
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        xfbml            : true,
+        version          : 'v18.0'
+      });
+    };
+
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
 
 
   <!--==================== LINKS ====================-->
