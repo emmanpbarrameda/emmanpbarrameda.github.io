@@ -1689,7 +1689,8 @@ header {
 
 .scrollup {
   position: fixed;
-  right: 6.5rem;
+  /* right: 6.5rem; with messenger logo */
+  right: 2rem;
   bottom: -20%;
   padding: 0 0.3rem;
   border-radius: 0.4rem;
@@ -1756,7 +1757,8 @@ header {
 
 .scrolldown {
   position: fixed;
-  right: 6.5rem;
+  /* right: 6.5rem; with messenger logo */
+  right: 2rem;
   bottom: -20%;
   padding: 0 0.3rem;
   border-radius: 0.4rem;
@@ -1788,6 +1790,8 @@ header {
     bottom: 4rem;
   }
 }
+
+
 /* ========== SCROLL DOWN ==========
 .scrolldown {
   position: fixed;
