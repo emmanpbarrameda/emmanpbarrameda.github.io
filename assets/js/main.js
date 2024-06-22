@@ -1,7 +1,7 @@
-const name1 = "Student";
-const name2 = "Programmer";
+const name1 = "Backend Developer";
+const name2 = "Student Leader";
 const name3 = "Freelancer";
-const name4 = "Desktop Developer";
+const name4 = "Aspiring Software Engineer";
 
 let val = 0;
 let currentName = name1;
@@ -334,6 +334,16 @@ updateSwiperOptions();
 
 // Update Swiper options on window resize
 window.addEventListener('resize', updateSwiperOptions);
+
+// Update description text based on active slide
+gallerySwiper.on('slideChange', function () {
+  const activeSlide = gallerySwiper.slides[gallerySwiper.activeIndex];
+  const description = activeSlide.getAttribute('data-description');
+  document.getElementById('certificate-description-text').textContent = description;
+});
+
+// Set initial description text
+document.getElementById('certificate-description-text').textContent = gallerySwiper.slides[gallerySwiper.activeIndex].getAttribute('data-description');
 
 
 
