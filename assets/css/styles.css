@@ -1730,7 +1730,7 @@ header {
 /* Styles for mobile and tablet views */
 @media screen and (max-width: 768px) {
   .scrollup {
-    right: 3.5rem;
+    right: 1.5rem;
   }
   
   .show-scroll {
@@ -1798,7 +1798,7 @@ header {
 /* Styles for mobile and tablet views */
 @media screen and (max-width: 768px) {
   .scrolldown {
-    right: 3.5rem;
+    right: 1.5rem;
   }
   
   .show-scrolldown {
