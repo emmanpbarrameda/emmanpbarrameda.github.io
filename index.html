@@ -289,28 +289,81 @@
 
   <!--==================== ABOUT ====================-->
 
+  <!-- <p class="about__description">
+    Hello world! I'm <colorTextHighlight>Emmanuel P. Barrameda</colorTextHighlight>,<br> <sb><span my-age></span> years old</sb> from the Philippines.
+    I am a passionate individual who finds joy
+    in creating and exploring the world of desktop development.<br><br>My programming journey began when I was
+    just <sb>16 years old</sb> as a Minecraft server owner. This experience ignited my interest in programming, and since
+    then, I have been dedicated to studying the Java programming language. During my time at Vicente Madrigal
+    Integrated School as a senior-high student, pursuing the TVL-ICT track, I excelled in Java Programming and was recognized
+    as the <colorTextHighlight>Best in ICT Student</colorTextHighlight> in our batch upon graduation.<br><br>Since then, 
+    I have been on an exciting freelancing journey that began during the 2020 Covid-19 lockdown and continues until today, as <sb>I am still accepting clients</sb>.<br>
+    I have been offering my freelancing service to <colorTextHighlight>create Desktop/System Applications</colorTextHighlight>, catering to various needs such as thesis projects, company systems, and personalized desktop tools.<br><br>
+    Currently, I am a <colorTextHighlight>third-year college</colorTextHighlight> student pursuing a Bachelor of Science in Information Technology at the University of
+    Rizal System Binangonan. My studies revolve around Object Oriented Programming, Desktop Application Development, Graphic Designing and Web
+    Development.</p>
+  </p> -->
+
+  <!--==================== ABOUT ====================--> 
   <section class="about section reveal fade-bottom" id="about">
     <h2 class="section__title">About Me</h2>
     <span class="section__subtitle">My Introduction</span>
-
     <div class="about__container container grid">
-      <img src="assets/img/about-me3.png" alt="" class="about__img" />
+        <img src="assets/img/about-me3.png" alt="" class="about__img" />
+        <div class="about__data">
 
-      <div class="about__data">
-        <p class="about__description">
-          Hello world! I'm <colorTextHighlight>Emmanuel P. Barrameda</colorTextHighlight>,<br> <sb><span my-age></span> years old</sb> from the Philippines.
-          I am a passionate individual who finds joy
-          in creating and exploring the world of desktop development.<br><br>My programming journey began when I was
-          just <sb>16 years old</sb> as a Minecraft server owner. This experience ignited my interest in programming, and since
-          then, I have been dedicated to studying the Java programming language. During my time at Vicente Madrigal
-          Integrated School as a senior-high student, pursuing the TVL-ICT track, I excelled in Java Programming and was recognized
-          as the <colorTextHighlight>Best in ICT Student</colorTextHighlight> in our batch upon graduation.<br><br>Since then, 
-          I have been on an exciting freelancing journey that began during the 2020 Covid-19 lockdown and continues until today, as <sb>I am still accepting clients</sb>.<br>
-          I have been offering my freelancing service to <colorTextHighlight>create Desktop/System Applications</colorTextHighlight>, catering to various needs such as thesis projects, company systems, and personalized desktop tools.<br><br>
-          Currently, I am a <colorTextHighlight>third-year college</colorTextHighlight> student pursuing a Bachelor of Science in Information Technology at the University of
-          Rizal System Binangonan. My studies revolve around Object Oriented Programming, Desktop Application Development, Graphic Designing and Web
-          Development.</p>
-        </p>
+            <p class="about__description" id="short-description">
+                Hello world! I'm <colorTextHighlight>Emmanuel P. Barrameda</colorTextHighlight>,<br>
+                <sb><span my-age></span> years old</sb> from the Philippines.<br><br>A <colorTextHighlight>IT student</colorTextHighlight> specializing in <colorTextHighlight>backend development</colorTextHighlight> with experience in <sb>desktop and web development</sb>. Initially focused on Java, now developing websites using the <sb>LAMP stack with Laravel</sb>. Became interested in programming at age 16 and continue learning today. Experienced in leadership, project management, freelancing, and mentoring. Innovative and dedicated to excellence in every development.
+            </p>
+
+            <p class="about__description" id="full-description" style="display: none;">
+            
+              Hello world! I'm <colorTextHighlight>Emmanuel P. Barrameda</colorTextHighlight>,<br>
+              <sb><span my-age></span> years old</sb> from the Philippines.<br><br>A <colorTextHighlight>IT student
+              </colorTextHighlight> specializing in <colorTextHighlight>backend development</colorTextHighlight> with experience in
+              <sb>desktop and web development</sb>. Initially focused on Java, now developing websites using the <sb>LAMP stack with Laravel</sb>.
+              Became interested in programming at age 16 and continue learning today. Experienced in leadership, project
+              management, freelancing, and mentoring. Innovative and dedicated to excellence in every development.
+            
+              <br><br>My programming journey began when I was just <sb>16 years old</sb> as a Minecraft server owner. This
+              experience ignited my interest in programming, and since
+              then, I have been dedicated to studying the Java programming language. During my time at Vicente Madrigal
+              Integrated School as a senior-high student, pursuing the TVL-ICT track, I excelled in Java Programming and was
+              recognized
+              as the <colorTextHighlight>Best in ICT Student</colorTextHighlight> in our batch upon graduation.<br><br>Since then,
+              I have been on an exciting freelancing journey that began during the 2020 Covid-19 lockdown and continues until today,
+              as <sb>I am still accepting clients</sb>.<br>
+              I have been offering my freelancing service to <colorTextHighlight>create desktop applications or web based systems
+              </colorTextHighlight>, catering to various needs such as thesis/capstone projects, company systems, and personalized
+              desktop tools.<br><br>
+              Currently, I am a <colorTextHighlight>fourth-year college</colorTextHighlight> student pursuing a Bachelor of Science
+              in Information Technology at the University of
+              Rizal System Binangonan. My studies revolve around Object Oriented Programming, Desktop Application Development,
+              Graphic Designing and Web
+              Development.
+            </p>
+
+            <!-- READ MORE BTN -->
+            <div class="about__scroll">
+              <a href="#" class="about__scroll-button button--flex" id="read-more-btn">
+                <i class="about__scroll-icon"></i>
+                <span class="about__scroll-name">Read More</span>
+                <i class="uil uil-arrow-down about__scroll-arrow"></i>
+              </a>
+            </div>
+
+            <!-- DOWNLOAD RESUME BTN -->
+            <div class="about__buttons">
+                <a download="" href="https://github.com/emmanpbarrameda/EMMANPBARRAMEDA_RESUME/blob/main/RESUME/EMMANPBARRAMEDA_RESUME.pdf" target="_blank" class="button button--flex">
+                    Download Resume<i class="uil uil-download-alt button__icon"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+  </section>
+
 
         <!--
         <div class="about__info">
@@ -336,15 +389,6 @@
           
         </div>
         -->
-
-        <div class="about__buttons">
-          <a download="" href="https://github.com/emmanpbarrameda/EMMANPBARRAMEDA_RESUME/blob/main/RESUME/EMMANPBARRAMEDA_RESUME.pdf" class="button button--flex">
-            Download Resume<i class="uil uil-download-alt button__icon"></i></a>
-        </div>
-      </div>
-    </div>
-
-  </section>
 
 
   <!--==================== CERTIFICATES ====================-->
@@ -465,7 +509,7 @@
 
   <section class="skills section reveal fade-bottom" id="skills">
     <h2 class="section__title">Skills</h2>
-    <span class="section__subtitle">My tech stack</span>
+    <span class="section__subtitle">Programming Languages, Tools, and Platforms I'm <b>Familiar</b> With</span>
     <div class="skills__container container grid">
 
 

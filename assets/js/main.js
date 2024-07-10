@@ -86,6 +86,33 @@ navLink.forEach((n) => n.addEventListener("click", linkAction));
 
 
 
+
+/*==================== ABOUT READ MORE/LESS BUTTON ====================*/
+document.addEventListener('DOMContentLoaded', function() {
+  var readMoreBtn = document.getElementById('read-more-btn');
+  var fullDescription = document.getElementById('full-description');
+  var shortDescription = document.getElementById('short-description');
+  var arrowIcon = readMoreBtn.querySelector('.about__scroll-arrow');
+
+  readMoreBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (fullDescription.style.display === 'none') {
+      fullDescription.style.display = 'block';
+      shortDescription.style.display = 'none';
+      readMoreBtn.querySelector('.about__scroll-name').textContent = 'Read Less';
+      arrowIcon.classList.remove('uil-arrow-down');
+      arrowIcon.classList.add('uil-arrow-up');
+    } else {
+      fullDescription.style.display = 'none';
+      shortDescription.style.display = 'block';
+      readMoreBtn.querySelector('.about__scroll-name').textContent = 'Read More';
+      arrowIcon.classList.remove('uil-arrow-up');
+      arrowIcon.classList.add('uil-arrow-down');
+    }
+  });
+});
+
+
 /*==================== QUALIFICATION TABS ====================*/
 /*
 const tabs = document.querySelectorAll("[data-target]"),
