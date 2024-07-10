@@ -1,7 +1,9 @@
+/*==================== LANDING typeEffect ANIMATION ====================*/
 const name1 = "Backend Developer";
 const name2 = "Student Leader";
 const name3 = "Freelancer";
-const name4 = "Aspiring Software Engineer";
+const name4 = "Mentor";
+const name5 = "Aspiring Software Engineer";
 
 let val = 0;
 let currentName = name1;
@@ -23,6 +25,8 @@ function typeEffect() {
         currentName = name3;
       } else if (currentName === name3) {
         currentName = name4;           
+      } else if (currentName === name4) {
+        currentName = name5;
       } else {
         currentName = name1;
       }
@@ -37,7 +41,6 @@ function work() {
 }
 
 work();
-
 
 
 
