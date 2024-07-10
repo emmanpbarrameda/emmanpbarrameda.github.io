@@ -835,7 +835,7 @@ header {
 }
 
 .about__description {
-  text-align: center;
+  text-align: justify;
 }
 
 .about__info {
