@@ -833,6 +833,14 @@ header {
 .about__scroll-arrow {
   font-size: 1.25rem;
 }
+/* Media query for tablets and mobile devices */
+@media screen and (max-width: 768px) {
+  .about__scroll {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 
 .about__description {
   text-align: justify;
