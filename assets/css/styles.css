@@ -1678,6 +1678,12 @@ header {
   margin-top: var(--mb-3);
 }
 
+.footer__copy__text {
+  font-size: var(--smaller-font-size);
+  text-align: center;
+  color: #fff;
+}
+
 .footer__title,
 .footer__subtitle,
 .footer__link,
