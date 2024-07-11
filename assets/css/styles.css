@@ -1699,9 +1699,14 @@ header {
   opacity: 0.9;
 }
 
-
 .footer__logo_image {
   width: 75%; /* Adjust the width as desired */
+}
+
+.footer__counter_container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px; /* Adjust this value to control the space between the counter and the copyright text */
 }
 
 
