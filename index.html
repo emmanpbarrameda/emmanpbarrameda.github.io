@@ -1682,8 +1682,10 @@
       <p class="footer__copy">
 
         <!-- COUNTER 1 - FOR DISPLAY - https://www.free-website-hit-counter.com/ -->
-        <a href='https://www.freevisitorcounters.com/en/home/stats/id/1201808' target="_blank"><img src='https://www.free-website-hit-counter.com/c.php?d=9&id=174658&s=36' border='0' alt='Website Visit Counter' title='Website Visit Counter'></a>
-
+        <a href='https://www.freevisitorcounters.com/en/home/stats/id/1201808' target="_blank" onclick="event.stopPropagation();">
+          <img src='https://www.free-website-hit-counter.com/c.php?d=9&id=174658&s=36' border='0' alt='Website Visit Counter' title='Website Visit Counter' oncontextmenu="return false;" style="pointer-events: none;">
+        </a>
+        
         <!-- COUNTER 2 - FOR STATS - https://www.freevisitorcounters.com -->
         <div style="display: none; text-align: center;">
           <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=2e68fdfe06e3bdd6b074d336bc304fc71e7a00f0'></script>
