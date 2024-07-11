@@ -173,8 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener('contextmenu', function (event) {
   var targetElement = event.target;
   if (
-    (targetElement.tagName === 'IMG' && targetElement.classList.contains('about__img')) ||
-    (targetElement.tagName === 'IMG' && targetElement.classList.contains('footer__logo_image'))
+    (targetElement.tagName === 'IMG' && targetElement.classList.contains('about__img')) || (targetElement.tagName === 'IMG' && targetElement.classList.contains('footer__logo_image')) || (targetElement.tagName === 'IMG' && targetElement.classList.contains('footerCounter__img'))
   ) {
     event.preventDefault();
     return false;

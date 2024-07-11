@@ -1682,8 +1682,8 @@
       <p class="footer__copy">
 
         <!-- COUNTER 1 - FOR DISPLAY - https://www.free-website-hit-counter.com/ -->
-        <a href='https://www.freevisitorcounters.com/en/home/stats/id/1201808' target="_blank" onclick="event.stopPropagation();">
-          <img src='https://www.free-website-hit-counter.com/c.php?d=9&id=174658&s=36' border='0' alt='Website Visit Counter' title='Website Visit Counter' oncontextmenu="return false;" style="pointer-events: none;">
+        <a href='https://www.freevisitorcounters.com/en/home/stats/id/1201808' target="_blank" onclick="return true;">
+          <img class="footerCounter__img" src='https://www.free-website-hit-counter.com/c.php?d=9&id=174658&s=36' border='0' alt='Website Visit Counter' title='Website Visit Counter' oncontextmenu="return false;" ondragstart="return false;" onmousedown="return false;">
         </a>
 
         <!-- COUNTER 2 - FOR STATS - https://www.freevisitorcounters.com -->
@@ -1701,13 +1701,6 @@
 
       </p>
       <!-- FOOTER TEXT -->
-
-      <script>
-        // Prevent default behavior for right-click on the image
-        document.querySelector('.footer__copy img').addEventListener('mousedown', function(e) {
-          if (e.button === 2) e.preventDefault();
-        });
-      </script>
 
     </div>
 
