@@ -1682,9 +1682,29 @@
       <p class="footer__copy">
 
         <!-- COUNTER 1 - FOR DISPLAY - https://www.free-website-hit-counter.com/ -->
-        <a href='https://www.freevisitorcounters.com/en/home/stats/id/1201808' target="_blank" onclick="return true;">
-          <img class="footerCounter__img" src='https://www.free-website-hit-counter.com/c.php?d=9&id=174658&s=36' border='0' alt='Website Visit Counter' title='Website Visit Counter' oncontextmenu="return false;" ondragstart="return false;" onmousedown="return false;">
+        <a id="counter-link" href='https://www.freevisitorcounters.com/en/home/stats/id/1201808' target="_blank">
+          <img id="counter-img" class="footerCounter__img" src='https://www.free-website-hit-counter.com/c.php?d=9&id=174658&s=36' border='0' alt='Website Visit Counter' title='Website Visit Counter'>
         </a>
+        <script>
+          // Disable right-click and dragging actions on the image
+          var counterLink = document.getElementById('counter-link');
+          var counterImg = document.getElementById('counter-img');
+          counterImg.oncontextmenu = function() {
+            return false;
+          };
+          counterImg.ondragstart = function() {
+            return false;
+          };
+          counterImg.onmousedown = function(event) {
+            if (event.button === 2) {
+              return false;
+            }
+          };
+          // Prevent right-click context menu on the link
+          counterLink.oncontextmenu = function() {
+            return false;
+          };
+        </script>
 
         <!-- COUNTER 2 - FOR STATS - https://www.freevisitorcounters.com -->
         <div style="display: none; text-align: center;">
