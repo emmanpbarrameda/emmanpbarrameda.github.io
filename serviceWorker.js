@@ -1,4 +1,4 @@
-const staticAnimeshData = "site-cache-v1";
+const staticEmmanData = "site-cache-v1";
 const assets = [
   //   "/",
   "index.html",
@@ -52,7 +52,7 @@ const assets = [
 
 self.addEventListener("install", (installEvent) => {
   installEvent.waitUntil(
-    caches.open(staticAnimeshData).then((cache) => {
+    caches.open(staticEmmanData).then((cache) => {
       return cache.addAll(assets).catch((error) => {
         console.error("Failed to cache assets:", error);
         const failedAssets = assets.filter((asset) =>
