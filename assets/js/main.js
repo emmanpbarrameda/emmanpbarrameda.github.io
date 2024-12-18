@@ -1,9 +1,9 @@
 /*==================== LANDING typeEffect ANIMATION ====================*/
-const name1 = "Backend Developer";
-const name2 = "Student Leader";
-const name3 = "Freelancer";
-const name4 = "Mentor";
-const name5 = "Aspiring Software Engineer";
+const name1 = "a Student";
+const name2 = "specializing in Backend Development";
+const name3 = "a Student Leader";
+const name4 = "a Freelancer";
+const name5 = "an Aspiring Software Engineer";
 
 let val = 0;
 let currentName = name1;
