@@ -794,7 +794,15 @@ header {
 
 /*==================== ABOUT ====================*/
 
-.about__img {
+/* .about__img {
+  width: 200px;
+  border-radius: 0.5rem;
+  justify-self: center;
+  align-self: normal;
+  transition: transform 0.3s, opacity 0.3s;
+} */
+/* about image sliding */
+.about-swiper {
   width: 200px;
   border-radius: 0.5rem;
   justify-self: center;
@@ -802,12 +810,32 @@ header {
   transition: transform 0.3s, opacity 0.3s;
 }
 
-.about__img:hover {
+.about-swiper .swiper-slide {
+  justify-content: center;
+  align-items: center;
+}
+
+.about-swiper .swiper-pagination {
+  position: relative;
+  margin-top: 1rem;
+}
+
+.about-swiper .swiper-pagination-bullet {
+  background-color: var(--first-color);
+  opacity: 0.5;
+}
+
+.about-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+.about-swiper:hover {
   filter: drop-shadow(0px 10px 10px var(--shadow));
   /*animation while hovering */
   transform: scale(1.03);
   opacity: 0.9
 }
+
 
 /*==================== ABOUT READ MORE BTN ====================*/
 .about__scroll {
@@ -2164,7 +2192,7 @@ header {
     column-gap: 3rem;
   }
 
-  .about__img {
+  .about-swiper {
     width: 350px;
   }
 

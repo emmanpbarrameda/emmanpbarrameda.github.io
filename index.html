@@ -292,7 +292,27 @@
     <h2 class="section__title">About Me</h2>
     <span class="section__subtitle">My Introduction</span>
     <div class="about__container container grid">
-        <img src="assets/img/about-me3.png" alt="" class="about__img" />
+      
+        <!-- <img src="assets/img/about-me3.png" alt="" class="about__img" /> -->
+        <div class="swiper about-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="assets/img/about-me3.png" alt="" class="about__img" />
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/img/about_slider2.jpg" alt="" class="about__img" />
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/img/about_slider3.jpg" alt="" class="about__img" />
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/img/about_slider4.jpg" alt="" class="about__img" />
+            </div>
+          </div>
+          <!-- Add pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
+
 
         <div class="about__data">
             <p class="about__description" id="short-description">
@@ -362,7 +382,7 @@
             <!-- DOWNLOAD RESUME BTN -->
             <div class="about__buttons">
                 <a download="" href="https://github.com/emmanpbarrameda/EMMANPBARRAMEDA_RESUME/blob/main/RESUME/EMMANPBARRAMEDA_RESUME.pdf" target="_blank" class="button button--flex">
-                    Download Resume<i class="uil uil-download-alt button__icon"></i>
+                    View Resume<i class="uil uil-download-alt button__icon"></i>
                 </a>
             </div>
         </div>
@@ -1755,7 +1775,7 @@
 
   <!--==================== DISABLE WEB TOOLS ====================-->
   <!-- https://github.com/theajack/disable-devtool/tree/master     --> 
-  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>    
+  <!-- <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>     -->
 
   <!--==================== MAIN JS ====================-->
   <script src="assets/js/main.js"></script>

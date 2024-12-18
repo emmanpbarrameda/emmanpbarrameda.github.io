@@ -115,6 +115,21 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+/*==================== ABOUT SWIPER ====================*/
+let aboutSwiper = new Swiper(".about-swiper", {
+  effect: "cube",
+  loop: true,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+  cubeEffect: {
+    shadow: true,
+    shadowOffset: 5,
+    shadowScale: 0.8, 
+    slideShadows: false
+  }
+});
 
 /*==================== QUALIFICATION TABS ====================*/
 /*
@@ -173,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener('contextmenu', function (event) {
   var targetElement = event.target;
   if (
-    (targetElement.tagName === 'IMG' && targetElement.classList.contains('about__img')) || (targetElement.tagName === 'IMG' && targetElement.classList.contains('footer__logo_image')) || (targetElement.tagName === 'IMG' && targetElement.classList.contains('footerCounter__img'))
+    (targetElement.tagName === 'IMG' && targetElement.classList.contains('about-swiper')) || (targetElement.tagName === 'IMG' && targetElement.classList.contains('footer__logo_image')) || (targetElement.tagName === 'IMG' && targetElement.classList.contains('footerCounter__img'))
   ) {
     event.preventDefault();
     return false;
@@ -589,28 +604,30 @@ projects__buttons_previous.forEach((button) => {
 
 
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
-
 const sections = document.querySelectorAll("section[id]");
 
 function scrollActive() {
   const scrollY = window.pageYOffset;
-
+  
   sections.forEach((current) => {
     const sectionHeight = current.offsetHeight;
     const sectionTop = current.offsetTop - 50;
-    sectionId = current.getAttribute("id");
-
-    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-      document
-        .querySelector(".nav__menu a[href*=" + sectionId + "]")
-        .classList.add("active-link");
-    } else {
-      document
-        .querySelector(".nav__menu a[href*=" + sectionId + "]")
-        .classList.remove("active-link");
+    const sectionId = current.getAttribute("id");
+    
+    // Find the corresponding navigation link
+    const navLink = document.querySelector(`.nav__menu a[href*="${sectionId}"]`);
+    
+    // Only proceed if we found a matching navigation link
+    if (navLink) {
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        navLink.classList.add("active-link");
+      } else {
+        navLink.classList.remove("active-link");
+      }
     }
   });
 }
+
 window.addEventListener("scroll", scrollActive);
 
 
@@ -1020,17 +1037,17 @@ if (isDesktopDevice()) {
 /*==================== DISABLE RIGHT CLICK EVENTS ON WEBSITE ====================*/
 
 // Capture the right-click event on the whole page
-document.addEventListener('contextmenu', function(event) {
-  // Check if the right mouse button was clicked
-  if (event.button === 2) {
-    // Check if the right-click occurred outside of an <a> tag
-    const isLinkClicked = event.target.tagName.toLowerCase() === 'a';
-    if (!isLinkClicked) {
-      // Prevent the default behavior for right-click
-      event.preventDefault();
-    }
-  }
-});
+// document.addEventListener('contextmenu', function(event) {
+//   // Check if the right mouse button was clicked
+//   if (event.button === 2) {
+//     // Check if the right-click occurred outside of an <a> tag
+//     const isLinkClicked = event.target.tagName.toLowerCase() === 'a';
+//     if (!isLinkClicked) {
+//       // Prevent the default behavior for right-click
+//       event.preventDefault();
+//     }
+//   }
+// });
 
 // Add hover event listeners to all 'a' tags
 const links = document.getElementsByTagName('a');
