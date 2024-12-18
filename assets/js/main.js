@@ -1037,17 +1037,17 @@ if (isDesktopDevice()) {
 /*==================== DISABLE RIGHT CLICK EVENTS ON WEBSITE ====================*/
 
 // Capture the right-click event on the whole page
-// document.addEventListener('contextmenu', function(event) {
-//   // Check if the right mouse button was clicked
-//   if (event.button === 2) {
-//     // Check if the right-click occurred outside of an <a> tag
-//     const isLinkClicked = event.target.tagName.toLowerCase() === 'a';
-//     if (!isLinkClicked) {
-//       // Prevent the default behavior for right-click
-//       event.preventDefault();
-//     }
-//   }
-// });
+document.addEventListener('contextmenu', function(event) {
+  // Check if the right mouse button was clicked
+  if (event.button === 2) {
+    // Check if the right-click occurred outside of an <a> tag
+    const isLinkClicked = event.target.tagName.toLowerCase() === 'a';
+    if (!isLinkClicked) {
+      // Prevent the default behavior for right-click
+      event.preventDefault();
+    }
+  }
+});
 
 // Add hover event listeners to all 'a' tags
 const links = document.getElementsByTagName('a');
