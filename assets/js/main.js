@@ -916,6 +916,7 @@ var ReCAPTCHAv3Utils = (function () {
 
 
 /*==================== SEND EMAIL BUTTON ACTION ====================*/
+// using SMTP.js
 //tutorial from https://www.youtube.com/watch?v=E4SL1ymKz00
 
 // Event listener for sending email
@@ -964,8 +965,8 @@ btn.addEventListener('click', function (e) {
 
     // Send email
     Email.send({
-      Host : "smtp.mailendo.com",
-      // SecureToken: '1f65e506-47fb-4a9e-be61-7672897dc243',
+      // Host : "smtp.elasticemail.com",
+      SecureToken: '9a6b8003-8ee4-46d5-a3bb-8dab956b3d55',
       To: 'emmanuelbarrameda1@gmail.com',
       From: 'emmanuelbarrameda2@gmail.com',
       Subject: subject,
