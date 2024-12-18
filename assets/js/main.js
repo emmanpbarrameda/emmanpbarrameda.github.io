@@ -967,7 +967,7 @@ btn.addEventListener('click', function (e) {
       Host : "smtp.mailendo.com",
       // SecureToken: '1f65e506-47fb-4a9e-be61-7672897dc243',
       To: 'emmanuelbarrameda1@gmail.com',
-      From: email,
+      From: 'emmanuelbarrameda2@gmail.com',
       Subject: subject,
       Body: body
     })
