@@ -3,7 +3,7 @@ const name1 = "a Student";
 const name2 = "specializing in Backend Development";
 const name3 = "a Student Leader";
 const name4 = "a Freelancer";
-const name5 = "an Aspiring Software Engineer";
+const name5 = "an Aspiring Software Developer";
 
 let val = 0;
 let currentName = name1;
