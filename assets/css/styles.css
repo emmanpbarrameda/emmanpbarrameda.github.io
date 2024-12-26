@@ -282,50 +282,53 @@ header {
 
 
 /*==================== MESSENGER ICON ====================*/
-
 .messenger-button {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: min(5vh, 20px);
+  right: min(5vw, 20px);
   background-color: #0084ff;
-  width: 50px;
-  height: 50px;
+  width: clamp(45px, 12vw, 50px);
+  height: clamp(45px, 12vw, 50px);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   z-index: 999999;
+  /* Prevent any potential layout issues */
   isolation: isolate;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
 }
 
-/* Mobile positioning */
+/* Single mobile breakpoint for essential adjustments */
 @media screen and (max-width: 768px) {
   .messenger-button {
-    bottom: 8%;
-    right: 12px;
-    width: 40px;
-    height: 40px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    /* Ensure button stays above mobile navigation */
+    bottom: max(60px, 5vh);
+    /* Maintain proper spacing from edge */
+    right: max(10px, 3vw);
+    /* Prevent button from being too large or small */
+    width: clamp(46px, 10vw, 55px);
+    height: clamp(46px, 10vw, 55px);
   }
-
+  
   .messenger-button i {
-    font-size: 24px;
+    /* Scale icon size proportionally */
+    font-size: clamp(28px, 7vw, 32px);
   }
 }
 
 .messenger-button:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .messenger-button i {
   color: white;
-  font-size: 28px;
+  font-size: clamp(28px, 6vw, 34px);
 }
 
 @keyframes bounce {
@@ -1834,7 +1837,7 @@ header {
 
 .scrollup {
   position: fixed;
-  right: 5.5rem;
+  right: 4.5rem;
   /* right: 2rem; without messenger logo */
   bottom: -20%;
   padding: 0 0.3rem;
@@ -1842,6 +1845,7 @@ header {
   z-index: var(--z-tooltip);
   transform: 1s;
   transition: transform 0.3s, opacity 0.3s;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .scrollup:hover {
@@ -1860,8 +1864,8 @@ header {
 /* Styles for mobile and tablet views */
 @media screen and (max-width: 768px) {
   .scrollup {
-    /* right: 1.5rem; */
-    right: 3.0rem;
+    /* right: 1.5rem; without messenger icon */
+    right: 3.5rem;
   }
   
   .show-scroll {
@@ -1903,7 +1907,7 @@ header {
 
 .scrolldown {
   position: fixed;
-  right: 5.5rem;
+  right: 4.5rem;
   /* right: 2rem; without messenger logo */
   bottom: -20%;
   padding: 0 0.3rem;
@@ -1911,6 +1915,7 @@ header {
   z-index: var(--z-tooltip);
   transform: 1s;
   transition: transform 0.3s, opacity 0.3s;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .scrolldown:hover {
@@ -1929,7 +1934,8 @@ header {
 /* Styles for mobile and tablet views */
 @media screen and (max-width: 768px) {
   .scrolldown {
-    right: 1.5rem;
+    /* right: 1.5rem; without messenger icon */
+    right: 3.5rem;
   }
   
   .show-scrolldown {
