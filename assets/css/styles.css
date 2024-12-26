@@ -306,8 +306,8 @@ header {
 /* Mobile positioning */
 @media screen and (max-width: 768px) {
   .messenger-button {
-    bottom: 10%;
-    right: 10px;
+    bottom: 8%;
+    right: 12px;
     width: 40px;
     height: 40px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
