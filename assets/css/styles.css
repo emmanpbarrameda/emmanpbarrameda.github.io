@@ -306,7 +306,7 @@ header {
 /* Mobile positioning */
 @media screen and (max-width: 768px) {
   .messenger-button {
-    bottom: 9%;
+    bottom: 8%;
     right: 12px;
     width: 40px;
     height: 40px;
@@ -1861,7 +1861,7 @@ header {
 @media screen and (max-width: 768px) {
   .scrollup {
     /* right: 1.5rem; */
-    right: 2.3rem;
+    right: 2.5rem;
   }
   
   .show-scroll {
