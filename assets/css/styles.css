@@ -855,7 +855,7 @@ header {
 
 /* PULSE BUTTON EFFECT */
 .button--pulse {
-  animation: pulse 1.5s infinite;
+  animation: pulse 1.2s infinite;
   filter: drop-shadow(0px 10px 10px var(--shadow));
 }
 

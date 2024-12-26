@@ -3,7 +3,7 @@ const name1 = "a Student";
 const name2 = "specializing in Backend Development";
 const name3 = "a Student Leader";
 const name4 = "a Freelancer";
-const name5 = "an Aspiring Software Developer";
+const name5 = "an Aspiring Software Dev";
 
 let val = 0;
 let currentName = name1;
@@ -15,7 +15,7 @@ function typeEffect() {
     const typedText = currentName.substring(0, val);
     homeWorkElement.innerHTML = typedText + "█";
     val++;
-    setTimeout(typeEffect, 100);
+    setTimeout(typeEffect, 80);
   } else {
     setTimeout(function () {
       val = 0;
