@@ -303,20 +303,20 @@ header {
   -webkit-transform: translateZ(0);
 }
 
-        /* Mobile positioning */
-        @media screen and (max-width: 768px) {
-            .messenger-button {
-                bottom: 80%; 
-                right: 10px;
-                width: 40px;
-                height: 40px;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            }
+/* Mobile positioning */
+@media screen and (max-width: 768px) {
+  .messenger-button {
+    bottom: 30%;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
 
-            .messenger-button i {
-                font-size: 24px; 
-            }
-        }
+  .messenger-button i {
+    font-size: 24px;
+  }
+}
 
 .messenger-button:hover {
   transform: scale(1.1);
