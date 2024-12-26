@@ -281,6 +281,45 @@ header {
 }
 
 
+/*==================== MESSENGER ICON ====================*/
+
+.messenger-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0084ff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.messenger-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.messenger-button i {
+  color: white;
+  font-size: 28px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.messenger-button.animate {
+  animation: bounce 1s ease infinite;
+}
+
+
+
 /*==================== NAV ====================*/
 
 .nav {
@@ -1776,8 +1815,8 @@ header {
 
 .scrollup {
   position: fixed;
-  /* right: 6.5rem; with messenger logo */
-  right: 2rem;
+  right: 5.5rem;
+  /* right: 2rem; without messenger logo */
   bottom: -20%;
   padding: 0 0.3rem;
   border-radius: 0.4rem;
@@ -1844,8 +1883,8 @@ header {
 
 .scrolldown {
   position: fixed;
-  /* right: 6.5rem; with messenger logo */
-  right: 2rem;
+  right: 5.5rem;
+  /* right: 2rem; without messenger logo */
   bottom: -20%;
   padding: 0 0.3rem;
   border-radius: 0.4rem;
