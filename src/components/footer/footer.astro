@@ -19,27 +19,13 @@ const currentYear = new Date().getFullYear();
   </p>
 
   <div class="flex items-center gap-2">
-    <a
-      id="counter-link"
-      href="https://www.freevisitorcounters.com/en/home/stats/id/1201808"
-      target="_blank"
-      title="View visitor stats"
-      class="hover:opacity-80"
-    >
-      📈
+    <!-- 👇 Must keep this exact code for counter to work -->
+    <a href="http://www.freevisitorcounters.com" title="Free Visitor Counter" class="text-xs opacity-50 hover:opacity-80">
+      📈 Visitor
     </a>
-    <p>&copy; {currentYear} Emmanuel Barrameda. All rights reserved.</p>
-  </div>
+    <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=2e68fdfe06e3bdd6b074d336bc304fc71e7a00f0'></script>
+    <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1201808/t/5"></script>
 
-  <!-- Hidden Counter Script -->
-  <div style="display: none;">
-    <script
-      type="text/javascript"
-      src="https://www.freevisitorcounters.com/auth.php?id=2e68fdfe06e3bdd6b074d336bc304fc71e7a00f0"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://www.freevisitorcounters.com/en/home/counter/1201808/t/5"
-    ></script>
+    <p class="text-xs sm:text-sm">&copy; {currentYear} Emmanuel Barrameda. All rights reserved.</p>
   </div>
 </footer>
