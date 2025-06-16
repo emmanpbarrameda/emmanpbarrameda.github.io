@@ -1,0 +1,35 @@
+---
+// src/components/common/BackToTop.astro
+import { Icon } from 'astro-icon/components';
+---
+
+<button
+  id="backToTopBtn"
+  class="fixed bottom-5 right-5 z-50 hidden items-center justify-center text-sky-500 transition-all duration-300 
+         hover:brightness-125 focus:outline-none w-10 h-10 md:w-12 md:h-12 active:scale-90"
+  aria-label="Back to top"
+>
+  <Icon name="ic:round-keyboard-arrow-up" class="text-2xl md:text-3xl" />
+</button>
+
+<script is:inline>
+  const btn = document.getElementById("backToTopBtn");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      btn.classList.remove("hidden");
+    } else {
+      btn.classList.add("hidden");
+    }
+  });
+
+  btn.addEventListener("click", () => {
+    btn.classList.add("scale-90");
+    setTimeout(() => btn.classList.remove("scale-90"), 150);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+</script>

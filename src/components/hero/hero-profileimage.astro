@@ -1,0 +1,71 @@
+---
+// hero-profileimage.astro
+---
+
+<div class="flex w-full justify-center md:w-1/2 md:justify-end order-1 md:order-2 mt-8 mb-0 md:my-0 animate-in fade-in-0 slide-in-from-right-12">
+  <div class="relative group">
+    
+    <!-- Outer glow -->
+    <div class="absolute -inset-2 bg-gradient-to-br from-sky-400 via-cyan-500 to-blue-600 rounded-full blur-xl opacity-25 group-hover:opacity-50 transition duration-500"></div>
+
+    <!-- Main bubble image -->
+    <div class="relative h-64 w-64 md:h-80 md:w-80 lg:h-96 lg:w-96 rounded-full shadow-2xl bg-black/5 backdrop-blur-sm border border-sky-500/10 group-hover:shadow-sky-500/20 transition-all duration-700 overflow-hidden bubble-container">
+      <!-- Fading image carousel -->
+      <img src="/about_slider2.jpg" alt="emmanpbarrameda" class="slider-image absolute inset-0 h-full w-full object-cover transition-all duration-500 rounded-full" />
+      <img src="/about_slider3.jpg" alt="emmanpbarrameda" class="slider-image absolute inset-0 h-full w-full object-cover transition-all duration-500 rounded-full" />
+      <img src="/about_slider4.jpg" alt="emmanpbarrameda" class="slider-image absolute inset-0 h-full w-full object-cover transition-all duration-500 rounded-full" />
+    </div>
+
+    <!-- Animated floating accents -->
+    <div class="absolute -bottom-4 -right-4 text-sky-400 text-xl font-bold z-10 animate-float select-none">&lt;/&gt;</div>
+    <div class="absolute -top-4 -left-4 text-blue-500 text-lg font-bold z-10 animate-float-delay select-none">&lt;/&gt;</div>
+
+    <div class="absolute top-2 left-[30%] text-cyan-400 text-lg font-bold z-10 animate-float select-none">&lt;/&gt;</div>
+    <div class="absolute top-[25%] right-0 text-indigo-400 text-base font-bold z-10 animate-float-delay select-none">&lt;/&gt;</div>
+    <div class="absolute bottom-[30%] left-3 text-blue-300 text-sm font-bold z-10 animate-float select-none">&lt;/&gt;</div>
+    <div class="absolute bottom-4 right-[40%] text-sky-300 text-lg font-bold z-10 animate-float-delay select-none">&lt;/&gt;</div>
+    <div class="absolute top-[60%] left-[60%] text-cyan-300 text-base font-bold z-10 animate-float select-none">&lt;/&gt;</div>
+
+
+    <style is:inline>
+      @keyframes fadeImages {
+        0%, 30% { opacity: 1; }
+        40%, 100% { opacity: 0; }
+      }
+
+      .slider-image:nth-child(1) {
+        animation: fadeImages 9s ease-in-out infinite;
+      }
+
+      .slider-image:nth-child(2) {
+        animation: fadeImages 9s ease-in-out infinite 3s;
+      }
+
+      .slider-image:nth-child(3) {
+        animation: fadeImages 9s ease-in-out infinite 6s;
+      }
+
+      .bubble-container:hover .slider-image {
+        animation-play-state: paused;
+      }
+
+      .animate-float {
+        animation: float 4s ease-in-out infinite;
+      }
+
+      .animate-float-delay {
+        animation: float-delay 4s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-6px); }
+      }
+
+      @keyframes float-delay {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+    </style>
+  </div>
+</div>

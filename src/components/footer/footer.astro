@@ -1,0 +1,45 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer
+  class="mx-auto mt-20 flex max-w-screen-md flex-col items-center justify-between gap-1 px-4 py-8 text-neutral-600 sm:flex-row text-center sm:text-left"
+>
+  <p>
+    Built with
+    <span class="font-bold text-sky-400 opacity-60">♥</span> using
+    <a
+      href="https://astro.build/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="font-bold text-sky-400 opacity-60 hover:underline"
+    >
+      Astro Web Framework
+    </a>
+  </p>
+
+  <div class="flex items-center gap-2">
+    <a
+      id="counter-link"
+      href="https://www.freevisitorcounters.com/en/home/stats/id/1201808"
+      target="_blank"
+      title="View visitor stats"
+      class="hover:opacity-80"
+    >
+      📈
+    </a>
+    <p>&copy; {currentYear} Emmanuel Barrameda. All rights reserved.</p>
+  </div>
+
+  <!-- Hidden Counter Script -->
+  <div style="display: none;">
+    <script
+      type="text/javascript"
+      src="https://www.freevisitorcounters.com/auth.php?id=2e68fdfe06e3bdd6b074d336bc304fc71e7a00f0"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://www.freevisitorcounters.com/en/home/counter/1201808/t/5"
+    ></script>
+  </div>
+</footer>

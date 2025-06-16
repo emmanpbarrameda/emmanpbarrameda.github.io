@@ -1,0 +1,25 @@
+---
+interface Props {
+  width: number;
+  height: number;
+}
+
+const { width, height } = Astro.props;
+---
+
+<svg
+  aria-hidden="true"
+  width={width}
+  height={height}
+  fill="currentColor"
+  viewBox="0 0 24 24"
+>
+  <!-- Document shape with folded corner -->
+  <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6zM13 3.5L18.5 9H14a1 1 0 0 1-1-1V3.5z" />
+  
+  <!-- Horizontal line for detail -->
+  <path d="M8 13h8v1.5H8z" />
+
+  <!-- Download arrow -->
+  <path d="M12 18l-2.5-2.5h1.5v-3h2v3h1.5L12 18z" />
+</svg>

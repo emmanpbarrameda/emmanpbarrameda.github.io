@@ -1,0 +1,12 @@
+---
+const { name, img } = Astro.props;
+---
+
+<div class="relative group flex flex-col items-center justify-center w-[80px] h-[80px] shrink-0 px-3 transition-transform duration-300 hover:scale-110">
+  <!-- Splash glow effect -->
+  <div class="absolute inset-0 z-0 rounded-xl bg-cyan-500/20 opacity-0 blur-md transition-all duration-300 group-hover:opacity-100"></div>
+
+  <!-- Icon and Label -->
+  <img src={img} alt={name} class="h-10 w-10 object-contain z-10" loading="lazy" />
+  <span class="mt-1 text-xs text-center text-neutral-400 z-10">{name}</span>
+</div>

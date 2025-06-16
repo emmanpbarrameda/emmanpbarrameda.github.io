@@ -1,0 +1,156 @@
+---
+import TechBadge from "./tech-badge.astro";
+
+const TECHS = {
+  NextJs: {
+    tech: "Next.js",
+    className: "border-neutral-700 bg-neutral-800 text-neutral-400",
+  },
+  Supabase: {
+    tech: "Supabase",
+    className: "border-emerald-700 bg-emerald-800 text-emerald-400",
+  },
+  TailwindCSS: {
+    tech: "TailwindCSS",
+    className: "border-sky-700 bg-sky-800 text-sky-400",
+  },
+  Bootstrap: {
+    tech: "Bootstrap",
+    className: "border-indigo-700 bg-indigo-800 text-indigo-400",
+  },
+  React: {
+    tech: "React",
+    className: "border-teal-700 bg-teal-800 text-teal-400",
+  },
+  Vite: {
+    tech: "Vite",
+    className: "border-yellow-700 bg-yellow-800 text-yellow-400",
+  },
+  OOP: {
+    tech: "OOP",
+    className: "border-lime-700 bg-lime-800 text-lime-400",
+  },
+  Astro: {
+    tech: "Astro",
+    className: "border-amber-700 bg-amber-800 text-amber-400",
+  },
+  TypeScript: {
+    tech: "TypeScript",
+    className: "border-blue-700 bg-blue-800 text-blue-400",
+  },
+  Drizzle: {
+    tech: "Drizzle",
+    className: "border-orange-700 bg-orange-800 text-orange-400",
+  },
+  JavaScript: {
+    tech: "JavaScript",
+    className: "border-orange-700 bg-orange-800 text-orange-400",
+  },
+  PostgreSQL: {
+    tech: "PostgreSQL",
+    className: "border-teal-700 bg-teal-800 text-teal-400",
+  },
+  SQLite: {
+    tech: "SQLite",
+    className: "border-teal-700 bg-teal-800 text-teal-400",
+  },
+  "NextAuth.js": {
+    tech: "NextAuth.js",
+    className: "border-gray-700 bg-gray-800 text-gray-400",
+  },
+  "Sorting Algorithms": {
+    tech: "Sorting Algorithms",
+    className: "border-gray-700 bg-gray-800 text-gray-400",
+  },
+  "Framer Motion": {
+    tech: "Framer Motion",
+    className: "border-pink-700 bg-pink-800 text-pink-400",
+  },
+  Vanilla: {
+    tech: "Vanilla",
+    className: "border-yellow-700 bg-yellow-800 text-yellow-400",
+  },
+  SocketIO: {
+    tech: "Socket.io",
+    className: "border-emerald-700 bg-emerald-800 text-emerald-400",
+  },
+
+  // ✅ BACKEND STACKS BELOW
+  Laravel: {
+    tech: "Laravel",
+    className: "border-red-700 bg-red-800 text-red-400",
+  },
+  PHP: {
+    tech: "PHP",
+    className: "border-indigo-700 bg-indigo-800 text-indigo-400",
+  },
+  Symfony: {
+    tech: "Symfony",
+    className: "border-gray-700 bg-gray-800 text-gray-400",
+  },
+  FilamentPHP: {
+    tech: "FilamentPHP",
+    className: "border-purple-700 bg-purple-800 text-purple-400",
+  },
+  MySQL: {
+    tech: "MySQL",
+    className: "border-orange-700 bg-orange-800 text-orange-400",
+  },
+  Git: {
+    tech: "Git",
+    className: "border-amber-700 bg-amber-800 text-amber-400",
+  },
+  GitHub: {
+    tech: "GitHub",
+    className: "border-neutral-700 bg-neutral-800 text-neutral-400",
+  },
+  API: {
+    tech: "API",
+    className: "border-cyan-700 bg-cyan-800 text-cyan-400",
+  },
+  REST: {
+    tech: "REST",
+    className: "border-cyan-700 bg-cyan-800 text-cyan-400",
+  },
+  MVC: {
+    tech: "MVC",
+    className: "border-teal-700 bg-teal-800 text-teal-400",
+  },
+  JWT: {
+    tech: "JWT",
+    className: "border-yellow-700 bg-yellow-800 text-yellow-400",
+  },
+  AI: {
+    tech: "AI",
+    className: "border-indigo-700 bg-indigo-800 text-indigo-400",
+  },
+  Android: {
+    tech: "Android",
+    className: "border-lime-700 bg-lime-800 text-lime-400",
+  },
+  Java: {
+    tech: "Java",
+    className: "border-orange-400 bg-orange-500 text-black-800",
+  },
+
+};
+
+export type Tech = keyof typeof TECHS;
+
+interface Props {
+  techs: Tech[];
+}
+
+const { techs } = Astro.props;
+---
+
+<ul class="flex flex-wrap items-center gap-1">
+  {
+    techs.map((techSlug) => (
+      <TechBadge
+        tech={TECHS[techSlug].tech}
+        className={TECHS[techSlug].className}
+      />
+    ))
+  }
+</ul>

@@ -1,0 +1,55 @@
+<span class="text-neutral-400 tracking-tight font-mono">
+  /* <span id="typing" class="text-sky-400"></span>*/
+</span>
+
+<style is:inline>
+  #typing::after {
+    content: "|";
+    animation: blink 0.7s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+</style>
+
+<script is:inline>
+  const roles = [
+    "A Developer",
+    "Specializing in Backend Development",
+    "Laravel Developer",
+    "PHP Developer",
+    "FilamentPHP Contributor",
+    "A Freelancer",
+  ];
+
+  let index = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const typingElement = document.getElementById("typing");
+
+  function type() {
+    const current = roles[index];
+    const visibleText = isDeleting
+      ? current.substring(0, charIndex--)
+      : current.substring(0, charIndex++);
+
+    typingElement.textContent = visibleText;
+
+    if (!isDeleting && charIndex === current.length + 1) {
+      setTimeout(() => {
+        isDeleting = true;
+        type();
+      }, 2000);
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      index = (index + 1) % roles.length;
+      setTimeout(type, 300);
+    } else {
+      setTimeout(type, isDeleting ? 30 : 60);
+    }
+  }
+
+  type();
+</script>

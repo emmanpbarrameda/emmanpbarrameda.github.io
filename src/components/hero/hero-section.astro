@@ -1,0 +1,87 @@
+---
+import GithubIcon from "../icons/github-icon.astro";
+import LinkedinIcon from "../icons/linkedin-icon.astro";
+import ResumeIcon from "../icons/resume-icon.astro";
+import TypingRoles from "./typing-roles.astro";
+import ProfileImage from "./hero-profileimage.astro";
+---
+
+<section id="home" class="mx-auto max-w-screen-md px-4 md:max-w-screen-xl">
+  
+  <div class="flex flex-col items-center justify-between md:flex-row md:items-center md:gap-4">
+
+    <!-- Text Content -->
+    <div
+      class="flex w-full flex-col gap-6 py-16 md:py-32 duration-700 animate-in fade-in-0 slide-in-from-left-12 md:w-1/2 order-2 md:order-1"
+    >
+      <div class="flex flex-col gap-2">
+
+        <!-- typing-roles -->
+        <p class="font-jetbrains font-bold leading-[1] text-neutral-400 text-sm md:text-base">
+          <TypingRoles />
+        </p>
+        
+        <h1 class="text-5xl md:text-7xl font-extrabold leading-[0.85] tracking-tight text-white">
+          Hello world!<br>I am <span class="bg-gradient-to-r from-sky-400 via-cyan-500 to-blue-600 bg-clip-text text-transparent font-extrabold">Emman;</span>
+        </h1>
+      </div>
+      
+      <p class="max-w-[450px] text-pretty text-neutral-300 text-base md:text-lg leading-relaxed">
+        Programming is my creative language, where lines of code come together to create endless posibilities!
+      </p>
+
+      <div class="flex items-center gap-3 mt-2">
+        <a
+          href="#about-me"
+          class="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-sky-400 via-cyan-500 to-blue-600 px-6 py-3 text-center font-jetbrains font-bold text-white transition-all duration-200 hover:brightness-110 hover:scale-105 hover:shadow-lg hover:shadow-sky-400/25 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+        >
+          readMore();
+        </a>
+
+        <div class="flex items-center gap-2 ml-2">
+
+          <a
+            aria-label="Github Profile"
+            title="Visit my GitHub"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/emmanpbarrameda"
+            class="rounded-full p-2 text-neutral-400 ring-sky-400/50 transition-all duration-200 hover:text-white hover:scale-110 hover:ring-2 focus:ring-2 focus:outline-none hover:bg-neutral-800/50"
+          >
+            <GithubIcon width={28} height={28} />
+          </a>
+
+          <a
+            aria-label="LinkedIn Profile"
+            title="Connect on LinkedIn"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.linkedin.com/in/emmanpbarrameda/"
+            class="rounded-full p-2 text-neutral-400 ring-sky-400/50 transition-all duration-200 hover:text-white hover:scale-110 hover:ring-2 focus:ring-2 focus:outline-none hover:bg-neutral-800/50"
+          >
+            <LinkedinIcon width={28} height={28} />
+          </a>
+
+          <a
+            aria-label="Download Resume"
+            title="Download my Resume (PDF)"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/emmanpbarrameda/EMMANPBARRAMEDA_RESUME/blob/main/RESUME/EMMANPBARRAMEDA_RESUME.pdf"
+            class="rounded-full p-2 text-neutral-400 ring-sky-400/50 transition-all duration-200 hover:text-white hover:scale-110 hover:ring-2 focus:ring-2 focus:outline-none hover:bg-neutral-800/50"
+          >
+            <ResumeIcon width={28} height={28} />
+          </a>
+
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Container -->
+    <ProfileImage />
+  
+  </div>
+    
+  </div>
+</section>
