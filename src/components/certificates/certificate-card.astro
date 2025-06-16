@@ -32,22 +32,20 @@ const { type, title, description, image, url, alt, className, badges = [] } = As
         {title}
       </h3>
     </header>
-    
+
     {badges.length > 0 && (
       <div class="flex flex-wrap gap-2">
         {badges.map((badge) => (
-          <TechBadge 
-            tech={badge} 
-            className="border-sky-900 bg-sky-900/20 text-sky-400" 
+          <TechBadge
+            tech={badge}
+            className="border-sky-900 bg-sky-900/20 text-sky-400"
           />
         ))}
       </div>
     )}
-    
-    <p class="text-neutral-400">
-      {description}
-    </p>
-    
+
+    <p class="text-neutral-400">{description}</p>
+
     <footer class="mt-4 flex items-center gap-4 sm:mt-8">
       <a
         target="_blank"
@@ -60,7 +58,7 @@ const { type, title, description, image, url, alt, className, badges = [] } = As
       </a>
     </footer>
   </div>
-  
+
   <a
     target="_blank"
     rel="noopener noreferrer"

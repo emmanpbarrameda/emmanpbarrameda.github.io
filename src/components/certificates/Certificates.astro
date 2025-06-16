@@ -2,11 +2,12 @@
 import SectionTitle from "../common/section-title.astro";
 import CertificateCard from "./certificate-card.astro";
 
-const certificates = [
+const baseUrl = "https://emmanpbarrameda.github.io";
+
+const rawCertificates = [
   {
     title: "Best Software Developmental Study - Recognition",
     img: "/certificates/cert-best-software-developmental-study.png",
-    url: "https://raw.githubusercontent.com/emmanpbarrameda/emmanpbarrameda.github.io/main/assets/img/certs/cert-tech-together.jpg",
     type: "Competition Achievement",
     description: "Awarded for having our Capstone Project wins as the Best Software Developmental Study at our university.",
     badges: ["Academic Achievement", "Team Project", "College"]
@@ -14,7 +15,6 @@ const certificates = [
   {
     title: "Internship Completion",
     img: "/certificates/cert-internship.png",
-    url: "https://raw.githubusercontent.com/emmanpbarrameda/emmanpbarrameda.github.io/main/assets/img/certs/cert-tech-together.jpg",
     type: "Academic Achievement",
     description: "Completed the 400-hour Internship Program under the BSIT curriculum at Bapplware Technologies Inc.",
     badges: ["Internship", "Professional Experience", "College"]
@@ -22,7 +22,6 @@ const certificates = [
   {
     title: "UMAK 13th IT Skills Olympics - Participation",
     img: "/certificates/cert-umak.png",
-    url: "https://raw.githubusercontent.com/emmanpbarrameda/emmanpbarrameda.github.io/main/assets/img/certs/cert-tech-together.jpg",
     type: "Competition Achievement",
     description: "Participated in the UMAK 13th IT Skills Olympics under the Android Development Productivity Competition category.",
     badges: ["Competition", "Team Project", "College"]
@@ -30,7 +29,6 @@ const certificates = [
   {
     title: "Resource Speaker - Appreciation",
     img: "/certificates/cert-speaker.png",
-    url: "https://raw.githubusercontent.com/emmanpbarrameda/emmanpbarrameda.github.io/main/assets/img/certs/cert-tech-together.jpg",
     type: "Organizational Involvement",
     description: "Awarded as a student mentor and resource speaker during the online mentoring session entitled Capstone Success: Knowing Tips and Techniques for Capstone Development.",
     badges: ["Student Organization", "College"]
@@ -38,7 +36,6 @@ const certificates = [
   {
     title: "GitHub Field Day Philippines - Appreciation",
     img: "/certificates/cert-ghfd.png",
-    url: "https://raw.githubusercontent.com/emmanpbarrameda/emmanpbarrameda.github.io/main/assets/img/certs/cert-tech-together.jpg",
     type: "Organizational Involvement",
     description: "Certificate of Appreciation awarded for being one of the 100 selected participants from the Philippines at GitHub Field Day.",
     badges: ["Tech Community", "College"]
@@ -46,16 +43,13 @@ const certificates = [
   {
     title: "Election Certification: Elected as President",
     img: "/certificates/cert-president.png",
-    url: "https://raw.githubusercontent.com/emmanpbarrameda/emmanpbarrameda.github.io/main/assets/img/certs/cert-tech-together.jpg",
     type: "Organizational Involvement",
     description: "Certified as the duly elected President of the BSIT Students' League (ITSL) for Academic Year 2024–2025.",
     badges: ["Leadership", "Student Organization", "College"]
   },
-
   {
     title: "CCS Start-up Challenge: Best in Poster",
     img: "/certificates/cert-tech-together.jpg",
-    url: "https://raw.githubusercontent.com/emmanpbarrameda/emmanpbarrameda.github.io/main/assets/img/certs/cert-tech-together.jpg",
     type: "Competition Achievement",
     description: "Certificate of Participation awarded to the TechTogether Project Team for winning Best in Poster at the CCS Start-up Challenge.",
     badges: ["Competition", "Team Project", "College"]
@@ -63,7 +57,6 @@ const certificates = [
   {
     title: "BEST IN ICT Award",
     img: "/certificates/cert-best-in-ict.jpeg",
-    url: "https://raw.githubusercontent.com/emmanpbarrameda/emmanpbarrameda.github.io/main/assets/img/certs/cert-best-in-ict.jpeg",
     type: "Academic Achievement",
     description: "Awarded for outstanding performance as an Information and Communication Technology student during my Senior High School graduation.",
     badges: ["Academic Excellence", "Top Performer", "Senior High School"]
@@ -71,7 +64,6 @@ const certificates = [
   {
     title: "BEST IN RESEARCH Award",
     img: "/certificates/cert-best-thesis.jpeg",
-    url: "https://raw.githubusercontent.com/emmanpbarrameda/emmanpbarrameda.github.io/main/assets/img/certs/cert-best-thesis.jpeg",
     type: "Academic Achievement",
     description: "Awarded as the Best TVL-ICT Research entitled 'The Acceptability of the Accent Corrector to the Vocabulary and English Speaking Skills of Grade 11 ICT Students'.",
     badges: ["Research Excellence", "Thesis", "Top Performer", "Senior High School"]
@@ -79,13 +71,17 @@ const certificates = [
   {
     title: "WITH HONOR Award",
     img: "/certificates/cert-with-honor-shs.jpeg",
-    url: "https://raw.githubusercontent.com/emmanpbarrameda/emmanpbarrameda.github.io/main/assets/img/certs/cert-with-honor-shs.jpeg",
     type: "Academic Achievement",
     description: "Graduated with honors during the Senior High School Commencement Exercises.",
     badges: ["Honors", "Senior High School"]
   },
-
 ];
+
+// Add URL field dynamically
+const certificates = rawCertificates.map(cert => ({
+  ...cert,
+  url: `${baseUrl}${cert.img}`
+}));
 ---
 
 <section
@@ -98,7 +94,7 @@ const certificates = [
   </p>
 
   <div class="mt-6 grid w-full grid-cols-1 gap-8">
-    {/* Always show first certificate */}
+    <!-- Always show first certificate -->
     <CertificateCard
       type={certificates[0].type}
       title={certificates[0].title}
@@ -110,7 +106,7 @@ const certificates = [
       className="intersect:slide-in-from-bottom-12"
     />
 
-    {/* Collapsible section for remaining certificates */}
+    <!-- Collapsible section for remaining certificates -->
     <div x-data="{ showAll: false }" class="space-y-8">
       <div
         x-show="showAll"
@@ -131,13 +127,12 @@ const certificates = [
         ))}
       </div>
 
-      {/* Updated Toggle button with new style */}
       <div class="mt-8 w-full text-center">
         <button
           @click="showAll = !showAll"
           class="mx-auto inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-sky-400 via-cyan-500 to-blue-600 px-6 py-3 text-center font-jetbrains font-bold text-white transition-all duration-200 hover:brightness-110 hover:scale-105 hover:shadow-lg hover:shadow-sky-400/25 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-gray-900"
         >
-          <span x-text="showAll ? 'showLessCertificates();' : 'showAllCertificates();'"></span>
+          <span x-text="showAll ? 'Show Less' : 'Show All'"></span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
