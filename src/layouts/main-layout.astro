@@ -54,16 +54,16 @@ import { infos } from "../data/infos.js";
     <meta name="robots" content="index, follow" />
 
     <!-- STRUCTURED DATA -->
-    <!-- <script type="application/ld+json">
-      {
+    <script is:inline type="application/ld+json">
+      {JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "GIT.RAWify",
-        "description": "Your shortcut to Generate Raw GitHub Links",
-        "url": "https://git-rawify.vercel.app/",
-        "image": "https://i.imgur.com/ceRkZe6.png"
-      }
-    </script> -->
+        "@type": "Website",
+        name: infos.og_title,
+        description: infos.main_description,
+        url: infos.host,
+        image: infos.og_image
+      })}
+    </script>
   </head>
 
   <body class="bg-neutral-950 font-aileron text-neutral-50">
