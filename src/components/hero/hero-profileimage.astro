@@ -4,7 +4,6 @@
 
 <div class="flex w-full justify-center md:w-1/2 md:justify-end order-1 md:order-2 mt-8 mb-0 md:my-0 animate-in fade-in-0 slide-in-from-right-12">
   <div class="relative group">
-    
     <!-- Outer glow -->
     <div class="absolute -inset-2 bg-gradient-to-br from-sky-400 via-cyan-500 to-blue-600 rounded-full blur-xl opacity-25 group-hover:opacity-50 transition duration-500"></div>
 
@@ -26,11 +25,16 @@
     <div class="absolute bottom-4 right-[40%] text-sky-300 text-lg font-bold z-10 animate-float-delay select-none">&lt;/&gt;</div>
     <div class="absolute top-[60%] left-[60%] text-cyan-300 text-base font-bold z-10 animate-float select-none">&lt;/&gt;</div>
 
-
     <style is:inline>
       @keyframes fadeImages {
-        0%, 30% { opacity: 1; }
-        40%, 100% { opacity: 0; }
+        0%,
+        30% {
+          opacity: 1;
+        }
+        40%,
+        100% {
+          opacity: 0;
+        }
       }
 
       .slider-image:nth-child(1) {
@@ -58,13 +62,23 @@
       }
 
       @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-6px); }
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
       }
 
       @keyframes float-delay {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
       }
     </style>
   </div>

@@ -1,14 +1,9 @@
 ---
-// src/components/common/BackToTop.astro
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 ---
 
-<button
-  id="backToTopBtn"
-  class="fixed bottom-5 right-5 z-50 hidden items-center justify-center text-sky-500 transition-all duration-300 
-         hover:brightness-125 focus:outline-none w-10 h-10 md:w-12 md:h-12 active:scale-90"
-  aria-label="Back to top"
->
+<button id="backToTopBtn" class="fixed bottom-5 right-5 z-50 hidden items-center justify-center text-sky-500 transition-all duration-300
+         hover:brightness-125 focus:outline-none w-10 h-10 md:w-12 md:h-12 active:scale-90" aria-label="Back to top">
   <Icon name="ic:round-keyboard-arrow-up" class="text-2xl md:text-3xl" />
 </button>
 
@@ -16,20 +11,30 @@ import { Icon } from 'astro-icon/components';
   const btn = document.getElementById("backToTopBtn");
 
   window.addEventListener("scroll", () => {
+    // visibility
     if (window.scrollY > 300) {
       btn.classList.remove("hidden");
     } else {
       btn.classList.add("hidden");
+
+      if (location.hash !== "#home") {
+        history.replaceState(null, "", "#home");
+      }
     }
   });
 
   btn.addEventListener("click", () => {
     btn.classList.add("scale-90");
-    setTimeout(() => btn.classList.remove("scale-90"), 150);
+
+    setTimeout(() => {
+      btn.classList.remove("scale-90");
+    }, 150);
 
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
+
+    history.replaceState(null, "", "#home");
   });
 </script>

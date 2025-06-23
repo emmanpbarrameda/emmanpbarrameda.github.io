@@ -1,125 +1,30 @@
 ---
 import SectionTitle from "../common/section-title.astro";
 import ProjectCard from "./project-card.astro";
-import { Icon } from 'astro-icon/components'
+import { Icon } from "astro-icon/components";
 ---
 
-<section
-  id="projects"
-  class="mx-auto mt-28 flex max-w-screen-md flex-col items-center gap-5 px-4 pt-4"
->
+<section id="projects" class="mx-auto mt-28 flex max-w-screen-md flex-col items-center gap-5 px-4 pt-4">
   <SectionTitle>Development Projects</SectionTitle>
-  <p class="max-w-[500px] text-center text-neutral-400">
-    Dive into a showcase of my development projects, each a testament to my skills,
-    creativity, and dedication to development.
-  </p>
+  <p class="max-w-[500px] text-center text-neutral-400">Dive into a showcase of my development projects, each a testament to my skills, creativity, and dedication to development.</p>
 
   <div class="mt-3 flex flex-col gap-8">
+    <ProjectCard type="Capstone Project" title="MMC Management Information System" stack={["PHP", "OOP", "Laravel", "FilamentPHP", "TailwindCSS", "MySQL", "AI", "API", "Android"]} description="The Mabuhay Methodist Church Management Information System is our Capstone Project developed to streamline church operations. Built using Laravel and powered by FilamentPHP, the system was recognized as the Best Software Developmental Study by our university. — — If you're interested in seeing a preview, feel free to email me — the system currently runs on a local environment." deploy="https://mmchurch.site/" repository="https://github.com/Techvisioners/MMCCapstone_Websystem2" image="/projects/ss_mmcMis.png" alt="A screenshot of the project." className="intersect:slide-in-from-left-12" />
 
-    <ProjectCard
-      type="Capstone Project"
-      title="MMC Management Information System"
-      stack={[
-        "PHP",
-        "OOP",
-        "Laravel",
-        "FilamentPHP",
-        "TailwindCSS",
-        "MySQL",
-        "AI",
-        "API",
-        "Android",
-      ]}
-      description="The Mabuhay Methodist Church Management Information System is our Capstone Project developed to streamline church operations. Built using Laravel and powered by FilamentPHP, the system was recognized as the Best Software Developmental Study by our university. — — If you're interested in seeing a preview, feel free to email me — the system currently runs on a local environment."
-      deploy="https://mmchurch.site/"
-      repository="https://github.com/Techvisioners/MMCCapstone_Websystem2"
-      image="/projects/ss_mmcMis.png"
-      alt="A screenshot of the project."
-      className="intersect:slide-in-from-left-12"
-    />
+    <ProjectCard type="Open-Source Contribution" title="Filament Take-Picture Field" stack={["PHP", "Laravel", "FilamentPHP", "TailwindCSS"]} description="A custom Filament form library component that enables users to capture photos directly from their device's camera — a contribution to the Filament community." deploy="https://packagist.org/packages/emmanpbarrameda/filament-take-picture-field" repository="https://github.com/emmanpbarrameda/filament-take-picture-field" image="/projects/ss_take_picture.png" alt="A screenshot of the project." className="intersect:slide-in-from-right-12" />
 
-    <ProjectCard
-      type="Open-Source Contribution"
-      title="Filament Take-Picture Field"
-      stack={[
-        "PHP",
-        "Laravel",
-        "FilamentPHP",
-        "TailwindCSS",
-      ]}
-      description="A custom Filament form library component that enables users to capture photos directly from their device's camera — a contribution to the Filament community."
-      deploy="https://packagist.org/packages/emmanpbarrameda/filament-take-picture-field"
-      repository="https://github.com/emmanpbarrameda/filament-take-picture-field"
-      image="/projects/ss_take_picture.png"
-      alt="A screenshot of the project."
-      className="intersect:slide-in-from-right-12"
-    />
+    <ProjectCard type="Client Project" title="URSB Internship System" stack={["PHP", "OOP", "Laravel", "FilamentPHP", "TailwindCSS", "MySQL", "API"]} description="The University of Rizal System - Binangonan Internship System is a capstone web-based system designed for students currently undergoing internship, helping them manage their requirements, progress, personal records, and more. Feel free to email me if you'd like a preview of the system, as this system running locally." deploy="https://ursbinternship.online/" repository="https://github.com/emmanpbarrameda/URSB_INTERNSHIP_SYSTEM" image="/projects/ss_ursb_internship.png" alt="A screenshot of the project." className="intersect:slide-in-from-left-12" />
 
-    <ProjectCard
-      type="Client Project"
-      title="URSB Internship System"
-      stack={[
-        "PHP",
-        "OOP",
-        "Laravel",
-        "FilamentPHP",
-        "TailwindCSS",
-        "MySQL",
-        "API",
-      ]}
-      description="The University of Rizal System - Binangonan Internship System is a capstone web-based system designed for students currently undergoing internship, helping them manage their requirements, progress, personal records, and more. Feel free to email me if you'd like a preview of the system, as this system running locally."
-      deploy="https://ursbinternship.online/"
-      repository="https://github.com/emmanpbarrameda/URSB_INTERNSHIP_SYSTEM"
-      image="/projects/ss_ursb_internship.png"
-      alt="A screenshot of the project."
-      className="intersect:slide-in-from-left-12"
-    />
+    <ProjectCard type="FrontEnd Project" title="GIT.RAWify" stack={["JavaScript", "Vanilla", "Bootstrap"]} description="A tool used by thousands of developers to convert GitHub links into raw content URLs" deploy="https://git-rawify.vercel.app/" repository="https://github.com/emmanpbarrameda/GIT.RAWify" image="https://raw.githubusercontent.com/emmanpbarrameda/GIT.RAWify/main/output/screen_record_gif2.gif" alt="A screenshot of the project." className="intersect:slide-in-from-right-12" />
 
-    <ProjectCard
-      type="FrontEnd Project"
-      title="GIT.RAWify"
-      stack={[
-        "JavaScript",
-        "Vanilla",
-        "Bootstrap",
-      ]}
-      description="A tool used by thousands of developers to convert GitHub links into raw content URLs"
-      deploy="https://git-rawify.vercel.app/"
-      repository="https://github.com/emmanpbarrameda/GIT.RAWify"
-      image="https://raw.githubusercontent.com/emmanpbarrameda/GIT.RAWify/main/output/screen_record_gif2.gif"
-      alt="A screenshot of the project."
-      className="intersect:slide-in-from-right-12"
-    />
-    
-    <ProjectCard
-      type="Client Project"
-      title="HSSG Employee Management System"
-      stack={[
-        "Java",
-        "OOP",
-        "MySQL",
-        "API",
-      ]}
-      description="A desktop application for the Headquarters Service Support Group of the Philippine Air Force to manage employee records and personal details."
-      deploy="https://github.com/emmanpbarrameda/HSSG-EmpMgmtSystem_Java-PREVIEW"
-      repository="https://github.com/emmanpbarrameda/HSSG-EmpMgmtSystem_Java-CODE"
-      image="https://raw.githubusercontent.com/emmanpbarrameda/HSSG-EmpMgmtSystem_Java-PREVIEW/main/output-media/console_video2.gif"
-      alt="A screenshot of the project."
-      className="intersect:slide-in-from-left-12"
-    />
+    <ProjectCard type="Client Project" title="HSSG Employee Management System" stack={["Java", "OOP", "MySQL", "API"]} description="A desktop application for the Headquarters Service Support Group of the Philippine Air Force to manage employee records and personal details." deploy="https://github.com/emmanpbarrameda/HSSG-EmpMgmtSystem_Java-PREVIEW" repository="https://github.com/emmanpbarrameda/HSSG-EmpMgmtSystem_Java-CODE" image="https://raw.githubusercontent.com/emmanpbarrameda/HSSG-EmpMgmtSystem_Java-PREVIEW/main/output-media/console_video2.gif" alt="A screenshot of the project." className="intersect:slide-in-from-left-12" />
   </div>
 
   <!-- "View More Projects" button -->
   <div class="mt-12 w-full text-center">
-    <a
-      href="https://github.com/emmanpbarrameda?tab=repositories&q=&type=public&language=&sort="
-      target="_blank"
-      rel="noopener noreferrer"
-      class="mx-auto inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-sky-400 via-cyan-500 to-blue-600 px-6 py-3 text-center font-jetbrains font-bold text-white transition-all duration-200 hover:brightness-110 hover:scale-105 hover:shadow-lg hover:shadow-sky-400/25 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-gray-900"
-    >
+    <a href="https://github.com/emmanpbarrameda?tab=repositories&q=&type=public&language=&sort=" target="_blank" rel="noopener noreferrer" class="mx-auto inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-sky-400 via-cyan-500 to-blue-600 px-6 py-3 text-center font-jetbrains font-bold text-white transition-all duration-200 hover:brightness-110 hover:scale-105 hover:shadow-lg hover:shadow-sky-400/25 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-gray-900">
       viewMoreProjects();
       <Icon name="ic:baseline-open-in-new" class="text-xl" />
     </a>
   </div>
-  
 </section>

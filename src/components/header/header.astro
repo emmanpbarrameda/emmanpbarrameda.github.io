@@ -4,10 +4,7 @@ import HeaderLink from "./header-link.astro";
 ---
 
 <div id="scroll-watcher" data-scroll-watcher></div>
-<header
-  id="header"
-  class="transition-transparent sticky left-0 top-0 z-30 flex flex-col items-center justify-center bg-neutral-900 py-2 font-jetbrains md:flex-row md:bg-transparent md:data-[moving]:bg-neutral-900"
->
+<header id="header" class="transition-transparent fixed w-full left-0 top-0 z-30 flex flex-col items-center justify-center bg-neutral-900 py-2 font-jetbrains md:flex-row md:bg-transparent md:data-[moving]:bg-neutral-900">
   <!-- mobile -->
   <button id="toggle-menu" class="flex items-center gap-1 min-[900px]:hidden">
     <span aria-hidden="true" class="text-2xl leading-[1] text-neutral-500">
@@ -18,15 +15,9 @@ import HeaderLink from "./header-link.astro";
       {""}
     </span>
   </button>
-  
-  <nav
-    id="menu"
-    class="group hidden items-center data-[toggle]:flex data-[toggle]:flex-col min-[900px]:flex min-[900px]:flex-row min-[900px]:data-[toggle]:flex-row"
-  >
-    <span
-      aria-hidden="true"
-      class="hidden text-2xl leading-[1] text-neutral-500 min-[900px]:inline-block"
-    >
+
+  <nav id="menu" class="group hidden items-center data-[toggle]:flex data-[toggle]:flex-col min-[900px]:flex min-[900px]:flex-row min-[900px]:data-[toggle]:flex-row">
+    <span aria-hidden="true" class="hidden text-2xl leading-[1] text-neutral-500 min-[900px]:inline-block">
       {"<?"}
     </span>
     <HeaderLink href="#home" text="main" />
@@ -36,10 +27,7 @@ import HeaderLink from "./header-link.astro";
     <HeaderLink href="#projects" text="getProjects" />
     <!-- <HeaderLink href="#education" text="getEducation" /> -->
     <HeaderLink href="#contact" text="getInTouch" />
-    <span
-      aria-hidden="true"
-      class="hidden text-2xl leading-[1] text-neutral-500 min-[900px]:inline-block"
-    >
+    <span aria-hidden="true" class="hidden text-2xl leading-[1] text-neutral-500 min-[900px]:inline-block">
       {"?>"}
     </span>
   </nav>

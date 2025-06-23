@@ -1,67 +1,55 @@
 ---
 // about-me-section.astro
 import BrowserWindow from "./browser-window.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <section id="about-me" class="mx-auto mt-28 grid max-w-screen-md px-4 pt-4">
   <BrowserWindow path="~/src/README.md">
-    <div
-      class="flex min-h-[300px] flex-col gap-4 bg-gradient-to-t from-neutral-900/40 via-90% px-4 py-8 font-jetbrains font-thin [&>p]:text-neutral-400 [&>p]:text-justify"
-    >
+    <div class="flex min-h-[300px] flex-col gap-4 bg-gradient-to-t from-neutral-900/40 via-90% px-4 py-8 font-jetbrains font-thin [&>p]:text-neutral-400 [&>p]:text-justify">
       <h2 class="text-4xl font-black [&>span]:text-sky-400 tracking-tighter">
         <span>#</span> ABOUT ME
       </h2>
 
       <!-- Intro / Teaser -->
       <p class="[&>strong]:font-bold">
-        Hello world! I'm <strong>Emmanuel 'Emman' P. Barrameda</strong>,
-        23 years old from the Philippines.<br><br>A
+        Hello world! I'm <strong>Emmanuel 'Emman' P. Barrameda</strong>, 23 years old from the Philippines.<br /><br />A
         <strong>IT student</strong> specializing in
         <u><strong>backend development</strong></u> with experience in
-        <sb>desktop and web development</sb>. Initially focused on Java,
-        now developing websites using the
-        <sb>LAMP or TALL stack with Laravel</sb>. Became interested in
-        programming at age 16 and continue learning today. Experienced in
-        leadership, project management, freelancing, and mentoring.
-        Innovative and dedicated to excellence in every development.
+        <sb>desktop and web development</sb>. Initially focused on Java, now developing websites using the
+        <sb>LAMP or TALL stack with Laravel</sb>. Became interested in programming at age 16 and continue learning today. Experienced in leadership, project management, freelancing, and mentoring. Innovative and dedicated to excellence in every development.
       </p>
 
       <!-- Show More Content -->
       <div id="full-description" class="hidden transition-all duration-300 ease-in-out [&>p]:text-neutral-400 [&>p]:text-justify">
         <p class="[&>strong]:font-bold mt-4">
-          My programming journey began when I was just <sb>16 years old</sb> as a Minecraft server owner.
-          This experience ignited my interest in programming, and since then, I have been dedicated to studying
-          the Java programming language. During my time at Vicente Madrigal Integrated School as a senior-high
-          student, pursuing the TVL-ICT track, I excelled in Java Programming and was recognized as the
+          My programming journey began when I was just <sb>16 years old</sb> as a Minecraft server owner. This experience ignited my interest in programming, and since then, I have been dedicated to studying the Java programming language. During my time at Vicente Madrigal Integrated School as a senior-high student, pursuing the TVL-ICT track, I excelled in Java Programming and was recognized as the
           <strong>Best in ICT Student</strong> in our batch upon graduation.
-          <br><br>Since then, I have been on an exciting freelancing journey that began during the 2020 Covid-19
-          lockdown and continues until today, as <sb>I am still accepting clients</sb>.
-          <br><br>I have been offering my freelancing service to <strong>create desktop applications or web-based systems</strong>,
-          catering to various needs such as thesis/capstone projects, company systems, and personalized tools.
-          <br><br>Currently, I am a <strong>graduating</strong> student pursuing a
+          <br /><br />Since then, I have been on an exciting freelancing journey that began during the 2020 Covid-19 lockdown and continues until today, as <sb>I am still accepting clients</sb>.
+          <br /><br />I have been offering my freelancing service to <strong>create desktop applications or web-based systems</strong>, catering to various needs such as thesis/capstone projects, company systems, and personalized tools.
+          <br /><br />Currently, I am a <strong>graduating</strong> student pursuing a
           <sb>Bachelor of Science in Information Technology</sb> at the
-          <sb>University of Rizal System Binangonan</sb>. My studies revolve around Object Oriented Programming,
-          Desktop Application Development, Graphic Designing and Web Development.
+          <sb>University of Rizal System Binangonan</sb>. My studies revolve around Object Oriented Programming, Desktop Application Development, Graphic Designing and Web Development.
         </p>
       </div>
 
       <!-- Toggle Button -->
-      <button
-        id="toggle-description"
-        data-state="collapsed"
-        class="mt-4 self-start rounded-md border border-neutral-700 px-4 py-2 text-sm text-neutral-300 hover:bg-neutral-800"
-        onclick="
+      <button id="toggle-description" data-state="collapsed" class="mt-4 self-start rounded-md border border-neutral-700 px-4 py-2 text-sm text-neutral-300 hover:bg-neutral-800" onclick="
           const desc = document.getElementById('full-description');
           const btn = document.getElementById('toggle-description');
           const isCollapsed = btn.getAttribute('data-state') === 'collapsed';
           desc.classList.toggle('hidden');
           btn.setAttribute('data-state', isCollapsed ? 'expanded' : 'collapsed');
           btn.textContent = isCollapsed ? 'Show Less' : 'Read More';
-        "
-      >
-        Read More
-      </button>
-      
+        ">Read More</button>
     </div>
   </BrowserWindow>
+
+  <!-- "viewResume" button -->
+  <div class="mt-12 w-full text-center">
+    <a href="https://github.com/emmanpbarrameda/EMMANPBARRAMEDA_RESUME/blob/main/RESUME/EMMANPBARRAMEDA_RESUME.pdf" target="_blank" rel="noopener noreferrer" class="mx-auto inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-sky-400 via-cyan-500 to-blue-600 px-6 py-3 text-center font-jetbrains font-bold text-white transition-all duration-200 hover:brightness-110 hover:scale-105 hover:shadow-lg hover:shadow-sky-400/25 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-gray-900">
+      viewResume();
+      <Icon name="ic:baseline-open-in-new" class="text-xl" />
+    </a>
+  </div>
 </section>
