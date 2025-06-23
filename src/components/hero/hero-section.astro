@@ -1,5 +1,5 @@
 ---
-import { socials } from "../../data/socials.js";
+import { infos } from "../../data/infos.js";
 import GithubIcon from "../icons/github-icon.astro";
 import LinkedinIcon from "../icons/linkedin-icon.astro";
 import ResumeIcon from "../icons/resume-icon.astro";
@@ -31,15 +31,15 @@ import ProfileImage from "./hero-profileimage.astro";
         <a href="#about-me" class="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-sky-400 via-cyan-500 to-blue-600 px-6 py-3 text-center font-jetbrains font-bold text-white transition-all duration-200 hover:brightness-110 hover:scale-105 hover:shadow-lg hover:shadow-sky-400/25 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-gray-900">readMore();</a>
 
         <div class="flex items-center gap-2 ml-2">
-          <a aria-label="Github Profile" title="Visit my GitHub" target="_blank" rel="noopener noreferrer" href={socials.github} class="rounded-full p-2 text-neutral-400 ring-sky-400/50 transition-all duration-200 hover:text-white hover:scale-110 hover:ring-2 focus:ring-2 focus:outline-none hover:bg-neutral-800/50">
+          <a aria-label="Github Profile" title="Visit my GitHub" target="_blank" rel="noopener noreferrer" href={infos.github} class="rounded-full p-2 text-neutral-400 ring-sky-400/50 transition-all duration-200 hover:text-white hover:scale-110 hover:ring-2 focus:ring-2 focus:outline-none hover:bg-neutral-800/50">
             <GithubIcon width={28} height={28} />
           </a>
 
-          <a aria-label="LinkedIn Profile" title="Connect on LinkedIn" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/emmanpbarrameda/" class="rounded-full p-2 text-neutral-400 ring-sky-400/50 transition-all duration-200 hover:text-white hover:scale-110 hover:ring-2 focus:ring-2 focus:outline-none hover:bg-neutral-800/50">
+          <a aria-label="LinkedIn Profile" title="Connect on LinkedIn" target="_blank" rel="noopener noreferrer" href={infos.linkedin} class="rounded-full p-2 text-neutral-400 ring-sky-400/50 transition-all duration-200 hover:text-white hover:scale-110 hover:ring-2 focus:ring-2 focus:outline-none hover:bg-neutral-800/50">
             <LinkedinIcon width={28} height={28} />
           </a>
 
-          <a aria-label="Download Resume" title="Download my Resume (PDF)" target="_blank" rel="noopener noreferrer" href="https://github.com/emmanpbarrameda/EMMANPBARRAMEDA_RESUME/blob/main/RESUME/EMMANPBARRAMEDA_RESUME.pdf" class="rounded-full p-2 text-neutral-400 ring-sky-400/50 transition-all duration-200 hover:text-white hover:scale-110 hover:ring-2 focus:ring-2 focus:outline-none hover:bg-neutral-800/50">
+          <a aria-label="Download Resume" title="Download my Resume (PDF)" target="_blank" rel="noopener noreferrer" href={infos.resume} class="rounded-full p-2 text-neutral-400 ring-sky-400/50 transition-all duration-200 hover:text-white hover:scale-110 hover:ring-2 focus:ring-2 focus:outline-none hover:bg-neutral-800/50">
             <ResumeIcon width={28} height={28} />
           </a>
         </div>

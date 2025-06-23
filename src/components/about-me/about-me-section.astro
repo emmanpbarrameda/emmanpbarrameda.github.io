@@ -1,5 +1,6 @@
 ---
 // about-me-section.astro
+import { infos } from "../../data/infos.js";
 import BrowserWindow from "./browser-window.astro";
 import { Icon } from "astro-icon/components";
 ---
@@ -47,7 +48,7 @@ import { Icon } from "astro-icon/components";
 
   <!-- "viewResume" button -->
   <div class="mt-12 w-full text-center">
-    <a href="https://github.com/emmanpbarrameda/EMMANPBARRAMEDA_RESUME/blob/main/RESUME/EMMANPBARRAMEDA_RESUME.pdf" target="_blank" rel="noopener noreferrer" class="mx-auto inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-sky-400 via-cyan-500 to-blue-600 px-6 py-3 text-center font-jetbrains font-bold text-white transition-all duration-200 hover:brightness-110 hover:scale-105 hover:shadow-lg hover:shadow-sky-400/25 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-gray-900">
+    <a href={infos.resume} target="_blank" rel="noopener noreferrer" class="mx-auto inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-sky-400 via-cyan-500 to-blue-600 px-6 py-3 text-center font-jetbrains font-bold text-white transition-all duration-200 hover:brightness-110 hover:scale-105 hover:shadow-lg hover:shadow-sky-400/25 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-gray-900">
       viewResume();
       <Icon name="ic:baseline-open-in-new" class="text-xl" />
     </a>
