@@ -3,56 +3,26 @@ import { infos } from "../../data/infos.js";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="mx-auto mt-20 w-full max-w-screen-md px-4 py-10 text-neutral-500 space-y-6">
-  <!-- Top Section -->
-  <div class="flex flex-col items-center justify-between gap-6 sm:flex-row sm:items-start sm:gap-0">
-    <!-- Left: Build Info -->
-    <div class="text-center sm:text-left space-y-1">
-      <p class="text-sm">
-        Built with <span class="font-bold text-sky-400">♥</span> using
-        <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" class="font-semibold text-sky-400 hover:underline">Astro Web Framework</a>
-      </p>
-      <p class="text-xs text-neutral-400">&copy; {currentYear} {infos.fullname}. All rights reserved.</p>
+<footer class="mx-auto mt-20 flex max-w-screen-md flex-col items-center justify-between gap-1 px-4 py-8 text-neutral-600 sm:flex-row text-center sm:text-left">
+  <p>
+    Built with
+    <span class="font-bold text-sky-400 opacity-60">♥</span> using
+    <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" class="font-bold text-sky-400 opacity-60 hover:underline">Astro Web Framework</a>
+  </p>
+
+  <div class="flex items-center gap-2">
+    <!-- HIDDEN BUT FUNCTIONAL COUNTER -->
+    <div style="height: 0; width: 0; overflow: hidden; position: absolute;">
+      <a href="http://www.freevisitorcounters.com" title="Free Visitor Counter">📈</a>
+      <script is:inline type="text/javascript" src="https://www.freevisitorcounters.com/auth.php?id=2e68fdfe06e3bdd6b074d336bc304fc71e7a00f0"></script>
+      <script is:inline type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1201808/t/5"></script>
     </div>
 
-    <!-- Right: GitHub Contributions -->
-    <div class="flex flex-col items-center sm:items-end">
-      <img src="https://ghchart.rshah.org/skyblue/emmanpbarrameda" alt="emmanpbarrameda's GitHub chart" class="w-[280px] sm:w-[340px] rounded-md shadow border border-neutral-700/20 dark:border-neutral-300/10" loading="lazy" />
-      <p class="mt-1 text-xs text-neutral-400"></p>
-    </div>
+    <a href="https://www.freevisitorcounters.com/en/home/stats/id/1201808" title="Free Visitor Counter">📈</a>
+    <!-- COPYRIGHT -->
+    <p class="text-xs sm:text-sm">
+      &copy; {currentYear}
+      {infos.fullname}. All rights reserved.
+    </p>
   </div>
-
-  <!-- Bottom Section -->
-  <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-t pt-4 text-xs border-neutral-700/20 dark:border-neutral-300/10">
-    <!-- Like + Counter on Right Desktop / Center Mobile -->
-    <div class="flex flex-col sm:flex-row sm:ml-auto items-center gap-3">
-      <!-- HIDDEN Visitor Counter Script (DO NOT TOUCH) -->
-      <div style="height: 0; width: 0; overflow: hidden; position: absolute;">
-        <a href="http://www.freevisitorcounters.com" title="Free Visitor Counter">Counter</a>
-        <script is:inline src="https://www.freevisitorcounters.com/auth.php?id=2e68fdfe06e3bdd6b074d336bc304fc71e7a00f0"></script>
-        <script is:inline src="https://www.freevisitorcounters.com/en/home/counter/1201808/t/5"></script>
-      </div>
-
-      <!-- Actual Counter Text Link -->
-      <a href="https://www.freevisitorcounters.com/en/home/stats/id/1201808" title="Visitor Counter" target="_blank" class="text-sm text-neutral-500 hover:text-sky-400 transition-colors">Counter</a>
-
-      <!-- LIKE BUTTON styled as a white badge -->
-      <span class="inline-block rounded-full bg-white/80 px-3 py-1 text-sm font-semibold text-white shadow ring-1 ring-white/30 backdrop-blur-sm">
-        <span class="likebtn-wrapper" data-theme="disk" data-ef_voting="heartbeat" data-identifier="item_1" data-dislike_enabled="false" data-counter_frmt="comma" data-counter_count="true" data-share_size="small"></span>
-      </span>
-    </div>
-  </div>
-
-  <!-- Like Button Script -->
-  <script is:inline>
-    (function (d, e, s) {
-      if (d.getElementById("likebtn_wjs")) return;
-      let a = d.createElement(e);
-      let m = d.getElementsByTagName(e)[0];
-      a.async = 1;
-      a.id = "likebtn_wjs";
-      a.src = s;
-      m.parentNode.insertBefore(a, m);
-    })(document, "script", "//w.likebtn.com/js/w/widget.js");
-  </script>
 </footer>
