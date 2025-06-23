@@ -5,81 +5,21 @@ import { infos } from "../../data/infos.js";
 
 const baseUrl = infos.host;
 
-const rawCertificates = [
-  {
-    title: "Best Software Developmental Study - Recognition",
-    img: "/certificates/cert-best-software-developmental-study.webp",
-    type: "Competition Achievement",
-    description: "Awarded for having our Capstone Project wins as the Best Software Developmental Study at our university.",
-    badges: ["Academic Achievement", "Team Project", "College"],
-  },
-  {
-    title: "Internship Completion",
-    img: "/certificates/cert-internship.webp",
-    type: "Academic Achievement",
-    description: "Completed the 400-hour Internship Program under the BSIT curriculum at Bapplware Technologies Inc.",
-    badges: ["Internship", "Professional Experience", "College"],
-  },
-  {
-    title: "UMAK 13th IT Skills Olympics - Participation",
-    img: "/certificates/cert-umak.webp",
-    type: "Competition Achievement",
-    description: "Participated in the UMAK 13th IT Skills Olympics under the Android Development Productivity Competition category.",
-    badges: ["Competition", "Team Project", "College"],
-  },
-  {
-    title: "Resource Speaker - Appreciation",
-    img: "/certificates/cert-speaker.webp",
-    type: "Organizational Involvement",
-    description: "Awarded as a student mentor and resource speaker during the online mentoring session entitled Capstone Success: Knowing Tips and Techniques for Capstone Development.",
-    badges: ["Student Organization", "College"],
-  },
-  {
-    title: "GitHub Field Day Philippines - Appreciation",
-    img: "/certificates/cert-ghfd.webp",
-    type: "Organizational Involvement",
-    description: "Certificate of Appreciation awarded for being one of the 100 selected participants from the Philippines at GitHub Field Day.",
-    badges: ["Tech Community", "College"],
-  },
-  {
-    title: "Election Certification: Elected as President",
-    img: "/certificates/cert-president.webp",
-    type: "Organizational Involvement",
-    description: "Certified as the duly elected President of the BSIT Students' League (ITSL) for Academic Year 2024–2025.",
-    badges: ["Leadership", "Student Organization", "College"],
-  },
-  {
-    title: "CCS Start-up Challenge: Best in Poster",
-    img: "/certificates/cert-tech-together.webp",
-    type: "Competition Achievement",
-    description: "Certificate of Participation awarded to the TechTogether Project Team for winning Best in Poster at the CCS Start-up Challenge.",
-    badges: ["Competition", "Team Project", "College"],
-  },
-  {
-    title: "BEST IN ICT Award",
-    img: "/certificates/cert-best-in-ict.webp",
-    type: "Academic Achievement",
-    description: "Awarded for outstanding performance as an Information and Communication Technology student during my Senior High School graduation.",
-    badges: ["Academic Excellence", "Top Performer", "Senior High School"],
-  },
-  {
-    title: "BEST IN RESEARCH Award",
-    img: "/certificates/cert-best-thesis.webp",
-    type: "Academic Achievement",
-    description: "Awarded as the Best TVL-ICT Research entitled 'The Acceptability of the Accent Corrector to the Vocabulary and English Speaking Skills of Grade 11 ICT Students'.",
-    badges: ["Research Excellence", "Thesis", "Top Performer", "Senior High School"],
-  },
-  {
-    title: "WITH HONOR Award",
-    img: "/certificates/cert-with-honor-shs.webp",
-    type: "Academic Achievement",
-    description: "Graduated with honors during the Senior High School Commencement Exercises.",
-    badges: ["Honors", "Senior High School"],
-  },
-];
+// Certificate type
+type Certificate = {
+  title: string;
+  img: string;
+  type: string;
+  description: string;
+  badges: string[];
+};
 
-// Add URL field dynamically
-const certificates = rawCertificates.map((cert) => ({
+// Get the certificate data from Google Sheets (via Apps Script)
+const res = await fetch("https://script.google.com/macros/s/AKfycbzUuwmb4g8RldLarEUiyVeDeM5nQBUn30fcPFr8t2BkR45y4ahzPaLbpM4EPijwSvDW2w/exec");
+const rawCertificates: Certificate[] = await res.json();
+
+// Dynamic URL to each certificate
+const certificates: (Certificate & { url: string })[] = rawCertificates.map((cert, index) => ({
   ...cert,
   url: `${baseUrl}${cert.img}`,
 }));
@@ -111,4 +51,5 @@ const certificates = rawCertificates.map((cert) => ({
   </div>
 </section>
 
+<!-- Alpine.js for toggle logic -->
 <script is:inline defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
