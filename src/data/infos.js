@@ -7,6 +7,7 @@ export const infos = {
 
   og_title: "Emmanuel P. Barrameda | Portfolio",
   og_description: "Official Portfolio Site of Emmanuel P. Barrameda",
+  og_image: "https://i.imgur.com/ceRkZe6.png",
 
   main_title: "Emmanuel P. Barrameda | Portfolio",
   main_description: "Official Portfolio Site of Emmanuel P. Barrameda",

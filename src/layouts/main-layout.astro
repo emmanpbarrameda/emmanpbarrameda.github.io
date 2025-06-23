@@ -17,37 +17,38 @@ import { infos } from "../data/infos.js";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 
+    <!-- icon and main title -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>{infos.main_title}</title>
+
+    <meta name="generator" content={Astro.generator} />
+
     <!--==================== OPEN GRAPH META TAGS (FOR SOCIAL MEDIA PREVIEW) ===================== -->
-    <!-- Facebook -->
+    <!-- Open Graph -->
     <meta property="og:title" content={infos.og_title} />
     <meta property="og:description" content={infos.og_description} />
-    <meta property="og:image" content="https://i.imgur.com/ceRkZe6.png" />
-    <meta property="og:url" content="https://emmanpbarrameda.github.io/" />
+    <meta property="og:image" content={infos.og_image} />
+    <meta property="og:url" content={infos.host} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={`${infos.fullname} Portfolio`} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={infos.og_title} />
     <meta name="twitter:description" content={infos.og_description} />
-    <meta name="twitter:image" content="https://i.imgur.com/ceRkZe6.png" />
-    <meta name="twitter:url" content="https://emmanpbarrameda.github.io/" />
-
-    <!-- Discord -->
-    <meta property="twitter:site" content="@emmanpbarrameda" />
-    <meta property="twitter:creator" content="@emmanpbarrameda" />
-    <meta property="twitter:title" content={infos.og_title} />
-    <meta property="twitter:description" content={infos.og_description} />
-    <meta property="twitter:image" content="https://i.imgur.com/ceRkZe6.png" />
+    <meta name="twitter:image" content={infos.og_image} />
+    <meta name="twitter:site" content={`@${infos.username}`} />
+    <meta name="twitter:creator" content={`@${infos.username}`} />
 
     <!-- Google -->
     <meta itemprop="name" content={infos.og_title} />
     <meta itemprop="description" content={infos.og_description} />
-    <meta itemprop="image" content="https://i.imgur.com/ceRkZe6.png" />
+    <meta itemprop="image" content={infos.og_image} />
 
+    <!-- SEO -->
     <meta name="description" content={infos.main_description} />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <title>{infos.main_title}</title>
+    <meta name="author" content={infos.fullname} />
+    <meta name="robots" content="index, follow" />
   </head>
 
   <body class="bg-neutral-950 font-aileron text-neutral-50">
