@@ -5,6 +5,12 @@ export const infos = {
 
   username: "emmanpbarrameda",
 
+  og_title: "Emmanuel P. Barrameda | Portfolio",
+  og_description: "Official Portfolio Site of Emmanuel P. Barrameda",
+
+  main_title: "Emmanuel P. Barrameda | Portfolio",
+  main_description: "Official Portfolio Site of Emmanuel P. Barrameda",
+
   email: "emmanpbarrameda@gmail.com",
 
   github: "https://github.com/emmanpbarrameda",

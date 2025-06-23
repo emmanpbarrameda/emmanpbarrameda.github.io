@@ -8,13 +8,7 @@ import Scrollify from "../components/common/scrollify.astro";
 import BackToTop from "../components/common/back-to-top.astro";
 import Background from "../components/common/background.astro";
 import LoadingScreen from "../components/common/loading-screen.astro";
-
-interface Props {
-  title: string;
-  description: string;
-}
-
-const { title, description } = Astro.props;
+import { infos } from "../data/infos.js";
 ---
 
 <!doctype html>
@@ -25,35 +19,35 @@ const { title, description } = Astro.props;
 
     <!--==================== OPEN GRAPH META TAGS (FOR SOCIAL MEDIA PREVIEW) ===================== -->
     <!-- Facebook -->
-    <meta property="og:title" content="Emmanuel P. Barrameda - Portfolio" />
-    <meta property="og:description" content="Portfolio website of Emmanuel P. Barrameda." />
+    <meta property="og:title" content={infos.og_title} />
+    <meta property="og:description" content={infos.og_description} />
     <meta property="og:image" content="https://i.imgur.com/ceRkZe6.png" />
     <meta property="og:url" content="https://emmanpbarrameda.github.io/" />
     <meta property="og:type" content="website" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Emmanuel P. Barrameda - Portfolio" />
-    <meta name="twitter:description" content="Portfolio website of Emmanuel P. Barrameda." />
+    <meta name="twitter:title" content={infos.og_title} />
+    <meta name="twitter:description" content={infos.og_description} />
     <meta name="twitter:image" content="https://i.imgur.com/ceRkZe6.png" />
     <meta name="twitter:url" content="https://emmanpbarrameda.github.io/" />
 
     <!-- Discord -->
     <meta property="twitter:site" content="@emmanpbarrameda" />
     <meta property="twitter:creator" content="@emmanpbarrameda" />
-    <meta property="twitter:title" content="Emmanuel P. Barrameda - Portfolio" />
-    <meta property="twitter:description" content="Portfolio website of Emmanuel P. Barrameda." />
+    <meta property="twitter:title" content={infos.og_title} />
+    <meta property="twitter:description" content={infos.og_description} />
     <meta property="twitter:image" content="https://i.imgur.com/ceRkZe6.png" />
 
     <!-- Google -->
-    <meta itemprop="name" content="Emmanuel P. Barrameda - Portfolio" />
-    <meta itemprop="description" content="Portfolio website of Emmanuel P. Barrameda." />
+    <meta itemprop="name" content={infos.og_title} />
+    <meta itemprop="description" content={infos.og_description} />
     <meta itemprop="image" content="https://i.imgur.com/ceRkZe6.png" />
 
-    <meta name="description" content={description} />
+    <meta name="description" content={infos.main_description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <title>{title}</title>
+    <title>{infos.main_title}</title>
   </head>
 
   <body class="bg-neutral-950 font-aileron text-neutral-50">

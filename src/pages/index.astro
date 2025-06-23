@@ -10,9 +10,10 @@ import Header from "../components/header/header.astro";
 import HeroSection from "../components/hero/hero-section.astro";
 import ProjectsSection from "../components/projects/projects-section.astro";
 import MainLayout from "../layouts/main-layout.astro";
+import { infos } from "../data/infos.js";
 ---
 
-<MainLayout title="Emmanuel P. Barrameda | Portfolio" description="Portfolio website of Emmanuel P. Barrameda.">
+<MainLayout title={infos.main_title} description={infos.main_description}>
   <Header />
   <main>
     <HeroSection />
