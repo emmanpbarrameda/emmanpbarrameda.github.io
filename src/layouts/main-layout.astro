@@ -17,7 +17,7 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-pt-[64px] overflow-x-hidden scroll-smooth antialiased">
   <head>
     <meta charset="UTF-8" />
@@ -25,39 +25,38 @@ const { title, description } = Astro.props;
 
     <!--==================== OPEN GRAPH META TAGS (FOR SOCIAL MEDIA PREVIEW) ===================== -->
     <!-- Facebook -->
-    <meta property="og:title" content="Emmanuel P. Barrameda - Portfolio">
-    <meta property="og:description" content="Portfolio website of Emmanuel P. Barrameda.">
-    <meta property="og:image" content="https://i.imgur.com/ceRkZe6.png">
-    <meta property="og:url" content="https://emmanpbarrameda.github.io/">
-    <meta property="og:type" content="website">
+    <meta property="og:title" content="Emmanuel P. Barrameda - Portfolio" />
+    <meta property="og:description" content="Portfolio website of Emmanuel P. Barrameda." />
+    <meta property="og:image" content="https://i.imgur.com/ceRkZe6.png" />
+    <meta property="og:url" content="https://emmanpbarrameda.github.io/" />
+    <meta property="og:type" content="website" />
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Emmanuel P. Barrameda - Portfolio">
-    <meta name="twitter:description" content="Portfolio website of Emmanuel P. Barrameda.">
-    <meta name="twitter:image" content="https://i.imgur.com/ceRkZe6.png">
-    <meta name="twitter:url" content="https://emmanpbarrameda.github.io/">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Emmanuel P. Barrameda - Portfolio" />
+    <meta name="twitter:description" content="Portfolio website of Emmanuel P. Barrameda." />
+    <meta name="twitter:image" content="https://i.imgur.com/ceRkZe6.png" />
+    <meta name="twitter:url" content="https://emmanpbarrameda.github.io/" />
 
     <!-- Discord -->
-    <meta property="twitter:site" content="@emmanpbarrameda">
-    <meta property="twitter:creator" content="@emmanpbarrameda">
-    <meta property="twitter:title" content="Emmanuel P. Barrameda - Portfolio">
-    <meta property="twitter:description" content="Portfolio website of Emmanuel P. Barrameda.">
-    <meta property="twitter:image" content="https://i.imgur.com/ceRkZe6.png">
+    <meta property="twitter:site" content="@emmanpbarrameda" />
+    <meta property="twitter:creator" content="@emmanpbarrameda" />
+    <meta property="twitter:title" content="Emmanuel P. Barrameda - Portfolio" />
+    <meta property="twitter:description" content="Portfolio website of Emmanuel P. Barrameda." />
+    <meta property="twitter:image" content="https://i.imgur.com/ceRkZe6.png" />
 
     <!-- Google -->
-    <meta itemprop="name" content="Emmanuel P. Barrameda - Portfolio">
-    <meta itemprop="description" content="Portfolio website of Emmanuel P. Barrameda.">
-    <meta itemprop="image" content="https://i.imgur.com/ceRkZe6.png">
+    <meta itemprop="name" content="Emmanuel P. Barrameda - Portfolio" />
+    <meta itemprop="description" content="Portfolio website of Emmanuel P. Barrameda." />
+    <meta itemprop="image" content="https://i.imgur.com/ceRkZe6.png" />
 
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>{title}</title>
   </head>
 
   <body class="bg-neutral-950 font-aileron text-neutral-50">
-
     <!-- Loading Screen -->
     <LoadingScreen />
 
@@ -68,11 +67,7 @@ const { title, description } = Astro.props;
     <BackToTop />
 
     <!-- Intersection Observer -->
-    <script
-      is:inline
-      defer
-      src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"
-    ></script>
+    <script is:inline defer src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"></script>
 
     <!-- Page Load Script to Hide Loader -->
     <script is:inline>
