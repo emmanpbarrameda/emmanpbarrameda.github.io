@@ -24,7 +24,7 @@ const skills = [
 ];
 ---
 
-<style>
+<style is:inline>
   .scroll-track {
     animation: scroll-left 40s linear infinite;
     will-change: transform;
@@ -53,10 +53,7 @@ const skills = [
   }
 </style>
 
-<section
-  id="skills"
-  class="mx-auto mt-28 flex max-w-screen-lg flex-col items-center gap-6 px-4 pt-4"
->
+<section id="skills" class="mx-auto mt-28 flex max-w-screen-lg flex-col items-center gap-6 px-4 pt-4">
   <SectionTitle>Skills</SectionTitle>
 
   <p class="max-w-[640px] text-center text-neutral-400 text-sm sm:text-base">
@@ -65,9 +62,7 @@ const skills = [
 
   <div class="marquee-wrapper relative w-full overflow-x-auto overflow-y-hidden py-6 intersect:animate-in intersect:fade-in-20 intersect:slide-in-from-right-12">
     <div class="flex w-max gap-0 px-4 scroll-track">
-      {[...skills, ...skills].map((skill, index) => (
-        <SkillItem name={skill.name} img={skill.img} key={index} />
-      ))}
+      {[...skills, ...skills].map((skill, index) => <SkillItem name={skill.name} img={skill.img} key={index} />)}
     </div>
   </div>
 </section>

@@ -20,6 +20,7 @@ type Certificate = {
 /**
  * ? STEP 2: Fetch data from Google Sheets (via Apps Script)
  * Data is published on Google Sheets using an Apps Script and returned in JSON format
+ * https://drive.google.com/drive/folders/1a8QSO55RMBGsN8D8cyt8xF8t9pmkoXUJ?usp=sharing
  */
 const res = await fetch("https://script.google.com/macros/s/AKfycbzUuwmb4g8RldLarEUiyVeDeM5nQBUn30fcPFr8t2BkR45y4ahzPaLbpM4EPijwSvDW2w/exec");
 const rawCertificates: Certificate[] = await res.json();

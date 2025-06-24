@@ -42,6 +42,7 @@ type Project = {
  * ? STEP 4: Fetch data from Google Sheets (via Apps Script)
  * The Apps Script returns JSON data from your sheet.
  * Data is published on Google Sheets using an Apps Script and returned in JSON format
+ * https://drive.google.com/drive/folders/1a8QSO55RMBGsN8D8cyt8xF8t9pmkoXUJ?usp=sharing
  */
 const res = await fetch("https://script.google.com/macros/s/AKfycbznRbSRlbdYjV7YcyU69xllROJfvesitII2VAT_O4Q0DYp_wlk2QHcy0iBNm5H_pkBjyQ/exec");
 const rawProjects = await res.json();

@@ -3,30 +3,25 @@
 ---
 
 <noscript>
-  <style>
-    #loading-screen { display: none !important; }
+  <style is:inline>
+    #loading-screen {
+      display: none !important;
+    }
   </style>
 </noscript>
 
-<div
-  id="loading-screen"
-  class="fixed inset-0 z-[999] flex items-center justify-center bg-neutral-950 text-white transition-opacity duration-500"
-  style="font-family: 'JetBrains Mono Variable', monospace"
->
+<div id="loading-screen" class="fixed inset-0 z-[999] flex items-center justify-center bg-neutral-950 text-white transition-opacity duration-500" style="font-family: 'JetBrains Mono Variable', monospace">
   <div class="relative flex flex-col items-center gap-4">
-
     <!-- Glowing Orb Circle -->
     <div class="relative h-40 w-40 md:h-48 md:w-48 rounded-full shadow-2xl bg-black/5 backdrop-blur-sm border border-sky-500/10 overflow-hidden animate-pulse">
-      <div class="absolute -inset-2 bg-gradient-to-br from-sky-400 via-cyan-500 to-blue-600 rounded-full blur-xl opacity-25 animate-pulse" />
+      <div class="absolute -inset-2 bg-gradient-to-br from-sky-400 via-cyan-500 to-blue-600 rounded-full blur-xl opacity-25 animate-pulse"></div>
       <div class="absolute inset-0 flex items-center justify-center">
         <span class="font-jetbrains text-lg text-sky-300">&lt;/&gt;</span>
       </div>
     </div>
 
     <!-- Text -->
-    <p class="text-base font-jetbrains font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-500 to-blue-600 animate-pulse">
-      [INFO] Loading Depencies ...
-    </p>
+    <p class="text-base font-jetbrains font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-500 to-blue-600 animate-pulse">[INFO] Loading Depencies ...</p>
 
     <!-- Floating Symbols -->
     <div class="absolute top-10 left-10 text-blue-400 text-sm font-bold animate-float select-none">&lt;/&gt;</div>
@@ -35,12 +30,22 @@
 
   <style is:inline>
     @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-6px); }
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
     }
     @keyframes float-delay {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
     }
     .animate-float {
       animation: float 4s ease-in-out infinite;
