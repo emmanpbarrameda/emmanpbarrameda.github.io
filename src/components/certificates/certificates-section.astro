@@ -5,7 +5,10 @@ import { infos } from "../../data/infos.js";
 
 const baseUrl = infos.host;
 
-// Certificate type
+/**
+ * ? STEP 1: Define the shape of a Certificate object
+ * These properties should exactly match the structure from your Google Sheet
+ */
 type Certificate = {
   title: string;
   img: string;
@@ -14,34 +17,49 @@ type Certificate = {
   badges: string[];
 };
 
-// Get the certificate data from Google Sheets (via Apps Script)
+/**
+ * ? STEP 2: Fetch data from Google Sheets (via Apps Script)
+ * Data is published on Google Sheets using an Apps Script and returned in JSON format
+ */
 const res = await fetch("https://script.google.com/macros/s/AKfycbzUuwmb4g8RldLarEUiyVeDeM5nQBUn30fcPFr8t2BkR45y4ahzPaLbpM4EPijwSvDW2w/exec");
 const rawCertificates: Certificate[] = await res.json();
 
-// Dynamic URL to each certificate
+/**
+ * ? STEP 3: Prepare the certificate data
+ * - Add full image URL to each certificate object
+ * - Keep all original data intact
+ */
 const certificates: (Certificate & { url: string })[] = rawCertificates.map((cert, index) => ({
   ...cert,
   url: `${baseUrl}${cert.img}`,
 }));
 ---
 
+<!-- ! ============================== --><!-- SECTION: Certificate Showcase --><!-- ============================== -->
 <section id="certificates" class="mx-auto mt-28 flex max-w-screen-md flex-col items-center gap-5 px-4 pt-4">
+  <!-- ? Section Title -->
   <SectionTitle>Certificates</SectionTitle>
+
+  <!-- ? Introductory description -->
   <p class="max-w-[500px] text-center text-neutral-400">A showcase of my recognitions and achievements throughout my academic and professional journey.</p>
 
+  <!-- ? Main grid container -->
   <div class="mt-6 grid w-full grid-cols-1 gap-8">
-    <!-- Always show first certificate -->
+    <!-- Always show the first certificate (topmost/highlight) -->
     <CertificateCard type={certificates[0].type} title={certificates[0].title} description={certificates[0].description} image={certificates[0].img} url={certificates[0].url} alt={certificates[0].title} badges={certificates[0].badges} className="intersect:slide-in-from-bottom-12" />
 
-    <!-- Collapsible section for remaining certificates -->
+    <!-- ? Toggle section for the rest of the certificates -->
     <div x-data="{ showAll: false }" class="space-y-8">
+      <!-- Only show remaining certificates when toggled -->
       <div x-show="showAll" x-collapse class="grid grid-cols-1 gap-8">
         {certificates.slice(1).map((cert, index) => <CertificateCard type={cert.type} title={cert.title} description={cert.description} image={cert.img} url={cert.url} alt={cert.title} badges={cert.badges} className={`intersect:slide-in-from-bottom-12 intersect:delay-${(index + 1) * 150}`} />)}
       </div>
 
+      <!-- ? Toggle button: expands or collapses the rest of the list -->
       <div class="mt-8 w-full text-center">
         <button @click="showAll = !showAll" class="mx-auto inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-sky-400 via-cyan-500 to-blue-600 px-6 py-3 text-center font-jetbrains font-bold text-white transition-all duration-200 hover:brightness-110 hover:scale-105 hover:shadow-lg hover:shadow-sky-400/25 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-gray-900">
           <span x-text="showAll ? 'Show Less' : 'Show All'"></span>
+          <!-- Animated arrow icon (rotates when expanded) -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 transition-transform duration-300" :class="{ 'rotate-180': showAll }">
             <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
           </svg>
@@ -51,5 +69,5 @@ const certificates: (Certificate & { url: string })[] = rawCertificates.map((cer
   </div>
 </section>
 
-<!-- Alpine.js for toggle logic -->
+<!-- Enable Alpine.js for toggle logic -->
 <script is:inline defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
