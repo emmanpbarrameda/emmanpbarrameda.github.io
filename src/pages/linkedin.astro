@@ -1,5 +1,6 @@
 ---
 import Background from "../components/common/background.astro";
+import MetaTags from "../components/common/meta-tags.astro";
 import { infos } from "../data/infos.js";
 const redirectLink = `window.location.replace("${infos.linkedin}");`;
 ---
@@ -7,10 +8,8 @@ const redirectLink = `window.location.replace("${infos.linkedin}");`;
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{infos.main_title} | LinkedIn</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+    <MetaTags />
+    <title>{infos.fullname} | LinkedIn</title>
   </head>
   <body class="bg-gray-900 text-white flex items-center justify-center min-h-screen flex-col gap-4 text-center">
     <Background />
@@ -31,5 +30,5 @@ const redirectLink = `window.location.replace("${infos.linkedin}");`;
     <noscript>
       <p>Please <a href={infos.linkedin} target="_blank">click here</a> to go to LinkedIn.</p>
     </noscript>
-  </body>
-</html>
+  </body></html
+>

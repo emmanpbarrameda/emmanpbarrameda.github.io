@@ -1,0 +1,53 @@
+---
+import { infos } from "../../data/infos.js";
+---
+
+<!-- icon and main title -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+<meta name="generator" content={Astro.generator} />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+<!--==================== OPEN GRAPH META TAGS (FOR SOCIAL MEDIA PREVIEW) ===================== -->
+<!-- Open Graph -->
+<meta property="og:title" content={infos.og_title} />
+<meta property="og:description" content={infos.og_description} />
+<meta property="og:image" content={infos.og_image} />
+<meta property="og:url" content={infos.host} />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={`${infos.fullname} Portfolio`} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={infos.og_title} />
+<meta name="twitter:description" content={infos.og_description} />
+<meta name="twitter:image" content={infos.og_image} />
+<meta name="twitter:site" content={`@${infos.username}`} />
+<meta name="twitter:creator" content={`@${infos.username}`} />
+
+<!-- Google -->
+<meta itemprop="name" content={infos.og_title} />
+<meta itemprop="description" content={infos.og_description} />
+<meta itemprop="image" content={infos.og_image} />
+
+<!-- SEO -->
+<meta name="description" content={infos.main_description} />
+<meta name="author" content={infos.fullname} />
+<meta name="robots" content="index" />
+
+<!-- Google Search Console Verification -->
+<!-- https://search.google.com/search-console/about VERIFICATION -->
+<meta name="google-site-verification" content="BvLhWKwhecxLYc5G0eZb0XKjIe-GfPD7R_Ly5BxIGZw" />
+
+<!-- Structured Data -->
+<script is:inline type="application/ld+json">
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Website",
+    name: infos.og_title,
+    description: infos.main_description,
+    url: infos.host,
+    image: infos.og_image
+  })}
+</script>

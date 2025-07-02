@@ -8,62 +8,15 @@ import Scrollify from "../components/common/scrollify.astro";
 import BackToTop from "../components/common/back-to-top.astro";
 import Background from "../components/common/background.astro";
 import LoadingScreen from "../components/common/loading-screen.astro";
+import MetaTags from "../components/common/meta-tags.astro";
 import { infos } from "../data/infos.js";
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-pt-[64px] overflow-x-hidden scroll-smooth antialiased">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-
-    <!-- https://search.google.com/search-console/about VERIFICATION -->
-    <meta name="google-site-verification" content="BvLhWKwhecxLYc5G0eZb0XKjIe-GfPD7R_Ly5BxIGZw" />
-
-    <!-- icon and main title -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <MetaTags />
     <title>{infos.main_title}</title>
-
-    <meta name="generator" content={Astro.generator} />
-
-    <!--==================== OPEN GRAPH META TAGS (FOR SOCIAL MEDIA PREVIEW) ===================== -->
-    <!-- Open Graph -->
-    <meta property="og:title" content={infos.og_title} />
-    <meta property="og:description" content={infos.og_description} />
-    <meta property="og:image" content={infos.og_image} />
-    <meta property="og:url" content={infos.host} />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content={`${infos.fullname} Portfolio`} />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={infos.og_title} />
-    <meta name="twitter:description" content={infos.og_description} />
-    <meta name="twitter:image" content={infos.og_image} />
-    <meta name="twitter:site" content={`@${infos.username}`} />
-    <meta name="twitter:creator" content={`@${infos.username}`} />
-
-    <!-- Google -->
-    <meta itemprop="name" content={infos.og_title} />
-    <meta itemprop="description" content={infos.og_description} />
-    <meta itemprop="image" content={infos.og_image} />
-
-    <!-- SEO -->
-    <meta name="description" content={infos.main_description} />
-    <meta name="author" content={infos.fullname} />
-    <meta name="robots" content="index, follow" />
-
-    <!-- STRUCTURED DATA -->
-    <script is:inline type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Website",
-        name: infos.og_title,
-        description: infos.main_description,
-        url: infos.host,
-        image: infos.og_image
-      })}
-    </script>
   </head>
 
   <body class="bg-neutral-950 font-aileron text-neutral-50">
@@ -90,5 +43,5 @@ import { infos } from "../data/infos.js";
         }
       });
     </script>
-  </body>
-</html>
+  </body></html
+>
