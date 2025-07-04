@@ -1,0 +1,32 @@
+---
+const { thumb, alt, id, previews } = Astro.props as {
+  thumb: string;
+  alt: string;
+  id: string;
+  previews: string[];
+};
+---
+
+<!-- Include GLightbox via CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js" defer></script>
+
+<!-- Inline init script AFTER glightbox loads -->
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    GLightbox({
+      selector: ".glightbox",
+      touchNavigation: true,
+      loop: true,
+      zoomable: true
+    });
+  });
+</script>
+
+<div class="relative w-full h-full">
+  <a href={previews[0]} class="glightbox block w-full h-full" data-gallery={id}>
+    <img src={thumb} alt={alt} class="h-full w-full object-cover transition-transform hover:scale-125" loading="lazy" />
+  </a>
+
+  {previews.slice(1).map((src: string) => <a href={src} class="glightbox hidden" data-gallery={id} />)}
+</div>

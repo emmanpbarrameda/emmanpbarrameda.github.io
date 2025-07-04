@@ -36,6 +36,7 @@ type Project = {
   repository: string;
   image: string;
   alt: string;
+  previews: string[];
 };
 
 /**
@@ -66,7 +67,8 @@ const projects: Project[] = rawProjects
     deploy: proj.deploy,
     repository: proj.repository,
     image: proj.image.startsWith("http") ? proj.image : `${baseUrl}${proj.image}`, // fix image path
-    alt: proj.alt
+    alt: proj.alt,
+    previews: proj.previews?.split(",").map((p: string) => (p.trim().startsWith("http") ? p.trim() : `${baseUrl}${p.trim()}`)) || []
   }));
 ---
 
@@ -78,7 +80,7 @@ const projects: Project[] = rawProjects
 
   <!-- ? List of project cards (from fetched & filtered sheet data) -->
   <div class="mt-3 flex flex-col gap-8">
-    {projects.map((project, index) => <ProjectCard type={project.type} title={project.title} stack={project.stack} description={project.description} deploy={project.deploy} repository={project.repository} image={project.image} alt={project.alt} className={`intersect:slide-in-from-${index % 2 === 0 ? "left" : "right"}-12`} />)}
+    {projects.map((project, index) => <ProjectCard type={project.type} title={project.title} stack={project.stack} description={project.description} deploy={project.deploy} repository={project.repository} image={project.image} alt={project.alt} className={`intersect:slide-in-from-${index % 2 === 0 ? "left" : "right"}-12`} previews={project.previews} />)}
   </div>
 
   <!-- ? View more projects button -->

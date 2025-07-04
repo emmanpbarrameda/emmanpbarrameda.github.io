@@ -17,7 +17,7 @@ export const infos = {
   github: "https://github.com/emmanpbarrameda",
   githubtext: "emmanpbarrameda",
 
-  linkedin: "https://www.linkedin.com/in/emmanpbarrameda/",
+  linkedin: "https://ph.linkedin.com/in/emmanpbarrameda",
   linkedintext: "Emman P. Barrameda",
 
   calmeeting: "https://cal.com/emmanpbarrameda/",
