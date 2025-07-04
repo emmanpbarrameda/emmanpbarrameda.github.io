@@ -32,7 +32,7 @@ const rawCertificates: Certificate[] = await res.json();
  */
 const certificates: (Certificate & { url: string })[] = rawCertificates.map((cert, index) => ({
   ...cert,
-  url: `${baseUrl}${cert.img}`,
+  url: `${baseUrl}${cert.img}`
 }));
 ---
 
