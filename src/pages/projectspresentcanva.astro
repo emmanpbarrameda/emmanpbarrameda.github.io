@@ -1,0 +1,34 @@
+---
+import Background from "../components/common/background.astro";
+import MetaTags from "../components/common/meta-tags.astro";
+import { infos } from "../data/infos.js";
+const redirectLink = `window.location.replace("${infos.canvaprojectpresentation}");`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <MetaTags />
+    <title>{infos.fullname} | Project Presentation via Canva</title>
+  </head>
+  <body class="bg-gray-900 text-white flex items-center justify-center min-h-screen flex-col gap-4 text-center">
+    <Background />
+
+    <!-- loading -->
+    <div class="flex flex-col items-center gap-4">
+      <svg class="animate-spin h-12 w-12 text-sky-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+      </svg>
+      <h1 class="text-xl font-bold">Redirecting ...</h1>
+    </div>
+
+    <!-- redirect -->
+    <script is:inline set:html={redirectLink} />
+
+    <!-- fallback -->
+    <noscript>
+      <p>Please <a href={infos.linkedin} target="_blank">click here</a> to go to Project Presentation via Canva.</p>
+    </noscript>
+  </body></html
+>
