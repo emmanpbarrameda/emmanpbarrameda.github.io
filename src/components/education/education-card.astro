@@ -15,12 +15,7 @@ interface Props {
 const { subtitle, title, duration, description, href, className } = Astro.props;
 ---
 
-<article
-  class={twMerge(
-    "flex flex-col gap-4 rounded-lg bg-gradient-to-t from-neutral-900/40 via-75% px-4 pb-8 pt-4 opacity-0 intersect:opacity-100 intersect:duration-700 intersect:animate-in intersect:fade-in-0",
-    className
-  )}
->
+<article class={twMerge("flex flex-col gap-4 rounded-lg bg-gradient-to-t from-neutral-900/40 via-75% px-4 pb-8 pt-4 opacity-0 intersect:opacity-100 intersect:duration-700 intersect:animate-in intersect:fade-in-0", className)}>
   <div class="flex items-center gap-2 text-neutral-700">
     <HighschoolIcon width={32} height={32} />
     <div class="h-[2px] w-full rounded-full bg-neutral-700"></div>
@@ -43,17 +38,9 @@ const { subtitle, title, duration, description, href, className } = Astro.props;
     {description}
   </p>
   <footer class="mt-auto pt-8">
-    <a
-      target="_blank"
-      href={href}
-      class="group flex w-fit gap-1 font-jetbrains"
-    >
+    <a target="_blank" href={href} class="group flex w-fit gap-1 font-jetbrains">
       <span aria-hidden="true" class="text-sky-400">[</span>
-      <span
-        class="flex items-center gap-1 underline-offset-2 group-hover:underline"
-      >
-        Visit Page
-      </span>
+      <span class="flex items-center gap-1 underline-offset-2 group-hover:underline"> Visit Page </span>
       <span aria-hidden="true" class="text-sky-400">]</span>
     </a>
   </footer>

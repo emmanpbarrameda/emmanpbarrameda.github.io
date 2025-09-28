@@ -10,10 +10,10 @@
     <!-- Main bubble image -->
     <div class="relative h-64 w-64 md:h-80 md:w-80 lg:h-96 lg:w-96 rounded-full shadow-2xl bg-black/5 backdrop-blur-sm border border-sky-500/10 group-hover:shadow-sky-500/20 transition-all duration-700 overflow-hidden bubble-container">
       <!-- Fading image carousel -->
-      <img src="/images/about_slider1.webp" alt="emmanpbarrameda" class="slider-image absolute inset-0 h-full w-full object-cover transition-all duration-500 rounded-full" />
-      <img src="/images/about_slider2.webp" alt="emmanpbarrameda" class="slider-image absolute inset-0 h-full w-full object-cover transition-all duration-500 rounded-full" />
-      <img src="/images/about_slider3.webp" alt="emmanpbarrameda" class="slider-image absolute inset-0 h-full w-full object-cover transition-all duration-500 rounded-full" />
-      <img src="/images/about_slider4.webp" alt="emmanpbarrameda" class="slider-image absolute inset-0 h-full w-full object-cover transition-all duration-500 rounded-full" />
+      <img src="/images/about_slider1.webp" alt="emmanpbarrameda" class="slider-image absolute inset-0 h-full w-full object-cover transition-all duration-500 rounded-full" draggable="false" ondragstart="return false" oncontextmenu="return false" />
+      <img src="/images/about_slider2.webp" alt="emmanpbarrameda" class="slider-image absolute inset-0 h-full w-full object-cover transition-all duration-500 rounded-full" draggable="false" ondragstart="return false" oncontextmenu="return false" />
+      <img src="/images/about_slider3.webp" alt="emmanpbarrameda" class="slider-image absolute inset-0 h-full w-full object-cover transition-all duration-500 rounded-full" draggable="false" ondragstart="return false" oncontextmenu="return false" />
+      <img src="/images/about_slider4.webp" alt="emmanpbarrameda" class="slider-image absolute inset-0 h-full w-full object-cover transition-all duration-500 rounded-full" draggable="false" ondragstart="return false" oncontextmenu="return false" />
     </div>
 
     <!-- Animated floating accents -->
@@ -27,38 +27,56 @@
     <div class="absolute top-[60%] left-[60%] text-cyan-300 text-base font-bold z-10 animate-float select-none">&lt;/&gt;</div>
 
     <style is:inline>
-      @keyframes fadeImages {
-        0%,
-        30% {
+      /* make images non-interactive */
+      .slider-image {
+        opacity: 0;
+        pointer-events: none;
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-user-drag: none;
+        animation: fadeCycle 12s ease-in-out infinite;
+      }
+
+      /* loop */
+      .slider-image:nth-of-type(1) {
+        animation-delay: 0s;
+      }
+      .slider-image:nth-of-type(2) {
+        animation-delay: 3s;
+      }
+      .slider-image:nth-of-type(3) {
+        animation-delay: 6s;
+      }
+      .slider-image:nth-of-type(4) {
+        animation-delay: 9s;
+      }
+
+      /* images fade cycle */
+      @keyframes fadeCycle {
+        0% {
           opacity: 1;
         }
-        40%,
+        20% {
+          opacity: 1;
+        } /* hold */
+        25% {
+          opacity: 0;
+        } /* fade out */
         100% {
           opacity: 0;
-        }
+        } /* stay hidden until next turn */
       }
 
-      .slider-image:nth-child(1) {
-        animation: fadeImages 9s ease-in-out infinite;
-      }
-      .slider-image:nth-child(2) {
-        animation: fadeImages 9s ease-in-out infinite 3s;
-      }
-      .slider-image:nth-child(3) {
-        animation: fadeImages 9s ease-in-out infinite 6s;
-      }
-      .slider-image:nth-child(4) {
-        animation: fadeImages 9s ease-in-out infinite 6s;
-      }
-
+      /* Pause on hover */
       .bubble-container:hover .slider-image {
         animation-play-state: paused;
       }
 
+      /* Floating accents */
       .animate-float {
         animation: float 4s ease-in-out infinite;
       }
-
       .animate-float-delay {
         animation: float-delay 4s ease-in-out infinite;
       }
@@ -66,22 +84,32 @@
       @keyframes float {
         0%,
         100% {
-          transform: translateY(0px);
+          transform: translateY(0);
         }
         50% {
           transform: translateY(-6px);
         }
       }
-
       @keyframes float-delay {
         0%,
         100% {
-          transform: translateY(0px);
+          transform: translateY(0);
         }
         50% {
           transform: translateY(-10px);
         }
       }
     </style>
+
+    <script is:inline>
+      (function () {
+        const container = document.currentScript?.parentElement?.querySelector(".bubble-container");
+        const block = (e) => e.preventDefault();
+        if (container) {
+          container.addEventListener("contextmenu", block, { passive: false });
+          container.addEventListener("dragstart", block, { passive: false });
+        }
+      })();
+    </script>
   </div>
 </div>
