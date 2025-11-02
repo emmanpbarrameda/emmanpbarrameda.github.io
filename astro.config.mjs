@@ -1,10 +1,16 @@
-import { defineConfig } from 'astro/config';
-
+// astro.config.mjs
+import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-import astroIcon from 'astro-icon';
+import astroIcon from "astro-icon";
 
-// https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), astroIcon()],
-  site: 'https://emmanpbarrameda.github.io',
+  site: "https://emmanpbarrameda.github.io",
+
+  vite: {
+    build: {
+      minify: "esbuild",
+      target: "es2018",
+    },
+  },
 });

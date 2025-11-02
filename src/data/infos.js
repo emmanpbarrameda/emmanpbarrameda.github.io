@@ -1,24 +1,35 @@
 export const infos = {
   host: "https://emmanpbarrameda.github.io",
 
+  nickname: "Emman",
   fullname: "Emmanuel P. Barrameda",
+  subname: "Emman P. Barrameda",
 
   username: "emmanpbarrameda",
 
-  og_title: "Emmanuel P. Barrameda | Portfolio",
-  og_description: "Official Portfolio Site of Emmanuel P. Barrameda",
+  og_title: "Emmanuel P. Barrameda | Full-stack Developer",
+  og_description: "Official Portfolio of Emmanuel P. Barrameda, a full-stack developer specializing in the TALL Stack (Tailwind, Alpine.js, Laravel, Livewire) and FilamentPHP from the Philippines. Explore projects, open-source work, and leadership roles.",
   og_image: "https://i.imgur.com/ceRkZe6.png",
 
-  main_title: "Emmanuel P. Barrameda | Portfolio",
-  main_description: "Official Portfolio Site of Emmanuel P. Barrameda",
+  main_title: "Emman P. Barrameda | Fullstack Developer | Portfolio",
+  main_description: "Official Portfolio of Emmanuel P. Barrameda, a full-stack developer specializing in the TALL Stack (Tailwind, Alpine.js, Laravel, Livewire) and FilamentPHP from the Philippines. Explore projects, open-source work, and leadership roles.",
 
   email: "emmanpbarrameda@gmail.com",
 
   github: "https://github.com/emmanpbarrameda",
   githubtext: "emmanpbarrameda",
 
+  facebook: "https://facebook.com/emmanpbarrameda",
+  facebooktext: "EMMAN",
+
   linkedin: "https://ph.linkedin.com/in/emmanpbarrameda",
   linkedintext: "Emman P. Barrameda",
+
+  googledev: "https://developers.google.com/profile/u/emmanpbarrameda",
+  googledevtext: "Emman P. Barrameda",
+
+  wakatime: "https://wakatime.com/@emmanpbarrameda",
+  wakatimetext: "Emman P. Barrameda",
 
   calmeeting: "https://cal.com/emmanpbarrameda/",
   calmeetingtext: "cal.com/emmanpbarrameda",
@@ -26,5 +37,7 @@ export const infos = {
   canvaprojectpresentation: "https://www.canva.com/design/DAGsAcqPiM8/YgL-M1PPkZzRqzNorALDLA/view?utm_content=DAGsAcqPiM8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h778818ed60",
 
   resume: "https://github.com/emmanpbarrameda/EMMANPBARRAMEDA_RESUME/blob/main/RESUME/EMMANPBARRAMEDA_RESUME.pdf",
+  resumeshortcutlink: "https://emmanpbarrameda.github.io/resume",
+  
   moreprojects: "https://github.com/emmanpbarrameda?tab=repositories&q=&type=public&language=&sort=",
 };

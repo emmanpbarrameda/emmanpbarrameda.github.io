@@ -1,0 +1,184 @@
+---
+// file: src\pages\socials.astro
+import { infos } from "../data/infos.js";
+import { Icon } from "astro-icon/components";
+import Footer from "../components/footer/footer.astro";
+import Background from "../components/common/background.astro";
+import MetaTags from "../components/common/meta-tags.astro";
+import BackToTop from "../components/common/back-to-top.astro";
+import clientGuards from "../layouts/main-layout.js?raw";
+const base = import.meta.env.BASE_URL || "/";
+const avatar = `${base}images/about_slider1.webp`;
+
+// links
+const links = [
+  {
+    key: "portfolio",
+    label: "Portfolio",
+    href: base,
+    sub: infos.host ?? "Back to main site",
+    icon: "mdi:home",
+    internal: false
+  },
+  {
+    key: "facebook",
+    label: "Facebook",
+    href: infos.facebook,
+    sub: infos.facebooktext ?? "Facebook profile",
+    icon: "mdi:facebook"
+  },
+  {
+    key: "linkedin",
+    label: "LinkedIn",
+    href: infos.linkedin,
+    sub: infos.linkedintext ?? "LinkedIn",
+    icon: "mdi:linkedin"
+  },
+  {
+    key: "github",
+    label: "GitHub",
+    href: infos.github,
+    sub: infos.githubtext ?? "github.com/emmanpbarrameda",
+    icon: "mdi:github"
+  },
+  {
+    key: "googledev",
+    label: "Google Developer Profile",
+    href: infos.googledev,
+    sub: infos.googledevtext ?? "developers.google.com",
+    icon: "mdi:google"
+  },
+  {
+    key: "wakatime",
+    label: "WakaTime",
+    href: infos.wakatime,
+    sub: infos.wakatimetext ?? "wakatime.com/@emmanpbarrameda",
+    icon: "mdi:timer-sand"
+  },
+  {
+    key: "resume",
+    label: "Resume",
+    href: infos.resumeshortcutlink,
+    sub: "Download / view CV",
+    icon: "mdi:file-document"
+  }
+].filter((l) => !!l.href);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <MetaTags />
+    <title>{infos.subname} | Social Links</title>
+  </head>
+  <body class="relative min-h-screen bg-neutral-950 text-white overflow-x-hidden" oncontextmenu="return false;">
+    <!-- background line -->
+    <Background />
+
+    <!-- gradient orbs for depth -->
+    <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      <div class="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-sky-500/5 blur-3xl"></div>
+      <div class="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-cyan-500/5 blur-3xl"></div>
+    </div>
+
+    <main class="relative z-10 mx-auto flex min-h-screen max-w-screen-md flex-col items-center px-4 py-12 sm:py-16 gap-10">
+      <!-- header -->
+      <header class="flex flex-col items-center text-center gap-6 opacity-0 intersect:opacity-100 intersect:duration-700 intersect:animate-in intersect:slide-in-from-top-10">
+        <div class="relative group">
+          <div class="absolute inset-0 -m-1 rounded-full bg-gradient-to-br from-sky-400 via-cyan-400 to-blue-500 opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500"></div>
+
+          <!-- avatar -->
+          <div class="relative h-24 w-24 sm:h-28 sm:w-28 rounded-full bg-gradient-to-br from-sky-500/50 via-cyan-400/20 to-transparent p-[2.5px] shadow-2xl shadow-sky-500/20">
+            <div class="h-full w-full rounded-full overflow-hidden border-2 border-neutral-800/50 bg-neutral-900 shadow-inner">
+              <img src={avatar} alt={infos.fullname} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" loading="eager" />
+            </div>
+          </div>
+
+          <!-- animated pulse ring -->
+          <div class="absolute inset-0 rounded-full border-2 border-sky-400/20 animate-ping [animation-duration:3s]"></div>
+        </div>
+
+        <div class="space-y-3">
+          <!-- name -->
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-[0.95] tracking-tight text-white">
+            <span class="text-2xl sm:text-2xl md:text-3xl font-normal text-white"> Hello World! </span><br />
+            I'm <span class="bg-gradient-to-r from-sky-400 via-cyan-500 to-blue-600 bg-clip-text text-transparent font-bold">{infos.nickname};</span>
+          </h1>
+
+          <!-- role badge -->
+          <div class="flex justify-center">
+            <span class="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-neutral-900/80 to-neutral-900/40 backdrop-blur-sm px-5 py-2 text-xs font-jetbrains text-sky-100 border border-sky-500/20 shadow-lg shadow-sky-500/5 hover:border-sky-400/40 transition-colors duration-300">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-400 shadow-lg shadow-sky-400/50"></span>
+              </span>
+              Full-stack Developer · Freelancer
+            </span>
+          </div>
+
+          <!-- subtitle-->
+          <div class="flex items-center justify-center gap-2 text-xs uppercase tracking-[0.35em] text-neutral-500">
+            <Icon name="mdi:link-variant" class="text-sm text-sky-400/60" />
+            Social Links &amp; Dev Profiles
+          </div>
+        </div>
+      </header>
+
+      <!-- links grid -->
+      <section class="flex w-full flex-col gap-3.5 max-w-xl">
+        {
+          links.map((link, index) => (
+            <a href={link.href} target={link.internal ? undefined : "_blank"} rel={link.internal ? undefined : "noopener noreferrer"} class="group relative flex items-center gap-4 rounded-xl border border-neutral-800/60 bg-gradient-to-r from-neutral-900/80 via-neutral-900/40 to-neutral-800/20 backdrop-blur-sm px-5 py-4 transition-all duration-300 hover:border-sky-500/60 hover:bg-neutral-900/90 hover:shadow-lg hover:shadow-sky-500/10 hover:-translate-y-0.5 opacity-0 intersect:opacity-100 intersect:duration-700 intersect:animate-in intersect:slide-in-from-bottom-6" style={`animation-delay: ${index * 50}ms`}>
+              {/* hover gradient overlay */}
+              <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-sky-500/0 via-sky-500/5 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              {/* icon */}
+              <span class="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-neutral-900 to-neutral-800/50 text-sky-300 border border-neutral-800/50 group-hover:border-sky-500/30 group-hover:bg-gradient-to-br group-hover:from-sky-600/20 group-hover:to-cyan-600/10 group-hover:text-sky-200 group-hover:shadow-lg group-hover:shadow-sky-500/20 transition-all duration-300">
+                <Icon name={link.icon} class="text-2xl" />
+              </span>
+
+              {/* content inside */}
+              <span class="relative flex-1 text-left min-w-0">
+                <span class="block text-base font-semibold leading-tight text-white group-hover:text-sky-50 transition-colors">{link.label}</span>
+                {link.href && <span class="block text-xs text-neutral-400 mt-0.5 truncate group-hover:text-neutral-300 transition-colors">{link.key === "portfolio" ? (link.sub ?? link.href) : link.href}</span>}
+              </span>
+
+              {/* arrow icon */}
+              <span aria-hidden="true" class="relative text-neutral-600 group-hover:text-sky-300 transition-all duration-300 group-hover:translate-x-1">
+                <Icon name="ic:baseline-open-in-new" class="text-xl" />
+              </span>
+            </a>
+          ))
+        }
+      </section>
+
+      <!-- email box -->
+      {
+        infos.email && (
+          <section class="w-full max-w-xl rounded-xl border border-neutral-800/60 bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 backdrop-blur-sm px-5 py-5 flex items-center justify-between gap-4 flex-wrap shadow-xl shadow-black/20 opacity-0 intersect:opacity-100 intersect:duration-700 intersect:animate-in intersect:slide-in-from-bottom-6">
+            <div class="space-y-1">
+              <p class="flex items-center gap-2 text-xs uppercase tracking-[0.28em] text-neutral-500">
+                <Icon name="mdi:email-outline" class="text-sm text-sky-400/60" />
+                Email
+              </p>
+              <p class="text-sm font-medium text-white">{infos.email}</p>
+            </div>
+            <a href={`mailto:${infos.email}`} class="group relative overflow-hidden rounded-lg bg-gradient-to-r from-sky-500 via-cyan-500 to-blue-600 px-4 py-2 text-xs font-jetbrains font-bold text-white shadow-lg shadow-sky-500/25 hover:shadow-xl hover:shadow-sky-500/40 hover:scale-105 transition-all duration-300">
+              <span class="relative z-10">mailTo();</span>
+              <div class="absolute inset-0 bg-gradient-to-r from-sky-400 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </a>
+          </section>
+        )
+      }
+
+      <!-- Back to top arrow -->
+      <BackToTop />
+
+      <!-- Guard-->
+      <script is:inline set:html={clientGuards} />
+
+      <!-- footer -->
+      <Footer />
+    </main>
+  </body></html
+>

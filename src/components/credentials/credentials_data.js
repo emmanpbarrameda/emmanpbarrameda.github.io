@@ -24,7 +24,7 @@ export const leadership = [
 ];
 
 export const achievements = [
-  { title: "Best Software Developmental Study", org: "URS Binangonan", date: "2025", notes: "Group Leader & Lead Develeoper", href: "https://www.facebook.com/share/p/16wnouynXf/" },
+  { title: "Best Software Developmental Study", org: "URS Binangonan 18th Research Congress", date: "2025", notes: "Group Leader & Lead Develeoper", href: "https://www.facebook.com/share/p/16wnouynXf/" },
   { title: "Best ICT Student", org: "Vicente Madrigal Integrated School", date: "2020", notes: "Group Leader & Lead Develeoper" },
   { title: "Best in Research", org: "VMIS", date: "2020", notes: "Team Leader & Lead Dev" },
   { title: "With Honors", org: "VMIS", date: "2020" },

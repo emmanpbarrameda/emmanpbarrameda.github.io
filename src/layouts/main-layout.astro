@@ -10,6 +10,7 @@ import Background from "../components/common/background.astro";
 // import LoadingScreen from "../components/common/loading-screen.astro";
 import MetaTags from "../components/common/meta-tags.astro";
 import { infos } from "../data/infos.js";
+import clientGuards from "../layouts/main-layout.js?raw";
 ---
 
 <!doctype html>
@@ -19,7 +20,7 @@ import { infos } from "../data/infos.js";
     <title>{infos.main_title}</title>
   </head>
 
-  <body class="bg-neutral-950 font-aileron text-neutral-50">
+  <body class="bg-neutral-950 font-aileron text-neutral-50" oncontextmenu="return false;">
     <!-- Loading Screen -->
     <!-- <LoadingScreen /> -->
 
@@ -32,16 +33,7 @@ import { infos } from "../data/infos.js";
     <!-- Intersection Observer -->
     <script is:inline defer src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"></script>
 
-    <!-- Page Load Script to Hide Loader -->
-    <script is:inline>
-      window.addEventListener("load", () => {
-        const loader = document.getElementById("loading-screen");
-        if (loader) {
-          loader.style.opacity = "0";
-          loader.style.pointerEvents = "none";
-          setTimeout(() => loader.remove(), 500);
-        }
-      });
-    </script>
+    <!-- Guard-->
+    <script is:inline set:html={clientGuards} />
   </body></html
 >
