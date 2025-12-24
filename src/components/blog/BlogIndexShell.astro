@@ -1,0 +1,41 @@
+---
+// src/components/blog/BlogIndexShell.astro
+import { infos } from "../../data/infos.js";
+import Footer from "../footer/footer.astro";
+import Background from "../common/background.astro";
+import MetaTags from "../common/meta-tags.astro";
+import BackToTop from "../common/back-to-top.astro";
+import clientGuards from "../../layouts/main-layout.js?raw";
+
+interface Props {
+  pageTitle?: string;
+  pageDescription?: string;
+}
+
+const { pageTitle = "Blog", pageDescription = "Posts & notes" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <MetaTags />
+    <title>{pageTitle} | {infos.subname}</title>
+    <meta name="description" content={pageDescription} />
+  </head>
+
+  <body class="relative min-h-screen bg-neutral-950 text-white overflow-x-hidden" oncontextmenu="return false;">
+    <Background />
+
+    <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      <div class="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-sky-500/5 blur-3xl"></div>
+      <div class="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-cyan-500/5 blur-3xl"></div>
+    </div>
+
+    <main class="relative z-10 mx-auto flex min-h-screen max-w-screen-md flex-col px-4 py-12 sm:py-16 gap-10">
+      <slot />
+      <BackToTop />
+      <script is:inline set:html={clientGuards} />
+      <Footer />
+    </main>
+  </body></html
+>

@@ -1,0 +1,135 @@
+---
+// src/components/blog/BlogPostShell.astro
+import { infos } from "../../data/infos.js";
+import Footer from "../footer/footer.astro";
+import Background from "../common/background.astro";
+import MetaTags from "../common/meta-tags.astro";
+import BackToTop from "../common/back-to-top.astro";
+import { formatDate } from "../../utils/blog";
+import clientGuards from "../../layouts/main-layout.js?raw";
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags?: string[];
+}
+
+const { title, description, pubDate, tags = [] } = Astro.props;
+const base = import.meta.env.BASE_URL || "/";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <MetaTags />
+    <title>{title} | {infos.subname}</title>
+    <meta name="description" content={description} />
+  </head>
+
+  <body class="relative min-h-screen bg-neutral-950 text-white overflow-x-hidden" oncontextmenu="return false;">
+    <Background />
+
+    <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      <div class="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-sky-500/5 blur-3xl"></div>
+      <div class="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-cyan-500/5 blur-3xl"></div>
+    </div>
+
+    <main class="relative z-10 mx-auto flex min-h-screen max-w-screen-md flex-col px-4 py-12 sm:py-16 gap-0">
+      <header class="opacity-0 intersect:opacity-100 intersect:duration-700 intersect:animate-in intersect:slide-in-from-top-10">
+        <a href={`${base}blog/`} class="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-sky-300 transition-colors group">
+          <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Back to Blog
+        </a>
+
+        <h1 class="mt-6 text-4xl sm:text-5xl font-black tracking-tighter">
+          <span class="text-sky-400">#</span>
+          {title}
+        </h1>
+
+        <p class="mt-3 text-neutral-400">{description}</p>
+
+        <div class="mt-4 flex flex-wrap items-center gap-3 text-xs text-neutral-500">
+          <span class="inline-flex items-center rounded-full border border-neutral-800/60 bg-neutral-900/40 px-3 py-1">
+            {formatDate(pubDate)}
+          </span>
+
+          {
+            tags.length > 0 && (
+              <div class="flex flex-wrap gap-2">
+                {tags.map((t: string) => (
+                  <span class="rounded-full border border-sky-500/20 bg-sky-500/5 px-3 py-1 text-sky-200/90">#{t}</span>
+                ))}
+              </div>
+            )
+          }
+        </div>
+
+        <hr class="mt-8 border-neutral-800/60" />
+      </header>
+
+      {/* Markdown (md files inside of src\content\blog) content */}
+      <article class="blog-content font-jetbrains font-light text-neutral-400 [&>p]:text-justify">
+        <slot />
+      </article>
+
+      <BackToTop />
+      <script is:inline set:html={clientGuards} />
+      <Footer />
+    </main>
+
+    <style is:global>
+      .blog-content h1 {
+        @apply text-3xl font-black text-white mt-8 mb-4 tracking-tighter;
+      }
+      .blog-content h2 {
+        @apply text-2xl font-bold text-white mt-8 mb-4;
+      }
+      .blog-content h3 {
+        @apply text-xl font-bold text-white mt-6 mb-3;
+      }
+      .blog-content p {
+        @apply text-neutral-400 mb-4 leading-relaxed;
+      }
+      .blog-content a {
+        @apply text-sky-400 hover:text-sky-300 underline underline-offset-2 transition-colors;
+      }
+      .blog-content strong {
+        @apply font-bold text-neutral-200;
+      }
+      .blog-content ul,
+      .blog-content ol {
+        @apply my-4 ml-6 space-y-2 text-neutral-400;
+      }
+      .blog-content ul {
+        @apply list-disc;
+      }
+      .blog-content ol {
+        @apply list-decimal;
+      }
+      .blog-content li {
+        @apply pl-2;
+      }
+      .blog-content blockquote {
+        @apply border-l-4 border-sky-500/50 pl-4 my-4 italic text-neutral-500;
+      }
+      .blog-content code {
+        @apply bg-neutral-800/50 text-sky-300 px-1.5 py-0.5 rounded text-sm font-mono;
+      }
+      .blog-content pre {
+        @apply bg-neutral-900/80 border border-neutral-800/60 rounded-lg p-4 my-4 overflow-x-auto;
+      }
+      .blog-content pre code {
+        @apply bg-transparent p-0 text-sm;
+      }
+      .blog-content img {
+        @apply rounded-lg border border-neutral-800/60 my-6;
+      }
+      .blog-content hr {
+        @apply border-neutral-800/60 my-8;
+      }
+    </style>
+  </body></html
+>
