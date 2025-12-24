@@ -1,5 +1,19 @@
 ---
 import { infos } from "../../data/infos.js";
+
+interface Props {
+  title?: string;
+  description?: string;
+  url?: string; 
+  image?: string;
+}
+
+const {
+  title = infos.og_title,
+  description = infos.og_description,
+  url = infos.host,
+  image = infos.og_image,
+} = Astro.props;
 ---
 
 <!-- icon and main title -->
@@ -9,32 +23,40 @@ import { infos } from "../../data/infos.js";
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 
+<!-- Canonical -->
+<link rel="canonical" href={url} />
+
+<!-- RSS + Sitemap -->
+<link rel="alternate" type="application/rss+xml" title={`${infos.fullname} Blog RSS`} href="/rss.xml" />
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
+
 <!--==================== OPEN GRAPH META TAGS (FOR SOCIAL MEDIA PREVIEW) ===================== -->
 <!-- Open Graph -->
-<meta property="og:title" content={infos.og_title} />
-<meta property="og:description" content={infos.og_description} />
-<meta property="og:image" content={infos.og_image} />
-<meta property="og:url" content={infos.host} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+<meta property="og:url" content={url} />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content={`${infos.fullname} Portfolio`} />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content={infos.og_title} />
-<meta name="twitter:description" content={infos.og_description} />
-<meta name="twitter:image" content={infos.og_image} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
 <meta name="twitter:site" content={`@${infos.username}`} />
 <meta name="twitter:creator" content={`@${infos.username}`} />
 
 <!-- Google -->
-<meta itemprop="name" content={infos.og_title} />
-<meta itemprop="description" content={infos.og_description} />
-<meta itemprop="image" content={infos.og_image} />
+<meta itemprop="name" content={title} />
+<meta itemprop="description" content={description} />
+<meta itemprop="image" content={image} />
 
 <!-- SEO -->
-<meta name="description" content={infos.main_description} />
+<meta name="description" content={description} />
 <meta name="author" content={infos.fullname} />
 <meta name="robots" content="index" />
+
 
 <!-- Google Search Console Verification -->
 <!-- https://search.google.com/search-console/about VERIFICATION -->
@@ -45,9 +67,9 @@ import { infos } from "../../data/infos.js";
   {JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Website",
-    name: infos.og_title,
-    description: infos.main_description,
-    url: infos.host,
-    image: infos.og_image
+    name: title,
+    description,
+    url,
+    image,
   })}
 </script>

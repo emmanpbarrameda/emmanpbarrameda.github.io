@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
+    "@astrojs/rss": "^4.0.14",
+    "@astrojs/sitemap": "^3.6.0",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/jetbrains-mono": "^5.0.20",
     "@fontsource/aileron": "^5.0.7",

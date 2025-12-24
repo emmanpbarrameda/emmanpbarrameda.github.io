@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://emmanpbarrameda.github.io/sitemap.xml
+
+Sitemap: https://emmanpbarrameda.github.io/sitemap-index.xml

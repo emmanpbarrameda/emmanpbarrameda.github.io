@@ -75,3 +75,9 @@ For this blog, I’ll likely write about:
 - UI polish (sticky modals, reusable components, themes)
 
 If you’re also building something with Filament, let’s connect — I’m always happy to talk about real-world patterns and clean setups.
+
+## Installation
+
+```bash
+composer require emmanpbarrameda/filament-take-picture-field:^1.2.1
+```
