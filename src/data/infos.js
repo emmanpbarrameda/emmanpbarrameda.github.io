@@ -36,7 +36,10 @@ export const infos = {
 
   canvaprojectpresentation: "https://www.canva.com/design/DAGsAcqPiM8/YgL-M1PPkZzRqzNorALDLA/view?utm_content=DAGsAcqPiM8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h778818ed60",
 
-  resume: "https://github.com/emmanpbarrameda/EMMANPBARRAMEDA_RESUME/blob/main/RESUME/EMMANPBARRAMEDA_RESUME.pdf",
+  // Google Docs PDF Web Viewer Guide: https://gist.github.com/theel0ja/b9e44a961f892ccf43e217ab74b9417b
+  resume: "https://docs.google.com/viewerng/viewer?url=https://raw.githubusercontent.com/emmanpbarrameda/EMMANPBARRAMEDA_RESUME/main/RESUME/EMMANPBARRAMEDA_RESUME.pdf",
+  // resume: "https://docs.google.com/gview?embedded=true&url=https%3A%2F%2Fraw.githubusercontent.com%2Femmanpbarrameda%2FEMMANPBARRAMEDA_RESUME%2Fmain%2FRESUME%2FEMMANPBARRAMEDA_RESUME.pdf",
+
   resumeshortcutlink: "https://emmanpbarrameda.github.io/resume",
   
   moreprojects: "https://github.com/emmanpbarrameda?tab=repositories&q=&type=public&language=&sort=",
