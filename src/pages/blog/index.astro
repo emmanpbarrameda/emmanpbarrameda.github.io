@@ -11,18 +11,22 @@ const canonicalUrl = new URL(`${base}blog/`, Astro.site).toString();
 ---
 
 <BlogIndexShell pageTitle="Blog" pageDescription="Posts & notes" url={canonicalUrl}>
-  <header class="space-y-3 opacity-0 intersect:opacity-100 intersect:duration-700 intersect:animate-in intersect:slide-in-from-top-10">
-    <a href={`${base}`} class="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-sky-300 transition-colors group">
-      <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-      </svg>
-      Home
-    </a>
+  <header class="mt-10 space-y-3 opacity-0 intersect:opacity-100 intersect:duration-700 intersect:animate-in intersect:slide-in-from-top-10">
+    <!-- icon + title on same line -->
+    <div class="flex items-center gap-4">
+      <a href={`${base}`} aria-label="Home" class="inline-flex items-center justify-center text-neutral-400 hover:text-sky-300 transition-colors group">
+        <svg class="w-5 h-5 translate-y-[2px] transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </a>
 
-    <h1 class="text-4xl sm:text-5xl font-black tracking-tighter">
-      <span class="text-sky-400">#</span> BLOG
-    </h1>
-    <p class="text-neutral-400 font-jetbrains font-normal">Notes, builds, and dev write-ups.</p>
+      <h1 class="text-4xl sm:text-5xl font-black tracking-tighter leading-none">
+        <span class="text-sky-400">#</span> BLOG
+      </h1>
+    </div>
+
+    <!-- indent to match start of the title (w-5 + gap-4 = 20px + 16px = 36px => pl-9) -->
+    <p class="pl-9 text-neutral-400 font-jetbrains font-normal"> Notes, builds, and dev write-ups. </p>
   </header>
 
   {

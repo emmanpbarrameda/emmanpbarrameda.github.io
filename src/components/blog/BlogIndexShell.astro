@@ -6,6 +6,8 @@ import Background from "../common/background.astro";
 import MetaTags from "../common/meta-tags.astro";
 import BackToTop from "../common/back-to-top.astro";
 import clientGuards from "../../layouts/main-layout.js?raw";
+import Header from "../../components/header/header.astro";
+import MainLayout from "../../layouts/main-layout.astro";
 
 interface Props {
   pageTitle?: string;
@@ -19,7 +21,7 @@ const { pageTitle = "Blog", pageDescription = "Posts & notes", url } = Astro.pro
 <!doctype html>
 <html lang="en">
   <head>
-    <MetaTags title={`${pageTitle} | ${infos.subname}`} description={pageDescription} url={url} />
+    <MetaTags title={`${pageTitle} | ${infos.subname} Blog`} description={pageDescription} url={url} />
     <title>{pageTitle} | {infos.subname}</title>
     <meta name="description" content={pageDescription} />
   </head>
@@ -27,16 +29,20 @@ const { pageTitle = "Blog", pageDescription = "Posts & notes", url } = Astro.pro
   <body class="relative min-h-screen bg-neutral-950 text-white overflow-x-hidden" oncontextmenu="return false;">
     <Background />
 
+    <!-- BLUR -->
     <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
       <div class="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-sky-500/5 blur-3xl"></div>
       <div class="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-cyan-500/5 blur-3xl"></div>
     </div>
 
-    <main class="relative z-10 mx-auto flex min-h-screen max-w-screen-md flex-col px-4 py-12 sm:py-16 gap-10">
-      <slot />
-      <BackToTop />
-      <script is:inline set:html={clientGuards} />
-      <Footer />
-    </main>
+    <MainLayout title={infos.main_title} description={infos.main_description}>
+      <Header />
+      <main class="relative z-10 mx-auto flex min-h-screen max-w-screen-md flex-col px-4 py-12 sm:py-16 gap-10">
+        <slot />
+        <BackToTop />
+        <script is:inline set:html={clientGuards} />
+        <Footer />
+      </main>
+    </MainLayout>
   </body></html
 >

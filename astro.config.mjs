@@ -3,6 +3,8 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import astroIcon from "astro-icon";
 import sitemap from "@astrojs/sitemap";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 export default defineConfig({
   integrations: [tailwind(), astroIcon(), sitemap()],
@@ -10,10 +12,25 @@ export default defineConfig({
   trailingSlash: "ignore",
 
   markdown: {
-    shikiConfig: {
-      theme: "one-dark-pro",
-    },
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: "append",
+          properties: {
+            className: ["heading-anchor-link"],
+            ariaLabel: "Copy link to this section",
+          },
+          content: {
+            type: "text",
+            value: "⎘",
+          },
+        },
+      ],
+    ],
   },
+
 
   vite: {
     build: {

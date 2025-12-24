@@ -5,11 +5,9 @@ interface Props {
 }
 
 const { href, text } = Astro.props;
+const normalizedHref = href.startsWith("#") ? `/${href}` : href;
 ---
 
-<a
-  href={href}
-  class="p-4 leading-[1] hover:underline hover:decoration-sky-400 hover:underline-offset-2"
->
+<a href={normalizedHref} class="p-4 text-sm md:text-base leading-[1] hover:underline hover:decoration-sky-400 hover:underline-offset-2">
   {text}<span class="text-sky-400">();</span>
 </a>
