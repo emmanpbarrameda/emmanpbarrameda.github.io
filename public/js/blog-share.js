@@ -1,59 +1,159 @@
 // public/js/blog-share.js
-(() => {
-    const btns = document.querySelectorAll("[data-share-post]");
+(function() {
+    var btns = document.querySelectorAll("[data-share-post]");
     if (!btns.length) return;
 
-    async function copy(text) {
-        if (navigator.clipboard?.writeText) {
-            try { await navigator.clipboard.writeText(text); return true; } catch { }
+    // Cache meta values once on load
+    var titleEl = document.querySelector("meta[property='og:title']");
+    var descEl = document.querySelector("meta[property='og:description']") || 
+                 document.querySelector("meta[name='description']");
+    var canonicalEl = document.querySelector("link[rel='canonical']");
+
+    var title = (titleEl && titleEl.getAttribute("content")) || document.title || "Share";
+    var text = (descEl && descEl.getAttribute("content")) || "";
+    var url = (canonicalEl && canonicalEl.getAttribute("href")) || window.location.href;
+
+    // Detect native share support once on load
+    var canNativeShare = !!(window.navigator && 
+                            typeof window.navigator.share === "function" &&
+                            window.isSecureContext);
+
+    function fallbackCopy(str) {
+        var ta = null;
+        var ok = false;
+        
+        try {
+            ta = document.createElement("textarea");
+            ta.value = str;
+            ta.setAttribute("readonly", "");
+            ta.style.position = "fixed";
+            ta.style.top = "0";
+            ta.style.left = "0";
+            ta.style.width = "2em";
+            ta.style.height = "2em";
+            ta.style.padding = "0";
+            ta.style.border = "none";
+            ta.style.outline = "none";
+            ta.style.boxShadow = "none";
+            ta.style.background = "transparent";
+            ta.style.opacity = "0";
+            ta.style.zIndex = "-1";
+            
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            
+            try {
+                ta.setSelectionRange(0, str.length);
+            } catch (e) {}
+            
+            ok = document.execCommand("copy");
+        } catch (err) {
+            ok = false;
+        } finally {
+            if (ta && ta.parentNode) {
+                ta.parentNode.removeChild(ta);
+            }
         }
-        const ta = Object.assign(document.createElement("textarea"), {
-            value: text, readOnly: true, style: "position:fixed;opacity:0;left:-9999px;top:-9999px"
-        });
-        document.body.append(ta);
-        ta.select();
-        ta.setSelectionRange(0, text.length);
-        const ok = document.execCommand("copy");
-        ta.remove();
+        
         return ok;
     }
 
-    function toast(msg) {
-        const t = document.createElement("div");
-        t.textContent = msg;
-        t.className =
-            "fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] rounded-lg border border-neutral-800/60 bg-neutral-900/95 px-3 py-2 text-xs text-neutral-200 shadow";
-        document.body.appendChild(t);
-        setTimeout(() => t.remove(), 1000);
+    function copy(str, callback) {
+        if (window.navigator && 
+            window.navigator.clipboard && 
+            typeof window.navigator.clipboard.writeText === "function" &&
+            window.isSecureContext) {
+            
+            window.navigator.clipboard.writeText(str)
+                .then(function() {
+                    callback(true);
+                })
+                .catch(function() {
+                    callback(fallbackCopy(str));
+                });
+        } else {
+            callback(fallbackCopy(str));
+        }
     }
 
-    async function handleShare() {
-        const title =
-            document.querySelector("meta[property='og:title']")?.getAttribute("content") ||
-            document.title ||
-            "Share";
-
-        const text =
-            document.querySelector("meta[property='og:description']")?.getAttribute("content") ||
-            document.querySelector("meta[name='description']")?.getAttribute("content") ||
-            "";
-
-        const url =
-            document.querySelector("link[rel='canonical']")?.getAttribute("href") ||
-            location.href;
-
-        if (navigator.share) {
-            try {
-                await navigator.share({ title, text, url });
-                return;
-            } catch (err) {
-                if (err?.name === "AbortError") return;
-            }
+    function toast(msg, isError) {
+        var existing = document.getElementById("share-toast");
+        if (existing && existing.parentNode) {
+            existing.parentNode.removeChild(existing);
         }
 
-        const ok = await copy(url);
-        toast(ok ? "Link copied!" : "Copy failed");
+        var t = document.createElement("div");
+        t.id = "share-toast";
+        t.appendChild(document.createTextNode(msg));
+        
+        t.style.position = "fixed";
+        t.style.bottom = "24px";
+        t.style.left = "50%";
+        t.style.transform = "translateX(-50%)";
+        t.style.zIndex = "9999";
+        t.style.padding = "8px 16px";
+        t.style.borderRadius = "8px";
+        t.style.fontSize = "12px";
+        t.style.boxShadow = "0 4px 12px rgba(0,0,0,0.3)";
+        
+        if (isError) {
+            t.style.backgroundColor = "rgba(127, 29, 29, 0.95)";
+            t.style.color = "#fecaca";
+            t.style.border = "1px solid rgba(153, 27, 27, 0.6)";
+        } else {
+            t.style.backgroundColor = "rgba(23, 23, 23, 0.95)";
+            t.style.color = "#e5e5e5";
+            t.style.border = "1px solid rgba(38, 38, 38, 0.6)";
+        }
+
+        document.body.appendChild(t);
+
+        setTimeout(function() {
+            if (t && t.parentNode) {
+                t.parentNode.removeChild(t);
+            }
+        }, 2000);
     }
 
-    btns.forEach(btn => btn.addEventListener("click", handleShare));
+    function copyAndToast() {
+        copy(url, function(ok) {
+            toast(ok ? "Link copied!" : "Couldn't copy link", !ok);
+        });
+    }
+
+    function handleShare(e) {
+        // Always prevent default first
+        if (e.preventDefault) {
+            e.preventDefault();
+        }
+        if (e.stopPropagation) {
+            e.stopPropagation();
+        }
+
+        // Try native share immediately (must be synchronous with user gesture)
+        if (canNativeShare) {
+            navigator.share({
+                title: title,
+                text: text,
+                url: url
+            }).then(function() {
+                // Shared successfully - do nothing
+            }).catch(function(err) {
+                // Only fallback if it's not a user cancel
+                if (!err || err.name !== "AbortError") {
+                    copyAndToast();
+                }
+            });
+            return;
+        }
+
+        // Fallback to clipboard
+        copyAndToast();
+    }
+
+    // Attach listeners
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", handleShare, false);
+    }
 })();
