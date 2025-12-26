@@ -21,7 +21,7 @@ const canonicalUrl = new URL(`${base}blog/`, Astro.site).toString();
       </a>
 
       <h1 class="text-4xl sm:text-5xl font-black tracking-tighter leading-none">
-        <span class="text-sky-400">#</span> BLOG
+        <span class="text-sky-400">#</span> READS
       </h1>
     </div>
 
@@ -35,32 +35,72 @@ const canonicalUrl = new URL(`${base}blog/`, Astro.site).toString();
         <p class="text-neutral-500 font-jetbrains">No posts yet. Check back soon!</p>
       </div>
     ) : (
-      <section class="flex flex-col gap-3.5">
-        {posts.map((post, index) => (
-          <a href={`${base}blog/${post.id.replace(/\.(md|mdx)$/, "")}/`} class="group relative flex items-center gap-4 rounded-xl border border-neutral-800/60 bg-gradient-to-r from-neutral-900/80 via-neutral-900/40 to-neutral-800/20 backdrop-blur-sm px-5 py-4 transition-all duration-300 hover:border-sky-500/60 hover:bg-neutral-900/90 hover:shadow-lg hover:shadow-sky-500/10 hover:-translate-y-0.5 opacity-0 intersect:opacity-100 intersect:duration-700 intersect:animate-in intersect:slide-in-from-bottom-6" style={`animation-delay: ${index * 50}ms`}>
-            <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-sky-500/0 via-sky-500/5 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-            <span class="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-neutral-900 to-neutral-800/50 text-sky-300 border border-neutral-800/50 group-hover:border-sky-500/30 group-hover:bg-gradient-to-br group-hover:from-sky-600/20 group-hover:to-cyan-600/10 group-hover:text-sky-200 group-hover:shadow-lg group-hover:shadow-sky-500/20 transition-all duration-300">
-              <Icon name="mdi:file-document-outline" class="text-2xl" />
+      <>
+        <div class="flex items-center gap-3">
+          <div class="relative flex-1">
+            <input id="blog-search" type="search" placeholder="Search posts…" class="w-full rounded-xl border border-neutral-800/80 bg-neutral-950/80 px-4 py-3 pr-10 text-sm text-neutral-200 placeholder:text-neutral-600 outline-none transition focus:border-sky-500/60 focus:ring-2 focus:ring-sky-500/15" autocomplete="off" />
+            <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500">
+              <Icon name="mdi:magnify" class="text-xl" />
             </span>
+          </div>
+          <span id="blog-search-count" class="text-xs text-neutral-500 whitespace-nowrap" />
+        </div>
+        <p id="blog-search-empty" class="hidden mt-3 text-center text-sm text-neutral-500 font-jetbrains">
+          No matching posts.
+        </p>
 
-            <span class="relative flex-1 text-left min-w-0">
-              <span class="block text-base font-semibold leading-tight text-white group-hover:text-sky-50 transition-colors">{post.data.title}</span>
-              <span class="block text-xs text-neutral-400 mt-1 line-clamp-1 group-hover:text-neutral-300 transition-colors">{post.data.description}</span>
-              <span class="flex flex-wrap items-center gap-2 mt-2 text-xs text-neutral-500">
-                <span>{formatDate(post.data.pubDate)}</span>
-                {post.data.tags?.slice(0, 2).map((t: string) => (
-                  <span class="text-sky-400/70">#{t}</span>
-                ))}
+        <section class="flex flex-col gap-3.5">
+          {posts.map((post, index) => (
+            <a href={`${base}blog/${post.id.replace(/\.(md|mdx)$/, "")}/`} data-post-card data-search={`${post.data.title} ${post.data.description ?? ""} ${(post.data.tags ?? []).join(" ")}`.toLowerCase()} class="group relative flex items-center gap-4 rounded-xl border border-neutral-800/60 bg-gradient-to-r from-neutral-900/80 via-neutral-900/40 to-neutral-800/20 backdrop-blur-sm px-5 py-4 transition-all duration-300 hover:border-sky-500/60 hover:bg-neutral-900/90 hover:shadow-lg hover:shadow-sky-500/10 hover:-translate-y-0.5 opacity-0 intersect:opacity-100 intersect:duration-700 intersect:animate-in intersect:slide-in-from-bottom-6" style={`animation-delay: ${index * 50}ms`}>
+              <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-sky-500/0 via-sky-500/5 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              <span class="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-neutral-900 to-neutral-800/50 text-sky-300 border border-neutral-800/50 group-hover:border-sky-500/30 group-hover:bg-gradient-to-br group-hover:from-sky-600/20 group-hover:to-cyan-600/10 group-hover:text-sky-200 group-hover:shadow-lg group-hover:shadow-sky-500/20 transition-all duration-300">
+                <Icon name="mdi:file-document-outline" class="text-2xl" />
               </span>
-            </span>
 
-            <span class="relative text-neutral-600 group-hover:text-sky-300 transition-all duration-300 group-hover:translate-x-1">
-              <Icon name="mdi:arrow-right" class="text-xl" />
-            </span>
-          </a>
-        ))}
-      </section>
+              <span class="relative flex-1 text-left min-w-0">
+                <span class="block text-base font-semibold leading-tight text-white group-hover:text-sky-50 transition-colors">{post.data.title}</span>
+                <span class="block text-xs text-neutral-400 mt-1 line-clamp-1 group-hover:text-neutral-300 transition-colors">{post.data.description}</span>
+                <span class="flex flex-wrap items-center gap-2 mt-2 text-xs text-neutral-500">
+                  <span>{formatDate(post.data.pubDate)}</span>
+                  {post.data.tags?.slice(0, 2).map((t: string) => (
+                    <span class="text-sky-400/70">#{t}</span>
+                  ))}
+                </span>
+              </span>
+
+              <span class="relative text-neutral-600 group-hover:text-sky-300 transition-all duration-300 group-hover:translate-x-1">
+                <Icon name="mdi:arrow-right" class="text-xl" />
+              </span>
+            </a>
+          ))}
+        </section>
+      </>
     )
   }
+
+  <script is:inline>
+    const input = document.getElementById("blog-search");
+    const cards = Array.from(document.querySelectorAll("[data-post-card]"));
+    const empty = document.getElementById("blog-search-empty");
+    const count = document.getElementById("blog-search-count");
+
+    function run() {
+      const q = (input.value || "").trim().toLowerCase();
+      let visible = 0;
+
+      for (const el of cards) {
+        const hay = el.getAttribute("data-search") || "";
+        const show = !q || hay.includes(q);
+        el.classList.toggle("hidden", !show);
+        if (show) visible++;
+      }
+
+      if (count) count.textContent = q ? `${visible} result${visible === 1 ? "" : "s"}` : "";
+      if (empty) empty.classList.toggle("hidden", visible !== 0);
+    }
+
+    input?.addEventListener("input", run, { passive: true });
+    run();
+  </script>
 </BlogIndexShell>

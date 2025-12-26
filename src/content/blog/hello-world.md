@@ -38,7 +38,9 @@ Basically, anywhere you need structured data input + visibility + speed.
 The two areas where Filament really becomes a cheat code:
 
 ### Forms
+
 You can build complex forms with:
+
 - conditional fields
 - repeaters
 - wizards/steps
@@ -46,14 +48,16 @@ You can build complex forms with:
 - custom components
 
 ### Tables
+
 And tables give you:
+
 - filters, sorting, search
 - actions (view/edit/custom)
 - bulk actions
 - relation managers
 - export/import workflows
 
-That combination is *exactly* what most internal tools need.
+That combination is _exactly_ what most internal tools need.
 
 ## Filament + TALL Stack feels like home
 
@@ -69,6 +73,7 @@ You get a snappy admin experience without building an entire SPA.
 ## What I’m planning next
 
 For this blog, I’ll likely write about:
+
 - how I structure Filament resources for large projects
 - making workflows (stages, approvals, locks, audit logs)
 - performance tips (queues, caching, exports)
@@ -81,3 +86,32 @@ If you’re also building something with Filament, let’s connect — I’m alw
 ```bash
 composer require emmanpbarrameda/filament-take-picture-field:^1.2.1
 ```
+
+## Sample Image
+
+![Cover](/blog-images/cert-best-in-ict.webp)
+
+<p class="img-caption"><em>Figure: My workflow diagrams.</em></p>
+
+## Sample Video
+
+<figure class="blog-media">
+  <video controls playsinline preload="metadata">
+    <source src="/blog-videos/115474571-03c75800-a23e-11eb-8096-8973aad5fa9f.mp4" type="video/mp4" />
+  </video>
+  <figcaption>Figure: Demo of the workflow.</figcaption>
+</figure>
+
+## Sample YT Video
+
+<figure class="blog-media">
+  <div class="blog-video-embed">
+    <iframe
+      src="https://www.youtube.com/watch?v=ZOBIPb-6PTc"
+      title="Video"
+      loading="lazy"
+      allowfullscreen
+    ></iframe>
+  </div>
+  <figcaption>Figure: Walkthrough video.</figcaption>
+</figure>

@@ -12,6 +12,9 @@ export default defineConfig({
   trailingSlash: "ignore",
 
   markdown: {
+    shikiConfig: {
+      theme: "poimandres"
+    },
     rehypePlugins: [
       rehypeSlug,
       [
@@ -20,22 +23,21 @@ export default defineConfig({
           behavior: "append",
           properties: {
             className: ["heading-anchor-link"],
-            ariaLabel: "Copy link to this section",
+            ariaLabel: "Copy link to this section"
           },
           content: {
             type: "text",
-            value: "⎘",
-          },
-        },
-      ],
-    ],
+            value: "⎘"
+          }
+        }
+      ]
+    ]
   },
-
 
   vite: {
     build: {
       minify: "esbuild",
-      target: "es2018",
-    },
-  },
+      target: "es2018"
+    }
+  }
 });

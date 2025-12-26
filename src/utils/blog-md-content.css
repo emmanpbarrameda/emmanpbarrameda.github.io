@@ -1,0 +1,161 @@
+/* ----------------------------------
+! MARK: .MD Content Styles
+---------------------------------- */
+
+/* Headings */
+.blog-content h1 { @apply text-3xl font-black text-white mt-8 mb-4 tracking-tighter; }
+.blog-content h2 { @apply text-2xl font-bold  text-white mt-8 mb-4; }
+.blog-content h3 { @apply text-xl  font-bold  text-white mt-6 mb-3; }
+
+/* Paragraphs & Links */
+.blog-content p { @apply text-neutral-400 mb-4 leading-relaxed; }
+.blog-content a { @apply text-sky-400 hover:text-sky-300 underline underline-offset-2 transition-colors; }
+.blog-content strong { @apply font-bold text-neutral-200; }
+
+/* Lists */
+.blog-content ul,
+.blog-content ol { @apply my-4 ml-6 space-y-2 text-neutral-400; }
+.blog-content ul { @apply list-disc; }
+.blog-content ol { @apply list-decimal; }
+.blog-content li { @apply pl-2; }
+
+/* Blockquotes */
+.blog-content blockquote { @apply border-l-4 border-sky-500/50 pl-4 my-4 italic text-neutral-500; }
+
+/* Inline/Block Code */
+.blog-content code { @apply bg-neutral-800/50 text-sky-300 px-1.5 py-0.5 rounded text-sm font-mono; }
+.blog-content pre  { @apply bg-neutral-900/80 border border-neutral-800/60 rounded-lg p-4 my-4 overflow-x-auto; }
+.blog-content pre code { @apply bg-transparent p-0 text-sm; }
+
+/* Images & Captions */
+.blog-content img { @apply rounded-lg border border-neutral-800/60 my-6; }
+.blog-content .img-caption { @apply text-center text-neutral-500 text-sm mt-2; }
+
+/* Horizontal Rule */
+.blog-content hr { @apply border-neutral-800/60 my-8; }
+
+/* Media Figure */
+.blog-content figure.blog-media { @apply my-6; }
+.blog-content figure.blog-media video { @apply w-full rounded-lg border border-neutral-800/60; }
+.blog-content figure.blog-media figcaption { @apply block text-center text-neutral-500 text-sm mt-2; }
+
+/* Responsive Video Embed (16:9) */
+.blog-content .blog-video-embed { @apply relative w-full overflow-hidden rounded-lg border border-neutral-800/60; padding-top: 56.25%; }
+.blog-content .blog-video-embed iframe { @apply absolute inset-0 h-full w-full; }
+
+
+/* ----------------------------------
+! MARK: Anchorable Copyable Headings
+---------------------------------- */
+.blog-content :is(h1, h2, h3, h4, h5, h6) { position: relative; scroll-margin-top: 110px; }
+.blog-content .heading-anchor-link {
+  position: absolute;
+  left: -1.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  text-decoration: none;
+  color: rgb(56 189 248 / 0.85);
+  font-weight: 700;
+  padding: 0 0.25rem;
+}
+.blog-content :is(h1, h2, h3, h4, h5, h6):hover .heading-anchor-link { opacity: 1; }
+
+
+/* ----------------------------------
+! MARK: Tables (Markdown)
+---------------------------------- */
+.blog-content table {
+  @apply w-full my-6 border border-neutral-800/60 rounded-lg overflow-hidden text-sm bg-neutral-900/50;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.blog-content thead { @apply bg-neutral-900/80; }
+.blog-content tbody { @apply bg-neutral-900/60; }
+.blog-content th { @apply text-left font-semibold text-neutral-200 px-4 py-3 border-b border-neutral-800/60; }
+.blog-content td { @apply px-4 py-3 text-neutral-300 border-b border-neutral-800/40 align-top; }
+.blog-content tbody tr:last-child td { border-bottom: 0; }
+.blog-content tbody tr:hover td { @apply bg-neutral-900/40; }
+
+/* Wide tables: horizontal scroll */
+.blog-content :is(table) {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+/* ----------------------------------
+! MARK: badge rows
+---------------------------------- */
+
+/* Convert <p align="center"> into a wrapping badge row */
+.blog-content p[align="center"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 12px 0;
+  text-align: center;
+}
+
+/* Remove the visual gaps (nbsp/extra spans) */
+.blog-content p[align="center"] br,
+.blog-content p[align="center"] :where(span) { display: none; }
+
+/* Link spacing for wrapped badges */
+.blog-content p[align="center"] a { margin: 2px 3px; }
+
+/* Keep shields.io badges crisp */
+.blog-content p[align="center"] img[src*="shields.io"] {
+  display: block;
+  height: 28px;
+  width: auto;
+}
+
+@media (max-width: 640px) {
+  .blog-content p[align="center"] { gap: 0px; }
+  .blog-content p[align="center"] img[src*="shields.io"] { height: 26px; }
+}
+
+/* Inline emoji in headings */
+.blog-content h2 img,
+.blog-content h3 img { display: inline-block; vertical-align: middle; }
+
+
+/* ----------------------------------
+! MARK: Flash highlight 
+---------------------------------- */
+:target,
+.heading-flash { animation: flash 1s ease-out 2; }
+
+@keyframes flash {
+  0%   { background: rgba(56 189 248 / 0.8); }
+  100% { background: transparent; }
+}
+
+
+/* ----------------------------------
+! MARK: TOC chevron rotate when open
+---------------------------------- */
+details[open] > summary svg:last-child { transform: rotate(180deg); }
+
+
+/* ----------------------------------
+! MARK: TTS word highlighting 
+---------------------------------- */
+.tts-word {
+  transition: background-color 0.2s, color 0.2s;
+  border-radius: 3px;
+}
+.tts-active {
+  background: rgb(56, 189, 248);
+  color: rgb(3, 7, 18);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+  padding: 1px 2px;
+  margin: 0 -2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tts-word { transition: none; }
+}
