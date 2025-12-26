@@ -16,10 +16,18 @@ interface Props {
   pubDate: Date;
   tags?: string[];
   url?: string;
+  cover?: { src: string; alt?: string };
+  readMinutes?: number;
 }
 
-const { title, description, pubDate, tags = [], url } = Astro.props;
+const { title, description, pubDate, tags = [], url, cover, readMinutes = 4 } = Astro.props;
 const base = import.meta.env.BASE_URL || "/";
+const toPublicUrl = (src?: string) => {
+  if (!src) return null;
+  if (src.startsWith("http")) return src;
+  return `${base}${src.replace(/^\/+/, "")}`;
+};
+const coverUrl = cover?.src ? (cover.src.startsWith("http") ? cover.src : `${base}${cover.src.replace(/^\/+/, "")}`) : null;
 const allPosts = await getCollection("blog", ({ data }) => !data.draft);
 function daysSince(d: Date) {
   return (Date.now() - d.getTime()) / (1000 * 60 * 60 * 24);
@@ -48,7 +56,7 @@ const latestPosts = allPosts
 <!doctype html>
 <html lang="en">
   <head>
-    <MetaTags title={`${title} | ${infos.subname} Blog`} description={description} url={url} />
+    <MetaTags title={`${title} | ${infos.subname} Blog`} description={description} url={url} image={coverUrl ?? undefined} />
     <title>{title} | {infos.subname}</title>
     <meta name="description" content={description} />
   </head>
@@ -137,7 +145,6 @@ const latestPosts = allPosts
         <!-- MARK: Main article -->
         <div class="min-w-0">
           <header class="opacity-0 intersect:opacity-100 intersect:duration-700 intersect:animate-in intersect:slide-in-from-top-10">
-            <!-- MARK: MOBILE Back -->
             <a href={`${base}blog/`} class="lg:hidden inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-sky-300 transition-colors group">
               <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -146,25 +153,39 @@ const latestPosts = allPosts
             </a>
 
             <h1 class="mt-6 text-4xl sm:text-5xl font-black tracking-tighter">
-              <span class="text-sky-400">#</span>
-              {title}
+              <span class="text-sky-400"># </span>{title}
             </h1>
+
             <p class="mt-3 text-neutral-400">{description}</p>
 
-            <div class="mt-4 flex flex-wrap items-center gap-3 text-xs text-neutral-500">
-              <span class="inline-flex items-center rounded-full border border-neutral-800/60 bg-neutral-900/40 px-3 py-1">
-                {formatDate(pubDate)}
-              </span>
+            <div class="mt-4 flex flex-col gap-2 text-xs sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-2 sm:gap-y-1">
+              <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-neutral-500">
+                <span>{readMinutes} min read</span>
+                <span class="text-neutral-700">•</span>
+                <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+              </div>
+
               {
                 tags.length > 0 && (
-                  <div class="flex flex-wrap gap-2">
-                    {tags.map((t: string) => (
-                      <span class="rounded-full border border-sky-500/20 bg-sky-500/5 px-3 py-1 text-sky-200/90">#{t}</span>
+                  <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+                    <span class="hidden text-neutral-700 sm:inline">•</span>
+                    {tags.slice(0, 8).map((t: string) => (
+                      <span class="text-neutral-400 hover:text-sky-300 transition-colors">#{t}</span>
                     ))}
+                    {tags.length > 8 && <span class="text-neutral-500">+{tags.length - 8}</span>}
                   </div>
                 )
               }
             </div>
+
+            {
+              coverUrl && (
+                <figure class="mt-6 overflow-hidden rounded-2xl border border-neutral-800/60 bg-neutral-900/40 aspect-video">
+                  <img src={coverUrl} alt={cover?.alt ?? title} class="h-full w-full object-cover" loading="eager" decoding="async" />
+                </figure>
+              )
+            }
+
             <hr class="mt-8 border-neutral-800/60" />
           </header>
 
@@ -297,36 +318,53 @@ const latestPosts = allPosts
 
                 <div class="grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {(relatedPosts.length > 0 ? relatedPosts : latestPosts).map((post) => (
-                    <a href={`${base}blog/${post.slug}/`} class="group relative h-full rounded-xl border border-neutral-800/60 bg-neutral-900/40 p-4 transition hover:border-neutral-700/80 hover:bg-neutral-900/60 flex flex-col">
-                      {/* top content */}
-                      <div>
-                        <div class="text-sm font-semibold text-neutral-200 group-hover:text-sky-300 transition-colors line-clamp-2 min-h-[2.5rem]" title={post.data.title}>
-                          {post.data.title}
+                    <a href={`${base}blog/${post.slug}/`} class="group relative h-full overflow-hidden rounded-xl border border-neutral-800/60 bg-neutral-900/40 transition hover:border-neutral-700/80 hover:bg-neutral-900/60 flex flex-col">
+                      {(() => {
+                        const c = toPublicUrl((post.data as any)?.cover?.src);
+                        return (
+                          <div class="aspect-video w-full border-b border-neutral-800/60 bg-neutral-950/30">
+                            {c ? (
+                              <img src={c} alt={(post.data as any)?.cover?.alt ?? post.data.title} class="h-full w-full object-cover" loading="lazy" decoding="async" />
+                            ) : (
+                              <div class="relative h-full w-full">
+                                <div class="absolute inset-0 bg-gradient-to-br from-neutral-900/60 via-neutral-900/30 to-neutral-800/20" />
+                                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-r from-sky-500/0 via-sky-500/10 to-cyan-500/0" />
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })()}
+
+                      <div class="p-4 flex flex-col h-full">
+                        {/* top content */}
+                        <div>
+                          <div class="text-sm font-semibold text-neutral-200 group-hover:text-sky-300 transition-colors line-clamp-2 min-h-[2.5rem]" title={post.data.title}>
+                            {post.data.title}
+                          </div>
+                          {post.data.description && <p class="mt-2 text-xs text-neutral-400 line-clamp-2 min-h-[2.25rem]">{post.data.description}</p>}
                         </div>
-                        {post.data.description && <p class="mt-2 text-xs text-neutral-400 line-clamp-2 min-h-[2.25rem]">{post.data.description}</p>}
-                      </div>
 
-                      {/* footer pinned to bottom */}
-                      <div class="mt-auto pt-3 flex items-center justify-between text-[10px] text-neutral-500">
-                        <span>{new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(new Date(post.data.pubDate))}</span>
+                        {/* footer pinned to bottom */}
+                        <div class="mt-auto pt-3 flex items-center justify-between text-[10px] text-neutral-500">
+                          <span>{new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(new Date(post.data.pubDate))}</span>
 
-                        {(() => {
-                          const t = (post.data.tags ?? []) as string[];
-                          if (!t.length) return null;
-                          const shown = t.slice(0, 1);
-                          const extra = t.length - shown.length;
-                          return (
-                            <div class="flex items-center gap-2 flex-nowrap">
-                              {shown.map((tag: string) => (
-                                <span class="max-w-[110px] truncate shrink-0 rounded-full border border-sky-500/20 bg-sky-500/5 px-2 py-0.5 text-[10px] text-sky-200/90" title={tag}>
-                                  #{tag}
-                                </span>
-                              ))}
-
-                              {extra > 0 && <span class="shrink-0 rounded-full border border-neutral-800/60 bg-neutral-900/50 px-2 py-0.5 text-[10px] text-neutral-400">+{extra}</span>}
-                            </div>
-                          );
-                        })()}
+                          {(() => {
+                            const t = (post.data.tags ?? []) as string[];
+                            if (!t.length) return null;
+                            const shown = t.slice(0, 1);
+                            const extra = t.length - shown.length;
+                            return (
+                              <div class="flex items-center gap-2 flex-nowrap">
+                                {shown.map((tag: string) => (
+                                  <span class="max-w-[110px] truncate shrink-0 rounded-full border border-sky-500/20 bg-sky-500/5 px-2 py-0.5 text-[10px] text-sky-200/90" title={tag}>
+                                    #{tag}
+                                  </span>
+                                ))}
+                                {extra > 0 && <span class="shrink-0 rounded-full border border-neutral-800/60 bg-neutral-900/50 px-2 py-0.5 text-[10px] text-neutral-400">+{extra}</span>}
+                              </div>
+                            );
+                          })()}
+                        </div>
                       </div>
                     </a>
                   ))}

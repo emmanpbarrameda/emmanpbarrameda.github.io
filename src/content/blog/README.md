@@ -1,15 +1,13 @@
 ---
-title: "Filament Take-Picture Field"
-description: ""
+title: "PLUGIN: Filament Take Picture Field"
+description: "A custom Filament form componen plugin to capture photos from your device camera."
 pubDate: 2025-12-23
-tags: ["plugins"]
+tags: ["filamentphp", "plugins"]
 draft: true
+cover:
+  src: "images/cover.jpg"
+  alt: "Image"
 ---
-
-# Filament Take Picture Field v1.2
-#### A custom Filament form component to capture photos from your device camera.
-
-![emmanpbarrameda-take-picture-field](https://github.com/user-attachments/assets/72f92507-91d7-49c2-84f8-a4fbc3127caf)
 
 ## Features
 

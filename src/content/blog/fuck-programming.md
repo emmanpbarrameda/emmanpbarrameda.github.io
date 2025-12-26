@@ -4,6 +4,9 @@ description: "How I think about programming beyond syntax — habits, feedback l
 pubDate: 2025-12-26
 tags: ["programming", "software-engineering", "career", "productivity"]
 draft: false
+cover:
+  src: "images/about_slider5.webp"
+  alt: "Abstract dark gradient with code-like lines"
 ---
 
 # Programming: The Craft Behind the Code 🧠
