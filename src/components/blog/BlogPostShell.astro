@@ -176,16 +176,22 @@ const latestPosts = allPosts
             <slot />
           </article>
 
-          {/* MARK: Comments (Giscus) */}
-          <section class="mt-10 rounded-xl border border-neutral-800/60 bg-neutral-900/40 p-4 sm:p-5">
+          <!-- MARK: Comments+Reaction with (https://giscus.app/) -->
+          <section id="comments" class="mt-10 scroll-mt-28 rounded-xl border border-neutral-800/60 bg-neutral-900/40 p-4 sm:p-5">
             <div class="mb-3 flex items-center justify-between">
               <h2 class="text-sm font-semibold tracking-wide text-neutral-200">Comments</h2>
               <div class="h-px flex-1 ml-4 bg-neutral-800/60"></div>
             </div>
-
             <div class="giscus"></div>
-
-            <!-- paste the exact giscus <script> you copied below -->
+            <style is:global>
+              .giscus,
+              .giscus-frame {
+                width: 100%;
+              }
+              .giscus-frame {
+                border: 0;
+              }
+            </style>
             <script src="https://giscus.app/client.js" data-repo="emmanpbarrameda/emmanpbarrameda.github.io" data-repo-id="R_kgDOJiknzg" data-category="Portfolio READS Comments" data-category-id="DIC_kwDOJiknzs4C0Qj9" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="transparent_dark" data-lang="en" crossorigin="anonymous" async></script>
           </section>
 
