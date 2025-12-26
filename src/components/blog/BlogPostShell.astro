@@ -78,12 +78,21 @@ const latestPosts = allPosts
 
             <!-- MARK: BUTTONS TOC Desktop -->
             <div class="mt-4 pt-3 border-t border-neutral-800/40 flex items-center justify-between">
-              <button onclick="window.print()" class="flex items-center gap-2 text-xs text-neutral-500 hover:text-sky-300 transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
-                </svg>
-                Print
-              </button>
+              <!-- BUTTONS: Print + Back to top -->
+              <div class="flex items-center gap-2">
+                <!-- BUTTON: Back to top -->
+                <a href="#" class="flex items-center gap-2 text-xs text-neutral-500 hover:text-sky-300 transition-colors" aria-label="Back to top" title="Back to top">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                  </svg>
+                </a>
+                <!-- BUTTON: Print -->
+                <button onclick="window.print()" class="flex items-center gap-2 text-xs text-neutral-500 hover:text-sky-300 transition-colors" aria-label="Print" title="Print this post">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                  </svg>
+                </button>
+              </div>
 
               <!-- BUTTONS: TTS Group -->
               <div class="flex items-center gap-2">
@@ -105,13 +114,21 @@ const latestPosts = allPosts
                 </button>
               </div>
 
-              <!-- BUTTON: Share -->
-              <button type="button" data-share-post class="flex items-center gap-2 text-xs text-neutral-500 hover:text-sky-300 transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
-                </svg>
-                Share
-              </button>
+              <!-- BUTTONS: Comment + Share -->
+              <div class="flex items-center gap-2">
+                <!-- BUTTON: Comment (go to #comments) -->
+                <a href="#comments" class="flex items-center gap-2 text-xs text-neutral-500 hover:text-sky-300 transition-colors" aria-label="Jump to comments" title="Jump to comments">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h6m-7 9l3.5-3H20a2 2 0 002-2V6a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2h2v3z"></path>
+                  </svg>
+                </a>
+                <!-- BUTTON: Share -->
+                <button type="button" data-share-post class="flex items-center gap-2 text-xs text-neutral-500 hover:text-sky-300 transition-colors" aria-label="Share this post" title="Share this post">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </aside>
@@ -156,15 +173,27 @@ const latestPosts = allPosts
             <div class="rounded-lg border border-neutral-800/50 bg-neutral-900/90 backdrop-blur-sm">
               <details>
                 <summary class="flex items-center justify-between p-4 cursor-pointer text-sm text-neutral-400 hover:text-sky-300 transition-colors">
+                  <!-- Left: TOC label -->
                   <span class="flex items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path>
                     </svg>
                     Table of Contents
                   </span>
-                  <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
+
+                  <!-- Right: actions -->
+                  <span class="flex items-center gap-3">
+                    <!-- Comments icon -->
+                    <a href="#comments" class="text-neutral-500 hover:text-sky-300 transition-colors" aria-label="Jump to comments" onclick="event.stopPropagation()">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h6m-7 9l3.5-3H20a2 2 0 002-2V6a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2h2v3z"></path>
+                      </svg>
+                    </a>
+                    <!-- Chevron -->
+                    <svg class="w-4 h-4 toc-chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </span>
                 </summary>
                 <nav id="blog-toc-mobile" class="px-4 pb-4 space-y-2 text-sm max-h-[50vh] overflow-y-auto"></nav>
               </details>
@@ -176,40 +205,86 @@ const latestPosts = allPosts
             <slot />
           </article>
 
-          <!-- MARK: Comments+Reaction with (https://giscus.app/) -->
-          <section id="comments" class="mt-10 scroll-mt-28 rounded-xl border border-neutral-800/60 bg-neutral-900/40 p-4 sm:p-5">
-            <div class="mb-3 flex items-center justify-between">
-              <h2 class="text-sm font-semibold tracking-wide text-neutral-200">Comments</h2>
-              <div class="h-px flex-1 ml-4 bg-neutral-800/60"></div>
-            </div>
-            <div class="giscus"></div>
-            <style is:global>
-              .giscus,
-              .giscus-frame {
-                width: 100%;
-              }
-              .giscus-frame {
-                border: 0;
-              }
-            </style>
-            <script src="https://giscus.app/client.js" data-repo="emmanpbarrameda/emmanpbarrameda.github.io" data-repo-id="R_kgDOJiknzg" data-category="Portfolio READS Comments" data-category-id="DIC_kwDOJiknzs4C0Qj9" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="transparent_dark" data-lang="en" crossorigin="anonymous" async></script>
-          </section>
-
           <!-- MARK: Bottom Post actions -->
-          <div class="mt-8 pt-6 border-t border-neutral-800/40 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2 text-sm text-neutral-500 hover:text-sky-300 transition-colors">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="mt-8 pt-6 border-t border-neutral-800/40 flex items-center justify-center gap-6">
+            <a href="#top" class="flex items-center gap-2 text-base px-3 py-2 rounded-md text-neutral-500 hover:text-sky-300 hover:bg-neutral-900/50 transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
               </svg>
               Back to Top
             </a>
-            <button type="button" data-share-post class="flex items-center gap-2 text-sm text-neutral-500 hover:text-sky-300 transition-colors">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button type="button" data-share-post class="flex items-center gap-2 text-base px-3 py-2 rounded-md text-neutral-500 hover:text-sky-300 hover:bg-neutral-900/50 transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
               </svg>
               Share
             </button>
           </div>
+
+          <!-- MARK: Comments+Reaction with (https://giscus.app/) -->
+          <section id="comments" class="mt-10 scroll-mt-28 rounded-xl border border-neutral-800/60 bg-neutral-900/40 p-4 sm:p-5">
+            <details class="group">
+              <summary class="flex cursor-pointer list-none items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <h2 class="text-sm font-semibold tracking-wide text-neutral-200 group-hover:text-sky-300 transition-colors"> Comments & Reactions </h2>
+                  <span class="text-xs text-neutral-500">(click to open)</span>
+                </div>
+
+                <svg class="h-4 w-4 text-neutral-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+
+              <div class="mt-4">
+                <div class="giscus"></div>
+              </div>
+            </details>
+            <script is:inline>
+              (() => {
+                const section = document.getElementById("comments");
+                const details = section?.querySelector("details");
+                if (!section || !details) return;
+
+                let loaded = false;
+                const load = () => {
+                  if (loaded) return;
+                  loaded = true;
+
+                  const s = document.createElement("script");
+                  s.src = "https://giscus.app/client.js";
+                  s.async = true;
+                  s.crossOrigin = "anonymous";
+
+                  s.setAttribute("data-repo", "emmanpbarrameda/emmanpbarrameda.github.io");
+                  s.setAttribute("data-repo-id", "R_kgDOJiknzg");
+                  s.setAttribute("data-category", "Portfolio READS Comments");
+                  s.setAttribute("data-category-id", "DIC_kwDOJiknzs4C0Qj9");
+                  s.setAttribute("data-mapping", "pathname");
+                  s.setAttribute("data-strict", "0");
+                  s.setAttribute("data-reactions-enabled", "1");
+                  s.setAttribute("data-emit-metadata", "0");
+                  s.setAttribute("data-input-position", "bottom");
+                  s.setAttribute("data-theme", "transparent_dark");
+                  s.setAttribute("data-lang", "en");
+                  section.querySelector(".giscus")?.appendChild(s);
+                };
+
+                const openIfHashMatches = () => {
+                  if (location.hash !== "#comments") return;
+                  details.open = true;
+                  load();
+                  section.scrollIntoView({ block: "start", behavior: "smooth" });
+                };
+
+                details.addEventListener("toggle", () => {
+                  if (details.open) load();
+                });
+                openIfHashMatches();
+                window.addEventListener("hashchange", openIfHashMatches);
+                document.addEventListener("astro:page-load", openIfHashMatches);
+              })();
+            </script>
+          </section>
 
           <!-- MARK: Related Posts -->
           {

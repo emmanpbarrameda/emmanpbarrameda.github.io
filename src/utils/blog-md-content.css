@@ -139,7 +139,9 @@
 /* ----------------------------------
 ! MARK: TOC chevron rotate when open
 ---------------------------------- */
-details[open] > summary svg:last-child { transform: rotate(180deg); }
+details[open] summary .toc-chevron {
+  transform: rotate(180deg);
+}
 
 
 /* ----------------------------------
@@ -158,4 +160,15 @@ details[open] > summary svg:last-child { transform: rotate(180deg); }
 }
 @media (prefers-reduced-motion: reduce) {
   .tts-word { transition: none; }
+}
+
+/* ----------------------------------
+! MARK: Giscus comment styling
+---------------------------------- */
+.giscus,
+.giscus-frame {
+  width: 100%;
+}
+.giscus-frame {
+  border: 0;
 }
