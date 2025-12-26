@@ -3,7 +3,7 @@ title: "Hello World"
 description: "My first post using Astro Content Collections."
 pubDate: 2025-12-24
 tags: ["astro", "blog", "filamentphp", "laravel"]
-draft: false
+draft: true
 ---
 
 # Hello World 👋
@@ -107,9 +107,10 @@ composer require emmanpbarrameda/filament-take-picture-field:^1.2.1
 <figure class="blog-media">
   <div class="blog-video-embed">
     <iframe
-      src="https://www.youtube.com/watch?v=ZOBIPb-6PTc"
-      title="Video"
+      src="https://www.youtube.com/embed/ZOBIPb-6PTc"
+      title="Walkthrough video"
       loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen
     ></iframe>
   </div>
