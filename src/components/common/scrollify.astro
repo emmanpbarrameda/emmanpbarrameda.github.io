@@ -1,10 +1,65 @@
 ---
-// src/components/common/Scrollify.astro
+// src\components\common\scrollify.astro
 ---
 
-<!-- Scrollify Progress Bar -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/emmanpbarrameda/scrollify-js@latest/scrollify-scrollprogress-indicator.css" media="print" onload="this.media='all'" />
+<div id="scroll-progress"></div>
 
-<div class="scrollify_scroll_progress" data-height="1.5px" data-background="linear-gradient(to right, #38bdf8, #22d3ee, #2563eb)" data-z-index="10000" data-top="0px"></div>
+<style>
+  #scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: linear-gradient(to right, #38bdf8, #22d3ee, #2563eb);
+    transform: scaleX(0);
+    transform-origin: left;
+    z-index: 10000;
+    pointer-events: none;
+    will-change: transform;
+  }
+</style>
 
-<script is:inline src="https://cdn.jsdelivr.net/gh/emmanpbarrameda/scrollify-js@latest/scrollify-scrollprogress-indicator.js" defer></script>
+<script>
+  (() => {
+    const bar = document.getElementById("scroll-progress");
+    if (!bar) return;
+
+    const barStyle = bar.style;
+    let ticking = false;
+    let lastProgress = -1;
+
+    function updateProgress() {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+      if (docHeight <= 0) {
+        barStyle.transform = "scaleX(0)";
+        lastProgress = 0;
+        ticking = false;
+        return;
+      }
+
+      const rawProgress = window.scrollY / docHeight;
+      const progress = Math.min(1, Math.max(0, rawProgress)); // clamp 0..1
+
+      if (Math.abs(progress - lastProgress) > 0.001) {
+        barStyle.transform = `scaleX(${progress})`;
+        lastProgress = progress;
+      }
+
+      ticking = false;
+    }
+
+    function onTick() {
+      if (!ticking) {
+        requestAnimationFrame(updateProgress);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener("scroll", onTick, { passive: true });
+    window.addEventListener("resize", onTick, { passive: true });
+
+    updateProgress();
+  })();
+</script>

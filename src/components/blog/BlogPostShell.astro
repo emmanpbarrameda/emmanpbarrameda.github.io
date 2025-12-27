@@ -8,6 +8,7 @@ import BackToTop from "../common/back-to-top.astro";
 import { formatDate } from "../../utils/blog";
 import clientGuards from "../../layouts/main-layout.js?raw";
 import { getCollection } from "astro:content";
+import Scrollify from "../../components/common/scrollify.astro";
 import "../../utils/blog-md-content.css";
 
 interface Props {
@@ -62,6 +63,7 @@ const latestPosts = allPosts
   </head>
 
   <body class="relative min-h-screen bg-neutral-950 text-white overflow-x-hidden" oncontextmenu="return false;">
+    <Scrollify />
     <Background />
 
     <!-- MARK: BLUR -->
@@ -142,9 +144,10 @@ const latestPosts = allPosts
         </aside>
         <script src={`${base}js/blog-toc.js`} defer></script>
 
-        <!-- MARK: Main article -->
+        <!-- ! MARK: Top Details -->
         <div class="min-w-0">
           <header class="opacity-0 intersect:opacity-100 intersect:duration-700 intersect:animate-in intersect:slide-in-from-top-10">
+            <!-- Back to Menu (Mobile) -->
             <a href={`${base}blog/`} class="lg:hidden inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-sky-300 transition-colors group">
               <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -152,19 +155,30 @@ const latestPosts = allPosts
               Back to Menu
             </a>
 
+            <!-- MAIN HEADER -->
             <h1 class="mt-6 text-4xl sm:text-5xl font-black tracking-tighter">
               <span class="text-sky-400"># </span>{title}
             </h1>
 
-            <p class="mt-3 text-neutral-400">{description}</p>
+            <!-- MAIN COVER -->
+            {
+              coverUrl && (
+                <figure class="mt-6 relative overflow-hidden rounded-5xl border border-neutral-800/50 bg-transparent aspect-video max-h-[240px] sm:max-h-[340px] lg:max-h-[420px]">
+                  <img src={coverUrl} alt={cover?.alt ?? title} class="absolute inset-0 h-full w-full object-contain" loading="eager" decoding="async" />
+                </figure>
+              )
+            }
 
+            <!-- MAIN DESCRIPTION -->
+            <p class="mt-3 text-white/90 font-normal leading-relaxed">{description}</p>
+
+            <!-- MAIN DATES & TAGS -->
             <div class="mt-4 flex flex-col gap-2 text-xs sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-2 sm:gap-y-1">
               <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-neutral-500">
                 <span>{readMinutes} min read</span>
                 <span class="text-neutral-700">•</span>
                 <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
               </div>
-
               {
                 tags.length > 0 && (
                   <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
@@ -177,15 +191,6 @@ const latestPosts = allPosts
                 )
               }
             </div>
-
-            {
-              coverUrl && (
-                <figure class="mt-6 overflow-hidden rounded-2xl border border-neutral-800/60 bg-neutral-900/40 aspect-video">
-                  <img src={coverUrl} alt={cover?.alt ?? title} class="h-full w-full object-cover" loading="eager" decoding="async" />
-                </figure>
-              )
-            }
-
             <hr class="mt-8 border-neutral-800/60" />
           </header>
 
@@ -221,7 +226,7 @@ const latestPosts = allPosts
             </div>
           </div>
 
-          <!-- MARK: .MD Data (md files inside of src\content\blog) content -->
+          <!-- ! MARK: .MD Data (md files inside of src\content\blog) content -->
           <article class="blog-content font-jetbrains font-light text-neutral-400 [&>p]:text-justify">
             <slot />
           </article>
