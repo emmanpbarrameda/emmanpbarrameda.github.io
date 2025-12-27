@@ -15,7 +15,7 @@ export default defineConfig({
 
     // uses for .md code blocks (https://expressive-code.com/installation/#astro)
     expressiveCode({
-      themes: ["dark-plus", "github-light"],
+      themes: ["dark-plus"],
       frames: { showCopyToClipboardButton: true },
     }),
   ],

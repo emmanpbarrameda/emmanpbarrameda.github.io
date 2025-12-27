@@ -69,23 +69,72 @@ html {
 /* ----------------------------------
 ! MARK: Tables (Markdown)
 ---------------------------------- */
+
+/* ----------------------------------
+! MARK: Tables (Markdown) — NO WRAP, SCROLL ON MOBILE
+---------------------------------- */
+
 .blog-content table {
-  @apply w-full my-6 border border-neutral-800/60 rounded-lg overflow-hidden text-sm bg-neutral-900/50;
+  @apply my-6 text-sm bg-neutral-900/50 border border-neutral-800/60 rounded-lg;
   border-collapse: separate;
   border-spacing: 0;
+
+  /* key: make the TABLE the scroller */
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
 }
+
+/* keep the “table look” */
 .blog-content thead { @apply bg-neutral-900/80; }
-.blog-content tbody { @apply bg-neutral-900/60; }
-.blog-content th { @apply text-left font-semibold text-neutral-200 px-4 py-3 border-b border-neutral-800/60; }
-.blog-content td { @apply px-4 py-3 text-neutral-300 border-b border-neutral-800/40 align-top; }
+.blog-content tbody { @apply bg-neutral-900/80; }
+
+.blog-content th {
+  @apply text-left font-semibold text-neutral-200 px-4 py-3 border-b border-neutral-800/60;
+}
+.blog-content td {
+  @apply px-4 py-3 text-neutral-300 border-b border-neutral-800/40 align-top;
+}
 .blog-content tbody tr:last-child td { border-bottom: 0; }
 .blog-content tbody tr:hover td { @apply bg-neutral-900/40; }
 
-/* Wide tables: horizontal scroll */
-.blog-content :is(table) {
-  display: block;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+/* IMPORTANT: only data tables (tables with <thead>) should force nowrap */
+.blog-content table thead th,
+.blog-content table thead ~ tbody td {
+  white-space: nowrap;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+/* ----------------------------------
+! MARK: Table scrollbar styling
+---------------------------------- */
+
+/* Firefox */
+.blog-content table {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(115, 115, 115, 0.55) rgba(10, 10, 10, 0.35);
+}
+
+/* Chrome / Edge / Safari */
+.blog-content table::-webkit-scrollbar {
+  height: 10px; /* horizontal bar thickness */
+}
+.blog-content table::-webkit-scrollbar-track {
+  background: rgba(10, 10, 10, 0.35);
+  border-radius: 999px;
+}
+.blog-content table::-webkit-scrollbar-thumb {
+  background: rgba(115, 115, 115, 0.55);
+  border-radius: 999px;
+  border: 2px solid rgba(10, 10, 10, 0.35); /* makes it look cleaner */
+}
+.blog-content table::-webkit-scrollbar-thumb:hover {
+  background: rgba(163, 163, 163, 0.7);
 }
 
 
@@ -93,7 +142,7 @@ html {
 ! MARK: badge rows
 ---------------------------------- */
 
-/* Convert <p align="center"> into a wrapping badge row */
+/* Default: badge row (wraps nicely on desktop) */
 .blog-content p[align="center"] {
   display: flex;
   justify-content: center;
@@ -106,10 +155,14 @@ html {
 
 /* Remove the visual gaps (nbsp/extra spans) */
 .blog-content p[align="center"] br,
-.blog-content p[align="center"] :where(span) { display: none; }
+.blog-content p[align="center"] :where(span) {
+  display: none;
+}
 
 /* Link spacing for wrapped badges */
-.blog-content p[align="center"] a { margin: 2px 3px; }
+.blog-content p[align="center"] a {
+  margin: 2px 3px;
+}
 
 /* Keep shields.io badges crisp */
 .blog-content p[align="center"] img[src*="shields.io"] {
@@ -118,14 +171,47 @@ html {
   width: auto;
 }
 
+/* Mobile: slightly smaller badges */
 @media (max-width: 640px) {
-  .blog-content p[align="center"] { gap: 0px; }
-  .blog-content p[align="center"] img[src*="shields.io"] { height: 26px; }
+  .blog-content p[align="center"] img[src*="shields.io"] {
+    height: 26px;
+  }
+}
+
+/* Opt-in: force ONE LINE (no wrap) + horizontal scroll on mobile/any screen
+   Usage in MD: <p align="center" class="badge-row-nowrap"> ... </p>
+*/
+.blog-content p[align="center"].badge-row-nowrap {
+  flex-wrap: nowrap !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  padding: 4px 0;
+  overscroll-behavior-x: contain;
+}
+
+/* Ensure each badge doesn't shrink */
+.blog-content p[align="center"].badge-row-nowrap a {
+  flex: 0 0 auto;
+}
+
+/* Optional: subtle scrollbar for the nowrap row */
+.blog-content p[align="center"].badge-row-nowrap::-webkit-scrollbar {
+  height: 6px;
+}
+.blog-content p[align="center"].badge-row-nowrap::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
 }
 
 /* Inline emoji in headings */
 .blog-content h2 img,
-.blog-content h3 img { display: inline-block; vertical-align: middle; }
+.blog-content h3 img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 
 
 /* ----------------------------------

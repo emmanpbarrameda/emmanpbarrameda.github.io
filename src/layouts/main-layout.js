@@ -7,28 +7,28 @@
     });
 
     // -- disable key combos
-    document.addEventListener("keydown", (e) => {
-        // -- Ctrl+Shift+C or Cmd+Shift+C
-        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "C") {
-            e.preventDefault();
-            return false;
-        }
-        // -- Ctrl+Shift+I or Cmd+Shift+I
-        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "I") {
-            e.preventDefault();
-            return false;
-        }
-        // -- F12
-        if (e.key === "F12") {
-            e.preventDefault();
-            return false;
-        }
-        // -- Ctrl+U or Cmd+U
-        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "u") {
-            e.preventDefault();
-            return false;
-        }
-    });
+    // document.addEventListener("keydown", (e) => {
+    //     // -- Ctrl+Shift+C or Cmd+Shift+C
+    //     if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "C") {
+    //         e.preventDefault();
+    //         return false;
+    //     }
+    //     // -- Ctrl+Shift+I or Cmd+Shift+I
+    //     if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "I") {
+    //         e.preventDefault();
+    //         return false;
+    //     }
+    //     // -- F12
+    //     if (e.key === "F12") {
+    //         e.preventDefault();
+    //         return false;
+    //     }
+    //     // -- Ctrl+U or Cmd+U
+    //     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "u") {
+    //         e.preventDefault();
+    //         return false;
+    //     }
+    // });
 
     // -- disable dragging
     document.addEventListener("dragstart", (e) => {

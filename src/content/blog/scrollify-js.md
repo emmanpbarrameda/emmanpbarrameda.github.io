@@ -15,7 +15,7 @@ cover:
 
 ## Live Demo
 
-<p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="html,result" data-slug-hash="emOGzYJ" data-pen-title="SCROLLIFY-JS - SCROLL PROGRESS INDICATOR WHEN SCROLLING" data-user="emmanpbarrameda" style="height:300px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:2px solid;margin:1em 0;padding:1em;">
+<p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="result,html" data-slug-hash="emOGzYJ" data-pen-title="SCROLLIFY-JS - SCROLL PROGRESS INDICATOR WHEN SCROLLING" data-user="emmanpbarrameda" style="height:300px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:2px solid;margin:1em 0;padding:1em;">
   <span>See the Pen <a href="https://codepen.io/emmanpbarrameda/pen/emOGzYJ">SCROLLIFY-JS - SCROLL PROGRESS INDICATOR WHEN SCROLLING</a> by Emman Barrameda (emmanpbarrameda) (<a href="https://codepen.io/emmanpbarrameda">@emmanpbarrameda</a>) on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://public.codepenassets.com/embed/index.js"></script>
@@ -73,8 +73,9 @@ Add the following links to your HTML:
   title="Back to top">
 </button>
 ```
-
+<br>
 Want a gradient ring? Use `data-progress-gradient`:
+<br><br>
 
 ```html
 data-progress-gradient="linear-gradient(to left, #B374F8, #4da3ff)"
@@ -178,32 +179,56 @@ If you find this project helpful, consider:
 
 ## Get in touch
 
-<table width="100%" align="center">
+<table class="contact-table" width="100%" align="center">
   <tr>
     <td align="center">
       <a href="https://emmanpbarrameda.github.io">
-        <img src="https://avatars.githubusercontent.com/u/67356375?v=4" alt="Profile Image" width="180" style="border-radius: 50%;" />
+        <img
+          src="https://avatars.githubusercontent.com/u/67356375?v=4"
+          alt="Profile Image"
+          width="180"
+          style="border-radius: 50%;"
+        />
       </a>
       <br />
-      <p>Check out <a href="https://emmanpbarrameda.github.io" target="_blank">my portfolio</a> to learn more about me!</p>
-      <a href="https://github.com/emmanpbarrameda" target="_blank"><img src="https://img.shields.io/github/followers/emmanpbarrameda.svg?style=social&label=Follow on GitHub&maxAge=2592000" alt="GitHub Followers" /></a>
+      <p>
+        Check out
+        <a href="https://emmanpbarrameda.github.io" target="_blank">my portfolio</a>
+        to learn more about me!
+      </p>
+      <a href="https://github.com/emmanpbarrameda" target="_blank">
+        <img
+          src="https://img.shields.io/github/followers/emmanpbarrameda.svg?style=social&label=Follow on GitHub&maxAge=2592000"
+          alt="GitHub Followers"
+        />
+      </a>
     </td>
-    <td align="center">
+
+<td align="center">
       <a href="https://emmanpbarrameda.github.io">
-        <img src="https://i.imgur.com/HXUaVAA.png" alt="Cover Image"/>
+        <img src="https://i.imgur.com/l4BHAro.png" alt="Cover Image" />
       </a>
 
-<p align="center">
-  <a href="https://emmanpbarrameda.github.io" target="_blank"><img src="https://img.shields.io/badge/My Portfolio-%20-blue?style=for-the-badge&logo=web"></a>
-  &nbsp;&nbsp;
-  <a href="mailto:emmanpbarrameda@gmail.com" target="_blank"><img src="https://img.shields.io/badge/Email-%20-red?style=for-the-badge&logo=gmail"></a>
-  &nbsp;&nbsp;
-  <a href="https://linkedin.com/in/emmanpbarrameda/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-%20-blue?style=for-the-badge&logo=linkedin"></a>
-  &nbsp;&nbsp;
-  <a href="https://github.com/emmanpbarrameda/" target="_blank"><img src="https://img.shields.io/badge/GitHub-%20-black?style=for-the-badge&logo=github"></a>
-</p>
-
+  <p align="center" class="badge-row-nowrap">
+        <a href="https://emmanpbarrameda.github.io" target="_blank">
+          <img src="https://img.shields.io/badge/My Portfolio-%20-blue?style=for-the-badge&logo=web" />
+        </a>
+        &nbsp;&nbsp;
+        <a href="mailto:emmanpbarrameda@gmail.com" target="_blank">
+          <img src="https://img.shields.io/badge/Email-%20-red?style=for-the-badge&logo=gmail" />
+        </a>
+        &nbsp;&nbsp;
+        <a href="https://linkedin.com/in/emmanpbarrameda/" target="_blank">
+          <img src="https://img.shields.io/badge/LinkedIn-%20-blue?style=for-the-badge&logo=linkedin" />
+        </a>
+        &nbsp;&nbsp;
+        <a href="https://github.com/emmanpbarrameda/" target="_blank">
+          <img src="https://img.shields.io/badge/GitHub-%20-black?style=for-the-badge&logo=github" />
+        </a>
+      </p>
+    </td>
   </tr>
 </table>
+
 
 <p align="center">Made with ❤️ by <a href="https://emmanpbarrameda.github.io">emmanpbarrameda</a></p>
