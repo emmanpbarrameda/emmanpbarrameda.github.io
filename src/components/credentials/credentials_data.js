@@ -37,6 +37,8 @@ export const speakerships = [
 ];
 
 export const engagements = [
+  { title: "Campus DevCon Manila 2025 ", date: "Tech Specialist" },
+  { title: "Google DevFest 2025", date: "Participant" },
   { title: "Google I/O 2025 Manila", date: "Participant" },
   { title: "Design in Motion w/ LottieFiles & Figma 2025", date: "Participant" },
   { title: "UMAK 13th IT Skills Olympics", date: "Participant" },

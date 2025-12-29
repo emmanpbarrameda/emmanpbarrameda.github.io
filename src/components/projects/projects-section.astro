@@ -30,7 +30,7 @@ const validTechs = ["NextJs", "Supabase", "TailwindCSS", "Bootstrap", "React", "
 type Project = {
   type: AllowedProjectType;
   title: string;
-  stack: Tech[]; // only use techs from validTechs
+  stack: Tech[];
   description: string;
   deploy: string;
   repository: string;
@@ -55,21 +55,26 @@ const rawProjects = await res.json();
  * - Auto-correct relative image paths using baseUrl
  */
 const projects: Project[] = rawProjects
-  .filter((proj: any) => allowedTypes.includes(proj.type)) // skip invalid types
+  .filter((proj: any) => allowedTypes.includes(proj.type))
   .map((proj: any) => ({
     type: proj.type as AllowedProjectType,
     title: proj.title,
     stack: proj.stack
-      .split(",") // "PHP, Laravel, TailwindCSS ..."
-      .map((s: string) => s.trim()) // remove extra spaces
-      .filter((s: string): s is Tech => validTechs.includes(s as Tech)), // only include valid techs
+      .split(",")
+      .map((s: string) => s.trim())
+      .filter((s: string): s is Tech => validTechs.includes(s as Tech)),
     description: proj.description,
     deploy: proj.deploy,
     repository: proj.repository,
-    image: proj.image.startsWith("http") ? proj.image : `${baseUrl}${proj.image}`, // fix image path
+    image: proj.image.startsWith("http") ? proj.image : `${baseUrl}${proj.image}`,
     alt: proj.alt,
     previews: proj.previews?.split(",").map((p: string) => (p.trim().startsWith("http") ? p.trim() : `${baseUrl}${p.trim()}`)) || []
   }));
+
+/**
+ * ? STEP 6: Limit how many project cards to show by default
+ */
+const PROJECT_PREVIEW_LIMIT = 4;
 ---
 
 <!-- ! ========================== --><!-- SECTION: Development Projects --><!-- ========================== -->
@@ -80,14 +85,63 @@ const projects: Project[] = rawProjects
 
   <!-- ? List of project cards (from fetched & filtered sheet data) -->
   <div class="mt-3 flex flex-col gap-8">
-    {projects.map((project, index) => <ProjectCard type={project.type} title={project.title} stack={project.stack} description={project.description} deploy={project.deploy} repository={project.repository} image={project.image} alt={project.alt} className={`intersect:slide-in-from-${index % 2 === 0 ? "left" : "right"}-12`} previews={project.previews} />)}
+    {
+      projects.map((project, index) => (
+        <div class="project-item" data-preview={index < PROJECT_PREVIEW_LIMIT ? "true" : "false"}>
+          <ProjectCard type={project.type} title={project.title} stack={project.stack} description={project.description} deploy={project.deploy} repository={project.repository} image={project.image} alt={project.alt} className={`intersect:slide-in-from-${index % 2 === 0 ? "left" : "right"}-12`} previews={project.previews} />
+        </div>
+      ))
+    }
   </div>
 
-  <!-- ? View more projects button -->
-  <div class="mt-12 w-full text-center">
-    <a href={infos.moreprojects} target="_blank" rel="noopener noreferrer" class="mx-auto inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-sky-400 via-cyan-500 to-blue-600 px-6 py-3 text-center font-jetbrains font-bold text-white transition-all duration-200 hover:brightness-110 hover:scale-105 hover:shadow-lg hover:shadow-sky-400/25 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-gray-900">
-      viewMoreProjects();
-      <Icon name="ic:baseline-open-in-new" class="text-xl" />
-    </a>
-  </div>
+  <!-- ? Show all / Show less button -->
+  {
+    projects.length > PROJECT_PREVIEW_LIMIT && (
+      <div class="mt-8 w-full text-center">
+        <button type="button" id="projects-toggle" data-open="false" class="mx-auto inline-flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-sky-400 via-cyan-500 to-blue-600 px-6 py-3 text-center font-jetbrains font-bold text-white transition-all duration-200 hover:brightness-110 hover:scale-105 hover:shadow-lg hover:shadow-sky-400/25 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-gray-900">
+          <span id="projects-toggle-label">Show all</span>
+          <svg id="projects-toggle-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 transition-transform duration-300">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
+    )
+  }
+
+  <script is:inline>
+    (() => {
+      const items = Array.from(document.querySelectorAll(".project-item"));
+      const btn = document.getElementById("projects-toggle");
+      const label = document.getElementById("projects-toggle-label");
+      const chevron = document.getElementById("projects-toggle-chevron");
+
+      if (!btn || !label || items.length === 0) return;
+
+      const applyState = (open) => {
+        btn.dataset.open = open ? "true" : "false";
+        label.textContent = open ? "showLess();" : "showAll();";
+        chevron?.classList.toggle("rotate-180", open);
+
+        items.forEach((el) => {
+          const isPreview = el.getAttribute("data-preview") === "true";
+          el.style.display = open || isPreview ? "" : "none";
+        });
+      };
+
+      // show previews only
+      applyState(false);
+
+      btn.addEventListener("click", () => {
+        const open = btn.dataset.open === "true";
+        applyState(!open);
+
+        // collapsed, scroll back nicely
+        if (open) {
+          document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+
+      document.addEventListener("astro:after-swap", () => applyState(false));
+    })();
+  </script>
 </section>
