@@ -8,7 +8,7 @@ import { infos } from "../../data/infos.js";
 
 const base = import.meta.env.BASE_URL || "/";
 const posts = (await getCollection("blog")).filter((p) => (import.meta.env.PROD ? !p.data.draft : true)).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-const canonicalUrl = new URL(`${base}dev-notes/`, Astro.site).toString();
+const canonicalUrl = new URL(`${base}${infos.blog_page_slug}/`, Astro.site).toString();
 
 const toPublicUrl = (src?: string) => {
   if (!src) return null;
@@ -59,7 +59,7 @@ const toPublicUrl = (src?: string) => {
 
         <section class="flex flex-col gap-3.5">
           {posts.map((post, index) => (
-            <a href={`${base}dev-notes/${post.id.replace(/\.(md|mdx)$/, "")}/`} data-post-card data-search={`${post.data.title} ${post.data.description ?? ""} ${(post.data.tags ?? []).join(" ")}`.toLowerCase()} class="group relative rounded-xl border border-neutral-800/60 bg-gradient-to-r from-neutral-900/80 via-neutral-900/40 to-neutral-800/20 backdrop-blur-sm transition-all duration-300 hover:border-sky-500/60 hover:bg-neutral-900/90 hover:shadow-lg hover:shadow-sky-500/10 hover:-translate-y-0.5 opacity-0 intersect:opacity-100 intersect:duration-700 intersect:animate-in intersect:slide-in-from-bottom-6" style={`animation-delay: ${index * 50}ms`}>
+            <a href={`${base}${infos.blog_page_slug}/${post.id.replace(/\.(md|mdx)$/, "")}/`} data-post-card data-search={`${post.data.title} ${post.data.description ?? ""} ${(post.data.tags ?? []).join(" ")}`.toLowerCase()} class="group relative rounded-xl border border-neutral-800/60 bg-gradient-to-r from-neutral-900/80 via-neutral-900/40 to-neutral-800/20 backdrop-blur-sm transition-all duration-300 hover:border-sky-500/60 hover:bg-neutral-900/90 hover:shadow-lg hover:shadow-sky-500/10 hover:-translate-y-0.5 opacity-0 intersect:opacity-100 intersect:duration-700 intersect:animate-in intersect:slide-in-from-bottom-6" style={`animation-delay: ${index * 50}ms`}>
               <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-sky-500/0 via-sky-500/5 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div class="relative flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5 p-5">

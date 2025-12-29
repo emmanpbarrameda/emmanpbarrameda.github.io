@@ -6,7 +6,7 @@ export const experience = [
 ];
 
 export const leadership = [
-  { title: "President", org: "Student Developer Philippines (StuDevPH)", date: "Dec 2025 – Present", notes: "Tech Community Organization", href: "" },
+  // { title: "President", org: "Student Developer Philippines (StuDevPH)", date: "Dec 2025 – Present", notes: "Tech Community Organization", href: "" },
   { title: "Vice President for Corporate Communications", org: "URSB Alumni Association", date: "Aug 2025 – Present", notes: "Organization", href: "https://www.facebook.com/share/1AgMYQn7Cv/" },
   { title: "Tech Specialist (VP Programs Office)", org: "DEVCON Manila", date: "May 2025 – Present", notes: "Community Organization", href: "https://www.facebook.com/share/17HsuCAcyN/" },
   { title: "President", org: "URSB BSIT Students' League", date: "Aug 2024 – Jun 2025", notes: "Organization", href: "https://www.facebook.com/share/1AamWmzH9u/" },

@@ -12,7 +12,7 @@ cover:
 # Installing and Using wkhtmltopdf / wkhtmltoimage on Hostinger (and Similar Shared Hosting)
 
 **Tested:** August 8, 2025  
-**Use case:** Laravel + Snappy (or any wrapper that needs `wkhtmltopdf` / `wkhtmltoimage`)
+**Use case:** Hostinger + Laravel + Snappy or any wrapper that needs wkhtmltopdf / wkhtmltoimage
 
 This guide shows how to run `wkhtmltopdf` and `wkhtmltoimage` on shared hosting (e.g., Hostinger) by uploading precompiled Linux binaries into your Laravel project and pointing Snappy to them.
 
@@ -41,6 +41,8 @@ Inside the extracted folder, locate the `wkhtmltox/bin/` directory. It should co
 
 - `wkhtmltopdf` (no file extension)
 - `wkhtmltoimage` (no file extension)
+
+![Cover](/blog-images/installing-and-using-wkhtmltopdf-wkhtmltoimage-on-hostinger/ss2.png)
 
 ---
 
@@ -143,7 +145,7 @@ php artisan optimize:clear
 
 ## Done
 
-You can now use `wkhtmltopdf` and `wkhtmltoimage` within your Laravel application on Hostinger (or similar shared hosting).
+✅ **Done!** You can now use `wkhtmltopdf` and `wkhtmltoimage` within your Laravel application on Hostinger (or similar shared hosting).
 
 ---
 
