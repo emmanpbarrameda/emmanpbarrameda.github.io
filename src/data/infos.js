@@ -43,4 +43,7 @@ export const infos = {
   resumeshortcutlink: "https://emmanpbarrameda.github.io/resume",
   
   moreprojects: "https://github.com/emmanpbarrameda?tab=repositories&q=&type=public&language=&sort=",
+
+  blog_page_name: "Dev Notes",
+  blog_page_tagline: "Short write-ups on bugs, fixes, experiments, and lessons learned while coding.",
 };

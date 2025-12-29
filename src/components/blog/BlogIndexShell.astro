@@ -15,13 +15,13 @@ interface Props {
   url?: string;
 }
 
-const { pageTitle = "Blog", pageDescription = "Posts & notes", url } = Astro.props;
+const { pageTitle = infos.blog_page_name, pageDescription = infos.blog_page_tagline, url } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <MetaTags title={`${pageTitle} | ${infos.subname} Blog`} description={pageDescription} url={url} />
+    <MetaTags title={`${pageTitle} | ${infos.subname} ${infos.blog_page_name}`} description={pageDescription} url={url} />
     <title>{pageTitle} | {infos.subname}</title>
     <meta name="description" content={pageDescription} />
   </head>

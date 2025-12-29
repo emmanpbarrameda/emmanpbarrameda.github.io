@@ -57,8 +57,8 @@ const latestPosts = allPosts
 <!doctype html>
 <html lang="en">
   <head>
-    <MetaTags title={`${title} | ${infos.subname} Blog`} description={description} url={url} image={coverUrl ?? undefined} />
-    <title>{title} | {infos.subname}</title>
+    <MetaTags title={`${title} | ${infos.subname} ${infos.blog_page_name}`} description={description} url={url} image={coverUrl ?? undefined} />
+    <title>{title} | {infos.nickname} {infos.blog_page_name}</title>
     <meta name="description" content={description} />
   </head>
 
@@ -77,7 +77,7 @@ const latestPosts = allPosts
         <!-- MARK: DESKTOP: TOC -->
         <aside class="hidden lg:block">
           <div class="sticky top-24 rounded-lg border border-neutral-800/50 bg-neutral-900/40 backdrop-blur-sm p-4">
-            <a href={`${base}blog/`} class="flex items-center gap-2 text-sm text-neutral-400 hover:text-sky-300 transition-colors group mb-4">
+            <a href={`${base}dev-notes/`} class="flex items-center gap-2 text-sm text-neutral-400 hover:text-sky-300 transition-colors group mb-4">
               <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
               </svg>
@@ -148,7 +148,7 @@ const latestPosts = allPosts
         <div class="min-w-0">
           <header class="opacity-0 intersect:opacity-100 intersect:duration-700 intersect:animate-in intersect:slide-in-from-top-10">
             <!-- Back to Menu (Mobile) -->
-            <a href={`${base}blog/`} class="lg:hidden inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-sky-300 transition-colors group">
+            <a href={`${base}dev-notes/`} class="lg:hidden inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-sky-300 transition-colors group">
               <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
               </svg>
@@ -323,7 +323,7 @@ const latestPosts = allPosts
 
                 <div class="grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {(relatedPosts.length > 0 ? relatedPosts : latestPosts).map((post) => (
-                    <a href={`${base}blog/${post.slug}/`} class="group relative h-full overflow-hidden rounded-xl border border-neutral-800/60 bg-neutral-900/40 transition hover:border-neutral-700/80 hover:bg-neutral-900/60 flex flex-col">
+                    <a href={`${base}dev-notes/${post.slug}/`} class="group relative h-full overflow-hidden rounded-xl border border-neutral-800/60 bg-neutral-900/40 transition hover:border-neutral-700/80 hover:bg-neutral-900/60 flex flex-col">
                       {(() => {
                         const c = toPublicUrl((post.data as any)?.cover?.src);
                         return (
