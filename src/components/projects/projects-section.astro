@@ -1,7 +1,7 @@
 ---
 import SectionTitle from "../common/section-title.astro";
 import ProjectCard from "./project-card.astro";
-import { Icon } from "astro-icon/components";
+// import { Icon } from "astro-icon/components";
 import { infos } from "../../data/infos.js";
 import type { Tech } from "./tech-stack.astro";
 
@@ -12,7 +12,7 @@ const baseUrl = infos.host;
  * These are the only valid "type" values a project can have.
  * It ensures we only process projects with one of these labels.
  */
-const allowedTypes = ["BackEnd Project", "FrontEnd Project", "FullStack Project", "Client Project", "Open-Source Contribution", "Capstone Project"] as const;
+const allowedTypes = ["BackEnd Project", "FrontEnd Project", "FullStack Project", "Client Project", "Open-Source Contribution", "Capstone Project", "Corporate Project"] as const;
 
 type AllowedProjectType = (typeof allowedTypes)[number];
 

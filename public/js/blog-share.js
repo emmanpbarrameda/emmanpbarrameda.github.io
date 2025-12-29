@@ -57,7 +57,12 @@
                 ta.setSelectionRange(0, str.length);
             } catch (e) { }
 
-            ok = document.execCommand("copy");
+            var doc = /** @type {any} */ (document);
+            var execCmd = doc.execCommand;
+            if (typeof execCmd === "function") {
+                ok = execCmd.call(doc, "copy");
+            }
+
         } catch (err) {
             ok = false;
         } finally {

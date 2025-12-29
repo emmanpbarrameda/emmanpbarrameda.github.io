@@ -1,5 +1,11 @@
 ---
 // file: src\components\hero\hero-profileimage.astro
+const sliderImages = [
+  { src: "/images/about_slider1.webp", alt: "emmanpbarrameda" },
+  { src: "/images/about_slider2.webp", alt: "emmanpbarrameda" },
+  { src: "/images/about_slider4.webp", alt: "emmanpbarrameda" },
+  { src: "/images/about_slider5.webp", alt: "emmanpbarrameda" }
+];
 ---
 
 <div class="flex w-full justify-center md:w-1/2 md:justify-end order-1 md:order-2 mt-8 mb-0 md:my-0 animate-in fade-in-0 slide-in-from-right-12">
@@ -9,11 +15,11 @@
 
     <!-- Main bubble image -->
     <div class="relative h-64 w-64 md:h-80 md:w-80 lg:h-96 lg:w-96 rounded-full shadow-2xl bg-black/5 backdrop-blur-sm border border-sky-500/10 group-hover:shadow-sky-500/20 transition-all duration-700 overflow-hidden bubble-container">
-      <!-- Fading image carousel -->
-      <img src="/images/about_slider1.webp" alt="emmanpbarrameda" class="slider-image absolute inset-0 h-full w-full object-cover transition-all duration-500 rounded-full" draggable="false" ondragstart="return false" oncontextmenu="return false" />
-      <img src="/images/about_slider2.webp" alt="emmanpbarrameda" class="slider-image absolute inset-0 h-full w-full object-cover transition-all duration-500 rounded-full" draggable="false" ondragstart="return false" oncontextmenu="return false" />
-      <img src="/images/about_slider4.webp" alt="emmanpbarrameda" class="slider-image absolute inset-0 h-full w-full object-cover transition-all duration-500 rounded-full" draggable="false" ondragstart="return false" oncontextmenu="return false" />
-      <img src="/images/about_slider5.webp" alt="emmanpbarrameda" class="slider-image absolute inset-0 h-full w-full object-cover transition-all duration-500 rounded-full" draggable="false" ondragstart="return false" oncontextmenu="return false" />
+      <!-- First image loads immediately (LCP) -->
+      <img src={sliderImages[0].src} alt={sliderImages[0].alt} class="slider-image absolute inset-0 h-full w-full object-cover transition-all duration-500 rounded-full" draggable="false" fetchpriority="high" />
+
+      <!-- Other images lazy load -->
+      {sliderImages.slice(1).map((image) => <img src="" data-src={image.src} alt={image.alt} class="slider-image absolute inset-0 h-full w-full object-cover transition-all duration-500 rounded-full" draggable="false" loading="lazy" />)}
     </div>
 
     <!-- Animated pulse ring -->
@@ -22,7 +28,6 @@
     <!-- Animated floating accents -->
     <div class="absolute -bottom-4 -right-4 text-sky-400 text-xl font-bold z-10 animate-float select-none">&lt;/&gt;</div>
     <div class="absolute -top-4 -left-4 text-blue-500 text-lg font-bold z-10 animate-float-delay select-none">&lt;/&gt;</div>
-
     <div class="absolute top-2 left-[30%] text-cyan-400 text-lg font-bold z-10 animate-float select-none">&lt;/&gt;</div>
     <div class="absolute top-[25%] right-0 text-indigo-400 text-base font-bold z-10 animate-float-delay select-none">&lt;/&gt;</div>
     <div class="absolute bottom-[30%] left-3 text-blue-300 text-sm font-bold z-10 animate-float select-none">&lt;/&gt;</div>
@@ -30,7 +35,6 @@
     <div class="absolute top-[60%] left-[60%] text-cyan-300 text-base font-bold z-10 animate-float select-none">&lt;/&gt;</div>
 
     <style is:inline>
-      /* make images non-interactive */
       .slider-image {
         opacity: 0;
         pointer-events: none;
@@ -38,45 +42,45 @@
         -webkit-user-select: none;
         -webkit-touch-callout: none;
         -webkit-user-drag: none;
+        will-change: opacity;
+      }
+
+      .slider-image.active {
         animation: fadeCycle 12s ease-in-out infinite;
       }
 
-      /* loop */
-      .slider-image:nth-of-type(1) {
+      .slider-image:nth-of-type(1).active {
         animation-delay: 0s;
       }
-      .slider-image:nth-of-type(2) {
+      .slider-image:nth-of-type(2).active {
         animation-delay: 3s;
       }
-      .slider-image:nth-of-type(3) {
+      .slider-image:nth-of-type(3).active {
         animation-delay: 6s;
       }
-      .slider-image:nth-of-type(4) {
+      .slider-image:nth-of-type(4).active {
         animation-delay: 9s;
       }
 
-      /* images fade cycle */
       @keyframes fadeCycle {
         0% {
           opacity: 1;
         }
         20% {
           opacity: 1;
-        } /* hold */
+        }
         25% {
           opacity: 0;
-        } /* fade out */
+        }
         100% {
           opacity: 0;
-        } /* stay hidden until next turn */
+        }
       }
 
-      /* Pause on hover */
       .bubble-container:hover .slider-image {
         animation-play-state: paused;
       }
 
-      /* Floating accents */
       .animate-float {
         animation: float 4s ease-in-out infinite;
       }
@@ -107,11 +111,33 @@
     <script is:inline>
       (function () {
         const container = document.currentScript?.parentElement?.querySelector(".bubble-container");
+        if (!container) return;
+
+        const images = container.querySelectorAll(".slider-image");
         const block = (e) => e.preventDefault();
-        if (container) {
-          container.addEventListener("contextmenu", block, { passive: false });
-          container.addEventListener("dragstart", block, { passive: false });
-        }
+
+        container.addEventListener("contextmenu", block, { passive: false });
+        container.addEventListener("dragstart", block, { passive: false });
+
+        // Activate first image immediately
+        images[0]?.classList.add("active");
+
+        // Lazy load other images after a short delay
+        setTimeout(() => {
+          images.forEach((img, index) => {
+            if (index === 0) return;
+
+            const dataSrc = img.getAttribute("data-src");
+            if (dataSrc) {
+              const preload = new Image();
+              preload.onload = () => {
+                img.src = dataSrc;
+                img.classList.add("active");
+              };
+              preload.src = dataSrc;
+            }
+          });
+        }, 1000);
       })();
     </script>
   </div>

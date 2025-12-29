@@ -43,12 +43,12 @@
                     : "pl-5 text-neutral-500 text-xs";
 
         const spacing =
-            level === 1 && i > 0 ? " mt-3 pt-2 border-t border-neutral-800/30" : "";
+            level === 1 && i > 0 ? " mt-1.5 pt-1 border-t border-neutral-800/30" : "";
 
         const textSize = level === 1 ? " text-sm font-medium" : " text-xs";
 
         parts.push(
-            `<a class="toc-link block truncate rounded-md px-2 py-1.5 transition-colors hover:text-sky-300 hover:bg-neutral-900/50 ${indent}${spacing}${textSize}" href="#${h.id}" data-id="${h.id}">${escaped}</a>`
+            `<a class="toc-link block truncate rounded-md px-2 py-1 transition-colors hover:text-sky-300 hover:bg-neutral-900/50 ${indent}${spacing}${textSize}" href="#${h.id}" data-id="${h.id}">${escaped}</a>`
         );
     }
 

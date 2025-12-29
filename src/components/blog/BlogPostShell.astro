@@ -84,7 +84,7 @@ const latestPosts = allPosts
               Back to Menu
             </a>
             <div class="mb-4 pb-2 border-b border-neutral-800/40 text-xs uppercase tracking-[0.3em] text-neutral-500"> On This Page </div>
-            <nav id="blog-toc" class="space-y-2 text-sm max-h-[65vh] overflow-y-auto overscroll-contain pr-2 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-neutral-950/30 [&::-webkit-scrollbar-thumb]:bg-neutral-800 hover:[&::-webkit-scrollbar-thumb]:bg-neutral-700"></nav>
+            <nav id="blog-toc" class="space-y-0 text-sm max-h-[65vh] overflow-y-auto overscroll-contain pr-2 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-neutral-950/30 [&::-webkit-scrollbar-thumb]:bg-neutral-800 hover:[&::-webkit-scrollbar-thumb]:bg-neutral-700"></nav>
 
             <!-- MARK: BUTTONS TOC Desktop -->
             <div class="mt-4 pt-3 border-t border-neutral-800/40 flex items-center justify-between">
@@ -142,7 +142,7 @@ const latestPosts = allPosts
             </div>
           </div>
         </aside>
-        <script src={`${base}js/blog-toc.js`} defer></script>
+        <script is:inline src={`${base}js/blog-toc.js`} defer></script>
 
         <!-- ! MARK: Top Details -->
         <div class="min-w-0">
@@ -210,7 +210,7 @@ const latestPosts = allPosts
                   <!-- Right: actions -->
                   <span class="flex items-center gap-3">
                     <!-- Comments icon -->
-                    <a href="#comments" class="text-neutral-500 hover:text-sky-300 transition-colors" aria-label="Jump to comments" onclick="event.stopPropagation()">
+                    <a href="#comments" class="text-neutral-500 hover:text-sky-300 transition-colors" aria-label="Jump to comments" onclick="(e) => e.stopPropagation()" title="Jump to comments">
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h6m-7 9l3.5-3H20a2 2 0 002-2V6a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2h2v3z"></path>
                       </svg>
@@ -221,7 +221,7 @@ const latestPosts = allPosts
                     </svg>
                   </span>
                 </summary>
-                <nav id="blog-toc-mobile" class="px-4 pb-4 space-y-2 text-sm max-h-[50vh] overflow-y-auto"></nav>
+                <nav id="blog-toc-mobile" class="px-4 pb-4 space-y-0 text-sm max-h-[50vh] overflow-y-auto"></nav>
               </details>
             </div>
           </div>
@@ -380,13 +380,14 @@ const latestPosts = allPosts
 
           <BackToTop />
           <script is:inline set:html={clientGuards} />
-          <Footer />
         </div>
       </div>
     </main>
 
-    <script src={`${base}js/blog-heading-copy-links.js`} defer></script>
-    <script src={`${base}js/blog-share.js`} defer></script>
-    <script src={`${base}js/blog-tts.js`} defer></script>
+    <Footer />
+
+    <script is:inline src={`${base}js/blog-heading-copy-links.js`} defer></script>
+    <script is:inline src={`${base}js/blog-share.js`} defer></script>
+    <script is:inline src={`${base}js/blog-tts.js`} defer></script>
   </body></html
 >

@@ -12,7 +12,11 @@
         document.body.append(ta);
         ta.select();
         ta.setSelectionRange(0, text.length);
-        const ok = document.execCommand("copy");
+        
+        const doc = /** @type {any} */ (document);
+        const execCommand = typeof doc.execCommand === "function" ? doc.execCommand.bind(doc) : null;
+        const ok = execCommand ? execCommand("copy") : false;
+
         ta.remove();
         return ok;
     }

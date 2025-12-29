@@ -3,26 +3,74 @@ import { infos } from "../../data/infos.js";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="mx-auto mt-20 flex max-w-screen-md flex-col items-center justify-between gap-1 px-4 py-8 text-neutral-600 sm:flex-row text-center sm:text-left">
-  <!-- <p>
-    Built with
-    <span class="font-bold text-sky-400 opacity-60">♥</span> using
-    <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" class="font-bold text-sky-400 opacity-60 hover:underline">Astro Web Framework</a>
-  </p> -->
+<footer class="mx-auto mt-20 max-w-screen-md px-4 py-8 font-jetbrains text-neutral-600">
+  <!-- MARK: divider -->
+  <div class="h-px w-full bg-gradient-to-r from-transparent via-neutral-800/70 to-transparent"></div>
 
-  <div class="flex items-center gap-2">
-    <!-- HIDDEN BUT FUNCTIONAL COUNTER -->
-    <div style="height: 0; width: 0; overflow: hidden; position: absolute;">
-      <a href="http://www.freevisitorcounters.com" title="Free Visitor Counter">📈</a>
-      <script is:inline type="text/javascript" src="https://www.freevisitorcounters.com/auth.php?id=2e68fdfe06e3bdd6b074d336bc304fc71e7a00f0"></script>
-      <script is:inline type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1201808/t/5"></script>
-    </div>
-
-    <a href="https://www.freevisitorcounters.com/en/home/stats/id/1201808" title="Free Visitor Counter" target="_blank">📈</a>
-    <!-- COPYRIGHT -->
-    <p class="text-xs sm:text-sm">
-      &copy; {currentYear}
-      {infos.fullname}. All rights reserved.
+  <!-- MARK: footer content -->
+  <div class="mt-6 flex flex-col items-center justify-between gap-1 sm:flex-row sm:gap-2 text-center sm:text-left">
+    <p class="text-xs leading-tight text-neutral-500 sm:text-sm sm:leading-normal">
+      Built by
+      <a href="/" class="font-bold text-sky-400 opacity-60 hover:underline">{infos.subname}</a>
+      from <span class="font-bold text-sky-400 opacity-60" title="Philippines">PH</span>
     </p>
+
+    <!-- MARK: RIGHT -->
+    <div class="flex items-center gap-0 text-xs text-neutral-500 sm:gap-2 sm:text-sm">
+      <!-- MARK: copyright -->
+      <p class="leading-tight">
+        Copyright {currentYear}. All rights reserved.
+      </p>
+
+      <!-- MARK: counter -->
+      <div id="visitor-counter-container" style="height: 0; width: 0; overflow: hidden; position: absolute;">
+        <a href="http://www.freevisitorcounters.com" title="Free Visitor Counter">📈</a>
+      </div>
+
+      <a href="https://www.freevisitorcounters.com/en/home/stats/id/1201808" title="Visitor stats" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center justify-center rounded-md p-1 text-neutral-500 transition hover:text-sky-300 sm:p-1.5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:scale-110" aria-hidden="true">
+          <path d="M3 3v18h18"></path>
+          <path d="M7 16v-6"></path>
+          <path d="M12 16v-10"></path>
+          <path d="M17 16v-3"></path>
+        </svg>
+        <span class="sr-only">Visitor stats</span>
+      </a>
+    </div>
   </div>
 </footer>
+
+<script>
+  let counterLoaded = false;
+  function loadVisitorCounter() {
+    if (counterLoaded) return;
+    counterLoaded = true;
+
+    const container = document.getElementById("visitor-counter-container");
+    if (!container) return;
+
+    const scripts = ["https://www.freevisitorcounters.com/auth.php?id=2e68fdfe06e3bdd6b074d336bc304fc71e7a00f0", "https://www.freevisitorcounters.com/en/home/counter/1201808/t/5"];
+
+    scripts.forEach((src) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.async = true;
+      container.appendChild(script);
+    });
+  }
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries[0].isIntersecting) {
+        loadVisitorCounter();
+        observer.disconnect();
+      }
+    },
+    { rootMargin: "200px" }
+  );
+
+  const footer = document.querySelector("footer");
+  if (footer) {
+    observer.observe(footer);
+  }
+  setTimeout(loadVisitorCounter, 5000);
+</script>

@@ -31,7 +31,7 @@ const rawCertificates: Certificate[] = await res.json();
  * - Add full image URL to each certificate object
  * - Keep all original data intact
  */
-const certificates: (Certificate & { url: string })[] = rawCertificates.map((cert, index) => ({
+const certificates: (Certificate & { url: string })[] = rawCertificates.map((cert) => ({
   ...cert,
   url: `${baseUrl}${cert.img}`
 }));
