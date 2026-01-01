@@ -19,6 +19,7 @@ interface Props {
 const { type, title, stack, description, deploy, repository, image, alt, className, previews } = Astro.props;
 
 const lightboxId = `lightbox-${title.toLowerCase().replace(/\s+/g, "-")}`;
+const hasRepo = typeof repository === "string" && repository.trim().length > 0;
 ---
 
 <article class={twMerge("grid gap-4 overflow-hidden rounded-md border border-neutral-800 bg-gradient-to-t from-neutral-900/40 via-75% sm:grid-cols-7 opacity-0 intersect:opacity-100 intersect:duration-700 intersect:animate-in intersect:fade-in-0 hover:shadow-md hover:border-neutral-700/80 hover:bg-neutral-900/60", className)}>
@@ -31,21 +32,32 @@ const lightboxId = `lightbox-${title.toLowerCase().replace(/\s+/g, "-")}`;
         {title}
       </h3>
     </header>
+
     <div class="flex flex-wrap gap-1 font-jetbrains">
-      <h4 class="w-full text-sm leading-[1.25] tracking-tight text-neutral-700">Tech Stack:</h4>
+      <p class="w-full text-sm leading-[1.25] tracking-tight text-neutral-700">Tech Stack:</p>
       <TechStack techs={stack} />
     </div>
+
     <p class="text-neutral-400">
       {description}
     </p>
-    <footer class="mt-4 flex items-center gap-4 sm:mt-8">
-      <a target="_blank" href={deploy} class="grid w-fit rounded bg-gradient-to-br from-sky-400 via-cyan-500 to-blue-600 px-4 py-2 font-jetbrains font-bold text-white transition hover:brightness-90 shadow-md">getDeploy();</a>
 
-      <a target="_blank" href={repository} class="group flex w-fit gap-1 font-jetbrains">
-        <span aria-hidden="true" class="text-sky-400">[</span>
-        <span class="flex items-center gap-1 underline-offset-2 group-hover:underline">Visit Repo</span>
-        <span aria-hidden="true" class="text-sky-400">]</span>
-      </a>
+    <footer class="mt-4 flex items-center gap-4 sm:mt-8">
+      <a target="_blank" rel="noopener noreferrer" href={deploy} aria-label={`Open live demo for ${title}`} class="grid w-fit rounded bg-gradient-to-br from-sky-400 via-cyan-500 to-blue-600 px-4 py-2 font-jetbrains font-bold text-white transition hover:brightness-90 shadow-md"> getDeploy(); </a>
+
+      {
+        hasRepo && (
+          <a target="_blank" rel="noopener noreferrer" href={repository} aria-label={`Open repository for ${title}`} class="group flex w-fit gap-1 font-jetbrains">
+            <span aria-hidden="true" class="text-sky-400">
+              [
+            </span>
+            <span class="flex items-center gap-1 underline-offset-2 group-hover:underline">Visit Repo</span>
+            <span aria-hidden="true" class="text-sky-400">
+              ]
+            </span>
+          </a>
+        )
+      }
     </footer>
   </div>
 

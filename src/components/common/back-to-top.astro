@@ -1,40 +1,97 @@
 ---
+// file: src\components\common\back-to-top.astro
 import { Icon } from "astro-icon/components";
 ---
 
-<button id="backToTopBtn" class="fixed bottom-5 right-5 z-50 hidden items-center justify-center text-sky-500 transition-all duration-300
-         hover:brightness-125 focus:outline-none w-10 h-10 md:w-12 md:h-12 active:scale-90" aria-label="Back to top">
+<button id="backToTopBtn" class="fixed bottom-5 right-5 z-50 hidden items-center justify-center text-sky-500 transition-all duration-300 hover:brightness-125 focus:outline-none w-10 h-10 md:w-12 md:h-12 active:scale-90" aria-label="Back to top">
   <Icon name="ic:round-keyboard-arrow-up" class="text-2xl md:text-3xl" />
 </button>
 
 <script is:inline>
-  const btn = document.getElementById("backToTopBtn");
+  (() => {
+    const btn = document.getElementById("backToTopBtn");
+    if (!btn) return;
 
-  window.addEventListener("scroll", () => {
-    // visibility
-    if (window.scrollY > 300) {
-      btn.classList.remove("hidden");
-    } else {
-      btn.classList.add("hidden");
+    const OFFSET = 0;
+    const THRESHOLD = 300;
+    const POLL_MS = 200;
+    const MAX_TRIES = 30;
 
-      if (location.hash !== "#home") {
-        history.replaceState(null, "", "#home");
+    const getLenis = () => window.__lenis || null;
+    const hasHome = () => Boolean(document.getElementById("home"));
+
+    const topHash = () => (hasHome() ? "#home" : "#");
+    const topTarget = () => (hasHome() ? "#home" : 0);
+
+    // Only set top hash if there is no meaningful hash already
+    const syncTopHashIfEmpty = () => {
+      if (location.hash && location.hash !== "#") return;
+      const hash = topHash();
+      if (location.hash !== hash) history.replaceState(null, "", hash);
+    };
+
+    const scrollY = () => {
+      const l = getLenis();
+      return l && typeof l.scroll === "number" ? l.scroll : window.scrollY || document.documentElement.scrollTop || 0;
+    };
+
+    const update = () => {
+      const visible = scrollY() > THRESHOLD;
+      btn.classList.toggle("hidden", !visible);
+
+      // do NOT override deep links
+      if (!visible) syncTopHashIfEmpty();
+    };
+
+    const scrollToTop = () => {
+      const l = getLenis();
+      const target = topTarget();
+
+      if (l && typeof l.scrollTo === "function") {
+        l.scrollTo(target, typeof target === "string" ? { offset: OFFSET } : undefined);
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
+
+      // explicit action, set the top hash
+      history.replaceState(null, "", topHash());
+    };
+
+    const attach = () => {
+      const l = getLenis();
+      if (l && typeof l.on === "function") {
+        l.on("scroll", update);
+        update();
+        return true;
+      }
+
+      window.addEventListener("scroll", update, { passive: true });
+      update();
+      return false;
+    };
+
+    const attached = attach();
+
+    if (!attached) {
+      let tries = 0;
+      const t = setInterval(() => {
+        tries++;
+        const l = getLenis();
+        if (l && typeof l.on === "function") {
+          window.removeEventListener("scroll", update);
+          l.on("scroll", update);
+          update();
+          clearInterval(t);
+        } else if (tries >= MAX_TRIES) {
+          clearInterval(t);
+        }
+      }, POLL_MS);
     }
-  });
 
-  btn.addEventListener("click", () => {
-    btn.classList.add("scale-90");
-
-    setTimeout(() => {
-      btn.classList.remove("scale-90");
-    }, 150);
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
+    btn.addEventListener("click", () => {
+      btn.classList.add("scale-90");
+      setTimeout(() => btn.classList.remove("scale-90"), 150);
+      scrollToTop();
     });
-
-    history.replaceState(null, "", "#home");
-  });
+  })();
 </script>

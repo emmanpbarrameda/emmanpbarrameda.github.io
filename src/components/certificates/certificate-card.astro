@@ -34,11 +34,11 @@ const previews = [image];
 
     {
       badges.length > 0 && (
-        <div class="flex flex-wrap gap-2">
+        <ul class="flex flex-wrap gap-2" role="list" aria-label="Certificate tags">
           {badges.map((badge) => (
             <TechBadge tech={badge} className="border-sky-900 bg-sky-900/20 text-sky-400" />
           ))}
-        </div>
+        </ul>
       )
     }
 

@@ -64,8 +64,8 @@ const projects: Project[] = rawProjects
       .map((s: string) => s.trim())
       .filter((s: string): s is Tech => validTechs.includes(s as Tech)),
     description: proj.description,
-    deploy: proj.deploy,
-    repository: proj.repository,
+    deploy: (proj.deploy ?? "").trim(),
+    repository: (proj.repository ?? "").trim(),
     image: proj.image.startsWith("http") ? proj.image : `${baseUrl}${proj.image}`,
     alt: proj.alt,
     previews: proj.previews?.split(",").map((p: string) => (p.trim().startsWith("http") ? p.trim() : `${baseUrl}${p.trim()}`)) || []

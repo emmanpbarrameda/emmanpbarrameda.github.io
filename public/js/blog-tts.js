@@ -11,7 +11,7 @@
      * ! MARK: State
      * ================================ */
     let utterance = null;
-    let state = "idle"; 
+    let state = "idle";
     let originalHTML = null;
     let wordSpans = [];
     let currentWord = -1;
@@ -132,9 +132,18 @@
         if (wordSpans[i]) {
             wordSpans[i].classList.add("tts-active");
 
+            /** ================================
+             * ! MARK: Scroll will LenisScroll
+             * ================================ */
             const rect = wordSpans[i].getBoundingClientRect();
             if (rect.top < 100 || rect.bottom > window.innerHeight - 100) {
-                wordSpans[i].scrollIntoView({ behavior: "smooth", block: "center" });
+                const lenis = window.__lenis;
+
+                if (lenis && typeof lenis.scrollTo === "function") {
+                    lenis.scrollTo(wordSpans[i], { offset: -100 });
+                } else {
+                    wordSpans[i].scrollIntoView({ behavior: "smooth", block: "center" });
+                }
             }
             updateTOCForWord(wordSpans[i]);
         }
