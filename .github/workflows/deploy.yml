@@ -4,24 +4,42 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-  schedule:
-    # Runs every 5 minutes (UTC time)
-    - cron: '*/5 * * * *'
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install, build, and upload your site
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build and upload (Astro)
         uses: withastro/action@v4
+        with:
+          path: .
+          # If your output is default, you can omit the next line
+          # output: dist
+
+      # Ensure Pages doesn't try to run Jekyll rules on the published output
+      - name: Disable Jekyll
+        run: touch dist/.nojekyll
+
+      # Re-upload with .nojekyll included (only needed if withastro/action didn't already include it)
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
 
   deploy:
     needs: build
@@ -30,6 +48,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
