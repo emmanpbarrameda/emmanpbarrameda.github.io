@@ -28,18 +28,7 @@ jobs:
         uses: withastro/action@v4
         with:
           path: .
-          # If your output is default, you can omit the next line
           # output: dist
-
-      # Ensure Pages doesn't try to run Jekyll rules on the published output
-      - name: Disable Jekyll
-        run: touch dist/.nojekyll
-
-      # Re-upload with .nojekyll included (only needed if withastro/action didn't already include it)
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
 
   deploy:
     needs: build
