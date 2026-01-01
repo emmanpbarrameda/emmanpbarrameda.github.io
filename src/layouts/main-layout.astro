@@ -10,9 +10,6 @@ import Background from "../components/common/background.astro";
 import MetaTags from "../components/common/meta-tags.astro";
 import { infos } from "../data/infos.js";
 import clientGuards from "../layouts/main-layout.js?raw";
-
-import lenisScrollTSUrl from "../scripts/lenis.client.ts?url";
-import lenisScrollCSSUrl from "lenis/dist/lenis.css?url";
 ---
 
 <!doctype html>
@@ -20,7 +17,6 @@ import lenisScrollCSSUrl from "lenis/dist/lenis.css?url";
   <head>
     <MetaTags />
     <title>{infos.main_title}</title>
-    <link rel="stylesheet" href={lenisScrollCSSUrl} />
   </head>
 
   <body class="bg-neutral-950 font-aileron text-neutral-50" oncontextmenu="return false;">
@@ -34,7 +30,7 @@ import lenisScrollCSSUrl from "lenis/dist/lenis.css?url";
     <BackToTop />
 
     <!-- Lenis Scroll JS -->
-    <script is:inline type="module" src={lenisScrollTSUrl}></script>
+    <script is:inline type="module" src="/js/lenis.client.js"></script>
 
     <!-- Intersection Observer -->
     <script is:inline defer src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"></script>

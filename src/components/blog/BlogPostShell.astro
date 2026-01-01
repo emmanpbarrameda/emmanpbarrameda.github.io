@@ -11,8 +11,8 @@ import { getCollection } from "astro:content";
 import Scrollify from "../../components/common/scrollify.astro";
 import "../../utils/blog-md-content.css";
 
-import lenisScrollTSUrl from "../../scripts/lenis.client.ts?url";
-import lenisScrollCSSUrl from "lenis/dist/lenis.css?url";
+// import lenisScrollTSUrl from "../../scripts/lenis.client.ts?url";
+// import lenisScrollCSSUrl from "lenis/dist/lenis.css?url";
 
 interface Props {
   title: string;
@@ -63,7 +63,6 @@ const latestPosts = allPosts
     <MetaTags title={`${title} | ${infos.subname} ${infos.blog_page_name}`} description={description} url={url} image={coverUrl ?? undefined} />
     <title>{title} | {infos.nickname} {infos.blog_page_name}</title>
     <meta name="description" content={description} />
-    <link rel="stylesheet" href={lenisScrollCSSUrl} />
   </head>
 
   <body class="relative min-h-screen bg-neutral-950 text-white overflow-x-hidden" oncontextmenu="return false;">
@@ -394,6 +393,6 @@ const latestPosts = allPosts
     <script is:inline src={`${base}js/blog-share.js`} defer></script>
     <script is:inline src={`${base}js/blog-tts.js`} defer></script>
     <!-- Lenis Scroll JS -->
-    <script is:inline type="module" src={lenisScrollTSUrl}></script>
+    <script is:inline type="module" src={`${import.meta.env.BASE_URL}js/lenis.client.js`}></script>
   </body></html
 >
