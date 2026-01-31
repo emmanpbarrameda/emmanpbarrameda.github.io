@@ -8,16 +8,9 @@ interface Props {
   image?: string;
 }
 
-const {
-  title = infos.og_title,
-  description = infos.og_description,
-  url = infos.host,
-  image = infos.og_image,
-} = Astro.props;
+const { title = infos.og_title, description = infos.og_description, url = infos.host, image = infos.og_image } = Astro.props;
 
-const ogImage = image
-  ? new URL(image, Astro.site).toString()
-  : new URL(infos.og_image, Astro.site).toString();
+const ogImage = image ? new URL(image, Astro.site).toString() : new URL(infos.og_image, Astro.site).toString();
 ---
 
 <!-- icon and main title -->
@@ -65,15 +58,3 @@ const ogImage = image
 <!-- Google Search Console Verification -->
 <!-- https://search.google.com/search-console/about VERIFICATION -->
 <meta name="google-site-verification" content="BvLhWKwhecxLYc5G0eZb0XKjIe-GfPD7R_Ly5BxIGZw" />
-
-<!-- Structured Data -->
-<script is:inline type="application/ld+json">
-  {JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Website",
-    name: title,
-    description,
-    url,
-    image,
-  })}
-</script>
