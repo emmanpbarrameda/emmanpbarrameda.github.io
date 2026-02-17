@@ -9,20 +9,18 @@
   }
 
   @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
   }
 </style>
 
 <script is:inline>
-  const roles = [
-    "Fullstack Developer",
-    "Backend Development",
-    "Laravel Developer",
-    "PHP Developer",
-    "FilamentPHP Contributor",
-    "A Freelancer",
-  ];
+  const roles = ["Software Engineer", "Fullstack Developer", "Laravel Developer", "PHP Developer", "FilamentPHP Contributor", "A Freelancer"];
 
   let index = 0;
   let charIndex = 0;
@@ -31,9 +29,7 @@
 
   function type() {
     const current = roles[index];
-    const visibleText = isDeleting
-      ? current.substring(0, charIndex--)
-      : current.substring(0, charIndex++);
+    const visibleText = isDeleting ? current.substring(0, charIndex--) : current.substring(0, charIndex++);
 
     typingElement.textContent = visibleText;
 
