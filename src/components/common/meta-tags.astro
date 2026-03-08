@@ -11,6 +11,51 @@ interface Props {
 const { title = infos.og_title, description = infos.og_description, url = infos.host, image = infos.og_image } = Astro.props;
 
 const ogImage = image ? new URL(image, Astro.site).toString() : new URL(infos.og_image, Astro.site).toString();
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${infos.host}/#person`,
+      name: infos.fullname,
+      url: infos.host,
+      image: {
+        "@type": "ImageObject",
+        url: ogImage,
+        width: 1200,
+        height: 630
+      },
+      jobTitle: infos.job_title,
+      description: description,
+      email: infos.email,
+      sameAs: [infos.github, infos.linkedin, infos.twitter].filter(Boolean)
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${infos.host}/#website`,
+      url: infos.host,
+      name: title,
+      description: description,
+      author: {
+        "@id": `${infos.host}/#person`
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${url}#webpage`,
+      url: url,
+      name: title,
+      description: description,
+      isPartOf: {
+        "@id": `${infos.host}/#website`
+      },
+      about: {
+        "@id": `${infos.host}/#person`
+      }
+    }
+  ]
+};
 ---
 
 <!-- icon and main title -->
@@ -56,5 +101,7 @@ const ogImage = image ? new URL(image, Astro.site).toString() : new URL(infos.og
 <meta itemprop="image" content={ogImage} />
 
 <!-- Google Search Console Verification -->
-<!-- https://search.google.com/search-console/about VERIFICATION -->
 <meta name="google-site-verification" content="BvLhWKwhecxLYc5G0eZb0XKjIe-GfPD7R_Ly5BxIGZw" />
+
+<!-- JSON-LD Schema Markup -->
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

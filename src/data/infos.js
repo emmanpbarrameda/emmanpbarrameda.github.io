@@ -16,6 +16,8 @@ export const infos = {
 
   email: "emmanpbarrameda@gmail.com",
 
+  job_title: "Software Engineer",
+
   github: "https://github.com/emmanpbarrameda",
   githubtext: "emmanpbarrameda",
 
@@ -24,6 +26,9 @@ export const infos = {
 
   linkedin: "https://ph.linkedin.com/in/emmanpbarrameda",
   linkedintext: "Emman P. Barrameda",
+
+  twitter: "https://x.com/EmmanPBarrameda",
+  twittertext: "Emman P. Barrameda",
 
   googledev: "https://developers.google.com/profile/u/emmanpbarrameda",
   googledevtext: "Emman P. Barrameda",
