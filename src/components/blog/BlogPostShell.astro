@@ -71,15 +71,7 @@ const blogSchema = {
     "@id": `${infos.host}/#person`
   },
   publisher: {
-    "@id": `${infos.host}/#person`,
-    "@type": "Person",
-    name: infos.fullname,
-    logo: {
-      "@type": "ImageObject",
-      url: `${infos.host}${infos.favicon_logo}`,
-      width: 48,
-      height: 48
-    }
+    "@id": `${infos.host}/#person`
   },
   image: coverUrl ? (coverUrl.startsWith("http") ? coverUrl : `${infos.host}${coverUrl}`) : infos.og_image,
   keywords: tags.join(", "),
