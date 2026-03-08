@@ -1,5 +1,6 @@
 export const infos = {
   host: "https://emmanpbarrameda.github.io",
+  favicon_logo: "/images/logo.png",
 
   nickname: "Emman",
   fullname: "Emmanuel P. Barrameda",

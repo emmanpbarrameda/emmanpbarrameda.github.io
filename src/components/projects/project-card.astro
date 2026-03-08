@@ -49,7 +49,8 @@ const appSchema = hasLive
       url: deploy,
       applicationCategory: "WebApplication",
       operatingSystem: "Web",
-      author: { "@id": `${infos.host}/#person` }
+      author: { "@id": `${infos.host}/#person` },
+      creator: { "@id": `${infos.host}/#person` }
     }
   : null;
 ---

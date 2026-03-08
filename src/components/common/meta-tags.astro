@@ -31,7 +31,7 @@ const schema = {
       description: description,
       email: infos.email,
       sameAs: [infos.github, infos.linkedin, infos.twitter, infos.facebook, infos.googledev, infos.wakatime].filter(Boolean),
-      knowsAbout: ["Laravel", "FilamentPHP", "Livewire", "Alpine.js", "Tailwind CSS", "PHP", "MySQL", "Backend Development", "Full Stack Development", "REST API Development", "Leadership", "Project Management", "Emman", "Emman Barrameda", "Emman P. Barrameda", "Emmanuel Barrameda", "Emmanuel P. Barrameda"],
+      knowsAbout: ["Laravel", "FilamentPHP", "Livewire", "Alpine.js", "Tailwind CSS", "PHP", "MySQL", "Backend Development", "Full Stack Development", "REST API Development", "Leadership", "Project Management"],
       knowsLanguage: [
         {
           "@type": "Language",
@@ -154,7 +154,7 @@ const schema = {
 ---
 
 <!-- Icon -->
-<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="icon" type="image/x-icon" href={infos.favicon_logo} />
 
 <meta name="generator" content={Astro.generator} />
 <meta charset="UTF-8" />

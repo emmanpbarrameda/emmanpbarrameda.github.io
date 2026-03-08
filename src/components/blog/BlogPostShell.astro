@@ -63,11 +63,23 @@ const blogSchema = {
   url: url ?? infos.host,
   datePublished: pubDate.toISOString(),
   dateModified: pubDate.toISOString(),
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": url ?? infos.host
+  },
   author: {
     "@id": `${infos.host}/#person`
   },
   publisher: {
-    "@id": `${infos.host}/#person`
+    "@id": `${infos.host}/#person`,
+    "@type": "Person",
+    name: infos.fullname,
+    logo: {
+      "@type": "ImageObject",
+      url: `${infos.host}${infos.favicon_logo}`,
+      width: 48,
+      height: 48
+    }
   },
   image: coverUrl ? (coverUrl.startsWith("http") ? coverUrl : `${infos.host}${coverUrl}`) : infos.og_image,
   keywords: tags.join(", "),
