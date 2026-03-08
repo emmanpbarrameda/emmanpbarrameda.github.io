@@ -29,7 +29,16 @@ const schema = {
       jobTitle: infos.job_title,
       description: description,
       email: infos.email,
-      sameAs: [infos.github, infos.linkedin, infos.twitter].filter(Boolean)
+      sameAs: [infos.github, infos.linkedin, infos.twitter].filter(Boolean),
+      knowsAbout: ["Laravel", "FilamentPHP", "Livewire", "Alpine.js", "Tailwind CSS", "PHP", "Full Stack Development", "Emman", "Emman Barrameda", "Emman P. Barrameda", "Emmanuel Barrameda", "Emmanuel P. Barrameda"],
+      nationality: {
+        "@type": "Country",
+        name: "Philippines"
+      },
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "PH"
+      }
     },
     {
       "@type": "WebSite",
@@ -52,6 +61,19 @@ const schema = {
       },
       about: {
         "@id": `${infos.host}/#person`
+      }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${infos.host}/#profilepage`,
+      url: infos.host,
+      name: title,
+      description: description,
+      mainEntity: {
+        "@id": `${infos.host}/#person`
+      },
+      isPartOf: {
+        "@id": `${infos.host}/#website`
       }
     }
   ]
