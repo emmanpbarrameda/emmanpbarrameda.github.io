@@ -8,11 +8,11 @@ export const infos = {
 
   username: "emmanpbarrameda",
 
-  og_title: "Emman P. Barrameda | Fullstack Developer | Portfolio",
+  og_title: "Emman Barrameda – Full Stack Laravel Developer | Portfolio",
   og_description: "Official Portfolio of Emmanuel P. Barrameda, a full-stack developer specializing in the TALL Stack (Tailwind, Alpine.js, Laravel, Livewire) and FilamentPHP from the Philippines. Explore projects, open-source work, and leadership roles.",
   og_image: "https://i.imgur.com/2oHx5Cl.png",
 
-  main_title: "Emman P. Barrameda | Fullstack Developer | Portfolio",
+  main_title: "Emman Barrameda – Full Stack Laravel Developer | Portfolio",
   main_description: "Official Portfolio of Emmanuel P. Barrameda, a full-stack developer specializing in the TALL Stack (Tailwind, Alpine.js, Laravel, Livewire) and FilamentPHP from the Philippines. Explore projects, open-source work, and leadership roles.",
 
   email: "emmanpbarrameda@gmail.com",
