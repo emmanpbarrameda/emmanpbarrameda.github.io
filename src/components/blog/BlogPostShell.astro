@@ -11,9 +11,6 @@ import { getCollection } from "astro:content";
 import Scrollify from "../../components/common/scrollify.astro";
 import "../../utils/blog-md-content.css";
 
-// import lenisScrollTSUrl from "../../scripts/lenis.client.ts?url";
-// import lenisScrollCSSUrl from "lenis/dist/lenis.css?url";
-
 interface Props {
   title: string;
   description: string;
@@ -32,6 +29,7 @@ const toPublicUrl = (src?: string) => {
   return `${base}${src.replace(/^\/+/, "")}`;
 };
 const coverUrl = cover?.src ? (cover.src.startsWith("http") ? cover.src : `${base}${cover.src.replace(/^\/+/, "")}`) : null;
+
 const allPosts = await getCollection("blog", ({ data }) => !data.draft);
 function daysSince(d: Date) {
   return (Date.now() - d.getTime()) / (1000 * 60 * 60 * 24);
@@ -55,6 +53,36 @@ const latestPosts = allPosts
   .filter((p) => p.data.title !== title)
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
   .slice(0, 3);
+
+// ── BlogPosting Schema Markup ─────────────────────────────────────
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description: description,
+  url: url ?? infos.host,
+  datePublished: pubDate.toISOString(),
+  dateModified: pubDate.toISOString(),
+  author: {
+    "@id": `${infos.host}/#person`
+  },
+  publisher: {
+    "@id": `${infos.host}/#person`
+  },
+  image: coverUrl ? (coverUrl.startsWith("http") ? coverUrl : `${infos.host}${coverUrl}`) : infos.og_image,
+  keywords: tags.join(", "),
+  timeRequired: `PT${readMinutes}M`,
+  inLanguage: "en",
+  isPartOf: {
+    "@id": `${infos.host}/#website`
+  },
+  ...(tags.length > 0 && {
+    about: tags.map((tag) => ({
+      "@type": "Thing",
+      name: tag
+    }))
+  })
+};
 ---
 
 <!doctype html>
@@ -63,6 +91,9 @@ const latestPosts = allPosts
     <MetaTags title={`${title} | ${infos.subname} ${infos.blog_page_name}`} description={description} url={url} image={coverUrl ?? undefined} />
     <title>{title} | {infos.nickname} {infos.blog_page_name}</title>
     <meta name="description" content={description} />
+
+    <!-- JSON-LD: BlogPosting -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
   </head>
 
   <body class="relative min-h-screen bg-neutral-950 text-white overflow-x-hidden" oncontextmenu="return false;">

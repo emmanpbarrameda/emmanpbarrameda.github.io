@@ -15,10 +15,12 @@ const ogImage = image ? new URL(image, Astro.site).toString() : new URL(infos.og
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
+    // ── 1. PERSON ──────────────────────────────────────────────
     {
       "@type": "Person",
       "@id": `${infos.host}/#person`,
       name: infos.fullname,
+      alternateName: [infos.subname, infos.nickname],
       url: infos.host,
       image: {
         "@type": "ImageObject",
@@ -26,11 +28,20 @@ const schema = {
         width: 1200,
         height: 630
       },
-      jobTitle: infos.job_title,
       description: description,
       email: infos.email,
-      sameAs: [infos.github, infos.linkedin, infos.twitter].filter(Boolean),
-      knowsAbout: ["Laravel", "FilamentPHP", "Livewire", "Alpine.js", "Tailwind CSS", "PHP", "Full Stack Development", "Emman", "Emman Barrameda", "Emman P. Barrameda", "Emmanuel Barrameda", "Emmanuel P. Barrameda"],
+      sameAs: [infos.github, infos.linkedin, infos.twitter, infos.facebook, infos.googledev, infos.wakatime].filter(Boolean),
+      knowsAbout: ["Laravel", "FilamentPHP", "Livewire", "Alpine.js", "Tailwind CSS", "PHP", "MySQL", "Backend Development", "Full Stack Development", "REST API Development", "Leadership", "Project Management", "Emman", "Emman Barrameda", "Emman P. Barrameda", "Emmanuel Barrameda", "Emmanuel P. Barrameda"],
+      knowsLanguage: [
+        {
+          "@type": "Language",
+          name: "English"
+        },
+        {
+          "@type": "Language",
+          name: "Filipino"
+        }
+      ],
       nationality: {
         "@type": "Country",
         name: "Philippines"
@@ -38,8 +49,25 @@ const schema = {
       address: {
         "@type": "PostalAddress",
         addressCountry: "PH"
+      },
+
+      worksFor: {
+        "@type": "Organization",
+        name: "Self-Employed"
+      },
+
+      jobTitle: infos.job_title,
+      hasOccupation: {
+        "@type": "Occupation",
+        name: infos.job_title,
+        occupationLocation: {
+          "@type": "Country",
+          name: "Philippines"
+        }
       }
     },
+
+    // ── 2. WEBSITE ─────────────────────────────────────────────
     {
       "@type": "WebSite",
       "@id": `${infos.host}/#website`,
@@ -48,8 +76,19 @@ const schema = {
       description: description,
       author: {
         "@id": `${infos.host}/#person`
+      },
+      // SearchAction — enables Google Sitelinks Search Box
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${infos.host}/${infos.blog_page_slug}?q={search_term_string}`
+        },
+        "query-input": "required name=search_term_string"
       }
     },
+
+    // ── 3. WEBPAGE ─────────────────────────────────────────────
     {
       "@type": "WebPage",
       "@id": `${url}#webpage`,
@@ -63,6 +102,8 @@ const schema = {
         "@id": `${infos.host}/#person`
       }
     },
+
+    // ── 4. PROFILE PAGE ────────────────────────────────────────
     {
       "@type": "ProfilePage",
       "@id": `${infos.host}/#profilepage`,
@@ -75,12 +116,44 @@ const schema = {
       isPartOf: {
         "@id": `${infos.host}/#website`
       }
+    },
+
+    // ── 5. BREADCRUMBLIST ──────────────────────────────────────
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${infos.host}/#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: infos.host
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Projects",
+          item: `${infos.host}/#projects`
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: infos.blog_page_name,
+          item: `${infos.host}/${infos.blog_page_slug}`
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
+          name: "Socials",
+          item: `${infos.host}/socials`
+        }
+      ]
     }
   ]
 };
 ---
 
-<!-- icon and main title -->
+<!-- Icon -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
 <meta name="generator" content={Astro.generator} />
@@ -94,7 +167,12 @@ const schema = {
 <link rel="alternate" type="application/rss+xml" title={`${infos.fullname} Blog RSS`} href="/rss.xml" />
 <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
 
-<!--==================== OPEN GRAPH META TAGS (FOR SOCIAL MEDIA PREVIEW) ===================== -->
+<!-- Identity -->
+<link rel="me" href={infos.github} />
+<link rel="me" href={infos.linkedin} />
+<link rel="me" href={infos.twitter} />
+<link rel="me" href={infos.googledev} />
+
 <!-- Open Graph -->
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
@@ -122,8 +200,8 @@ const schema = {
 <meta name="twitter:image" content={ogImage} />
 <meta itemprop="image" content={ogImage} />
 
-<!-- Google Search Console Verification -->
+<!-- Google Search Console -->
 <meta name="google-site-verification" content="BvLhWKwhecxLYc5G0eZb0XKjIe-GfPD7R_Ly5BxIGZw" />
 
 <!-- JSON-LD Schema Markup -->
-<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
