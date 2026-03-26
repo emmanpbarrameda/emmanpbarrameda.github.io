@@ -1,4 +1,93 @@
 User-agent: *
 Allow: /
 
+# ——— OPENAI ———
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# ——— ANTHROPIC (Claude) ———
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# ——— GOOGLE (Gemini) ———
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Gemini-Deep-Research
+Allow: /
+
+# ——— DEEPSEEK ———
+User-agent: DeepSeekBot
+Allow: /
+
+User-agent: DeepSeek
+Allow: /
+
+# ——— PERPLEXITY ———
+User-agent: PerplexityBot
+Allow: /
+
+# ——— xAI (Grok) ———
+User-agent: GrokBot
+Allow: /
+
+# ——— MISTRAL ———
+User-agent: MistralAI-User
+Allow: /
+
+# ——— APPLE (Apple Intelligence) ———
+User-agent: Applebot-Extended
+Allow: /
+
+# ——— META ———
+User-agent: FacebookBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# ——— AMAZON ———
+User-agent: Amazonbot
+Allow: /
+
+# ——— MICROSOFT (Copilot) ———
+User-agent: Bingbot
+Allow: /
+
+# ——— COHERE ———
+User-agent: cohere-ai
+Allow: /
+
+# ——— COMMON CRAWL (used by many AI models) ———
+User-agent: CCBot
+Allow: /
+
+# ——— YOU.COM ———
+User-agent: YouBot
+Allow: /
+
+# ——— BYTEDANCE ———
+User-agent: Bytespider
+Allow: /
+
+# ——— DIFFBOT ———
+User-agent: Diffbot
+Allow: /
+
+# ——— iASK ———
+User-agent: iaskspider
+Allow: /
+
 Sitemap: https://emmanpbarrameda.github.io/sitemap.xml
