@@ -18,6 +18,8 @@ cover:
 - Cloudflare DNS configured for your domain.
 - SSH access to your Cloudways server via PuTTY or Termius.
 
+![Cover](/blog-images/how-to-set-up-laravel-reverb-on-cloudways-with-filamentphp-and-cloudflare/ss1.png)
+
 ---
 
 # Part 1: Local Development Setup
@@ -197,7 +199,7 @@ Add an A record in Cloudflare under **DNS → Records → Add Record**:
 | Proxy | Proxied (orange cloud) |
 | TTL | Auto |
 
-To find your server IP, check your existing main domain A record or Cloudways → My Servers → Master Credentials → Public IP.
+To find your CLoudways Server Public IP, check your existing main domain A record or Cloudways → My Servers → Master Credentials → Public IP.
 
 <br>
 
@@ -206,6 +208,8 @@ To find your server IP, check your existing main domain A record or Cloudways �
 > Skip this step if your Cloudflare Origin Certificate already covers `*.yourdomain.com`.
 
 Ensure your Cloudflare Origin Certificate covers `*.yourdomain.com` as a wildcard. Check this in **Cloudflare → SSL/TLS → Origin Server**.
+
+![Cover](/blog-images/how-to-set-up-laravel-reverb-on-cloudways-with-filamentphp-and-cloudflare/ss9.png)
 
 If not, create one using:
 
@@ -222,6 +226,8 @@ Copy the certificate and private key, then upload them to **Cloudways → Applic
 ### Step 12 - Cloudways Domain Mapping
 
 Go to **Cloudways → My Applications → Domain Management** and add `ws.yourdomain.com` as an alias domain.
+
+![Cover](/blog-images/how-to-set-up-laravel-reverb-on-cloudways-with-filamentphp-and-cloudflare/ss8.png)
 
 <br>
 
@@ -263,7 +269,7 @@ location /app {
 
 > Note: Port 8080 may already be in use on Cloudways. If you get an "Address already in use" error, use port 8091 instead. Update `REVERB_SERVER_PORT=8091` in your `.env` accordingly.
 
-#### A. Contact Cloudways support to create the job
+#### A. Contact Cloudways support to create the queue supervisord job
 
 > "I need a new Supervisord job created for Laravel Reverb WebSocket server. Please configure it with:
 >
@@ -272,10 +278,14 @@ location /app {
 > - Auto-restart if it stops
 > - This is a WebSocket server, NOT a queue worker — no `--queue`, `--sleep`, `--tries`, `--quiet`, or `--timeout` flags"
 
+![Cover](/blog-images/how-to-set-up-laravel-reverb-on-cloudways-with-filamentphp-and-cloudflare/ss7.png)
+
 #### B. Verify after support confirms
 ```bash
 ps aux | grep reverb
 ```
+
+![Cover](/blog-images/how-to-set-up-laravel-reverb-on-cloudways-with-filamentphp-and-cloudflare/ss2.png)
 
 This should show the Reverb process running.
 
@@ -299,6 +309,8 @@ php artisan cache:clear
 ps aux | grep reverb
 ```
 
+![Cover](/blog-images/how-to-set-up-laravel-reverb-on-cloudways-with-filamentphp-and-cloudflare/ss2.png)
+
 2. Test whether the port is listening:
 
 ```bash
@@ -307,43 +319,40 @@ curl -i http://127.0.0.1:8091
 
 It should return `HTTP/1.1 404 Not Found`, which means Reverb is responding.
 
+![Cover](/blog-images/how-to-set-up-laravel-reverb-on-cloudways-with-filamentphp-and-cloudflare/ss3.png)
+
 3. Test WebSocket handshake directly, bypassing Nginx:
 
 ```bash
-curl -i -N \
+curl -i -N -k --http1.1 \
   -H "Connection: Upgrade" \
   -H "Upgrade: websocket" \
   -H "Sec-WebSocket-Version: 13" \
   -H "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==" \
-  http://127.0.0.1:8091/app/<your-reverb-key>
+  -H "Host: ws.yourdomain.com" \
+  https://localhost/app/<your-reverb-app-key>
 ```
 
 It should return `101 Switching Protocols`.
 
-4. Test through Nginx + Cloudflare:
+![Cover](/blog-images/how-to-set-up-laravel-reverb-on-cloudways-with-filamentphp-and-cloudflare/ss4.png)
 
-```bash
-curl -i -N -k \
-  -H "Connection: Upgrade" \
-  -H "Upgrade: websocket" \
-  -H "Sec-WebSocket-Version: 13" \
-  -H "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==" \
-  https://ws.yourdomain.com/app/<your-reverb-key>
-```
-
-It should return `101 Switching Protocols`.
-
-5. Check the browser:
+4. Check the browser:
 
 Open System in Browser → DevTools → Network → Socket tab (Edge) or WS tab (Chrome). You should see `wss://ws.yourdomain.com/app/...` with `101 Switching Protocols` and ping/pong messages.
 
-6. Test a broadcast:
+![Cover](/blog-images/how-to-set-up-laravel-reverb-on-cloudways-with-filamentphp-and-cloudflare/ss5.png)
+![Cover](/blog-images/how-to-set-up-laravel-reverb-on-cloudways-with-filamentphp-and-cloudflare/ss6.png)
+
+5. Test a broadcast:
 
 ```bash
 php artisan tinker --execute="\App\Models\User::all()->each(fn(\$u) => \Filament\Notifications\Notification::make()->title('Reverb is Live')->body('Real-time notifications are now enabled.')->broadcast(\$u));"
 ```
 <br>
 A toast notification should appear in the browser instantly.
+
+![Cover](/blog-images/how-to-set-up-laravel-reverb-on-cloudways-with-filamentphp-and-cloudflare/ss1.png)
 
 ---
 ---
