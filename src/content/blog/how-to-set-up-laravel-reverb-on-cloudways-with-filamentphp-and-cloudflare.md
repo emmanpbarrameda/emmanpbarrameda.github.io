@@ -28,8 +28,9 @@ cover:
 composer require laravel/reverb
 php artisan reverb:install
 ```
-
 This creates `config/reverb.php` and adds Reverb environment variables to `.env`.
+
+<br>
 
 ### Step 2 - Update Local `.env`
 
@@ -54,15 +55,19 @@ VITE_REVERB_SCHEME="${REVERB_SCHEME}"
 
 Remove any duplicate Reverb entries if `reverb:install` doubled them.
 
+<br>
+
 ### Step 3 - Publish Filament Config
 
 ```bash
 php artisan vendor:publish --tag=filament-config
 ```
 
+<br>
+
 ### Step 4 - Update `config/filament.php`
 
-Uncomment the `broadcasting.echo` section and set:
+Uncomment the `broadcasting > echo` section and set:
 
 ```php
 'broadcasting' => [
@@ -80,8 +85,9 @@ Uncomment the `broadcasting.echo` section and set:
     ],
 ],
 ```
-
 `forceTLS` is driven by environment variables, so there is no need to change config between environments.
+
+<br>
 
 ### Step 5 - Update `config/broadcasting.php`
 
@@ -105,6 +111,8 @@ Make the server-side connection use local Reverb, not the public domain:
 
 This is critical for production. Laravel pushes events to Reverb locally (`127.0.0.1`), avoiding SSL certificate issues.
 
+<br>
+
 ### Step 6 - Clear Caches
 
 ```bash
@@ -112,6 +120,8 @@ php artisan config:clear
 php artisan route:clear
 php artisan cache:clear
 ```
+
+<br>
 
 ### Step 7 - Create `start-reverb.bat` (Windows local dev)
 
@@ -126,17 +136,19 @@ timeout /t 5 /nobreak
 goto start
 ```
 
+<br>
+
 ### Step 8 - Test Locally
 
 1. Run `start-reverb.bat` in one terminal.
-2. Open the IMS in the browser and inspect DevTools → Network → WS / Socket tab.
+2. Open the system in the browser and inspect DevTools → Network → WS / Socket tab.
 3. You should see `ws://localhost:8080/app/...` with `101 Switching Protocols`.
 4. Test a broadcast in another terminal:
 
 ```bash
-php artisan tinker --execute="\Filament\Notifications\Notification::make()->title('Test')->body('Works!')->broadcast(\App\Models\User::find(1));"
+php artisan tinker --execute="\App\Models\User::all()->each(fn(\$u) => \Filament\Notifications\Notification::make()->title('Reverb is Live')->body('Real-time notifications are now enabled.')->broadcast(\$u));"
 ```
-
+<br>
 A toast notification should pop up in the browser.
 
 ---
@@ -164,12 +176,14 @@ VITE_REVERB_HOST="${REVERB_HOST}"
 VITE_REVERB_PORT="${REVERB_PORT}"
 VITE_REVERB_SCHEME="${REVERB_SCHEME}"
 ```
-
+<br>
 Key distinction:
 
 - `REVERB_HOST` / `REVERB_PORT` / `REVERB_SCHEME` = what the browser connects to publicly
 - `REVERB_SERVER_HOST` / `REVERB_SERVER_PORT` = what Reverb binds to internally
 - `config/broadcasting.php` uses `REVERB_SERVER_*` to push events locally
+
+<br>
 
 ### Step 10 - Cloudflare DNS
 
@@ -179,13 +193,17 @@ Add an A record in Cloudflare under **DNS → Records → Add Record**:
 |---|---|
 | Type | A |
 | Name | `ws` |
-| IPv4 | Your Cloudways server IP |
+| IPv4 | Your Cloudways server Public IP |
 | Proxy | Proxied (orange cloud) |
 | TTL | Auto |
 
 To find your server IP, check your existing main domain A record or Cloudways → My Servers → Master Credentials → Public IP.
 
+<br>
+
 ### Step 11 - SSL Certificate
+
+> Skip this step if your Cloudflare Origin Certificate already covers `*.yourdomain.com`.
 
 Ensure your Cloudflare Origin Certificate covers `*.yourdomain.com` as a wildcard. Check this in **Cloudflare → SSL/TLS → Origin Server**.
 
@@ -199,9 +217,13 @@ If not, create one using:
 
 Copy the certificate and private key, then upload them to **Cloudways → Application Settings → SSL Certificate → Upload Custom SSL**.
 
+<br>
+
 ### Step 12 - Cloudways Domain Mapping
 
 Go to **Cloudways → My Applications → Domain Management** and add `ws.yourdomain.com` as an alias domain.
+
+<br>
 
 ### Step 13 - Disable HTTP/2 in Nginx
 
@@ -210,6 +232,8 @@ Contact Cloudways support with this message:
 > Please comment out `http2 on;` in my application's Nginx server block. I need HTTP/1.1 for WebSocket support with Laravel Reverb.
 
 This is required because Nginx HTTP/2 strips WebSocket upgrade headers.
+
+<br>
 
 ### Step 14 - Nginx WebSocket Proxy
 
@@ -233,26 +257,29 @@ location /app {
 }
 ```
 
+<br>
+
 ### Step 15 - Supervisor Job for Reverb
 
-#### A. Create the job in Cloudways GUI
+> Note: Port 8080 may already be in use on Cloudways. If you get an "Address already in use" error, use port 8091 instead. Update `REVERB_SERVER_PORT=8091` in your `.env` accordingly.
 
-##### A.1. Contact Cloudways support to fix the command
+#### A. Contact Cloudways support to create the job
 
-> I created a new Supervisord job (ID: [your job ID]). I need it to run: `php artisan reverb:start --host=0.0.0.0 --port=8091`  
-> This is a WebSocket server, not a queue worker. Please:
+> "I need a new Supervisord job created for Laravel Reverb WebSocket server. Please configure it with:
 >
-> - Use exactly the command above - no `--queue`, `--sleep`, `--tries`, `--quiet`, or `--timeout` flags
+> - Command: `php artisan reverb:start --host=0.0.0.0 --port=8091`
 > - Number of processes: 1
 > - Auto-restart if it stops
+> - This is a WebSocket server, NOT a queue worker — no `--queue`, `--sleep`, `--tries`, `--quiet`, or `--timeout` flags"
 
 #### B. Verify after support confirms
-
 ```bash
 ps aux | grep reverb
 ```
 
 This should show the Reverb process running.
+
+<br>
 
 ### Step 16 - Clear Caches
 
@@ -261,6 +288,8 @@ php artisan config:clear
 php artisan route:clear
 php artisan cache:clear
 ```
+
+<br>
 
 ### Step 17 - Verify Production
 
@@ -306,14 +335,14 @@ It should return `101 Switching Protocols`.
 
 5. Check the browser:
 
-Open IMS → DevTools → Network → Socket tab (Edge) or WS tab (Chrome). You should see `wss://ws.yourdomain.com/app/...` with `101 Switching Protocols` and ping/pong messages.
+Open System in Browser → DevTools → Network → Socket tab (Edge) or WS tab (Chrome). You should see `wss://ws.yourdomain.com/app/...` with `101 Switching Protocols` and ping/pong messages.
 
 6. Test a broadcast:
 
 ```bash
-php artisan tinker --execute="\Filament\Notifications\Notification::make()->title('Production Test')->body('Broadcast at ' . now()->toTimeString())->broadcast(\App\Models\User::find(1));"
+php artisan tinker --execute="\App\Models\User::all()->each(fn(\$u) => \Filament\Notifications\Notification::make()->title('Reverb is Live')->body('Real-time notifications are now enabled.')->broadcast(\$u));"
 ```
-
+<br>
 A toast notification should appear in the browser instantly.
 
 ---
@@ -340,7 +369,7 @@ Laravel Server-Side (broadcasting events)
 
 | Problem | Solution |
 |---|---|
-| Reverb not running | `ps aux  grep reverb` then `sudo supervisorctl restart <job_id>` |
+| Reverb not running | `ps aux (vertical bar) grep reverb` then `sudo supervisorctl restart <job_id>` |
 | Browser `wss://` connection error | Check Nginx proxy exists, HTTP/2 disabled, Cloudflare WebSockets enabled |
 | Browser `ws://` mixed content error | Ensure `REVERB_SCHEME=https` in production `.env` |
 | Broadcast fails with SSL error | Ensure `config/broadcasting.php` uses `REVERB_SERVER_HOST` (`127.0.0.1`), not public domain |

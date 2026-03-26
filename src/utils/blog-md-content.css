@@ -235,6 +235,18 @@ details[open] summary .toc-chevron {
 
 
 /* ----------------------------------
+! MARK: Astro Code Adjustments
+---------------------------------- */
+.blog-content p + .expressive-code {
+  margin-top: 0.5rem;
+}
+.blog-content .expressive-code + p {
+  text-align: left;
+  margin-top: 0.5rem;
+}
+
+
+/* ----------------------------------
 ! MARK: TTS word highlighting 
 ---------------------------------- */
 .tts-word {

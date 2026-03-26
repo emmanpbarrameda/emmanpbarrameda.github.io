@@ -43,7 +43,7 @@
                     : "pl-5 text-neutral-500 text-xs";
 
         const spacing =
-            level === 1 && i > 0 ? " mt-1.5 pt-1 border-t border-neutral-800/30" : "";
+            level === 1 && i > 0 ? " mt-6 pt-2" : "";
 
         const textSize = level === 1 ? " text-sm font-medium" : " text-xs";
 

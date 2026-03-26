@@ -92,13 +92,7 @@ const blogSchema = {
 <!doctype html>
 <html lang="en">
   <head>
-    <MetaTags 
-      title={`${title} | ${infos.subname} ${infos.blog_page_name}`} 
-      description={description} 
-      url={url} 
-      image={coverUrl ?? undefined}
-      ogType="article" 
-    />
+    <MetaTags title={`${title} | ${infos.subname} ${infos.blog_page_name}`} description={description} url={url} image={coverUrl ?? undefined} ogType="article" />
     <title>{title} | {infos.nickname} {infos.blog_page_name}</title>
     <meta name="description" content={description} />
 
