@@ -1,6 +1,8 @@
 ---
+// file: src\pages\dev-notes\[...id].astro
 import { getCollection } from "astro:content";
 import BlogPostShell from "../../components/blog/BlogPostShell.astro";
+import { infos } from "../../data/infos.js";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -48,7 +50,7 @@ const { post, cleanId } = Astro.props;
 const { Content } = await post.render();
 
 const base = import.meta.env.BASE_URL || "/";
-const canonicalUrl = new URL(`${base}blog/${cleanId}/`, Astro.site).toString();
+const canonicalUrl = new URL(`${base}${infos.blog_page_slug}/${cleanId}/`, Astro.site).toString();
 
 const readMinutes = estimateReadMinutes(post.body ?? "", { textWpm: 180, codeWeight: 0.35 });
 ---

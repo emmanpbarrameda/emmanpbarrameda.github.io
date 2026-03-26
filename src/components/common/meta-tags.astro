@@ -6,9 +6,10 @@ interface Props {
   description?: string;
   url?: string;
   image?: string;
+  ogType?: string;
 }
 
-const { title = infos.og_title, description = infos.og_description, url = infos.host, image = infos.og_image } = Astro.props;
+const { title = infos.og_title, description = infos.og_description, url = infos.host, image = infos.og_image, ogType = "website" } = Astro.props;
 
 const ogImage = image ? new URL(image, Astro.site).toString() : new URL(infos.og_image, Astro.site).toString();
 
@@ -165,7 +166,7 @@ const schema = {
 
 <!-- RSS + Sitemap -->
 <link rel="alternate" type="application/rss+xml" title={`${infos.fullname} Blog RSS`} href="/rss.xml" />
-<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
 <!-- Identity -->
 <link rel="me" href={infos.github} />
@@ -177,7 +178,7 @@ const schema = {
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={url} />
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
 <meta property="og:site_name" content={`${infos.fullname} Portfolio`} />
 
 <!-- Twitter -->
@@ -194,7 +195,7 @@ const schema = {
 <!-- SEO -->
 <meta name="description" content={description} />
 <meta name="author" content={infos.fullname} />
-<meta name="robots" content="index" />
+<meta name="robots" content="index, follow" />
 
 <meta property="og:image" content={ogImage} />
 <meta name="twitter:image" content={ogImage} />

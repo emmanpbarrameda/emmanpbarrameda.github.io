@@ -11,7 +11,12 @@ export default defineConfig({
   integrations: [
     tailwind(),
     astroIcon(),
-    sitemap(),
+    sitemap({
+      serialize(item) {
+        item.lastmod = new Date().toISOString();
+        return item;
+      },
+    }),
 
     // uses for .md code blocks (https://expressive-code.com/installation/#astro)
     expressiveCode({
