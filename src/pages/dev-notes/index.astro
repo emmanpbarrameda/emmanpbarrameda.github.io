@@ -133,5 +133,15 @@ const toPublicUrl = (src?: string) => {
 
     input?.addEventListener("input", run, { passive: true });
     run();
+
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted) {
+        document.querySelectorAll('.opacity-0').forEach((el) => {
+          el.classList.remove('opacity-0');
+          el.classList.add('opacity-100');
+        });
+      }
+    });
+
   </script>
 </BlogIndexShell>
