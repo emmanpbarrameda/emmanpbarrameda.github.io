@@ -482,7 +482,7 @@ jobs:
 
 <br>
 
-## Real Problems & Fixes
+## Real Problems & Fixes FAQs
 
 ### Deploy succeeds but site doesn't update
 
