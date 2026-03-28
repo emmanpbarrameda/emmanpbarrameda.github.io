@@ -1,5 +1,5 @@
 ---
-title: "Installing and Using wkhtmltopdf / wkhtmltoimage on Hostinger"
+title: "How to Install wkhtmltopdf on Hostinger"
 description: "A quick guide to installing and using wkhtmltopdf/wkhtmltoimage on shared hosting (like Hostinger) for generating PDFs and images from HTML in a Laravel app."
 pubDate: 2025-12-28
 tags: [laravel]
@@ -9,7 +9,7 @@ cover:
   alt: "installing-and-using-wkhtmltopdf-wkhtmltoimage-on-hostinger"
 ---
 
-# Installing and Using wkhtmltopdf / wkhtmltoimage on Hostinger (and Similar Shared Hosting)
+# How to Install wkhtmltopdf/wkhtmltoimage on Hostinger (and Similar Shared Hosting)
 
 **Tested:** August 8, 2025  
 **Use case:** Hostinger + Laravel + Snappy or any wrapper that needs wkhtmltopdf / wkhtmltoimage
