@@ -26,18 +26,18 @@ cover:
 - Text-to-speech instructions for multiple-shot capture
 - Support for previewing, retaking, and removing captured photos
 
-## Installation
-
-```bash
-composer require emmanpbarrameda/filament-take-picture-field:^1.3
-```
-
 ## Requirements
 
 - Laravel: ^10, ^11, ^12, or ^13
 - PHP: ^8.1, ^8.2, or ^8.3
 - Filament Forms: ^4.0 or ^5.0
 - A device with camera access (desktop or mobile)
+
+## Installation
+
+```bash
+composer require emmanpbarrameda/filament-take-picture-field:^1.3
+```
 
 ## Filament Theme Setup
 
@@ -62,6 +62,7 @@ TakePicture::make('pictures')
     ->disk('public')
     ->directory('uploads/services/pictures')
     ->visibility('public')
+
     ->aspect('16:9')
     ->captureMaxDimensions(1280, 720)
     ->imageQuality(50)
@@ -102,7 +103,7 @@ TakePicture::make('pictures')
 | `enableTextToSpeech(bool $enable = true, string $lang = 'en-US')` | Enable or disable text-to-speech instructions for multiple-shot mode. Example: `true, 'en-US'` |
 | `columnSpanFull()` | Make the field span the full width of the form layout. |
 
-## ❗ IMPORTANT NOTICE: For Local development
+## ❗ IMPORTANT NOTICE: For Local development Testing
 
 The browser's Camera API only works on **secure origins** (HTTPS). Many browsers treat `https://localhost` as secure, but **plain** `http://` over an IP (e.g., `http://127.0.0.1:8000`) is considered insecure and the camera will be blocked. If it isn't working for you on `localhost`, switch to HTTPS or use the temporary Chrome test flags below.
 
