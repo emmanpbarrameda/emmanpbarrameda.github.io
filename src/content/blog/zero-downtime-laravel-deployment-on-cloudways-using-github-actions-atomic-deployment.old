@@ -1,17 +1,17 @@
 ---
-title: "Zero-Downtime Laravel Deployment on Any Linux VPS Using GitHub Actions (Atomic Deployment)"
-description: "Learn how to set up atomic, release-based deployments for Laravel on any Linux VPS with GitHub Actions. No more `git pull`, no downtime, and automatic rollback on failure."
+title: "Zero-Downtime Laravel Deployment on Cloudways Using GitHub Actions (Atomic Deployment)"
+description: "Learn how to set up atomic, release-based deployments for Laravel on Cloudways with GitHub Actions. No more `git pull`, no downtime, and automatic rollback on failure."
 pubDate: 2026-03-27
-tags: [laravel, cloudways, hostinger, github-actions, deployment, devops, atomic-deployment, zero-downtime, ci-cd, php, laravel-deployment]
+tags: [laravel, cloudways, github-actions, deployment, devops, atomic-deployment, zero-downtime, ci-cd, php, laravel-deployment]
 draft: false
 cover:
   src: "/blog-images/zero-downtime-laravel-deployment-on-cloudways-using-github-actions-atomic-deployment/cover.webp"
-  alt: "Zero-Downtime Laravel Deployment on Any Linux VPS Using GitHub Actions (Atomic Deployment)"
+  alt: "Zero-Downtime Laravel Deployment on Cloudways Using GitHub Actions (Atomic Deployment)"
 ---
 
-# Zero-Downtime Laravel Deployment on Any Linux VPS Using GitHub Actions (Atomic Deployment)
+# Zero-Downtime Laravel Deployment on Cloudways Using GitHub Actions (Atomic Deployment)
 
-Learn how to set up atomic, release-based deployments for Laravel on any Linux VPS (Cloudways, Hostinger, DigitalOcean, etc.) with GitHub Actions. No more `git pull`, no downtime, and automatic rollback on failure.
+Learn how to set up atomic, release-based deployments for Laravel on Cloudways with GitHub Actions. No more `git pull`, no downtime, and automatic rollback on failure.
 
 ![Cover](/blog-images/zero-downtime-laravel-deployment-on-cloudways-using-github-actions-atomic-deployment/ss1.png)
 
@@ -19,8 +19,8 @@ Learn how to set up atomic, release-based deployments for Laravel on any Linux V
 
 ## Prerequisites
 
-- A Laravel app hosted on any Linux VPS with SSH access
-- SSH access to your server via PuTTY, Termius, etc.
+- A Laravel app hosted on Cloudways (or any Linux-based hosting with SSH access)
+- SSH access to your server via PuTTY, Termius etc.
 - A GitHub repository (public or private)
 - Basic familiarity with SSH and the Linux command line
 - `spatie/laravel-backup` installed if you want the DB backup step (optional but recommended)
@@ -41,7 +41,7 @@ Instead of `git pull` on every deploy, this system:
 
 ## Target Folder Structure
 
-![Folder structure diagram](/blog-images/zero-downtime-laravel-deployment-on-cloudways-using-github-actions-atomic-deployment/ss2.png)
+![Cover](/blog-images/zero-downtime-laravel-deployment-on-cloudways-using-github-actions-atomic-deployment/ss2.png)
 
 ```
 public_html/
@@ -54,7 +54,7 @@ public_html/
  └── .env                                # shared across all releases
 ```
 
-**Webroot:** `public_html/current/public`
+**Cloudways webroot:** `public_html/current/public`
 
 ---
 
@@ -72,7 +72,7 @@ public_html/
 
 Deploy process:
 - SSH in
-- `git pull`
+- `git pull` via `Cloudways Deployment via Git` feature
 - Clear cache
 - Manually reset permissions
 
@@ -90,7 +90,7 @@ Deploy process:
 
 ### Step 1 - Create the Release Structure
 
-SSH into your server and navigate to your app root (e.g. `public_html` or `htdocs/yourdomain.com`).
+SSH into your server and navigate to `public_html`.
 
 **1. Create the releases folder:**
 ```bash
@@ -132,15 +132,21 @@ public_html/
 
 <br>
 
-### Step 2 - Update Your Webroot
+### Step 2 - Change Cloudways Webroot
 
-Change your webroot from `public_html/public` to `public_html/current/public`.
+`Cloudways → My Applications → Application Settings → General → Webroot`
 
-- On Cloudways: `My Applications → Application Settings → General → Webroot`
-- On CloudPanel: edit the site's document root in domain settings
-- On other hosts: update your Nginx/Apache vhost config directly
+Change webroot from:
+```
+public_html/public
+```
+to:
+```
+public_html/current/public
+```
 
-![Webroot setting](/blog-images/zero-downtime-laravel-deployment-on-cloudways-using-github-actions-atomic-deployment/ss3.png)
+![Cover](/blog-images/zero-downtime-laravel-deployment-on-cloudways-using-github-actions-atomic-deployment/ss3.png)
+
 
 ⚠️ **Without this, atomic switching does not work.**
 
@@ -148,12 +154,9 @@ Change your webroot from `public_html/public` to `public_html/current/public`.
 
 ### Step 3 - Clean Up Root
 
-After confirming the site loads correctly, remove leftover files from the app root:
+After confirming the site loads correctly, remove leftover files from `public_html` root:
 ```bash
-rm -rf app artisan bootstrap config database node_modules public resources \
-       routes tests vendor composer.json composer.lock package.json \
-       package-lock.json postcss.config.js tailwind.config.js vite.config.js \
-       phpunit.xml README.md
+rm -rf app artisan bootstrap config database node_modules public resources routes tests vendor composer.json composer.lock package.json package-lock.json postcss.config.js tailwind.config.js vite.config.js phpunit.xml README.md
 ```
 
 Final root:
@@ -169,18 +172,22 @@ public_html/
 
 ### Step 4 - Configure OPCache (Critical)
 
-Add these to your PHP-FPM configuration (via your control panel's PHP-FPM settings or `php.ini`):
+`Cloudways → My Applications → Application Settings → PHP FPM`
+
+Add on text-area:
 ```
 php_admin_value[opcache.validate_timestamps]=1
 php_admin_value[opcache.revalidate_freq]=0
 php_admin_value[opcache.revalidate_path]=1
 ```
 
-⚠️ **Without `opcache.revalidate_path=1`, PHP keeps serving compiled files from the previous release even after the symlink switches.** This is the most common "deploy succeeded but nothing changed" cause on atomic setups. Also add `sudo service php8.2-fpm reload` to your deploy script after the symlink swap.
+⚠️ **Without `opcache.revalidate_path=1`, PHP keeps serving compiled files from the previous release even after the symlink switches.** This is the most common "deploy succeeded but nothing changed" cause on atomic setups.
 
 <br>
 
 ### Step 5 - Fix Cron
+
+`Cloudways → My Applications → Cron Job Management → Advanced`
 
 Old:
 ```bash
@@ -192,7 +199,7 @@ New:
 * * * * * cd /home/{user}/{app}/public_html/current && /usr/bin/php artisan schedule:run >> /dev/null 2>&1
 ```
 
-> Replace `{user}` and `{app}` with your actual server user and application folder name. Because `artisan` now lives inside `current`, not root.
+> Replace `{user}` and `{app}` with your actual Cloudways/Hosting server user and application folder name. Because `artisan` now lives inside `current`, not root.
 
 <br>
 
@@ -213,19 +220,20 @@ WKHTML_PDF_BINARY=/home/.../public_html/current/binary/wkhtmltopdf
 
 ### Step 7 - Generate Deploy Key on Server
 ```bash
-ssh-keygen -t ed25519 -C "vps-deploy"
+ssh-keygen -t ed25519 -C "cloudways-deploy"
 ```
 
 <br>
 
-### Step 8 - Add Public Key to GitHub
+### Step 8 - Display public key:
 ```bash
 cat ~/.ssh/id_ed25519.pub
 ```
 
-Copy and add to:
-`GitHub → Repository → Settings → Deploy Keys → Add Deploy Key`
-- Title: `VPS Atomic Deploy`
+Copy and Add the public key to:
+<br>
+`GitHub → Repository → Settings → Deploy Keys → Add Deploy Keys`
+- Title: `Cloudways Atomic Deploy`
 - Allow write access: **No**
 
 Test:
@@ -257,16 +265,14 @@ Before using, update these variables at the top of the script:
 | Variable | Replace With |
 |---|---|
 | `APP_ROOT` | Your actual app path on the server |
-| `APP_USER` | The system user that runs your app (web server user) |
 | `REPO` | Your GitHub repository SSH URL |
 | `BRANCH` | Your deployment branch |
 | `DOMAIN` | Your live domain for health check |
-| `PHP_FPM_SERVICE` | Your PHP-FPM service name, e.g. `php8.2-fpm` |
 
 Create this file in your project:
 `.github/workflows/deploy.yml`
 ```yaml
-name: Deploy (Atomic)
+name: Cloudways Deploy (Atomic)
 
 on:
   push:
@@ -287,12 +293,10 @@ jobs:
           script: |
             set -e
 
-            APP_ROOT="/home/your-user/htdocs/yourdomain.com"
+            APP_ROOT="/home/deployer/applications/myapp123/public_html"
             REPO="git@github.com:your-org/your-repo.git"
             BRANCH="main"
-            DOMAIN="https://yourdomain.com"
-            APP_USER="your-app-user"
-            PHP_FPM_SERVICE="php8.2-fpm"
+            DOMAIN="https://example.com"
 
             DIV="───────────────────────────────────────────────────────────"
 
@@ -329,13 +333,6 @@ jobs:
 
             echo ""
             echo "$DIV"
-            echo "  🔐 Fixing binary permissions..."
-            echo "$DIV"
-            # Add chmod lines for any bundled binaries your app ships
-            # chmod +x binary/your-tool/bin/your-binary || true
-
-            echo ""
-            echo "$DIV"
             echo "  📦 Installing Composer dependencies..."
             echo "$DIV"
             composer install --no-dev --optimize-autoloader --no-interaction
@@ -349,29 +346,23 @@ jobs:
 
             echo ""
             echo "$DIV"
-            echo "  🔧 Fixing release ownership..."
-            echo "$DIV"
-            chown -R $APP_USER:user $APP_ROOT/releases/$RELEASE
-
-            echo ""
-            echo "$DIV"
             echo "  💾 Running database backup (DB only)..."
             echo "$DIV"
             rm -rf $APP_ROOT/storage/app/backup-temp/temp
-            sudo -u $APP_USER php artisan backup:run --only-db
+            php artisan backup:run --only-db
 
             echo ""
             echo "$DIV"
             echo "  🗄 Running database migrations..."
             echo "$DIV"
-            sudo -u $APP_USER php artisan migrate --force --no-interaction --step
+            php artisan migrate --force --no-interaction --step
 
             echo ""
             echo "$DIV"
             echo "  🩺 Pre-switch Laravel health check..."
             echo "$DIV"
-            sudo -u $APP_USER php artisan about > /dev/null
-            sudo -u $APP_USER php artisan route:list > /dev/null
+            php artisan about > /dev/null
+            php artisan route:list > /dev/null
 
             cd $APP_ROOT
 
@@ -389,60 +380,38 @@ jobs:
             echo "  🔗 Ensuring public/storage symlink exists..."
             echo "$DIV"
             rm -rf public/storage
-            sudo -u $APP_USER php artisan storage:link
+            php artisan storage:link
 
             echo ""
             echo "$DIV"
-            echo "  🔧 Fixing storage symlink ownership..."
+            echo "  🔧 Fixing permissions..."
             echo "$DIV"
-            chown $APP_USER:www-data public/storage
-
-            echo ""
-            echo "$DIV"
-            echo "  🔒 Fixing shared storage permissions..."
-            echo "$DIV"
-            find $APP_ROOT/storage -type d -perm 700 -exec chmod 750 {} \;
-            find $APP_ROOT/storage -type f -perm 600 -exec chmod 640 {} \;
-            chmod 664 $APP_ROOT/storage/logs/laravel.log || true
-            chown -R $APP_USER:user $APP_ROOT/storage
+            find $APP_ROOT/releases/$RELEASE/public -type d -exec chmod 775 {} \;
+            find $APP_ROOT/releases/$RELEASE/public -type f -exec chmod 664 {} \;
 
             echo ""
             echo "$DIV"
             echo "  🧹 Clearing shared caches..."
             echo "$DIV"
-            sudo -u $APP_USER php artisan view:clear
-            sudo -u $APP_USER php artisan cache:clear
-            sudo -u $APP_USER php artisan optimize:clear
-            sudo -u $APP_USER php artisan schedule:clear-cache
-            # add your app-specific clear commands here
+            php artisan view:clear
+            php artisan cache:clear
+            php artisan optimize:clear
+            php artisan schedule:clear-cache
 
             echo ""
             echo "$DIV"
             echo "  ⚡ Rebuilding production caches..."
             echo "$DIV"
-            sudo -u $APP_USER php artisan config:cache
-            sudo -u $APP_USER php artisan route:cache
-            sudo -u $APP_USER php artisan view:cache
-            sudo -u $APP_USER php artisan optimize
+            php artisan config:cache
+            php artisan route:cache
+            php artisan optimize
             # add your app-specific cache commands here
 
             echo ""
             echo "$DIV"
-            echo "  Reloading PHP-FPM to apply changes..."
+            echo "  🔁 Queuing server is restarting..."
             echo "$DIV"
-            sudo service $PHP_FPM_SERVICE reload
-
-            echo ""
-            echo "$DIV"
-            echo "  🗺 Generating sitemap..."
-            echo "$DIV"
-            sudo -u $APP_USER php artisan sitemap:generate
-
-            echo ""
-            echo "$DIV"
-            echo "  🔁 Restarting queue workers..."
-            echo "$DIV"
-            sudo -u $APP_USER php artisan queue:restart
+            php artisan queue:restart
 
             echo ""
             echo "$DIV"
@@ -461,7 +430,7 @@ jobs:
               mv -Tf current_tmp current
 
               cd current
-              sudo -u $APP_USER php artisan queue:restart
+              php artisan queue:restart
 
               echo ""
               echo "$DIV"
@@ -479,39 +448,34 @@ jobs:
 
             echo ""
             echo "$DIV"
-            echo "  ✅ Deployment completed successfully!"
+            echo "  ✅ Deployment completed successfully."
             echo "$DIV"
             echo ""
 ```
 
-> The cache rebuild and cache clear sections include placeholder comments for app-specific commands. Add things like `php artisan icons:cache` or any custom commands your app needs in those sections.
+> The cache rebuild section includes a placeholder comment for app-specific commands. Add commands like `php artisan sitemap:generate` or any custom cache commands your app needs there.
 
 ---
 
 <br>
 
-# PHASE 4: Deploy Script Explained
+# PHASE 4: Deploy YAML Script Explained
 
 | Step | What It Does |
 |---|---|
-| Timestamped release folder | Every deploy is isolated — never touches live code |
+| Timestamped release folder | Every deploy is isolated - never touches live code |
 | Clone repo | Fresh copy, no dirty state or leftover files |
-| Link storage & .env | Shared across all releases — uploads and config persist |
-| Binary permissions | Ensures bundled executables are runnable after clone |
+| Link storage & .env | Shared across all releases - uploads and config persist |
 | Composer + npm + build | Production-only dependencies, compiled assets |
-| Release ownership fix | Ensures app user owns the release before any artisan calls |
 | DB backup | Safety net before running migrations |
-| Migrate with `--step` | Runs one migration at a time — easier to debug failures |
+| Migrate with `--step` | Runs one migration at a time - easier to debug failures |
 | Pre-switch health check | Validates app can boot before going live |
-| `mv -Tf` symlink swap | Atomic on same filesystem — true zero downtime |
-| `storage:link` | Recreates `public/storage → storage/app/public` |
-| Storage symlink ownership | Ensures the web server can read the symlink target |
-| Storage permissions fix | Corrects any root-owned files without breaking `www-data` access |
+| `mv -Tf` symlink swap | Atomic on same filesystem - true zero downtime |
+| `storage:link` | Recreates `public/storage` → `storage/app/public` |
+| `find` chmod on public/ | Deploy user owns `public/` - sets correct permissions |
 | Clear + rebuild caches | Clean slate for new release |
-| PHP-FPM reload | Flushes OPCache so the new release takes effect immediately |
-| Sitemap generation | Keeps SEO sitemap up to date on every deploy |
 | `queue:restart` | Workers gracefully reload with new code |
-| HTTP health check | Curls the live domain — rolls back automatically on failure |
+| HTTP health check | Curls the live domain - rolls back automatically on failure |
 | Keep last 5 releases | Built-in rollback history without eating disk |
 
 ---
@@ -524,7 +488,7 @@ jobs:
 
 **Cause:** OPCache caches compiled PHP files by path. After symlink switch, the resolved path changes but OPCache doesn't know.
 
-**Fix:** Set `opcache.revalidate_path=1` in PHP-FPM settings, and add `sudo service php8.2-fpm reload` to your deploy script after the symlink switch.
+**Fix:** Set `opcache.revalidate_path=1` in PHP FPM settings
 
 ---
 
@@ -540,31 +504,29 @@ jobs:
 
 **Cause:** Files in `storage/` were created by the web server user (`www-data`). The deploy user can't `chmod` them.
 
-**Fix:** Don't `chmod -R` shared storage blindly. Use `find` scoped to only fix files/dirs with overly restrictive permissions (mode 700/600), and scope `chown` to the release's own folder.
+**Fix:** Don't `chmod -R` shared storage. Only fix permissions on the release's `public/` folder which the deploy user owns.
 
 ---
 
 ### Binary (e.g. wkhtmltopdf) not found after deploy
 
-**Cause:** `.env` had a hardcoded release-specific path, or the binary lost its execute bit after `git clone`.
+**Cause:** `.env` had a hardcoded release-specific path.
 
-**Fix 1:** Use `current/` in the path — it always resolves to the active release.
-
-**Fix 2:** Add `chmod +x binary/your-tool/bin/your-binary || true` in the deploy script before composer install.
+**Fix:** Use `current/` in the path - it always resolves to the active release.
 
 ---
 
-### Artisan commands failing due to wrong file ownership
+### `chmod` errors on storage files during deploy
 
-**Cause:** Release folder is owned by the SSH deploy user, not the app user. PHP-FPM runs as the app user and can't write cache files.
+**Cause:** Storage files owned by `www-data` - deploy SSH user can't modify them.
 
-**Fix:** Run `chown -R $APP_USER:user releases/$RELEASE` before any artisan calls, and always invoke artisan as `sudo -u $APP_USER php artisan ...`.
+**Fix:** Remove `chmod -R` on storage entirely. Use `find` scoped to `releases/$RELEASE/public` only.
 
 ---
 
 ### Old root files causing confusion
 
-**Cause:** After switching to atomic, the original Laravel files were still sitting in the app root.
+**Cause:** After switching to atomic, the original Laravel files were still sitting in `public_html` root.
 
 **Fix:** Clean root after confirming atomic deploy works. Keep only `current`, `releases`, `storage`, `.env`.
 
@@ -578,25 +540,23 @@ jobs:
 |---|---|
 | Edit files directly on server | Deploy via `git push → GitHub Actions` |
 | Run `git pull` manually | Let CI handle all deployments |
-| Hardcode your webroot to a specific release | Keep webroot pointing at `current/public` |
+| Change the Cloudways webroot | Keep `storage/` and `.env` at root, shared |
 | Delete release folders manually | Let the deploy script manage cleanup |
 | Hardcode release paths in `.env` | Use `current/` in all binary/asset paths |
-| Run artisan as root | Use `sudo -u $APP_USER php artisan ...` |
 
 ---
 
 <br>
 
-# What You Get on This Atomic Deployment Setup
+# What You Get on this Atomic Deployment Setup on Cloudways or any hosting
 
 - Zero downtime deployments
-- Automatic rollback on HTTP failure
+- Automatic rollback on failure
 - DB backup before every migration run
 - Private repo access via SSH deploy keys
 - Clean, predictable server structure
 - Shared storage across all releases
-- OPCache-compatible atomic switching via PHP-FPM reload
-- Correct file ownership handled automatically
+- OPCache-compatible atomic switching
 - Fully automated CI/CD via GitHub Actions
 - Release history with one-command manual rollback potential
 

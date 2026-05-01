@@ -34,6 +34,7 @@ export const achievements = [
 ];
 
 export const speakerships = [
+  { title: "Smart Use of AI Tools", org: "URS Morong", date: "April 2026", notes: "Resource Speaker" },
   { title: "Creating Your Portfolio using GitHub Pages", org: "URSB BSIT Students' League", date: "March 2026", notes: "Resource Speaker", href: "https://www.facebook.com/photo?fbid=897016623153656&set=a.120472990808027" },
   { title: "Capstone Success: Tips & Techniques", org: "URSB BSIT Students' League", date: "Sept. 2024", notes: "Resource Speaker", href: "https://www.facebook.com/share/p/14KYWomoi71/" },
 ];
