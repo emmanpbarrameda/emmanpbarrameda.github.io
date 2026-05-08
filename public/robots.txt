@@ -1,6 +1,10 @@
 User-agent: *
 Allow: /
 
+# ——— GOOGLE SEARCH ———
+User-agent: Googlebot
+Allow: /
+
 # ——— OPENAI ———
 User-agent: GPTBot
 Allow: /
