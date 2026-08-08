@@ -1,15 +1,16 @@
 export const experience = [
-  { title: "Software Engineer", org: "Casterly Philippines", date: "January 2026 – Present", },
-  { title: "Software Developer", org: "Casterly Philippines", date: "July 2025 – December 2025", },
-  { title: "Backend Developer", org: "Lumnaire (Startup)", date: "Aug 2025 – Present", },
+  { title: "Software Engineer", org: "Casterly Philippines", date: "July 2025 – Present", },
+  // { title: "Software Developer", org: "Casterly Philippines", date: "July 2025 – December 2025", },
+  { title: "Backend Developer", org: "Lumnaire (Startup)", date: "Aug 2025 – June 2026", },
   { title: "Backend Developer Intern", org: "Bapplware Technologies Inc.", date: "Feb 2025 – Apr 2025", },
   { title: "Freelancer", date: "May 2020 – Present" },
 ];
 
 export const leadership = [
-  // { title: "President", org: "Student Developer Philippines (StuDevPH)", date: "Dec 2025 – Present", notes: "Tech Community Organization", href: "" },
+  { title: "Founder/Developer", org: "BetterBinangonan.org", date: "May 2025 – Present", notes: "Civic Tech Initiative", href: "https://betterbinangonan.org/contact#developers" },
+  { title: "Administrator", org: "Student Developer Philippines (StuDevPH)", date: "Dec 2025 – Present", notes: "Organization", href: "" },
   { title: "Vice President for Corporate Communications", org: "URSB Alumni Association", date: "Aug 2025 – Present", notes: "Organization", href: "https://www.facebook.com/share/1AgMYQn7Cv/" },
-  { title: "Tech Specialist (VP Programs Office)", org: "DEVCON Manila", date: "May 2025 – Present", notes: "Community Organization", href: "https://www.facebook.com/share/17HsuCAcyN/" },
+  { title: "Tech Specialist (VP Programs Office)", org: "DEVCON Manila", date: "May 2025 – January 2026", notes: "Community Organization", href: "https://www.facebook.com/share/17HsuCAcyN/" },
   { title: "President", org: "URSB BSIT Students' League", date: "Aug 2024 – Jun 2025", notes: "Organization", href: "https://www.facebook.com/share/1AamWmzH9u/" },
   { title: "Public Information Officer", org: "URSB Graduating Class of 2025", date: "Feb 2025 – Jun 2025", notes: "Organization", href: "https://www.facebook.com/ursb.graduatingclass2025" },
   { title: "Class President, IT 4-2", date: "AY 2024–2025, 2nd Sem" },
@@ -40,6 +41,7 @@ export const speakerships = [
 ];
 
 export const engagements = [
+  { title: "GDG Manila Build with AI ", date: "Participant" },
   { title: "Campus DevCon Manila 2025 ", date: "Tech Specialist" },
   { title: "Google DevFest 2025", date: "Participant" },
   { title: "Google I/O 2025 Manila", date: "Participant" },
@@ -49,6 +51,7 @@ export const engagements = [
 ];
 
 export const communities = [
+    { title: "BetterGov.PH" },
     { title: "Student Developer Philippines (StuDevPH)" },
     { title: "DEVCON Manila" },
     { title: "Filipino Web Development Peers (FWDP)" },
