@@ -1,7 +1,7 @@
 export const experience = [
-  { title: "Software Engineer", org: "Casterly Philippines", date: "July 2025 – Present", },
+  { title: "Software Engineer", org: "Casterly Philippines", date: "July 2025 – July 2026", },
   // { title: "Software Developer", org: "Casterly Philippines", date: "July 2025 – December 2025", },
-  { title: "Backend Developer", org: "Lumnaire (Startup)", date: "Aug 2025 – June 2026", },
+  { title: "Backend Developer", org: "Lumnaire (Startup)", date: "Aug 2025 – May 2026", },
   { title: "Backend Developer Intern", org: "Bapplware Technologies Inc.", date: "Feb 2025 – Apr 2025", },
   { title: "Freelancer", date: "May 2020 – Present" },
 ];
